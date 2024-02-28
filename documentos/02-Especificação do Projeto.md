@@ -9,8 +9,22 @@ O projeto adotará uma arquitetura moderna e escalável para atender às necessi
 - Backend: A lógica de negócio será desenvolvida utilizando Java, pattern BFF para Backend For Frontend.
 
 ## Project Model Canvas
+O Project Model Canvas é uma ferramenta de planejamento que permite a equipe visualizarem e estruturarem os principais elementos de um projeto em um único quadro. O Project Model Canvas simplifica a análise e a comunicação dos objetivos, recursos e atividades do projeto, promovendo uma compreensão clara e colaborativa para o escopo.
 
 ![Img](<img/../img/Model%20Canva.jpg>)
+
+
+## Software Notion (KANBAN)
+
+O Notion permite criar um quadro Kanban personalizado para atender às necessidades específicas do projeto D'Alessandra.
+
+O Notion, um software altamente flexível e multifuncional, pode ser habilmente utilizado como uma poderosa ferramenta Kanban para gerenciar projetos de forma eficaz. O método Kanban, tem sido amplamente adotado em diversos setores para visualizar fluxos de trabalho, otimizar processos e aumentar a produtividade. O mesmo pode ser acessado através do link abaixo:
+
+https://jeweled-duckling-fd8.notion.site/Backlog-Etapa-1-62c45c0649204052ba0912f11df16733?pvs=4
+
+![Img](<img/../img/Notion.Tela.1.png>)
+![Img](<img/../img/Notion.Tela.2.png>)
+
 
 ## Requisitos
 
