@@ -1,23 +1,24 @@
-# TÍTULO DO PROJETO
+# D'Alessandra
 
-`CURSO`
+`ANALISE DE DESENVOLVIMENTO DE SISTEMA`
 
-`DISCIPLINA`
+`Projeto: Desenvolvimento de um Sistema Sociotécnico Inovador`
 
-`SEMESTRE`
+`Eixo- 05`
 
-Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
+Desenvolvimento de um Sistema Sociotécnico Inovador para aprimorar a gestão da loja de roupas de D'Alessandra, visando agilizar processos de estoque, vendas e finanças através de soluções de TI, proporcionando uma gestão integrada e eficiente para impulsionar o crescimento do negócio.
 
 ## Integrantes
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
-* Nome completo do aluno 3
-* Nome completo do aluno 4
+* <a href="https://www.linkedin.com/in/matheus-ferreira-3b26a823b/">Matheus Ferreira Pires</a>
+* <a href="https://www.linkedin.com/in/sampaiotech/">Matheus Lemos Sampaio</a>
+* <a href="https://www.linkedin.com/in/pedro-almeida-5427b3187/">Pedro Assis Silva de Almeida</a>
+* <a href="https://www.linkedin.com/in/vitorhugosilvaribeiro/">Vitor Hugo Silva Ribeiro</a>
 
-## Orientador
+## Orientador(a)
 
-* Nome completo do professor 1
+* <a href="https://www.linkedin.com/in/sandra-silveira-msc-itil-v3-foundation-320618/">Sandra Maria Silveira professor(a)</a>
+* <a href="https://www.linkedin.com/in/joyce-christina-de-paiva-carvalho-9035124a/">Joyce Christina de Paiva Carvalho coordenador(a)</a>
 
 ## Instruções de utilização
 
