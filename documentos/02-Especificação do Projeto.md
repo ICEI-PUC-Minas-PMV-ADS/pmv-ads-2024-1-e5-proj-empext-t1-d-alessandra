@@ -18,7 +18,6 @@ O projeto adotará uma arquitetura moderna e escalável para atender às necessi
 
 3) Banco de Dados: 
     * MySQL
-
     
 4) Arquitura de Software: 
     * BFF
