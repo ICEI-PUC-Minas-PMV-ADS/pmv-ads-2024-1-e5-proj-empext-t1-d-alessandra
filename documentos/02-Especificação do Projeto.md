@@ -1,14 +1,26 @@
 # Especificações do Projeto
 
-
 ## Arquitetura e Tecnologias
 
 O projeto adotará uma arquitetura moderna e escalável para atender às necessidades da loja D'Alessandra. A solução será desenvolvida utilizando as seguintes tecnologias:
 
-- Frontend: A interface do usuário será desenvolvida utilizando design de código, biblioteca React e TailwindCSS.
-  
-- Backend: A lógica de negócio será desenvolvida utilizando Java, design pattern BFF e principios SOLID para POO(Porgramação Orientada a Objetos).
+1) Frontend: 
+    * Tailwind
+    * React
 
+</br>
+
+2) Backend: 
+    * Java - Spring boot - Lombok  
+    * Solid
+
+</br>
+
+3) Banco de Dados: 
+    * MySQL
+    
+4) Arquitura de Software: 
+    * BFF
 
 ## Project Model Canvas
 O Project Model Canvas é uma ferramenta de planejamento que permite a equipe visualizarem e estruturarem os principais elementos de um projeto em um único quadro. O Project Model Canvas simplifica a análise e a comunicação dos objetivos, recursos e atividades do projeto, promovendo uma compreensão clara e colaborativa para o escopo.
