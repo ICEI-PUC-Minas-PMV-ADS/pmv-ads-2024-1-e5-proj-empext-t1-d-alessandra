@@ -34,7 +34,7 @@ O Notion permite criar um quadro Kanban personalizado para atender às necessida
 
 O Notion, um software altamente flexível e multifuncional, pode ser habilmente utilizado como uma poderosa ferramenta Kanban para gerenciar projetos de forma eficaz. O método Kanban, tem sido amplamente adotado em diversos setores para visualizar fluxos de trabalho, otimizar processos e aumentar a produtividade. O mesmo pode ser acessado através do link abaixo:
 
-https://jeweled-duckling-fd8.notion.site/Backlog-Etapa-1-62c45c0649204052ba0912f11df16733?pvs=4
+https://jeweled-duckling-fd8.notion.site/fc759d8195f545b98ac6a06ec1d9cea6?v=9cac7cd7282d48cfbe607a240c45927d&pvs=4
 
 ![Img](<img/../img/Notion.Tela.1.png>)
 ![Img](<img/../img/Notion.Tela.2.png>)
