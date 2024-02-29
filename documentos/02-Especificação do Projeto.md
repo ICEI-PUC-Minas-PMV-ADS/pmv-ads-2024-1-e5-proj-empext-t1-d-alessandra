@@ -44,27 +44,27 @@ https://jeweled-duckling-fd8.notion.site/Backlog-Etapa-1-62c45c0649204052ba0912f
 
 ### Requisitos Funcionais
 
-|ID    | Descrição do Requisito                                                                                       |Prioridade |
-|------|----------------------------------------------------------------------------------------------------------------|----------|
+|ID      | Descrição do Requisito                                                                                       |Prioridade |
+|--------|----------------------------------------------------------------------------------------------------------------|----------|
 | RF-001 |A aplicação deve permitir que o administrador faça login.	                                                    |ALTA      |
 | RF-002 |O sistema deve permitir que os usuários se cadastrem na plataforma, fornecendo informações pessoais.        	|ALTA      |
 | RF-003 |O sistema deve permitir realizar cadastro de produtos de estoque.	                                            |ALTA      |
-| RF-004 |O sistema deve listar todos os produtos que estão em estoque com seu respectivo status.	                      |ALTA      |
+| RF-004 |O sistema deve listar todos os produtos que estão em estoque com seu respectivo status.	                    |ALTA      |
 | RF-005 |O sistema deve mostrar a quantidade total de produtos no estoque e o valor total do estoque.                 	|MÉDIA     |
 | RF-006 |O sistema deve mostrar os produtos mais vendidos na loja.	                                                    |MÉDIA     |
-| RF-007 |O sistema deve permitir o registro das vendas realizadas pela loja.	                                          |ALTA      |
+| RF-007 |O sistema deve permitir o registro das vendas realizadas pela loja.	                                        |ALTA      |
 | RF-008 |O sistema deve listar as vendas do dia através de um filtro.	                                                |MÉDIA     |
-| RF-009 |O sistema deve ter a possibilidade de criar o cadastro do cliente.                                        	  |ALTA      |
-| RF-010 |O sistema deve permitir o gerenciamento dos valores vendidos no dia/semana/mês.	                              |MÉDIA     |
+| RF-009 |O sistema deve ter a possibilidade de criar o cadastro do cliente.                                        	|ALTA      |
+| RF-010 |O sistema deve permitir o gerenciamento dos valores vendidos no dia/semana/mês.	                            |MÉDIA     |
 | RF-011 |O sistema deve permitir o gerenciamento de pagamento.	                                                        |ALTA      |
 | RF-012 |O sistema deve ser capaz de emitir um alerta ao usuário sempre que um devedor estiver pendente de pagamento.	|ALTA      |
 | RF-013 |O sistema deve permitir que a loja consiga fazer o controle das suas despesas.                               	|ALTA      |
-| RF-014 |Registro de despesas.                                                                                         |ALTA      |
+| RF-014 |O sistema deve permitir o gerenciamento de despesas.                                                          |ALTA      |
 
 ### Requisitos não Funcionais
 
-|ID     | Descrição do Requisito  |Prioridade |
-|-------|-------------------------|----|
+|ID      | Descrição do Requisito  |Prioridade |
+|--------|-------------------------|----|
 |RNF-001 |A aplicação será publicado em um ambiente na Internet.                                    | ALTA.   | 
 |RNF-002 |A aplicação será compatível com os principais navegadores do mercado.                     | ALTA.   | 
 |RNF-003 |A aplicação deve ser confiável, deve atender às demandas do cliente.                      | MÉDIA   | 
