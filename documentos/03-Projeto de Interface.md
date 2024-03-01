@@ -38,4 +38,6 @@ A seguir, temos a visão geral da interação do usuário com as funcionalidades
 
 ## Link para o protótipo interativo
 
-<a href="https://www.figma.com/proto/dLsSDI4YOepGkhC1JscLYF/Projeto-D'Alessandra?type=design&node-id=2002-13308&t=187IrH3kwelgTpoi-0&scaling=contain&page-id=2002%3A11568"></a>
+<a href="https://www.figma.com/proto/dLsSDI4YOepGkhC1JscLYF/Projeto-D'Alessandra?type=design&node-id=2002-13308&t=187IrH3kwelgTpoi-0&scaling=contain&page-id=2002%3A11568">
+LINk
+</a>
