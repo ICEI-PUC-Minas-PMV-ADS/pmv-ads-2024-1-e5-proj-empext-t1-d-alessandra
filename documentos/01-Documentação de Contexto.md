@@ -28,7 +28,7 @@ A falta de uma solução tecnológica eficiente resulta em ineficiências operac
 
 ## Relação com a Extensão Universitária
 
-A implementação do sistema sociotécnico na loja de D'Alessandra apresenta uma oportunidade valiosa de envolvimento em atividades de extensão universitária. Nessa perspectiva, os estudantes têm a oportunidade de aplicar seus conhecimentos teóricos em situações reais, contribuindo diretamente para a sociedade por meio de uma solução inovadora. 
+A implementação do sistema sociotécnico na loja de D'Alessandra apresenta uma oportunidade valiosa de envolvimento em atividades de extensão universitária. Nessa perspectiva, os estudantes têm a oportunidade de aplicar seus conhecimentos teóricos em situações reais, contribuindo diretamente para a sociedade por meio de uma solução inovadora e ajudar o parceiro D`Alessandra com suas necessidades.
 
 
 ## Descrição do Parceiro
