@@ -1,7 +1,7 @@
-package back.end.dalessandra.Model;
+package back.dalessandra.Model;
 
-import javax.persistence.*;
-import javax.validation.constraints.Size;
+
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
