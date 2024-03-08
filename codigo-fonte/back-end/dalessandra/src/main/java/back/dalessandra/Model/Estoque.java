@@ -1,4 +1,5 @@
 package back.dalessandra.Model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -16,12 +17,12 @@ import java.util.Date;
 public class Estoque {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int codProduto;
-    @Column(length=30, nullable = false)
+    private Integer codProduto;
+    @Column(length = 30,nullable = false)
     private String nomePorduto;
     @Column(nullable = false)
     private int quantidadeItem;
-    @Column(length = 10)
+    @Column(length = 20)
     private String marca;
     @Column(length = 20)
     private String tipo;
@@ -35,5 +36,6 @@ public class Estoque {
     private  float valorVenda;
     @Column(nullable = false)
     private Date dataCadastro;
-
+    private int qtdAtual;
+    private String status;
 }
