@@ -79,6 +79,37 @@
 					</excludes>
 				</configuration>
 			</plugin>
+
+			<plugin>
+				<groupId>org.jooq</groupId>
+				<artifactId>jooq-codegen-maven</artifactId>
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<jdbc>
+						<driver>com.mysql.cj.jdbc.Driver</driver>
+						<url>jdbc:mysql://projetoeixo.mysql.database.azure.com:3306/</url>
+						<user>dalessandra</user>
+						<password>Esqueceuperdeu06@</password>
+					</jdbc>
+					<generator>
+						<target>
+							<packageName>back.dalessandra</packageName>
+						</target>
+						<database>
+							<name>org.jooq.meta.mysql.MySQLDatabase</name>
+							<excludes></excludes>
+						</database>
+					</generator>
+				</configuration>
+			</plugin>
+
 			<plugin>
 				<groupId>org.jooq</groupId>
 				<artifactId>jooq-codegen-maven</artifactId>
