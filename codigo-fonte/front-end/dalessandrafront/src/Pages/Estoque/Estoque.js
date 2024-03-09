@@ -4,7 +4,7 @@ import React from "react";
 import config from "../../config/config";
 import Menu from "../../Componentes/Menu/Menu";
 import Card from "../../Componentes/Card/Card";
-//import "../../estilo/estilo.css";
+import Tabela from "../../Componentes/Tabela/Tabela";
 import "./estoque.css";
 import { useEffect, useState } from "react";
 
@@ -57,6 +57,9 @@ function Estoque(){
             <section className="container mx-auto p-4 alinhamentoCards">
                 <Card title="Quantidade de itens cadastrados: " textoExibir={quantidadeEstoque}/>
                 <Card title="Valor total do estoque:" textoExibir={"R$ "+valorEstoque}/>
+            </section>
+            <section className="container mx-auto p-4"> 
+                <Tabela dados={estoque}/>
             </section>
         </main>
     )

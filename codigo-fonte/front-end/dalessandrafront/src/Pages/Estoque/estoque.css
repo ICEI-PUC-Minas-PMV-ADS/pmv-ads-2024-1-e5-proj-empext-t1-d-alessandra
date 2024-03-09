@@ -1,6 +1,9 @@
 .alinhamentoCards {
-    display: flex;
+    display: inline-grid;
+    grid-template-columns: repeat(4, 4fr);
+    grid-gap: 10px;
     position: relative;
     top:2vh;
+    left: 10vw;
    
 }
