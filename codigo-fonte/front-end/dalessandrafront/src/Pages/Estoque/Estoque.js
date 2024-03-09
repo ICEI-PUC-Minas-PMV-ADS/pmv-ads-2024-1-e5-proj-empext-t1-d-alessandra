@@ -1,5 +1,7 @@
 
 import axios from "axios";
+import React from "react";
+import config from "../../config/config";
 import { useEffect, useState } from "react";
 
 
@@ -7,36 +9,36 @@ import { useEffect, useState } from "react";
 function Estoque(){
 
     const [estoque, setEstoque] = useState([])
-
-
+    const [quantidadeEstoque, setQuantidadeEstoque] = useState(0)
+    useEffect(() => {
+        obeterEstoque()
+        obterQuantidadeItemEstoque()
+       },[])
     
-    //#endregion    console.log(estoque)
-
-        function obeterEstoque(){
-            //console.log("Obter Estoque")
-            const headers ={
-                "Content-Type":"application/json"
-                }
-                axios.get('http://localhost:8080/estoque',{headers})
-                .then((response) => {
-                    console.log(response.data)
-                    setEstoque(response.data)
-                    //console.log(response.status)
+    function obeterEstoque(){
+        const headers ={"Content-Type":"application/json"}
+        axios.get(config.URL+'estoque',{headers})
+             .then((response) => {
+                setEstoque(response.data)
                 })
-                .catch((error) => {
+            .catch((error) => {
                     console.log(error)
                 })
-        }
-
-       // obeterEstoque()
-
+     }
+     function obterQuantidadeItemEstoque(){
+        const headers ={"Content-Type":"application/json"}
+        axios.get(config.URL+'estoque/quantidadeDeItemCadastrados',{headers})
+             .then((response) => {
+                setQuantidadeEstoque(response.data)
+                })
+            .catch((error) => {
+                    console.log(error)
+                })
+     }
     return(
-        <div>
-            <h1>f</h1>
-            <button onClick={obeterEstoque}>Obter Estoque</button>  
-        </div>
+        <main>
+            <article>{quantidadeEstoque}</article>
+        </main>
     )
-
-
 
 }export default Estoque;
