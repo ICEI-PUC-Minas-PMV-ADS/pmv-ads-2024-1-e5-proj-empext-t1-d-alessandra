@@ -1,4 +1,5 @@
 package back.dalessandra.Model;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
@@ -18,9 +19,9 @@ public class Estoque {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer codProduto;
-    @Column(length = 30,nullable = false)
+    @Column(length = 30)
     private String nomeProduto;
-    @Column(nullable = false)
+    @Column
     private int quantidadeItem;
     @Column(length = 20)
     private String marca;
@@ -28,13 +29,14 @@ public class Estoque {
     private String tipo;
     @Column(length = 20)
     private String cor;
-    @Column(length = 5, nullable = false)
+    @Column(length = 100)
     private  String tamanho;
-    @Column(nullable = false)
+    @Column
     private float valorComprado;
-    @Column(nullable = false)
+    @Column
     private  float valorVenda;
-    @Column(nullable = false)
+    @Column
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", locale = "pt-BR", timezone = "America/Sao_Paulo")
     private Date dataCadastro;
     private int qtdAtual;
     private String status;

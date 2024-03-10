@@ -5,6 +5,7 @@ import config from "../../config/config";
 import Menu from "../../Componentes/Menu/Menu";
 import Card from "../../Componentes/Card/Card";
 import Tabela from "../../Componentes/Tabela/Tabela";
+import ModalAdicionar from "../../Componentes/Modal/modalAdcionar";
 import "./estoque.css";
 import { useEffect, useState } from "react";
 
@@ -54,11 +55,21 @@ function Estoque(){
     return(
         <main>
             <Menu/>
+            <br></br>
+            <h1 className="text-3xl font-bold text-center">Estoque</h1>
             <section className="container mx-auto p-4 alinhamentoCards">
-                <Card title="Quantidade de itens cadastrados: " textoExibir={quantidadeEstoque}/>
+                <Card title="Total de Itens: " textoExibir={quantidadeEstoque}/>
                 <Card title="Valor total do estoque:" textoExibir={"R$ "+valorEstoque}/>
             </section>
-            <section className="container mx-auto p-4"> 
+            <br></br>
+            <br></br>
+            <section className="container mx-auto p-4 shadow-xl">
+                <ModalAdicionar/>
+            </section>
+            <br></br>
+            <section className="container mx-auto p-4 shadow-xl" > 
+                <h3 className="text-2xl font-bold">Itens do Estoque</h3>
+                <br></br>
                 <Tabela dados={estoque}/>
             </section>
         </main>

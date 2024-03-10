@@ -1,5 +1,6 @@
 import React from "react";
 //import { Link } from "react-router-dom";
+//import Logo from "../../img/LOGO_OFICIAL-Sem Fundo.png";
 function Menu() {
   return (
     <div className="navbar bg-base-100 shadow-xl">
@@ -16,7 +17,7 @@ function Menu() {
     </div>
   </div>
   <div className="navbar-center">
-    <a className="btn btn-ghost text-xl">D`ALESSANDRA</a>
+    <a className="btn btn-ghost text-xl"><img/></a>
   </div>
   
 </div>
