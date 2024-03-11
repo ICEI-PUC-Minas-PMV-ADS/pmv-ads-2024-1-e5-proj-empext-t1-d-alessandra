@@ -17,12 +17,17 @@ public class Financeiro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_despesa;
-    @Column(length=30, nullable = false)
+
+    @Column(length=30)
     private String tipo_despesa;
-    @Column(nullable = false)
+
+    @Column(length=30)
     private String nome_despesa;
-    @Column(nullable = false)
+
+    @Column
     private float valor_despesa;
-    @Column(nullable = false)
+
+    @Column
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", locale = "pt-BR", timezone = "America/Sao_Paulo")
     private Date data_despesa;
 }
