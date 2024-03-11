@@ -10,6 +10,7 @@ function ModalExcluir({id}){
        axios.delete(config.URL+'estoque/'+id).
        then((response) => {
             console.log(response.data)
+            window.location.reload();
         })
         .catch((error) => {
             console.log(error)
@@ -18,8 +19,8 @@ function ModalExcluir({id}){
    
     return (
         <div>
-        <button className="" onClick={()=>document.getElementById('my_modal_4').showModal()}><img src={LogoExlivraria} width={30} height={20}/></button>
-        <dialog id="my_modal_4" className="modal">
+        <button className="" onClick={()=>document.getElementById('my_modal_'+id).showModal()}><img src={LogoExlivraria} width={30} height={20}/></button>
+        <dialog id={'my_modal_'+id} className="modal">
             <div className="modal-box w-11/12 max-w-5xl">
                 <h3 className="font-bold text-lg">Exlcuir!</h3>
                 <p className="py-4">Tem certeza que deeja excluir esse produto ?</p>

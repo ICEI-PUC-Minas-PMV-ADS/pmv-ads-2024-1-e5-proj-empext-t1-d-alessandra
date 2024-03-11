@@ -1,11 +1,25 @@
 .alinhamentoCards {
-    display: inline-grid;
+    display: flex;
     grid-template-columns: repeat(4, 4fr);
     grid-gap: 10px;
-    position: relative;
-    top:2vh;
-    left: 10vw;
+   
    
 }
+.btn-success{
+    color: #fff;
+}
 
+.corTexto{
+    color: #1ED270;
+}
 .logoMenu{width: 165px;height: 209px;position: relative;top: -8vh;}
+
+.alinhamentoMenu2{
+    display: flex;
+    grid-template-columns: repeat(4, 4fr);
+    grid-gap: 1000px;
+}
+.alinharCamposModal{
+    grid-template-columns: repeat(3, 3fr);
+
+}
