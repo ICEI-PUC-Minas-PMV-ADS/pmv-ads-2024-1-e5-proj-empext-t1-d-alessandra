@@ -1,6 +1,6 @@
 package back.dalessandra.Model;
 
-
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,18 +18,20 @@ public class Cadastro {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_cadastro;
+    private Integer idCadastro;
 
-    @Column(nullable = false)
-    private String nome_cadastro;
+    @Column( )
+    private String nomeCadastro;
 
-    @Column(nullable = false)
-    private Date datanascimento_cadastro;
+    @Column( )
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", locale = "pt-BR", timezone = "America/Sao_Paulo")
+    private Date dataNascimento;
 
-    @Column(nullable = false)
-    private String email_cadastro;
+    @Column( )
+    private String emailCadastro;
 
-    @Column(nullable = false)
-    private String senha_cadastro;
+    @Column( )
+    private String senhaCadastro;
 
+    // Getters e Setters
 }
