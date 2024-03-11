@@ -16,7 +16,7 @@ public interface EstoqueRepository extends JpaRepository<Estoque,Integer> {
     @Query("select count(*) from Estoque")
     int quantidadeItem();
 
-    @Query("Select sum(valorComprado) from Estoque")
+    @Query("Select sum(valorTotalEmEstoque) from Estoque")
     float valorEstoqueSemValorConsumidor();
 
     @Query("select u from Estoque u where status=?1")

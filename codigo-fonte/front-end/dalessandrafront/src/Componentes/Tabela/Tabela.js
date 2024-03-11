@@ -23,7 +23,7 @@ function Tabela({dados,filtro}){
         );
     };
     return (
-        <table className="table">
+        <table className="table table-xs">
             <thead>
                 <tr>
                     <th>Cod.Produto</th>
@@ -56,8 +56,7 @@ function Tabela({dados,filtro}){
                         <td>{item.status}</td>
                         <td>{item.dataCadastro}</td>
                         <td><ModalExcluir id={item.codProduto}/></td>
-                        <td><ModalEditarQuantidade id={item.codProduto}/></td>
-                        <td><SubMenuEstoque/></td>
+                        <td><SubMenuEstoque id={item.codProduto}/></td>
                     </tr>
                 ))}
             </tbody>

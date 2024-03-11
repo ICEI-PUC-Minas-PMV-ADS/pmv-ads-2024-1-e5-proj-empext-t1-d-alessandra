@@ -60,11 +60,11 @@ function ModalAdicionar(){
                         <option value="P - Infantil">P - Infantil</option>
                         <option value="M - Infantil">M - Infantil</option>
                         <option value="G - Infantil">G - Infantil</option>
-                        <option value="PP -Aduto">PP -Aduto</option>
-                        <option value="P - Aduto">P - Aduto</option>
-                        <option value="M - Aduto">M - Aduto</option>
-                        <option value="G - Aduto">G - Aduto</option>
-                        <option value="GG - Aduto">GG - Aduto</option>
+                        <option value="PP -Adulto">PP -Aduto</option>
+                        <option value="P - Adulto">P - Aduto</option>
+                        <option value="M - Adulto">M - Aduto</option>
+                        <option value="G - Adulto">G - Aduto</option>
+                        <option value="GG - Adulto">GG - Aduto</option>
                         <option value="EXG - Adulto">EXG - Adulto</option>
                         <option value="36 - Adulto">36 - Adulto</option>
                         <option value="38 - Adulto">38 - Adulto</option>
