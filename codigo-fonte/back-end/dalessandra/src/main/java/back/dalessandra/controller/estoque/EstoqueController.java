@@ -32,20 +32,17 @@ public class EstoqueController {
         return estoqueService.excluirProdutoEstoque(id);
     }
     @PutMapping("baixaItem/{codProduto}/{qtdSaida}")
-    public void darBaixaEstoque(@PathVariable("codProduto") int codProduto, @PathVariable("qtdSaida") int qtdSaida){
-        estoqueServiceMore.baixaNoEstoque(codProduto, qtdSaida);
+    public String  darBaixaEstoque(@PathVariable("codProduto") int codProduto, @PathVariable("qtdSaida") int qtdSaida){
+       return estoqueServiceMore.baixaNoEstoque(codProduto, qtdSaida);
     }
-
     @PutMapping("adicionarMaisQuantidade/{cod}/{novaQtd}")
     public void atualizarQtdEstoque(@PathVariable("cod") int cod, @PathVariable("novaQtd") int novaQtd){
         estoqueServiceMore.atualizarQtdEstoque(cod, novaQtd);
     }
-
     @GetMapping("buscarCodigoProduto/{nomeProduto}")
     public Estoque buscarCodigoProduto(@PathVariable("nomeProduto") String nomeProduto){
         return estoqueServiceMore.buscarCodigoProduto(nomeProduto);
     }
-
     @GetMapping("quantidadeDeItemCadastrados")
     public int quantidadeDeItemCadastrados(){
         return estoqueServiceMore.qtdItemCadastrados();
@@ -54,7 +51,6 @@ public class EstoqueController {
     public float valorEstoqueComprado(){
         return estoqueServiceMore.valorEstoqueComprado();
     }
-
     @GetMapping("filtroPorEstatus/{status}")
     public List<Estoque> filtroPorEstatus(@PathVariable("status") String status){
         return estoqueServiceMore.filtroPorEstatus(status);
