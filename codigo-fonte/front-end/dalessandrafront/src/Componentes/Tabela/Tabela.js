@@ -1,7 +1,7 @@
 import React from 'react';
-import ModalExcluir from "../Modal/modalExcluir";
+import ModalExcluir from "../Modal/ModiasEstoque/modalExcluir";
 import SubMenuEstoque from '../Menu/subMenuEstoque';
-import ModalEditarQuantidade from '../Modal/modalEditarQuantidade';
+import ModalEditarQuantidade from '../Modal/ModiasEstoque/modalEditarQuantidade';
 function Tabela({dados,filtro}){
     const filtrarDados = (item) => {
         const codProduto = (item.codProduto || '').toString();
@@ -31,10 +31,11 @@ function Tabela({dados,filtro}){
                     <th>Marca</th>
                     <th>Cor</th>
                     <th>Tamanho</th>
-                    <th>Qtd</th>
                     <th>Tipo</th>
-                    <th>Valor unid</th>
-                    <th>Valor venda unid</th>
+                    <th>Qtd</th>
+                    <th>Preço Compra</th>
+                    <th>Preço Venda</th>
+                    <th>Preço total compra</th>
                     <th>Status</th>
                     <th>Data Cadastro</th>
                 </tr>
@@ -47,14 +48,15 @@ function Tabela({dados,filtro}){
                         <td>{item.marca}</td>
                         <td>{item.cor}</td>
                         <td>{item.tamanho}</td>
-                        <td>{item.qtdAtual}</td>
                         <td>{item.tipo}</td>
+                        <td>{item.qtdAtual}</td>
                         <td>{'R$ '+item.valorComprado}</td>
                         <td>{'R$ '+item.valorVenda}</td>
+                        <td>{'R$ '+item.valorTotalEmEstoque}</td>
                         <td>{item.status}</td>
                         <td>{item.dataCadastro}</td>
                         <td><ModalExcluir id={item.codProduto}/></td>
-                        <td><ModalEditarQuantidade d={item.codProduto}/></td>
+                        <td><ModalEditarQuantidade id={item.codProduto}/></td>
                         <td><SubMenuEstoque/></td>
                     </tr>
                 ))}

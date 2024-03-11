@@ -5,7 +5,7 @@ import config from "../../config/config";
 import Menu from "../../Componentes/Menu/Menu";
 import Card from "../../Componentes/Card/Card";
 import Tabela from "../../Componentes/Tabela/Tabela";
-import ModalAdicionar from "../../Componentes/Modal/modalAdcionar";
+import ModalAdicionar from "../../Componentes/Modal/ModiasEstoque/modalAdcionar";
 import "./estoque.css";
 import Filtro from "../../Componentes/Tabela/Filtro";
 import { useEffect, useState } from "react";

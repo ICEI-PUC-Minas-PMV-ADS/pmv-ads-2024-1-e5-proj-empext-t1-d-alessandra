@@ -14,7 +14,11 @@ public class EstoqueService {
 
     public void cadastrarEstoque(Estoque estoque){
         int qtdAtual = estoque.getQuantidadeItem();
+        float valorComprado = estoque.getValorComprado();
+        float valorAvender = estoque.getValorVenda();
         estoque.setQtdAtual(qtdAtual);
+        estoque.setValorTotalEmEstoque(valorComprado*qtdAtual);
+        estoque.setValorTotalAVender(valorAvender*qtdAtual);
         estoque.setStatus("Bom");
         estoqueRepository.save(estoque);
     }
