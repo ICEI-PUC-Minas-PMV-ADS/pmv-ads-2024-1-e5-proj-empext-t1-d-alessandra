@@ -1,6 +1,7 @@
 package back.dalessandra.Model;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,7 +25,8 @@ public class Cadastro {
     private String nome_cadastro;
 
     @Column(nullable = false)
-    private Date datanascimento_cadastro;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", locale = "pt-BR", timezone = "America/Sao_Paulo")
+    private Date datanascimento;
 
     @Column(nullable = false)
     private String email_cadastro;

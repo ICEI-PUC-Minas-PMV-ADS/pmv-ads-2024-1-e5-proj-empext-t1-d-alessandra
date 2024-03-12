@@ -3,6 +3,7 @@ package back.dalessandra.controller.estoque;
 import back.dalessandra.Model.Estoque;
 import back.dalessandra.service.estoque.EstoqueService;
 import back.dalessandra.service.estoque.EstoqueServiceMore;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
@@ -13,8 +14,9 @@ import java.util.List;
 @Controller
 @RestController
 @RequestMapping("/estoque")
+@RequiredArgsConstructor
 public class EstoqueController {
-    @Autowired
+
     EstoqueService estoqueService;
 
     @Autowired
