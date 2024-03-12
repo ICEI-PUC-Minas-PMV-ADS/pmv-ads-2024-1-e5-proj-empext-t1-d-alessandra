@@ -1,4 +1,5 @@
 package back.dalessandra.Model;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -16,18 +17,18 @@ import java.util.Date;
 public class Financeiro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_despesa;
+    private int idDespesa;
 
     @Column(length=30)
-    private String tipo_despesa;
+    private String tipoDespesa;
 
     @Column(length=30)
-    private String nome_despesa;
+    private String nomeDespesa;
 
     @Column
-    private float valor_despesa;
+    private float valorDespesa;
 
     @Column
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", locale = "pt-BR", timezone = "America/Sao_Paulo")
-    private Date data_despesa;
+    private Date dataDespesa;
 }
