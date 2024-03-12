@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import config from "../../../config/config";
-import"../../../Pages/Estoque/estoque.css";
+import"../../../Pages/estilo/estoque.css";
 function ModalAdicionar(){
 
     const [nome,setNome] = useState()

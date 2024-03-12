@@ -2,12 +2,14 @@ package back.dalessandra.service.estoque;
 
 import back.dalessandra.Model.Estoque;
 import back.dalessandra.repository.estoque.EstoqueRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class EstoqueService {
     @Autowired
     EstoqueRepository estoqueRepository;

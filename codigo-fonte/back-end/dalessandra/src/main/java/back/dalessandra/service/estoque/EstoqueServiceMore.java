@@ -11,89 +11,95 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class EstoqueServiceMore extends  EstoqueService{
-
     @Autowired
     EstoqueRepository estoqueRepository;
-
-    public String baixaNoEstoque(int id, int qtdSaida){
-        Estoque produto = estoqueRepository.obterProduto(id);
-        if(produto!=null){
-            float qtdAtual = produto.getQtdAtual() ;
-            float novaQtd =  qtdAtual - qtdSaida;
-            float nivel=((novaQtd/qtdAtual)*100);
-            if(qtdSaida>qtdAtual){
-                return "Não tem produto suficiente";
-            }
-            else if (novaQtd == 0){
-                produto.setQtdAtual((int)novaQtd);
-                produto.setStatus("Em falta");
-                produto.setValorTotalEmEstoque(novaQtd);
-                produto.setValorTotalAVender(novaQtd);
-                estoqueRepository.save(produto);
-                return "Salvo com sucesso";
-            }else{
-                atualizarStatus(nivel);
-                produto.setQtdAtual((int)novaQtd);
-                produto.setStatus(atualizarStatus(nivel));
-                estoqueRepository.save(produto);
-                return "Salvo com sucesso";
-            }
-          }else { return "Produto nao existe";}
-       }
-       public String atualizarStatus(float nivel){
+        public String baixaNoEstoque(int id, int qtdSaida){
+            Estoque produto = estoqueRepository.obterProduto(id);
+            if(produto!=null){
+                float qtdAtual = produto.getQtdAtual() ;
+                float novaQtd =  qtdAtual - qtdSaida;
+                float nivel=((novaQtd/qtdAtual)*100);
+                if(qtdSaida>qtdAtual){
+                    return "Não tem produto suficiente";
+                }
+                else if (novaQtd == 0){
+                    produto.setQtdAtual((int)novaQtd);
+                    produto.setStatus("Em falta");
+                    produto.setValorTotalEmEstoque(novaQtd);
+                    produto.setValorTotalAVender(novaQtd);
+                    estoqueRepository.save(produto);
+                    return "Salvo com sucesso";
+                }
+                else{
+                    atualizarStatus(nivel);
+                    produto.setQtdAtual((int)novaQtd);
+                    produto.setStatus(atualizarStatus(nivel));
+                    estoqueRepository.save(produto);
+                    return "Salvo com sucesso";
+                    }
+                }
+                else { return "Produto nao existe";}
+             }
+         public String atualizarStatus(float nivel){
             if(nivel<=20){
                 return ("Nivel critico");
             }
             else {
                 return ("Bom");
             }
-       }
-    public void atualizarQtdEstoque(int id, int novaQtd){
-        Estoque obterProduto = estoqueRepository.obterProduto(id);
-        int qtdAtual =obterProduto.getQtdAtual();
-        float valorComprado = obterProduto.getValorComprado();
-        float valorAvender = obterProduto.getValorVenda();
-
-        if(novaQtd==0){
-            obterProduto.setQuantidadeItem(novaQtd);
-            obterProduto.setQtdAtual(novaQtd);
-            obterProduto.setValorTotalEmEstoque(novaQtd);
-            obterProduto.setValorTotalAVender(novaQtd);
-            obterProduto.setStatus("Em falta");
-            estoqueRepository.save(obterProduto);
         }
-        else if(qtdAtual==0 && novaQtd!=0){
 
-            obterProduto.setQuantidadeItem(novaQtd);
-            obterProduto.setQtdAtual(novaQtd);
-            obterProduto.setValorTotalEmEstoque(novaQtd*valorComprado);
-            obterProduto.setValorTotalAVender(novaQtd*valorAvender);
-            obterProduto.setStatus("Bom");
-            estoqueRepository.save(obterProduto);
-        } else if (qtdAtual!=0 && novaQtd!=0) {
-            int somaQtd = novaQtd+obterProduto.getQtdAtual();
-            obterProduto.setQuantidadeItem(somaQtd);
-            obterProduto.setQtdAtual(somaQtd);
-            obterProduto.setValorTotalEmEstoque(somaQtd*valorComprado);
-            obterProduto.setValorTotalAVender(somaQtd*valorAvender);
-            obterProduto.setStatus("Bom");
-            estoqueRepository.save(obterProduto);
+        public void atualizarQtdEstoque(int id, int novaQtd){
+            Estoque produto = estoqueRepository.obterProduto(id);
+            int qtdAtual =produto.getQtdAtual();
+            float valorComprado = produto.getValorComprado();
+            float valorAvender = produto.getValorVenda();
+
+            if(novaQtd==0){
+                produto.setQuantidadeItem(novaQtd);
+                produto.setQtdAtual(novaQtd);
+                produto.setValorTotalEmEstoque(novaQtd);
+                produto.setValorTotalAVender(novaQtd);
+                produto.setStatus("Em falta");
+                estoqueRepository.save(produto);
+            }
+            else if(qtdAtual==0 && novaQtd!=0){
+
+                produto.setQuantidadeItem(novaQtd);
+                produto.setQtdAtual(novaQtd);
+                produto.setValorTotalEmEstoque(novaQtd*valorComprado);
+                produto.setValorTotalAVender(novaQtd*valorAvender);
+                produto.setStatus("Bom");
+                estoqueRepository.save(produto);
+            } else if (qtdAtual!=0 && novaQtd!=0) {
+                int somaQtd = novaQtd+produto.getQtdAtual();
+                produto.setQuantidadeItem(somaQtd);
+                produto.setQtdAtual(somaQtd);
+                produto.setValorTotalEmEstoque(somaQtd*valorComprado);
+                produto.setValorTotalAVender(somaQtd*valorAvender);
+                produto.setStatus("Bom");
+                estoqueRepository.save(produto);
+            }
+         }
+
+        public Estoque buscarCodigoProduto(String nomeProduto){
+            return estoqueRepository.buscarCodigoProduto(nomeProduto);
         }
-    }
 
-    public Estoque buscarCodigoProduto(String nomeProduto){
-        return estoqueRepository.buscarCodigoProduto(nomeProduto);
-    }
+        public int qtdItemCadastrados(){
+            return estoqueRepository.quantidadeItem();
+        }
+        public  float valorEstoqueComprado(){
+            return estoqueRepository.valorEstoqueSemValorConsumidor();
+        }
 
-    public int qtdItemCadastrados(){
-        return estoqueRepository.quantidadeItem();
-    }
-    public  float valorEstoqueComprado(){
-        return estoqueRepository.valorEstoqueSemValorConsumidor();
-    }
+        public List<Estoque> filtroPorEstatus(String status){
+            return estoqueRepository.filtroPorEstatus(status);
+        }
 
-    public List<Estoque> filtroPorEstatus(String status){
-        return estoqueRepository.filtroPorEstatus(status);
-    }
-
+        public void atualizarValorEstoque(int id, float novoValorComprado){
+            Estoque produto = estoqueRepository.obterProduto(id);
+            produto.setValorTotalEmEstoque(novoValorComprado);
+            estoqueRepository.save(produto);
+        }
 }

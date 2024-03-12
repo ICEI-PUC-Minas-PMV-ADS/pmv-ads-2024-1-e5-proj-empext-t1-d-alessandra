@@ -19,7 +19,7 @@ function ModalEditarQuantidade({id}){
     }
     return(
         <div>
-        <button className="" onClick={()=>document.getElementById('my_modal_adcionarvalor'+id).showModal()}><img src={LogoAdicionar} width={30} height={20}/></button>
+        <button className="" onClick={()=>document.getElementById('my_modal_adcionarvalor'+id).showModal()}>Adicionar mais</button>
         <dialog id={"my_modal_adcionarvalor"+id} className="modal">
             <div className="modal-box w-11/12 max-w-5xl">
                 <h3 className="font-bold text-lg">Renovar estoque</h3>
