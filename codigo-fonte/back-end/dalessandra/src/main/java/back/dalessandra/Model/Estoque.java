@@ -40,7 +40,6 @@ public class Estoque {
     private Date dataCadastro;
     private int qtdAtual;
     private String status;
-
     private float valorTotalEmEstoque;
     private float valorTotalAVender;
 }

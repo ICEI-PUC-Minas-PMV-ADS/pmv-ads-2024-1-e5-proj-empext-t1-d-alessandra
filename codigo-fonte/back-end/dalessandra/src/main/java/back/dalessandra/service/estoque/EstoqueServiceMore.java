@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
+
 public class EstoqueServiceMore extends  EstoqueService{
     @Autowired
     EstoqueRepository estoqueRepository;
@@ -99,7 +99,16 @@ public class EstoqueServiceMore extends  EstoqueService{
 
         public void atualizarValorEstoque(int id, float novoValorComprado){
             Estoque produto = estoqueRepository.obterProduto(id);
+            int qtd = produto.getQtdAtual();
             produto.setValorTotalEmEstoque(novoValorComprado);
+            produto.setValorTotalEmEstoque(novoValorComprado*qtd);
+            estoqueRepository.save(produto);
+        }
+        public void atualizarValorVenda(int id, float novoValorVenda){
+            Estoque produto = estoqueRepository.obterProduto(id);
+            int qtd = produto.getQtdAtual();
+            produto.setValorVenda(novoValorVenda);
+            produto.setValorTotalAVender(novoValorVenda*qtd);
             estoqueRepository.save(produto);
         }
 }

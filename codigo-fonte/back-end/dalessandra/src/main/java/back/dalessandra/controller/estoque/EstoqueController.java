@@ -14,11 +14,9 @@ import java.util.List;
 @Controller
 @RestController
 @RequestMapping("/estoque")
-@RequiredArgsConstructor
 public class EstoqueController {
-
+    @Autowired
     EstoqueService estoqueService;
-
     @Autowired
     EstoqueServiceMore estoqueServiceMore;
     @PostMapping()
@@ -56,5 +54,15 @@ public class EstoqueController {
     @GetMapping("filtroPorEstatus/{status}")
     public List<Estoque> filtroPorEstatus(@PathVariable("status") String status){
         return estoqueServiceMore.filtroPorEstatus(status);
+    }
+    @PutMapping("atualizarValorVenda/{id}/{novoValor}")
+    public String atualizarValorVenda(@PathVariable("id") int id, @PathVariable("novoValor") float novoValor){
+        estoqueServiceMore.atualizarValorVenda(id,novoValor);
+        return ("Atualizado com sucesso");
+    }
+    @PutMapping("atualizarValorComprado/{id}/{novoValor}")
+    public String atualizarValorComprado(@PathVariable("id") int id, @PathVariable("novoValor") float novoValor){
+        estoqueServiceMore.atualizarValorEstoque(id,novoValor);
+        return ("Atualizado com sucesso");
     }
 }
