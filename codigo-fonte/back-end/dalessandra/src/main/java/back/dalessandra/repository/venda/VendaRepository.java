@@ -7,11 +7,15 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface VendaRepository extends JpaRepository<Venda,Integer> {
 
     @Query("select u from Venda u")
     List<Venda> findAll();
+
+    @Query("select u from Venda u where codVenda = ?1")
+    Optional<Venda> findByCodVenda(Integer codVenda);
 
     @Modifying
     @Transactional

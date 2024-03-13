@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -16,6 +17,10 @@ public class VendaService {
 
     public List<Venda> findAll() {
         return vendaRepository.findAll();
+    }
+
+    public Optional<Venda> findByCodVenda(Integer codVenda) {
+        return vendaRepository.findByCodVenda(codVenda);
     }
 
     public Venda create(Venda venda) {

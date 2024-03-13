@@ -24,6 +24,11 @@ public class VendaController {
         return vendaService.findAll();
     }
 
+    @GetMapping("/{codVenda}")
+    public Venda findByCodVenda(@PathVariable Integer codVenda) {
+        return vendaService.findByCodVenda(codVenda).orElse(null);
+    }
+
     @PostMapping
     public Venda create(@RequestBody Venda venda) {
         return vendaService.create(venda);
