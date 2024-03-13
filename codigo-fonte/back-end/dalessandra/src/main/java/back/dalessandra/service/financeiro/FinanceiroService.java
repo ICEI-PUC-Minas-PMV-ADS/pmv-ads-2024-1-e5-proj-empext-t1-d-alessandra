@@ -7,19 +7,36 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class FinanceiroService {
 
     private final FinanceiroRepository financeiroRepository;
-    public List<Financeiro> listarFinanceiro(){
+
+    public List<Financeiro> findAll() {
         return financeiroRepository.findAll();
     }
 
+    public Financeiro cadastrarDespesa(Financeiro financeiro) {
+        int idFinanceiro = financeiroRepository.findAll().size() + 1;
+        financeiro.setIdDespesa(idFinanceiro);
+        financeiroRepository.cadastrarDespesa(financeiro);
+        return financeiro;
+    }
 
-    public String excluirDespesa(int id){
-        financeiroRepository.deleteById(id);
+    public Optional<Financeiro> findByidDespesa(Integer idDespesa){
+        return financeiroRepository.findByidDespesa(idDespesa);
+    }
+
+    public Optional<Financeiro> findBytipoDespesa(String tipoDespesa){
+        return financeiroRepository.findBytipoDespesa(tipoDespesa);
+    }
+
+
+    public String excluirDespesa(int idDespesa){
+        financeiroRepository.deleteById(idDespesa);
         return ("Excluido com sucesso");
     }
 }
