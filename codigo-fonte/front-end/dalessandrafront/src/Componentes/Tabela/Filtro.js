@@ -7,7 +7,7 @@ function Filtro({ onFiltroChange }) {
 
     return (
         <input
-            type="text"
+            type="search"
             placeholder="Pesquisar..."
             onChange={handleChange}
             className="input input-bordered input-success w-full max-w-xs"

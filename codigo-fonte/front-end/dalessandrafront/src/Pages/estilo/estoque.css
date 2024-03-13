@@ -17,7 +17,7 @@
 .alinhamentoMenu2{
     display: flex;
     grid-template-columns: repeat(4, 4fr);
-    grid-gap: 1000px;
+    grid-gap: 10px;
 }
 .alinharCamposModal{
     grid-template-columns: repeat(3, 3fr);
