@@ -29,7 +29,12 @@ public interface FinanceiroRepository extends JpaRepository<Financeiro,Integer> 
             ":#{#financeiro.nomeDespesa}, " +
             ":#{#financeiro.valorDespesa}, " +
             ":#{#financeiro.dataDespesa})")
-    void create(Financeiro financeiro);
+    void cadastrarDespesa(Financeiro financeiro);
+
+    @Modifying
+    @Transactional
+    @Query("delete from Financeiro where idDespesa = :idDespesa")
+    void deleteById(Integer idDespesa);
 
 
 }

@@ -34,14 +34,14 @@ public class FinanceiroController {
     }
 
     @PostMapping
-    public Financeiro create(@RequestBody Financeiro financeiro) {
-        return financeiroService.create(financeiro);
+    public Financeiro cadastrarDespesa(@RequestBody Financeiro financeiro) {
+        return financeiroService.cadastrarDespesa(financeiro);
     }
 
 
-    @DeleteMapping("{id}")
-    public String excluirDespesa(@PathVariable("id") int id){
-        return financeiroService.excluirDespesa(id);
+    @DeleteMapping("{idDespesa}")
+    public String excluirDespesa(@PathVariable("idDespesa") int idDespesa){
+        return financeiroService.excluirDespesa(idDespesa);
     }
 
 }

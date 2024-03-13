@@ -19,10 +19,10 @@ public class FinanceiroService {
         return financeiroRepository.findAll();
     }
 
-    public Financeiro create(Financeiro financeiro) {
-        Integer identific = financeiroRepository.findAll().size() + 1;
-        financeiro.setIdDespesa(identific);
-        financeiroRepository.create(financeiro);
+    public Financeiro cadastrarDespesa(Financeiro financeiro) {
+        int idFinanceiro = financeiroRepository.findAll().size() + 1;
+        financeiro.setIdDespesa(idFinanceiro);
+        financeiroRepository.cadastrarDespesa(financeiro);
         return financeiro;
     }
 
@@ -35,8 +35,8 @@ public class FinanceiroService {
     }
 
 
-    public String excluirDespesa(int id){
-        financeiroRepository.deleteById(id);
+    public String excluirDespesa(int idDespesa){
+        financeiroRepository.deleteById(idDespesa);
         return ("Excluido com sucesso");
     }
 }
