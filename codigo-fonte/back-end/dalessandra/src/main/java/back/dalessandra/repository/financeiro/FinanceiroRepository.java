@@ -14,7 +14,6 @@ public interface FinanceiroRepository extends JpaRepository<Financeiro,Integer> 
     @Query("select u from Financeiro u")
     List<Financeiro> findAll();
 
-
     @Query("select u from Financeiro u where idDespesa = ?1")
     Optional<Financeiro> findByidDespesa(Integer idDespesa);
 
@@ -29,12 +28,10 @@ public interface FinanceiroRepository extends JpaRepository<Financeiro,Integer> 
             ":#{#financeiro.nomeDespesa}, " +
             ":#{#financeiro.valorDespesa}, " +
             ":#{#financeiro.dataDespesa})")
-    void cadastrarDespesa(Financeiro financeiro);
+    void post(Financeiro financeiro);
 
     @Modifying
     @Transactional
     @Query("delete from Financeiro where idDespesa = :idDespesa")
     void deleteById(Integer idDespesa);
-
-
 }

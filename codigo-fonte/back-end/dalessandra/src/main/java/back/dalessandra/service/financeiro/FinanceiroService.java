@@ -3,7 +3,6 @@ package back.dalessandra.service.financeiro;
 import back.dalessandra.Model.Financeiro;
 import back.dalessandra.repository.financeiro.FinanceiroRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,10 +18,10 @@ public class FinanceiroService {
         return financeiroRepository.findAll();
     }
 
-    public Financeiro cadastrarDespesa(Financeiro financeiro) {
-        int idFinanceiro = financeiroRepository.findAll().size() + 1;
-        financeiro.setIdDespesa(idFinanceiro);
-        financeiroRepository.cadastrarDespesa(financeiro);
+    public Financeiro post(Financeiro financeiro) {
+        Integer idDespesa = financeiroRepository.findAll().size() + 1;
+        financeiro.setIdDespesa(idDespesa);
+        financeiroRepository.post(financeiro);
         return financeiro;
     }
 

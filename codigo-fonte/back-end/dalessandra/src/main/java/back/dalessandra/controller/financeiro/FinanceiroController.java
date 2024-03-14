@@ -1,10 +1,7 @@
 package back.dalessandra.controller.financeiro;
 import back.dalessandra.Model.Financeiro;
 import back.dalessandra.service.financeiro.FinanceiroService;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,10 +31,9 @@ public class FinanceiroController {
     }
 
     @PostMapping
-    public Financeiro cadastrarDespesa(@RequestBody Financeiro financeiro) {
-        return financeiroService.cadastrarDespesa(financeiro);
+    public Financeiro post(Financeiro financeiro){
+        return financeiroService.post(financeiro);
     }
-
 
     @DeleteMapping("{idDespesa}")
     public String excluirDespesa(@PathVariable("idDespesa") int idDespesa){
