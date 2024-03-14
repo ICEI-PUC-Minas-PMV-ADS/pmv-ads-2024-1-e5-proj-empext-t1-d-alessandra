@@ -1,6 +1,8 @@
 import more from'../../img/more-information.png'
 import ModalEditarQuantidade from '../Modal/ModiasEstoque/modalEditarQuantidade';
 import ModalAtualizarValorVenda from '../Modal/ModiasEstoque/modalAtualizarValorVenda';
+import React from 'react';
+import ModalAtualizarValorCompra from '../Modal/ModiasEstoque/modalAtualizarValorCompra';
 function SubMenuEstoque({id}) {
   return (
     <div class="dropdown dropdown-left dropdown-hover">
@@ -8,6 +10,7 @@ function SubMenuEstoque({id}) {
         <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
         <li><ModalEditarQuantidade id={id}/></li>
         <li><ModalAtualizarValorVenda id={id}/></li>
+        <li><ModalAtualizarValorCompra id={id}/></li>
         </ul>
     </div>
   );
