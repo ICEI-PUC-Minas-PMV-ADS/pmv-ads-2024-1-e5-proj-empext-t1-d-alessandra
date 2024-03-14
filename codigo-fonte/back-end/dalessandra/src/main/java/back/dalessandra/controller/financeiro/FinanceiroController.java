@@ -1,6 +1,8 @@
 package back.dalessandra.controller.financeiro;
 import back.dalessandra.Model.Financeiro;
+import back.dalessandra.Model.Venda;
 import back.dalessandra.service.financeiro.FinanceiroService;
+import back.dalessandra.service.venda.VendaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -14,11 +16,19 @@ import java.util.List;
 public class FinanceiroController {
 
     private final FinanceiroService financeiroService;
+    private final VendaService vendaService;
 
     @GetMapping
     public List<Financeiro> findAll() {
         return financeiroService.findAll();
     }
+
+    @GetMapping("/buscarVendas")
+    public List<Venda> find() { return vendaService.findAll(); }
+
+    @GetMapping("/buscarFormaPagto")
+    public List<Venda> findByFormaPagto(String formaPagto) { return vendaService.findByFormaPagto(formaPagto); }
+
 
     @GetMapping("/{idDespesa}")
     public Financeiro findByidDespesa(@PathVariable Integer idDespesa) {

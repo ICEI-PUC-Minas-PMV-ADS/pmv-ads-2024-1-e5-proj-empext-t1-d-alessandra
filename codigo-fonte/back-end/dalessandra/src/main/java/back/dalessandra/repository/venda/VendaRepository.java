@@ -17,6 +17,9 @@ public interface VendaRepository extends JpaRepository<Venda,Integer> {
     @Query("select u from Venda u where codVenda = ?1")
     Optional<Venda> findByCodVenda(Integer codVenda);
 
+    @Query("select u from Venda u where formaPagto = ?1")
+    List<Venda> findByFormaPagto(String formaPagto);
+
     @Modifying
     @Transactional
     @Query("insert into Venda (codVenda, codCliente, dtVenda, formaPagto, vlTotal) " +
