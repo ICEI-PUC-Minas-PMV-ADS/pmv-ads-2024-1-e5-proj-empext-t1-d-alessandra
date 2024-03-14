@@ -12,19 +12,16 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Financeiro {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idDespesa;
-
-    @Column(length=30)
+    private Integer idDespesa;
+    @Column
     private String tipoDespesa;
-
-    @Column(length=30)
+    @Column
     private String nomeDespesa;
-
     @Column
     private float valorDespesa;
-
     @Column
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", locale = "pt-BR", timezone = "America/Sao_Paulo")
     private Date dataDespesa;
