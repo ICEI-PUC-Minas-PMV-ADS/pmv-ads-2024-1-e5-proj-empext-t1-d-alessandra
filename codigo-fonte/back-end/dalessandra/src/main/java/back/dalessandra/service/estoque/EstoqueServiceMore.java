@@ -100,7 +100,7 @@ public class EstoqueServiceMore extends  EstoqueService{
         public void atualizarValorEstoque(int id, float novoValorComprado){
             Estoque produto = estoqueRepository.obterProduto(id);
             int qtd = produto.getQtdAtual();
-            produto.setValorTotalEmEstoque(novoValorComprado);
+            produto.setValorComprado(novoValorComprado);
             produto.setValorTotalEmEstoque(novoValorComprado*qtd);
             estoqueRepository.save(produto);
         }

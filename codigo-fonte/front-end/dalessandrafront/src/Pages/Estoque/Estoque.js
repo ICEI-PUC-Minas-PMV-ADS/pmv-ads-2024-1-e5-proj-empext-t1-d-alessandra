@@ -8,6 +8,7 @@ import Tabela from "../../Componentes/Tabela/Tabela";
 import ModalAdicionar from "../../Componentes/Modal/ModiasEstoque/modalAdcionar";
 import "../../Pages/estilo/estoque.css";
 import Filtro from "../../Componentes/Tabela/Filtro";
+import LogoInvetario from "../../img/warehouse.png";
 import { useEffect, useState } from "react";
 
 
@@ -61,7 +62,10 @@ function Estoque(){
         <main >
             <Menu/>
             <br></br>
-            <h1 className="text-3xl font-bold text-center corTexto">Estoque</h1>
+            <section className="container mx-auto p-4 alinhamentoMenu2">
+            <img  class="h-10 w-10" fill="none" viewBox="0 0 34 34" src={LogoInvetario}/>
+            <h1 className="text-3xl font-bold">Estoque</h1>
+            </section>
             <section className="container mx-auto p-4 alinhamentoCards">
                 <Card title="Total de Itens: " textoExibir={quantidadeEstoque}/>
                 <Card title="Valor total do estoque:" textoExibir={"R$ "+valorEstoque}/>
