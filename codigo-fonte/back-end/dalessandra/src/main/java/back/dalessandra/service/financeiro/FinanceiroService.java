@@ -18,11 +18,8 @@ public class FinanceiroService {
         return financeiroRepository.findAll();
     }
 
-    public Financeiro post(Financeiro financeiro) {
-        Integer idDespesa = financeiroRepository.findAll().size() + 1;
-        financeiro.setIdDespesa(idDespesa);
-        financeiroRepository.post(financeiro);
-        return financeiro;
+    public Financeiro cadastro(Financeiro financeiro) {
+        return financeiroRepository.save(financeiro);
     }
 
     public Optional<Financeiro> findByidDespesa(Integer idDespesa){

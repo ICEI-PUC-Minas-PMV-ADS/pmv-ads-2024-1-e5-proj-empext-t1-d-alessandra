@@ -19,6 +19,8 @@ public class VendaService {
         return vendaRepository.findAll();
     }
 
+    public List<Venda> findByFormaPagto(String formaPagto) {return vendaRepository.findByFormaPagto(formaPagto);}
+
     public Optional<Venda> findByCodVenda(Integer codVenda) {
         return vendaRepository.findByCodVenda(codVenda);
     }
