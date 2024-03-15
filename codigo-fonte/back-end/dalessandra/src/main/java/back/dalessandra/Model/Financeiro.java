@@ -6,11 +6,12 @@ import lombok.*;
 
 import java.util.Date;
 
-@Data
+
 @Entity
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class Financeiro {
 
     @Id

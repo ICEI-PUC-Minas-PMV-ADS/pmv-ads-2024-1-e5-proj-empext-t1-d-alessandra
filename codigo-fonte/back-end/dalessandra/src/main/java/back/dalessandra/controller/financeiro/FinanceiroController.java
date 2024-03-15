@@ -4,6 +4,7 @@ import back.dalessandra.Model.Venda;
 import back.dalessandra.service.financeiro.FinanceiroService;
 import back.dalessandra.service.venda.VendaService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +16,9 @@ import java.util.List;
 @RequiredArgsConstructor
 public class FinanceiroController {
 
+
     private final FinanceiroService financeiroService;
+
     private final VendaService vendaService;
 
     @GetMapping
@@ -41,8 +44,8 @@ public class FinanceiroController {
     }
 
     @PostMapping
-    public Financeiro post(Financeiro financeiro){
-        return financeiroService.post(financeiro);
+    public Financeiro cadastro(@RequestBody Financeiro financeiro){
+        return financeiroService.cadastro(financeiro);
     }
 
     @DeleteMapping("{idDespesa}")
