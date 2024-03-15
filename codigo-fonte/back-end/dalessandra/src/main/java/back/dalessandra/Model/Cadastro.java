@@ -24,10 +24,9 @@ public class Cadastro {
     @Column( )
     private String nomeCadastro;
 
-
-    @Column(nullable = false)
+    @Column( )
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", locale = "pt-BR", timezone = "America/Sao_Paulo")
-    private Date datanascimento;
+    private Date dataNascimento;
 
     @Column( )
     private String emailCadastro;
