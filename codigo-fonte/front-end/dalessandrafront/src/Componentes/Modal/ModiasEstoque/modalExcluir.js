@@ -2,10 +2,22 @@ import axios from "axios";
 import React from "react";
 import config from "../../../config/config";
 import LogoExlivraria from "../../../img/bin.png";
+import Alertasucesso from "../../Alertas/AlertaConfirmacao";
+import { useState } from "react";
+
 function ModalExcluir({id}){
+    const [alertVisible, setAlertVisible] = useState(false);
    function excluir(id){
        axios.delete(config.URL+'estoque/'+id).
-       then((response) => {window.location.reload();})
+       then((response) => {
+        if (response.status === 200) {
+            setAlertVisible(true); 
+            setTimeout(() => {
+              setAlertVisible(false);
+              window.location.reload(); 
+            }, 1000);
+          }
+       })
        .catch((error) => {console.log(error)})
      }
     return (
@@ -15,6 +27,8 @@ function ModalExcluir({id}){
             <div className="modal-box w-11/12 max-w-5xl">
                 <h3 className="font-bold text-lg">Exlcuir!</h3>
                 <p className="py-4">Tem certeza que deeja excluir esse produto ?</p>
+                {alertVisible && <Alertasucesso message="Item excluído com sucesso!" />}
+                <br></br>
                 <div className="modal-action">
                     <button className="btn btn-error" onClick={()=>excluir(id)}>Excluir</button>   
                     <form method="dialog">

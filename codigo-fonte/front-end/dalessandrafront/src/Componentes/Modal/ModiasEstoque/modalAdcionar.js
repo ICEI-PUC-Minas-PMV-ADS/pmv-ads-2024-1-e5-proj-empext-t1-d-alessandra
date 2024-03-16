@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import config from "../../../config/config";
 import"../../../Pages/estilo/estoque.css";
+import Alertasucesso from "../../Alertas/AlertaConfirmacao";
 function ModalAdicionar(){
 
     const [nome,setNome] = useState()
@@ -23,7 +24,7 @@ function ModalAdicionar(){
     const capturaValorVendido = (event) => {setValorVendido(event.target.value); }
     const capturaDataCadastro = (event) => {setDataCadastro(event.target.value); }
     const capturarQtd = (event) => {setQtd(event.target.value); }
-    
+    const [alertVisible, setAlertVisible] = useState(false);
     function salvar(){
         axios.post(
             config.URL+'estoque?nomeProduto='+nome+'&quantidadeItem='+qtd+'&marca='+marca+'&tipo='+tipo+'&cor='+cor+
@@ -31,9 +32,18 @@ function ModalAdicionar(){
             '&qtdAtual='+qtd
             )
             .then((response)=>{
-                window.location.reload();
+                if (response.status === 200) {
+                    setAlertVisible(true); 
+                    setTimeout(() => {
+                      setAlertVisible(false);
+                      window.location.reload(); 
+                    }, 1000);
+                  }
               })
             .catch((error)=>{ 
+                if(error.response.status === 400){
+                    console.log("Erro ao adicionar item")
+                }
             console.log(error)
            })
         }
@@ -42,6 +52,8 @@ function ModalAdicionar(){
         <button className="btn btn-success" onClick={()=>document.getElementById('my_modal_20240310').showModal()} color={"#fff"}>Novo Registro</button>
         <dialog id="my_modal_20240310" className="modal">
             <div className="modal-box w-11/12 max-w-5xl alinharCamposModal">
+            {alertVisible && <Alertasucesso message="Item adicionado com sucesso" />}
+            <br></br>
                 <h3 className="font-bold text-lg">Registro</h3>
                 <p className="py-4">Adicionar novo item</p>
                 <input id="nome"   type="text" placeholder="Nome" onChange={capturaNome} class="input input-bordered input-accent w-full max-w-xs" />
@@ -78,6 +90,7 @@ function ModalAdicionar(){
                 <input id="valorvendido" type="text" onChange={capturaValorVendido}placeholder="Valor Vendido" class="input input-bordered input-accent w-full max-w-xs" />
                 <input id="datacadastro" type="date" onChange={capturaDataCadastro} placeholder="Data Cadastro" class="input input-bordered input-accent w-full max-w-xs" />
                 <div className="modal-action">
+              
                     <button className=" btn btn-success" onClick={()=>salvar()}>Adicionar</button>
                 <form method="dialog">
                     <button className="btn">Fechar</button>
