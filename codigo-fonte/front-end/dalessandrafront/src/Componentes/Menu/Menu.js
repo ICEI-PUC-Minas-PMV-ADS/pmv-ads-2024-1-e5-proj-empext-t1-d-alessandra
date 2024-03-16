@@ -1,6 +1,6 @@
 import React from "react";
 //import { Link } from "react-router-dom";
-//import Logo from "../../img/LOGO_OFICIAL-Sem Fundo.png";
+import Logo from "../../img/logo.png";
 function Menu() {
   return (
     <div className="navbar bg-base-100 shadow-xl">
@@ -17,7 +17,8 @@ function Menu() {
     </div>
   </div>
   <div className="navbar-center">
-    <a className="btn btn-ghost text-xl"><img/></a>
+
+    <img src={Logo} alt="Logo" className="h-20 w-30"/>
   </div>
   
 </div>

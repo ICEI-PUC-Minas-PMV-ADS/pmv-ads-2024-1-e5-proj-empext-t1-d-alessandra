@@ -2,8 +2,7 @@
     display: flex;
     grid-template-columns: repeat(4, 4fr);
     grid-gap: 10px;
-   
-   
+     
 }
 .btn-success{
     color: #fff;
@@ -21,5 +20,8 @@
 }
 .alinharCamposModal{
     grid-template-columns: repeat(3, 3fr);
+}
 
+.alert-success{
+    color: #fff;
 }
