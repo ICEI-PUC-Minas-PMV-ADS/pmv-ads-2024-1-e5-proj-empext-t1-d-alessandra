@@ -1,11 +1,13 @@
 package back.dalessandra.repository.financeiro;
 
+import back.dalessandra.Model.Cliente;
 import back.dalessandra.Model.Financeiro;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,8 +16,8 @@ public interface FinanceiroRepository extends JpaRepository<Financeiro,Integer> 
     @Query("select u from Financeiro u")
     List<Financeiro> findAll();
 
-    @Query("select u from Financeiro u where idDespesa = ?1")
-    Optional<Financeiro> findByidDespesa(Integer idDespesa);
+    @Query("select u from Financeiro u where dataDespesa = ?1")
+    Optional<Financeiro> findBydataDespesa(Date dataDespesa);
 
     @Query("select u from Financeiro u where tipoDespesa = ?1")
     Optional<Financeiro> findBytipoDespesa(String tipoDespesa);
@@ -30,14 +32,14 @@ public interface FinanceiroRepository extends JpaRepository<Financeiro,Integer> 
             ":#{#financeiro.dataDespesa})")
     void cadastro(Financeiro financeiro);
 
-    /*@Modifying
+    @Modifying
     @Transactional
     @Query("update Financeiro set nomeDespesa = :#{#financeiro.nomeDespesa}, " +
             "tipoDespesa = :#{#financeiro.tipoDespesa}, " +
             "valorDespesa = :#{#financeiro.valorDespesa}, " +
-            "dataDespesa = :#{#financeiro.dataDespesa}," +
+            "dataDespesa = :#{#financeiro.dataDespesa} " +
             "where idDespesa = :#{#financeiro.idDespesa}")
-    void editar(Financeiro financeiro);*/
+    void update(Financeiro financeiro);
 
     @Modifying
     @Transactional

@@ -1,14 +1,15 @@
 package back.dalessandra.controller.financeiro;
-import back.dalessandra.Model.Cliente;
+
 import back.dalessandra.Model.Financeiro;
 import back.dalessandra.Model.Venda;
 import back.dalessandra.service.financeiro.FinanceiroService;
 import back.dalessandra.service.venda.VendaService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -31,12 +32,14 @@ public class FinanceiroController {
     public List<Venda> find() { return vendaService.findAll(); }
 
     @GetMapping("/buscarFormaPagto")
-    public List<Venda> findByFormaPagto(String formaPagto) { return vendaService.findByFormaPagto(formaPagto); }
+    public List<Venda> findByFormaPagto(String formaPagto) {
+        return vendaService.findByFormaPagto(formaPagto);
+    }
 
 
-    @GetMapping("/{idDespesa}")
-    public Financeiro findByidDespesa(@PathVariable Integer idDespesa) {
-        return financeiroService.findByidDespesa(idDespesa).orElse(null);
+    @GetMapping("/{dataDespesa}")
+    public Financeiro findBydataDespesa(@PathVariable Date dataDespesa) {
+        return financeiroService.findBydataDespesa(dataDespesa).orElse(null);
     }
 
     @GetMapping("/{tipoDespesa}")
@@ -44,10 +47,10 @@ public class FinanceiroController {
         return financeiroService.findBytipoDespesa(tipoDespesa).orElse(null);
     }
 
-    /*@PutMapping("/{idDespesa}")
-    public Financeiro editar(Financeiro financeiro, @PathVariable Integer idDespesa){
-        return financeiroService.editar(financeiro);
-    }*/
+    @PutMapping("/{idDespesa}")
+    public Financeiro update(Financeiro financeiro, @PathVariable Integer idDespesa){
+        return financeiroService.update(financeiro);
+    }
 
     @PostMapping
     public Financeiro cadastro(@RequestBody Financeiro financeiro){

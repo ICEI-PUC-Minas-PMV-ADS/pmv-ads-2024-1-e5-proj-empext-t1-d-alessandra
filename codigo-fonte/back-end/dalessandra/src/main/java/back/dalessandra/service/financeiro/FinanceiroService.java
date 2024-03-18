@@ -1,11 +1,11 @@
 package back.dalessandra.service.financeiro;
 
-import back.dalessandra.Model.Cliente;
 import back.dalessandra.Model.Financeiro;
 import back.dalessandra.repository.financeiro.FinanceiroRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,13 +23,13 @@ public class FinanceiroService {
         return financeiroRepository.save(financeiro);
     }
 
-    /*public Financeiro editar(Financeiro financeiro){
-        financeiroRepository.editar(financeiro);
+    public Financeiro update(Financeiro financeiro){
+        financeiroRepository.update(financeiro);
         return financeiro;
-    }*/
+    }
 
-    public Optional<Financeiro> findByidDespesa(Integer idDespesa){
-        return financeiroRepository.findByidDespesa(idDespesa);
+    public Optional<Financeiro> findBydataDespesa(Date dataDespesa){
+        return financeiroRepository.findBydataDespesa(dataDespesa);
     }
 
     public Optional<Financeiro> findBytipoDespesa(String tipoDespesa){
