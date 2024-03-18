@@ -1,9 +1,9 @@
 import axios from "axios";
 import React from "react";
+import { useState } from "react";
 import config from "../../../config/config";
 import LogoExlivraria from "../../../img/bin.png";
-import Alertasucesso from "../../Alertas/AlertaConfirmacao";
-import { useState } from "react";
+import Alertasucesso from "../../Alertas/AlertaSucesso";
 
 function ModalExcluir({id}){
     const [alertVisible, setAlertVisible] = useState(false);
@@ -26,11 +26,11 @@ function ModalExcluir({id}){
             <dialog id={'my_modal_excluir'+id} className="modal">
             <div className="modal-box w-11/12 max-w-5xl">
                 <h3 className="font-bold text-lg">Exlcuir!</h3>
-                <p className="py-4">Tem certeza que deeja excluir esse produto ?</p>
+                <p className="py-4">Tem certeza que deseja excluir esse produto ?</p>
                 {alertVisible && <Alertasucesso message="Item excluído com sucesso!" />}
                 <br></br>
                 <div className="modal-action">
-                    <button className="btn btn-error" onClick={()=>excluir(id)}>Excluir</button>   
+                    <button className="btn btn-error" color={"#fff"} onClick={()=>excluir(id)}>Excluir</button>   
                     <form method="dialog">
                         <button className="btn">Fechar</button>
                     </form>

@@ -1,7 +1,7 @@
 import more from'../../img/more-information.png'
+import React from 'react';
 import ModalEditarQuantidade from '../Modal/ModiasEstoque/modalEditarQuantidade';
 import ModalAtualizarValorVenda from '../Modal/ModiasEstoque/modalAtualizarValorVenda';
-import React from 'react';
 import ModalAtualizarValorCompra from '../Modal/ModiasEstoque/modalAtualizarValorCompra';
 function SubMenuEstoque({id}) {
   return (

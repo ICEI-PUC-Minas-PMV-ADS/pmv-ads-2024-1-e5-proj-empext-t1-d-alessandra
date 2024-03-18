@@ -1,7 +1,7 @@
 import React from 'react';
 import SubMenuEstoque from '../Menu/subMenuEstoque';
 import ModalExcluir from "../Modal/ModiasEstoque/modalExcluir";
-import ModalEditarQuantidade from '../Modal/ModiasEstoque/modalEditarQuantidade';
+
 
 function Tabela({dados,filtro}){
     const filtrarDados = (item) => {
