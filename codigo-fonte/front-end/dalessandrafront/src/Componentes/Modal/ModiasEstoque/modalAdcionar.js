@@ -1,8 +1,9 @@
 import axios from "axios";
 import React, { useState } from "react";
-import config from "../../../config/config";
 import"../../../Pages/estilo/estoque.css";
-import Alertasucesso from "../../Alertas/AlertaConfirmacao";
+import config from "../../../config/config";
+import AlertaErro from "../../Alertas/AlertaErro";
+import Alertasucesso from "../../Alertas/AlertaSucesso";
 function ModalAdicionar(){
 
     const [nome,setNome] = useState()
@@ -25,6 +26,8 @@ function ModalAdicionar(){
     const capturaDataCadastro = (event) => {setDataCadastro(event.target.value); }
     const capturarQtd = (event) => {setQtd(event.target.value); }
     const [alertVisible, setAlertVisible] = useState(false);
+    const [alertaErro, setAlertaErro] = useState(false);
+    const [mensagemError,setMensagemError] = useState()
     function salvar(){
         axios.post(
             config.URL+'estoque?nomeProduto='+nome+'&quantidadeItem='+qtd+'&marca='+marca+'&tipo='+tipo+'&cor='+cor+
@@ -34,6 +37,7 @@ function ModalAdicionar(){
             .then((response)=>{
                 if (response.status === 200) {
                     setAlertVisible(true); 
+                    setAlertaErro(false)
                     setTimeout(() => {
                       setAlertVisible(false);
                       window.location.reload(); 
@@ -42,10 +46,14 @@ function ModalAdicionar(){
               })
             .catch((error)=>{ 
                 if(error.response.status === 400){
-                    console.log("Erro ao adicionar item")
+                   setMensagemError("Erro: "+error.response.status+". Verifique se todos os campos estão digitados de maneira correta")
+                   setAlertaErro(true)
                 }
-            console.log(error)
-           })
+                else{
+                    setAlertaErro(true)
+                    setMensagemError("Ops ! Aconteceu algum erro interno")
+                 }
+           })    
         }
     return (
         <div>
@@ -53,13 +61,14 @@ function ModalAdicionar(){
         <dialog id="my_modal_20240310" className="modal">
             <div className="modal-box w-11/12 max-w-5xl alinharCamposModal">
             {alertVisible && <Alertasucesso message="Item adicionado com sucesso" />}
+            {alertaErro && <AlertaErro message={mensagemError} />}
             <br></br>
                 <h3 className="font-bold text-lg">Registro</h3>
                 <p className="py-4">Adicionar novo item</p>
-                <input id="nome"   type="text" placeholder="Nome" onChange={capturaNome} class="input input-bordered input-accent w-full max-w-xs" />
-                <input id="marca" type="text" placeholder="Marca" onChange={capturaMarca}class="input input-bordered input-accent w-full max-w-xs" />
-                <input id="cor" type="text" placeholder="Cor" onChange={capturaCor}class="input input-bordered input-accent w-full max-w-xs" />
-                <select id="tipo" onChange={capturaTipo}className="select select-accent w-full max-w-xs">
+                <input id="nome"   type="text" placeholder="Nome" onChange={capturaNome} class="input input-ghost w-full max-w-xs" />
+                <input id="marca" type="text" placeholder="Marca" onChange={capturaMarca}class="input input-ghost w-full max-w-xs" />
+                <input id="cor" type="text" placeholder="Cor" onChange={capturaCor}class="input input-ghost w-full max-w-xs" />
+                <select id="tipo" onChange={capturaTipo}className="select select-ghost w-full max-w-xs">
                         <option disabled selected>Tipo</option>
                         <option value="Verão">Verão</option>
                         <option value="Inverno">Inverno</option>
@@ -67,7 +76,7 @@ function ModalAdicionar(){
                         <option value="Formal">Formal</option>
                         <option value="Peça intima">Peça intima</option>
                 </select>
-                <select id="tamanhho" onChange={capturaTamanho}className="select select-accent w-full max-w-xs">
+                <select id="tamanhho" onChange={capturaTamanho}className="select select-ghost w-full max-w-xs">
                         <option disabled selected>Tamanho</option>
                         <option value="P - Infantil">P - Infantil</option>
                         <option value="M - Infantil">M - Infantil</option>
@@ -85,15 +94,15 @@ function ModalAdicionar(){
                         <option value="46 - Adulto">46 - Adulto</option>
                 </select>
                
-                <input id="qtd" type="text" onChange={capturarQtd} placeholder="Quantidade" class="input input-bordered input-accent w-full max-w-xs" />
-                <input id="valorcomprado" type="text" onChange={capturaValorComprado}  placeholder="Valor Comprado" class="input input-bordered input-accent w-full max-w-xs" />
-                <input id="valorvendido" type="text" onChange={capturaValorVendido}placeholder="Valor Vendido" class="input input-bordered input-accent w-full max-w-xs" />
-                <input id="datacadastro" type="date" onChange={capturaDataCadastro} placeholder="Data Cadastro" class="input input-bordered input-accent w-full max-w-xs" />
+                <input id="qtd" type="text" onChange={capturarQtd} placeholder="Quantidade" class="input input-ghost w-full max-w-xs" />
+                <input id="valorcomprado" type="text" onChange={capturaValorComprado}  placeholder="Valor Comprado" class="input input-ghost w-full max-w-xs" />
+                <input id="valorvendido" type="text" onChange={capturaValorVendido}placeholder="Valor Vendido" class="input input-ghost w-full max-w-xs" />
+                <input id="datacadastro" type="date" onChange={capturaDataCadastro} placeholder="Data Cadastro" class="input input-ghost w-full max-w-xs" />
                 <div className="modal-action">
               
                     <button className=" btn btn-success" onClick={()=>salvar()}>Adicionar</button>
                 <form method="dialog">
-                    <button className="btn">Fechar</button>
+                    <button className="btn" onClick={()=>setAlertaErro(false)}>Fechar</button>
                 </form>
                 </div>
             </div>

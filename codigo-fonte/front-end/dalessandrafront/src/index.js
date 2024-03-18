@@ -4,11 +4,25 @@ import './index.css';
 import App from './App';
 import Estoque from './Pages/Estoque/Estoque';
 import reportWebVitals from './reportWebVitals';
+import { createBrowserRouter,RouterProvider } from 'react-router-dom';
+//import ReactDOM from 'react-dom/client';
+import { createRoot } from 'react-dom/client';
+
+
+const router = createBrowserRouter([
+    
+  {
+    path:"/",
+    element:<Estoque/>
+  }
+
+    
+])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Estoque />
+     <RouterProvider router={router}/>
   </React.StrictMode>
 );
 
