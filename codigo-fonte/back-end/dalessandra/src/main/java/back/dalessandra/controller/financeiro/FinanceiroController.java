@@ -1,4 +1,5 @@
 package back.dalessandra.controller.financeiro;
+import back.dalessandra.Model.Cliente;
 import back.dalessandra.Model.Financeiro;
 import back.dalessandra.Model.Venda;
 import back.dalessandra.service.financeiro.FinanceiroService;
@@ -41,6 +42,11 @@ public class FinanceiroController {
     @GetMapping("/{tipoDespesa}")
     public Financeiro findBytipoDespesa(@PathVariable String tipoDespesa) {
         return financeiroService.findBytipoDespesa(tipoDespesa).orElse(null);
+    }
+
+    @PutMapping("/{idDespesa}")
+    public Financeiro editar(Financeiro financeiro, @PathVariable Integer idDespesa){
+        return financeiroService.editar(financeiro);
     }
 
     @PostMapping
