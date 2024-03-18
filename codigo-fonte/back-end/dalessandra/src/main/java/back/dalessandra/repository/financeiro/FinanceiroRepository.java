@@ -33,11 +33,10 @@ public interface FinanceiroRepository extends JpaRepository<Financeiro,Integer> 
     @Modifying
     @Transactional
     @Query("update Financeiro set nomeDespesa = :#{#financeiro.nomeDespesa}, " +
-            "values (:#{#financeiro.idDespesa}, " +
-            ":#{#financeiro.tipoDespesa}, " +
-            ":#{#financeiro.nomeDespesa}, " +
-            ":#{#financeiro.valorDespesa}, " +
-            ":#{#financeiro.dataDespesa})")
+            "tipoDespesa = :#{#financeiro.tipoDespesa}, " +
+            "valorDespesa = :#{#financeiro.valorDespesa}, " +
+            "dataDespesa = :#{#financeiro.dataDespesa}," +
+            "where idDespesa = :#{#financeiro.idDespesa}")
     void editar(Financeiro financeiro);
 
     @Modifying
