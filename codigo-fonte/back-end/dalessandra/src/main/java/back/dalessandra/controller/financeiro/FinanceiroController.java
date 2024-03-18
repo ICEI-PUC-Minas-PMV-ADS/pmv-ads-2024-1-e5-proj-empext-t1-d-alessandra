@@ -44,10 +44,10 @@ public class FinanceiroController {
         return financeiroService.findBytipoDespesa(tipoDespesa).orElse(null);
     }
 
-    @PutMapping("/{idDespesa}")
+    /*@PutMapping("/{idDespesa}")
     public Financeiro editar(Financeiro financeiro, @PathVariable Integer idDespesa){
         return financeiroService.editar(financeiro);
-    }
+    }*/
 
     @PostMapping
     public Financeiro cadastro(@RequestBody Financeiro financeiro){

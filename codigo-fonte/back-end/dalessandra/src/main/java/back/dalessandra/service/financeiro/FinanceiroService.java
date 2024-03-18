@@ -23,10 +23,10 @@ public class FinanceiroService {
         return financeiroRepository.save(financeiro);
     }
 
-    public Financeiro editar(Financeiro financeiro){
+    /*public Financeiro editar(Financeiro financeiro){
         financeiroRepository.editar(financeiro);
         return financeiro;
-    }
+    }*/
 
     public Optional<Financeiro> findByidDespesa(Integer idDespesa){
         return financeiroRepository.findByidDespesa(idDespesa);
