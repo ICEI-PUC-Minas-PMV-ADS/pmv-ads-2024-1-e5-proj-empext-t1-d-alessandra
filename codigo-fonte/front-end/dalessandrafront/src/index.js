@@ -3,21 +3,23 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import Login from './Pages/Login/Login';
-import Estoque from './Pages/Estoque/Estoque';
 import Cadastro from './Pages/Cadastro/Cadastro';
+import Estoque from './Pages/Estoque/Estoque';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
 import Financeiro from "./Pages/Financeiro/Financeiro";
 
-const router = createBrowserRouter([
+// Título da página
+document.title = "D'Alessandra - Modas";
 
+const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />
   },
   {
-    path: "/ladastro",
+    path: "/cadastro",
     element: <Cadastro />
   },
   {
@@ -28,9 +30,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <Estoque />
   },
-
 ]);
-
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

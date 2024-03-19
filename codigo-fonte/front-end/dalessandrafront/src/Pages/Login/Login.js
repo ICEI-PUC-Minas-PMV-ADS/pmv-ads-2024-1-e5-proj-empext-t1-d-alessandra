@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import "../estilo/login.css"; 
+import "../estilo/login.css";
 import config from "../../config/config";
+import logo from "../../img/logo.png"; 
 
 function Login() {
   const [credentials, setCredentials] = useState({
@@ -31,6 +32,7 @@ function Login() {
 
   return (
     <div className="login-container">
+      <img src={logo} alt="Logo da empresa" />
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         <input
@@ -51,7 +53,7 @@ function Login() {
       </form>
       <p className="error-message">{errorMessage}</p>
       <p>
-        Não tem cadastro? <Link to="/cadastro">Cadastre-se</Link>
+        Não tem cadastro? <Link to="/Cadastro">Cadastre-se</Link>
       </p>
     </div>
   );
