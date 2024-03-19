@@ -3,12 +3,15 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "../estilo/cadastro.css"; 
 import config from "../../config/config";
+import logo from "../../img/logo.png";
 
 function Cadastro() {
   const [userData, setUserData] = useState({
     nome: "",
     email: "",
-    senha: ""
+    senha: "",
+    confirmarSenha: "",
+    dataNascimento: ""
   });
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -22,9 +25,12 @@ function Cadastro() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (userData.senha !== userData.confirmarSenha) {
+      setErrorMessage("As senhas não coincidem.");
+      return;
+    }
     try {
       const response = await axios.post(`${config.URL}/cadastro`, userData);
-      // Lógica para lidar com a resposta do servidor após o cadastro
     } catch (error) {
       setErrorMessage("Erro ao cadastrar. Por favor, tente novamente.");
     }
@@ -32,6 +38,7 @@ function Cadastro() {
 
   return (
     <div className="cadastro-container">
+      <img src={logo} alt="Logo" className="logo" />
       <h2>Cadastro</h2>
       <form onSubmit={handleSubmit}>
         <input
@@ -40,6 +47,13 @@ function Cadastro() {
           value={userData.nome}
           onChange={handleChange}
           placeholder="Nome"
+        />
+        <input
+          type="date"
+          name="dataNascimento"
+          value={userData.dataNascimento}
+          onChange={handleChange}
+          placeholder="Data de Nascimento"
         />
         <input
           type="email"
@@ -54,6 +68,13 @@ function Cadastro() {
           value={userData.senha}
           onChange={handleChange}
           placeholder="Senha"
+        />
+        <input
+          type="password"
+          name="confirmarSenha"
+          value={userData.confirmarSenha}
+          onChange={handleChange}
+          placeholder="Confirmar Senha"
         />
         <button type="submit">Cadastrar</button>
       </form>
