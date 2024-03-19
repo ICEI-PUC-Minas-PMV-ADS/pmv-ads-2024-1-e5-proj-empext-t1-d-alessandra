@@ -8,6 +8,7 @@ import Cadastro from './Pages/Cadastro/Cadastro';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
+import Financeiro from "./Pages/Financeiro/Financeiro";
 
 const router = createBrowserRouter([
 
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
   {
     path: "/ladastro",
     element: <Cadastro />
+  },
+  {
+    path: "/financeiro",
+    element: <Financeiro />
   },
   {
     path: "/",

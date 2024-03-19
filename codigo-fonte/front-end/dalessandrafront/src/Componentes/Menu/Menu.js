@@ -7,7 +7,7 @@ function Menu(){
         <li class="menu-title"><img src={Logo} alt="Logo" className="h-20 w-30"/></li>
         <li><a>Vendas</a></li>
         <li><Link to="/">Estoque</Link></li>
-        <li><a>Despesas</a></li>
+        <li><Link to ="/financeiro">Financeiro</Link></li>
         <li><a>Sair</a></li>
     </ul>
   )
