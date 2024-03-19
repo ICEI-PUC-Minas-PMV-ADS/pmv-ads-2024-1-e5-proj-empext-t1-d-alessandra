@@ -200,7 +200,7 @@ function Cliente(){
                     </div>
                 </div>
                 <br/>
-                <button className=" btn btn-success" >Adicionar</button>
+                <button className=" btn btn-success" >Cadastrar</button>
             </section>
             </div>
             
