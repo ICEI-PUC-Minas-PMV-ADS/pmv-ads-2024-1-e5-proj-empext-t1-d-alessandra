@@ -5,7 +5,7 @@ import App from './App';
 import Login from './Pages/Login/Login';
 import Estoque from './Pages/Estoque/Estoque';
 import Cadastro from './Pages/Cadastro/Cadastro';
-import Cliente from './Pages/Venda/Venda';
+import Cliente from './Pages/Venda/Cliente';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
