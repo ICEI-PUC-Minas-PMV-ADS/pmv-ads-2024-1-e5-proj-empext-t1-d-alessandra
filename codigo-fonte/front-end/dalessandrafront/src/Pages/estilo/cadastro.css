@@ -5,10 +5,17 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #f9f9f9;
+  text-align: center;
 }
 
+.cadastro-container .logo {
+  width: 150px; 
+  height: auto;
+  margin: 0 auto 20px; 
+}
+
+
 .cadastro-container h2 {
-  text-align: center;
   margin-bottom: 20px;
 }
 
@@ -26,7 +33,7 @@
 
 .cadastro-container button {
   padding: 10px;
-  background-color: #28a745; /* Verde */
+  background-color: #28a745;
   color: #fff;
   border: none;
   border-radius: 3px;
@@ -34,20 +41,18 @@
 }
 
 .cadastro-container button:hover {
-  background-color: #218838; /* Verde mais escuro ao passar o mouse */
+  background-color: #218838;
 }
 
 .cadastro-container .error-message {
-  text-align: center;
-  color: #dc3545; /* Vermelho */
+  color: #dc3545;
   margin-top: 20px;
 }
 
 .cadastro-container p {
-  text-align: center;
   margin-top: 20px;
 }
 
 .cadastro-container p a {
-  color: #007bff; /* Azul */
+  color: #007bff;
 }

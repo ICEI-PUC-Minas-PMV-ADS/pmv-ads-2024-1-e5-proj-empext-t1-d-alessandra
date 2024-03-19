@@ -5,10 +5,10 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #f9f9f9;
+  text-align: center; /* Centraliza o conteúdo */
 }
 
 .login-container h2 {
-  text-align: center;
   margin-bottom: 20px;
 }
 
@@ -26,7 +26,7 @@
 
 .login-container button {
   padding: 10px;
-  background-color: #00a96e; /* Verde */
+  background-color: #28a745;
   color: #fff;
   border: none;
   border-radius: 3px;
@@ -34,20 +34,26 @@
 }
 
 .login-container button:hover {
-  background-color: #007b4d; /* Verde mais escuro ao passar o mouse */
+  background-color: #218838;
 }
 
 .login-container .error-message {
-  text-align: center;
-  color: #dc3545; /* Vermelho */
+  color: #dc3545;
   margin-top: 20px;
 }
 
 .login-container p {
-  text-align: center;
   margin-top: 20px;
 }
 
 .login-container p a {
-  color: #007bff; /* Azul */
+  color: #007bff;
+}
+
+.login-container img {
+  width: 150px; 
+  height: auto; 
+  margin: auto; 
+  display: block;
+  margin-bottom: 20px;
 }

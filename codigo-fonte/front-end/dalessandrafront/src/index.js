@@ -9,6 +9,9 @@ import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
 
+// Título da página
+document.title = "D'Alessandra - Modas";
+
 const router = createBrowserRouter([
   {
     path: "/login",
