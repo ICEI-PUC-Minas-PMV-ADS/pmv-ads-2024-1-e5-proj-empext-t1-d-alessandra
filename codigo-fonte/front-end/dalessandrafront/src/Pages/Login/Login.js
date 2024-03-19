@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -51,7 +52,7 @@ function Login() {
       </form>
       <p className="error-message">{errorMessage}</p>
       <p>
-        Não tem cadastro? <Link to="/cadastro">Cadastre-se</Link>
+        Não tem cadastro? <Link to="/Cadastro">Cadastre-se</Link>
       </p>
     </div>
   );

@@ -1,62 +1,53 @@
 .cadastro-container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 40px;
-    border: 1px solid #000;
-    border-radius: 5px;
-    background-color: #008000; /* Verde */
-    color: #fff; /* Branco */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .cadastro-container h2 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .cadastro-container form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .cadastro-container input {
-    margin-bottom: 20px;
-    padding: 12px;
-    border: 1px solid #000;
-    border-radius: 5px;
-  }
-  
-  .cadastro-container input:focus {
-    border-color: #fff; /* Branco */
-    outline: none;
-  }
-  
-  .cadastro-container button {
-    padding: 12px;
-    background-color: #fff; /* Branco */
-    color: #008000; /* Verde */
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .cadastro-container button:hover {
-    background-color: #000; /* Preto */
-    color: #fff; /* Branco */
-  }
-  
-  .cadastro-container p {
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  .cadastro-container p a {
-    color: #fff; /* Branco */
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  .cadastro-container p a:hover {
-    color: #000; /* Preto */
-  }
-  
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 40px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.cadastro-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.cadastro-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.cadastro-container input {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.cadastro-container button {
+  padding: 10px;
+  background-color: #28a745; /* Verde */
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.cadastro-container button:hover {
+  background-color: #218838; /* Verde mais escuro ao passar o mouse */
+}
+
+.cadastro-container .error-message {
+  text-align: center;
+  color: #dc3545; /* Vermelho */
+  margin-top: 20px;
+}
+
+.cadastro-container p {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.cadastro-container p a {
+  color: #007bff; /* Azul */
+}

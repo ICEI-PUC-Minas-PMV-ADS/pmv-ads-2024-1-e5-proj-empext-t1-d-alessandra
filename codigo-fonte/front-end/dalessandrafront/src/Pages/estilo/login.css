@@ -1,62 +1,53 @@
 .login-container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 40px;
-    border: 1px solid #000;
-    border-radius: 5px;
-    background-color: #008000; /* Verde */
-    color: #fff; /* Branco */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .login-container h2 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .login-container form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .login-container input {
-    margin-bottom: 20px;
-    padding: 12px;
-    border: 1px solid #000;
-    border-radius: 5px;
-  }
-  
-  .login-container input:focus {
-    border-color: #fff; /* Branco */
-    outline: none;
-  }
-  
-  .login-container button {
-    padding: 12px;
-    background-color: #fff; /* Branco */
-    color: #008000; /* Verde */
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .login-container button:hover {
-    background-color: #000; /* Preto */
-    color: #fff; /* Branco */
-  }
-  
-  .login-container p {
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  .login-container p a {
-    color: #fff; /* Branco */
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  .login-container p a:hover {
-    color: #000; /* Preto */
-  }
-  
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 40px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.login-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-container input {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.login-container button {
+  padding: 10px;
+  background-color: #00a96e; /* Verde */
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.login-container button:hover {
+  background-color: #007b4d; /* Verde mais escuro ao passar o mouse */
+}
+
+.login-container .error-message {
+  text-align: center;
+  color: #dc3545; /* Vermelho */
+  margin-top: 20px;
+}
+
+.login-container p {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.login-container p a {
+  color: #007bff; /* Azul */
+}
