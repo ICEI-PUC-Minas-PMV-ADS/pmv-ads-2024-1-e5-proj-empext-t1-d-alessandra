@@ -65,10 +65,6 @@ function Cliente(){
             </section>
             <br></br>
             <br></br>
-            <section className="container mx-auto p-4 shadow-xl alinhamentoMenu2">
-                <ModalAdicionar/>
-                <Filtro onFiltroChange={handleFiltroChange}/>
-            </section>
             <br></br>
             <section className="container mx-auto p-4 shadow-xl overflow-x-auto" > 
                 <h3 className="text-2xl font-bold corTexto">Cadastro</h3>
@@ -203,6 +199,8 @@ function Cliente(){
                         </div>
                     </div>
                 </div>
+                <br/>
+                <button className=" btn btn-success" >Adicionar</button>
             </section>
             </div>
             
