@@ -7,7 +7,7 @@ import Card from "../../Componentes/Card/Card";
 import Menu from "../../Componentes/Menu/Menu";
 import LogoInvetario from "../../img/warehouse.png";
 import Filtro from "../../Componentes/Tabela/Filtro";
-import ModalAdicionar from "../../Componentes/Modal/ModiasEstoque/modalAdcionar";
+import ModalIncluir from "../../Componentes/Modal/ModaisFinanças/modalncluirDespesa";
 import TabelaFinancas from "../../Componentes/Tabela/tabelaFinancas";
 function Financeiro(){
 
@@ -58,7 +58,7 @@ function Financeiro(){
                 <br></br>
                 <br></br>
                 <section className="container mx-auto p-4 shadow-xl alinhamentoMenu2">
-                    <ModalAdicionar/>
+                    <ModalIncluir/>
                     <Filtro onFiltroChange={handleFiltroChange}/>
                 </section>
                 <br></br>
