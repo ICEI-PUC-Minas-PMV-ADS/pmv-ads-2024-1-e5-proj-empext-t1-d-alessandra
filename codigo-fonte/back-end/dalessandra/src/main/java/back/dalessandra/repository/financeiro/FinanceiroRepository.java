@@ -45,4 +45,7 @@ public interface FinanceiroRepository extends JpaRepository<Financeiro,Integer> 
     @Transactional
     @Query("delete from Financeiro where idDespesa = :idDespesa")
     void deleteById(Integer idDespesa);
+
+    @Query("SELECT SUM(f.valorDespesa) FROM Financeiro f")
+    float calcularTotalDespesas();
 }

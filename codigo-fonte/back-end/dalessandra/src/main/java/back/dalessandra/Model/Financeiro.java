@@ -26,5 +26,6 @@ public class Financeiro {
     @Column
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", locale = "pt-BR", timezone = "America/Sao_Paulo")
     private Date dataDespesa;
+    private float valorTotalDespesas;
 
 }

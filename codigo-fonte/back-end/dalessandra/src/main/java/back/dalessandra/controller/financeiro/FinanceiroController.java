@@ -57,6 +57,11 @@ public class FinanceiroController {
         return financeiroService.cadastro(financeiro);
     }
 
+    @GetMapping("/totalDespesas")
+    public float calcularTotalDespesas() {
+        return financeiroService.calcularTotalDespesas();
+    }
+
     @DeleteMapping("{idDespesa}")
     public String excluirDespesa(@PathVariable("idDespesa") int idDespesa){
         return financeiroService.excluirDespesa(idDespesa);

@@ -19,7 +19,13 @@ public class FinanceiroService {
         return financeiroRepository.findAll();
     }
 
+    /*public Financeiro cadastro(Financeiro financeiro) {
+        return financeiroRepository.save(financeiro);
+    }*/
+
     public Financeiro cadastro(Financeiro financeiro) {
+        float totalDespesas = calcularTotalDespesas();
+        financeiro.setValorTotalDespesas(totalDespesas);
         return financeiroRepository.save(financeiro);
     }
 
@@ -40,5 +46,14 @@ public class FinanceiroService {
     public String excluirDespesa(int idDespesa){
         financeiroRepository.deleteById(idDespesa);
         return ("Excluido com sucesso");
+    }
+
+    public float calcularTotalDespesas() {
+        List<Financeiro> financeiros = financeiroRepository.findAll();
+        float total = 0.0f;
+        for (Financeiro financeiro : financeiros) {
+            total += financeiro.getValorDespesa();
+        }
+        return total;
     }
 }
