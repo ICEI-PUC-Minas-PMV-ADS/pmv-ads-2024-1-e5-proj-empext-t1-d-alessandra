@@ -5,6 +5,7 @@ import App from './App';
 import Login from './Pages/Login/Login';
 import Cadastro from './Pages/Cadastro/Cadastro';
 import Cliente from './Pages/Venda/Cliente';
+import Venda from './Pages/Venda/Venda';
 import Estoque from './Pages/Estoque/Estoque';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
   {
     path: "/cliente",
     element: <Cliente />
+  },
+  {
+    path: "/vendas",
+    element: <Venda />
   },
 ]);
 

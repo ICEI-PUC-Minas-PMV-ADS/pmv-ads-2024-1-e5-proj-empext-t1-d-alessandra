@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import Menu from "../../Componentes/Menu/Menu";
 import LogoInvetario from "../../img/warehouse.png";
 
-function Cliente(){
+function Venda(){
 
     const [estoque, setEstoque] = useState([])
     const [quantidadeEstoque, setQuantidadeEstoque] = useState(0)
@@ -58,7 +58,7 @@ function Cliente(){
             <div className="drawer-content"> 
             <section className="container mx-auto p-4 alinhamentoMenu2">
                 <img  class="h-10 w-10" fill="none" viewBox="0 0 34 34" src={LogoInvetario}/>
-                <h1 className="text-3xl font-bold">Novo Cliente</h1>
+                <h1 className="text-3xl font-bold">Nova Venda</h1>
             </section>
             <br></br>
             <br></br>
@@ -197,12 +197,12 @@ function Cliente(){
                     </div>
                 </div>
                 <br/>
-                <button className=" btn btn-success" >Cadastrar</button>
+                <button className=" btn btn-success" >Gravar</button>
             </section>
             </div>
             
         </main>
     )
 
-}export default Cliente;
+}export default Venda;
 
