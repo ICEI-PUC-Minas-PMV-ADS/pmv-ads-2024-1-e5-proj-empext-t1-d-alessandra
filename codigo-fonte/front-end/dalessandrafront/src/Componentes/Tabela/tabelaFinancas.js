@@ -9,6 +9,8 @@ function tabelaFinancas({dados,filtro}){
         const valorDespesa = (item.valorDespesa || '').toString();
         const dataDespesa = (item.dataDespesa || '').toString();
 
+        const mesAnoItem = new Date(dataDespesa).toLocaleDateString('en-US', { month: '2-digit', year: 'numeric' });
+
         return (
             idDespesa.toLowerCase().includes(filtro.toLowerCase()) ||
             nomeDespesa.toLowerCase().includes(filtro.toLowerCase()) ||

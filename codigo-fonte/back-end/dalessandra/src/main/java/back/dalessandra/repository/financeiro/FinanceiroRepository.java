@@ -51,8 +51,8 @@ public interface FinanceiroRepository extends JpaRepository<Financeiro,Integer> 
     @Query("SELECT SUM(f.valorDespesa) FROM Financeiro f")
     float calcularTotalDespesas();
 
-    @Query("SELECT f FROM Financeiro f WHERE MONTH(f.dataDespesa) = :month")
-    List<Financeiro> findByMonth(@Param("month") int month);
+    @Query("SELECT f FROM Financeiro f WHERE MONTH(f.dataDespesa) = :month AND YEAR(f.dataDespesa) = :year")
+    List<Financeiro> findByMonthAndYear(@Param("month") int month, @Param("year") int year);
 
 
 }

@@ -34,9 +34,9 @@ public class VendaService {
     }
 
     public float calcularTotalVendas() {
-        List<Venda> vendas = vendaRepository.findAll();
+        List<Venda> totalVendas = findAll();
         float total = 0.0f;
-        for (Venda venda : vendas) {
+        for (Venda venda : totalVendas) {
             total += venda.getVlTotal();
         }
         return total;

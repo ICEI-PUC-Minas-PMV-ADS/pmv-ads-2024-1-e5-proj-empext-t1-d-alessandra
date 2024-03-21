@@ -65,9 +65,9 @@ public class FinanceiroController {
         return financeiroService.calcularTotalDespesas();
     }
 
-    @GetMapping("/mes")
-    public List<Financeiro> findByMonth(@RequestParam int mes) {
-        return financeiroService.findByMonth(mes);
+    @GetMapping("/filtro")
+    public List<Financeiro> findByMonthAndYear(@RequestParam int mes, @RequestParam int ano) {
+        return financeiroService.findByMonthAndYear(mes, ano);
     }
 
     @DeleteMapping("{idDespesa}")
