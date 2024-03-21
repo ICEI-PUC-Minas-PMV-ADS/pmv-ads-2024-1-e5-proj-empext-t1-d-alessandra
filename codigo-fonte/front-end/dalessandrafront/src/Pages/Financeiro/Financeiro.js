@@ -12,13 +12,15 @@ import TabelaFinancas from "../../Componentes/Tabela/tabelaFinancas";
 function Financeiro(){
 
     const [financeiro, setFinanceiro] = useState([])
-    const [vendas, setVendas] = useState(0)
+    const [vendas, setVendas] = useState([])
+    const [valorVendas, setValorVendas] = useState (0)
     const [valorFinanceiro, setValorFinanceiro] = useState(0)
     const [filtro, setFiltro] = useState('');
     useEffect(() => {
         obterFinanceiro()
         obterVendas()
         obterValorTotal()
+        obterValorVendas()
     },[])
     const handleFiltroChange = (filtro) => {
         setFiltro(filtro);
@@ -28,6 +30,17 @@ function Financeiro(){
         axios.get(config.URL+'financeiro',{headers})
             .then((response) => {
                 setFinanceiro(response.data)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
+
+    function obterValorVendas(){
+        const headers ={"Content-Type":"application/json"}
+        axios.get(config.URL+'vendas/valorTotalVendas',{headers})
+            .then((response) =>{
+                setValorVendas(response.data)
             })
             .catch((error) => {
                 console.log(error)
@@ -65,7 +78,7 @@ function Financeiro(){
                     <h1 className="text-3xl font-bold">Financeiro</h1>
                 </section>
                 <section className="container mx-auto p-4 alinhamentoCards">
-                    <Card title="Valor Vendido: " textoExibir={"R$ "+vendas}/>
+                    <Card title="Valor Vendido: " textoExibir={"R$ "+valorVendas}/>
                     <Card title="Valor Despesas:" textoExibir={"R$ "+valorFinanceiro}/>
                     <Card title="Balanço Total:" textoExibir={"R$ "}/>
                 </section>

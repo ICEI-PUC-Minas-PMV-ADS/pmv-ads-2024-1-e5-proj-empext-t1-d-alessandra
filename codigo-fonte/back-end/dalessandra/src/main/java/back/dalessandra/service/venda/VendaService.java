@@ -1,5 +1,6 @@
 package back.dalessandra.service.venda;
 
+import back.dalessandra.Model.Financeiro;
 import back.dalessandra.Model.Venda;
 import back.dalessandra.repository.venda.VendaRepository;
 import lombok.RequiredArgsConstructor;
@@ -30,6 +31,15 @@ public class VendaService {
         venda.setCodVenda(codigo);
         vendaRepository.create(venda);
         return venda;
+    }
+
+    public float calcularTotalVendas() {
+        List<Venda> vendas = vendaRepository.findAll();
+        float total = 0.0f;
+        for (Venda venda : vendas) {
+            total += venda.getVlTotal();
+        }
+        return total;
     }
 
     public void deleteByVenda(Integer codVenda){
