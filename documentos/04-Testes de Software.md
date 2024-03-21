@@ -1,5 +1,26 @@
 # Planos de Testes de Software
 
+ ### 1 - Login/Cadastro
+  
+**1.1 - Verificação de Cadastro de E-mail na Plataforma:**
+
+Objetivo: Prevenir a duplicidade de cadastros com o mesmo e-mail.
+Passos: Acessar a página de cadastro e preencher o formulário.
+Critério de Sucesso: Se o e-mail já estiver cadastrado, um alerta será emitido.
+
+**1.2 - Verificação de Cadastro sem Problemas:**
+
+Objetivo: Assegurar que todos os dados sejam enviados corretamente.
+Passos: Acessar a página de cadastro e preencher o formulário.
+Critério de Sucesso: Após o preenchimento correto, um alerta de confirmação de cadastro será exibido.
+
+**1.3 - Restrição de Acesso a Usuários Cadastrados:**
+
+Objetivo: Garantir que apenas usuários cadastrados tenham acesso à plataforma.
+Passos: Tentar acessar a plataforma com um usuário não cadastrado.
+Critério de Sucesso: Se o usuário não estiver cadastrado, o acesso será negado pelo sistema.
+
+
 ### Fincionalodade estoque
 
 Para a tela de estoque pensamos em  4 tipos de teste para verificar se esta tudo funcionando de acordo com o espereado.
@@ -34,7 +55,27 @@ Para a tela de estoque pensamos em  4 tipos de teste para verificar se esta tudo
    - Passos: Acessar os três pontinhos, ir na opção atualizar valor de compra, digitar o novo valor e mandar salvar 
    - Criterio: Caso de sucesso se da quando aparece um alerta confirmando a alteração e o valor na lista estiver mudado
 
+
 # Evidências de Testes de Software
+
+### Funcionalidade de Cadastro/Login
+
+#### Plano de teste 1.1 - Verificação de Cadastro de E-mail na Plataforma: 
+
+
+
+
+#### Plano de teste 1.2 - Verificação de Cadastro sem Problemas:
+
+
+
+
+#### Plano de teste 1.3 - Restrição de Acesso a Usuários Cadastrados:
+
+
+
+
+
 
 ### Funcionalidade de estoque
 
