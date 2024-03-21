@@ -18,6 +18,7 @@ function Financeiro(){
     useEffect(() => {
         obterFinanceiro()
         obterVendas()
+        obterValorTotal()
     },[])
     const handleFiltroChange = (filtro) => {
         setFiltro(filtro);
