@@ -34,7 +34,7 @@ function tabelaFinancas({dados,filtro}){
                     <td>{item.idDespesa}</td>
                     <td>{item.tipoDespesa}</td>
                     <td>{item.nomeDespesa}</td>
-                    <td>{item.valorDespesa}</td>
+                    <td>{'R$ '+item.valorDespesa}</td>
                     <td>{item.dataDespesa}</td>
                     <td><ModalExcluirFin id={item.idDespesa}/></td>
                     {/*<td><SubMenuEstoque id={item.idDespesa}/></td>*/}
