@@ -1,68 +1,48 @@
-
-import axios from "axios";
-import React from "react";
-import "../../Pages/estilo/estoque.css";
 import config from "../../config/config";
-import { useEffect, useState } from "react";
+import axios from "axios";
+import React, { useState } from "react";
+import "../../Pages/estilo/estoque.css";
 import Menu from "../../Componentes/Menu/Menu";
 import LogoInvetario from "../../img/warehouse.png";
 
 function Cliente(){
 
-    const [estoque, setEstoque] = useState([])
-    const [quantidadeEstoque, setQuantidadeEstoque] = useState(0)
-    const [valorEstoque, setValorEstoque] = useState(0)
-    const [filtro, setFiltro] = useState('');
-    useEffect(() => {
-        obeterEstoque()
-        obterQuantidadeItemEstoque()
-        obterValorEstoque()
-    },[])
-    const handleFiltroChange = (filtro) => {
-        setFiltro(filtro);
+    const [clienteData, setClienteData] = useState({
+        nomeCliente: "",
+        email: "",
+        telefone: "",
+        cpfCnpj: "",
+        rua: "",
+        bairro: "",
+        cidade: "",
+        complemento: ""
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setClienteData((prevData) => ({
+            ...prevData,
+            [name]: value
+        }));
     };
-    function obeterEstoque(){
+
+    const cadastrarCliente = async () => {
         const headers ={"Content-Type":"application/json"}
-        axios.get(config.URL+'estoque',{headers})
-             .then((response) => {
-                setEstoque(response.data)
-                })
-            .catch((error) => {
-                    console.log(error)
-                })
-     }
-     function obterQuantidadeItemEstoque(){
-        const headers ={"Content-Type":"application/json"}
-        axios.get(config.URL+'estoque/quantidadeDeItemCadastrados',{headers})
-             .then((response) => {
-                setQuantidadeEstoque(response.data)
-                })
-            .catch((error) => {
-                    console.log(error)
-                })
-     }
-     function obterValorEstoque(){
-        const headers ={"Content-Type":"application/json"}
-        axios.get(config.URL+'estoque/valorEstoqueComprado',{headers})
-             .then((response) => {
-                setValorEstoque(response.data)
-                })
-            .catch((error) => {
-                    console.log(error)
-                })
-     }
+        try{
+            await axios.post(config.URL+'cliente', clienteData);
+        } catch(error){
+            console.log(error)
+        }
+    }
+
     return(
         <main className="bg-base-100 drawer lg:drawer-open" >
             <Menu/>
-            <br></br>
             <div className="drawer-content"> 
             <section className="container mx-auto p-4 alinhamentoMenu2">
                 <img  class="h-10 w-10" fill="none" viewBox="0 0 34 34" src={LogoInvetario}/>
                 <h1 className="text-3xl font-bold">Novo Cliente</h1>
             </section>
-            <br></br>
-            <br></br>
-            <br></br>
             <section className="container mx-auto p-4 shadow-xl overflow-x-auto" > 
                 <h3 className="text-2xl font-bold corTexto">Cadastro</h3>
                 <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
@@ -73,10 +53,11 @@ function Cliente(){
                         <div className="mt-2">
                         <input
                             type="text"
-                            name="first-name"
+                            name="nomeCliente"
                             id="primeiroNome"
                             autoComplete="given-name"
                             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                            onChange={handleChange}
                         />
                         </div>
                     </div>
@@ -106,6 +87,7 @@ function Cliente(){
                                 type="email"
                                 autoComplete="email"
                                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                onChange={handleChange}
                             />
                         </div>
                     </div>
@@ -120,6 +102,7 @@ function Cliente(){
                                 type="phone"
                                 autoComplete="phone"
                                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                onChange={handleChange}
                             />
                         </div>
                     </div>
@@ -131,10 +114,11 @@ function Cliente(){
                         <div className="mt-2">
                             <input
                                 id="email"
-                                name="cpf"
+                                name="cpfCnpj"
                                 type="number"
                                 autoComplete="number"
                                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                onChange={handleChange}
                             />
                         </div>
                     </div>
@@ -150,6 +134,7 @@ function Cliente(){
                                 type="text"
                                 autoComplete="text"
                                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                onChange={handleChange}
                             />
                         </div>
                     </div>
@@ -178,6 +163,7 @@ function Cliente(){
                                 type="text"
                                 autoComplete="text"
                                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                onChange={handleChange}
                             />
                         </div>
                     </div>
@@ -192,12 +178,13 @@ function Cliente(){
                                 type="text"
                                 autoComplete="text"
                                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-900 sm:text-sm sm:leading-6"
+                                onChange={handleChange}
                             />
                         </div>
                     </div>
                 </div>
                 <br/>
-                <button className=" btn btn-success" >Cadastrar</button>
+                <button className=" btn btn-success" onClick={cadastrarCliente} >Cadastrar</button>
             </section>
             </div>
             
