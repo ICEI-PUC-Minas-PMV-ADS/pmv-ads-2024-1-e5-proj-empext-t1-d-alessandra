@@ -31,10 +31,7 @@ function ModalAdicionar(){
 
     function salvar(){
 
-        const headers = { 
-            'accept': '*/*', 
-            'Content-Type': 'application/json'
-        }
+        const headers = config.HEADERS
         const data = {
             "nomeProduto": nome,
             "quantidadeItem": qtd,
@@ -47,7 +44,7 @@ function ModalAdicionar(){
             "dataCadastro": new Date(dataCadastro).toLocaleDateString('pt-BR'),
             "qtdAtual": qtd,
         }
-
+        
         axios.post(config.URL+'estoque',data,{ headers })
             .then((response)=>{
                 if (response.status === 200) {
