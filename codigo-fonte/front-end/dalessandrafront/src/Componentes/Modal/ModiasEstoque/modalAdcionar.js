@@ -28,12 +28,27 @@ function ModalAdicionar(){
     const [alertVisible, setAlertVisible] = useState(false);
     const [alertaErro, setAlertaErro] = useState(false);
     const [mensagemError,setMensagemError] = useState()
+
     function salvar(){
-        axios.post(
-            config.URL+'estoque?nomeProduto='+nome+'&quantidadeItem='+qtd+'&marca='+marca+'&tipo='+tipo+'&cor='+cor+
-            '&tamanho='+tamanho+'&valorComprado='+valorComprado+'&valorVenda='+valorVendido+'&dataCadastro='+new Date(dataCadastro).toLocaleDateString('pt-BR')+
-            '&qtdAtual='+qtd
-            )
+
+        const headers = { 
+            'accept': '*/*', 
+            'Content-Type': 'application/json'
+        }
+        const data = {
+            "nomeProduto": nome,
+            "quantidadeItem": qtd,
+            "marca":marca,
+            "tipo":tipo,
+            "cor": cor,
+            "tamanho": tamanho,
+            "valorComprado": valorComprado,
+            "valorVenda": valorVendido,
+            "dataCadastro": new Date(dataCadastro).toLocaleDateString('pt-BR'),
+            "qtdAtual": qtd,
+        }
+
+        axios.post(config.URL+'estoque',data,{ headers })
             .then((response)=>{
                 if (response.status === 200) {
                     setAlertVisible(true); 
