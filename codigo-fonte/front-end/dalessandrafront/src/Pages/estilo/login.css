@@ -5,10 +5,14 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1; /* Garante que o papel de parede fique atrás do conteúdo */
-  background-image: url("../../img/wallpaper.jpg"); /* Caminho para a imagem de papel de parede */
-  background-size: cover; /* Redimensiona a imagem para cobrir toda a tela */
-  filter: brightness(70%); /* Escurece a imagem */
+  z-index: -1;
+  /* Garante que o papel de parede fique atrás do conteúdo */
+  background-image: url("../../img/wallpaper.jpg");
+  /* Caminho para a imagem de papel de parede */
+  background-size: cover;
+  /* Redimensiona a imagem para cobrir toda a tela */
+  filter: brightness(70%);
+  /* Escurece a imagem */
 }
 
 /* Container principal */
@@ -29,7 +33,8 @@
 /* Título do formulário */
 .login-container h2 {
   margin-bottom: 20px;
-  color: #333; /* Cor do texto */
+  color: #333;
+  /* Cor do texto */
 }
 
 /* Formulário */
@@ -44,11 +49,13 @@
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 3px;
-  transition: border-color 0.5s; /* Transição mais lenta para a cor da borda */
+  transition: border-color 0.5s;
+  /* Transição mais lenta para a cor da borda */
 }
 
 .login-container input:focus {
-  border-color: #007bff; /* Cor da borda ao receber foco */
+  border-color: #007bff;
+  /* Cor da borda ao receber foco */
 }
 
 /* Botão de envio */
@@ -59,11 +66,13 @@
   border: none;
   border-radius: 3px;
   cursor: pointer;
-  transition: background-color 0.5s; /* Transição mais lenta para a cor de fundo */
+  transition: background-color 0.5s;
+  /* Transição mais lenta para a cor de fundo */
 }
 
 .login-container button:hover {
-  background-color: #218838; /* Cor de fundo ao passar o mouse */
+  background-color: #218838;
+  /* Cor de fundo ao passar o mouse */
 }
 
 /* Mensagem de erro */
@@ -75,23 +84,26 @@
 /* Links */
 .login-container p {
   margin-top: 20px;
-  transition: color 0.5s; /* Transição mais lenta para a cor do link */
+  transition: color 0.5s;
+  /* Transição mais lenta para a cor do link */
 }
 
 .login-container p a {
   color: #007bff;
-  text-decoration: none; /* Remove o sublinhado */
+  text-decoration: none;
+  /* Remove o sublinhado */
 }
 
 .login-container p a:hover {
-  color: #0056b3; /* Cor do link ao passar o mouse */
+  color: #0056b3;
+  /* Cor do link ao passar o mouse */
 }
 
 /* Imagem do logo */
 .login-container img {
-  width: 150px; 
-  height: auto; 
-  margin: auto; 
+  width: 150px;
+  height: auto;
+  margin: auto;
   display: block;
   margin-bottom: 20px;
 }

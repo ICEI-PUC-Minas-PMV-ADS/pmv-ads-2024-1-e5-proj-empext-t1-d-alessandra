@@ -4,7 +4,7 @@ function App() {
       <h1>Login</h1>
       <h1>Cadastro</h1>
       <h1>Estoque</h1>
-        <h1>Financeiro</h1>
+      <h1>Financeiro</h1>
     </div>
   );
 }

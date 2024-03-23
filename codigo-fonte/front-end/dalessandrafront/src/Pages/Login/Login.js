@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "../estilo/login.css";
 import config from "../../config/config";
-import logo from "../../img/logo.png"; 
+import logo from "../../img/logo.png";
 
 function Login() {
   const [credentials, setCredentials] = useState({

@@ -6,7 +6,8 @@
   width: 100%;
   height: 100%;
   z-index: -1;
-  background-image: url("../../img/wallpaper.jpg"); /* Caminho para a imagem de papel de parede */
+  background-image: url("../../img/wallpaper.jpg");
+  /* Caminho para a imagem de papel de parede */
   background-size: cover;
   filter: brightness(70%);
 }
@@ -32,9 +33,9 @@
 
 /* Logo */
 .cadastro-container .logo {
-  width: 150px; 
+  width: 150px;
   height: auto;
-  margin: 0 auto 20px; 
+  margin: 0 auto 20px;
 }
 
 /* Título do formulário */
