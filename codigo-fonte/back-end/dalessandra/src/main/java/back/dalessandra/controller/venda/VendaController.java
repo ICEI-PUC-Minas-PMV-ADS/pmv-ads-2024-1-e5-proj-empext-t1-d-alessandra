@@ -29,6 +29,11 @@ public class VendaController {
         return vendaService.findByCodVenda(codVenda).orElse(null);
     }
 
+    @GetMapping("/totalVendas")
+    public float calcularTotalVendas() {
+        return vendaService.calcularTotalVendas();
+    }
+
     @PostMapping
     public Venda create(@RequestBody Venda venda) {
         return vendaService.create(venda);

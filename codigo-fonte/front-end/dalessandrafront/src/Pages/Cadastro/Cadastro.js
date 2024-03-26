@@ -33,11 +33,11 @@ function Cadastro() {
     const data = {
       "nomeCadastro": userData.nome,
       "emailCadastro": userData.email,
+      "dataNascimento":new Date(userData.dataNascimento).toLocaleDateString('pt-BR'),
       "senhaCadastro": userData.senha
 
     }
-
-    console.log(userData);
+    
     axios.post(`${config.URL}cadastros/cadastrar`, data, { headers })
       .then((response) => {
         console.log(response)
@@ -78,14 +78,14 @@ function Cadastro() {
             placeholder="Email"
           />
           <input
-            type="text"
+            type="password"
             name="senha"
             value={userData.senha}
             onChange={handleChange}
             placeholder="Senha"
           />
           <input
-            type="text"
+            type="password"
             name="confirmarSenha"
             value={userData.confirmarSenha}
             onChange={handleChange}

@@ -1,6 +1,4 @@
 import React from 'react';
-import SubMenuEstoque from '../Menu/subMenuEstoque';
-import ModalExcluir from "../Modal/ModiasEstoque/modalExcluir";
 import ModalExcluirFin from "../Modal/ModaisFinanças/modalExcluirFin";
 
 function tabelaFinancas({dados,filtro}){
@@ -10,6 +8,8 @@ function tabelaFinancas({dados,filtro}){
         const nomeDespesa = (item.nomeDespesa || '').toString();
         const valorDespesa = (item.valorDespesa || '').toString();
         const dataDespesa = (item.dataDespesa || '').toString();
+
+        const mesAnoItem = new Date(dataDespesa).toLocaleDateString('en-US', { month: '2-digit', year: 'numeric' });
 
         return (
             idDespesa.toLowerCase().includes(filtro.toLowerCase()) ||
@@ -34,7 +34,7 @@ function tabelaFinancas({dados,filtro}){
                     <td>{item.idDespesa}</td>
                     <td>{item.tipoDespesa}</td>
                     <td>{item.nomeDespesa}</td>
-                    <td>{item.valorDespesa}</td>
+                    <td>{'R$ '+item.valorDespesa}</td>
                     <td>{item.dataDespesa}</td>
                     <td><ModalExcluirFin id={item.idDespesa}/></td>
                     {/*<td><SubMenuEstoque id={item.idDespesa}/></td>*/}

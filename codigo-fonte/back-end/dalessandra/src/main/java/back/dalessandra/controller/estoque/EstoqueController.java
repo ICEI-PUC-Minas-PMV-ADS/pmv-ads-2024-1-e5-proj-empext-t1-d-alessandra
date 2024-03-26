@@ -20,7 +20,7 @@ public class EstoqueController {
     @Autowired
     EstoqueServiceMore estoqueServiceMore;
     @PostMapping()
-    public void cadastrarEstoque(Estoque estoque){
+    public void cadastrarEstoque(@RequestBody Estoque estoque){
         estoqueService.cadastrarEstoque(estoque);
     }
     @GetMapping()

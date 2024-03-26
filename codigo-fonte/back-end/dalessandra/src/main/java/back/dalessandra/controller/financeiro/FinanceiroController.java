@@ -6,11 +6,13 @@ import back.dalessandra.service.financeiro.FinanceiroService;
 import back.dalessandra.service.venda.VendaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RestController
@@ -52,6 +54,7 @@ public class FinanceiroController {
         return financeiroService.update(financeiro);
     }
 
+
     @PostMapping
     public Financeiro cadastro(@RequestBody Financeiro financeiro){
         return financeiroService.cadastro(financeiro);
@@ -60,6 +63,11 @@ public class FinanceiroController {
     @GetMapping("/totalDespesas")
     public float calcularTotalDespesas() {
         return financeiroService.calcularTotalDespesas();
+    }
+
+    @GetMapping("/filtro")
+    public List<Financeiro> findByMonthAndYear(@RequestParam int mes, @RequestParam int ano) {
+        return financeiroService.findByMonthAndYear(mes, ano);
     }
 
     @DeleteMapping("{idDespesa}")

@@ -1,0 +1,21 @@
+.alinhamentoCards,.alinhamentoMenu2 {
+    display: flex;
+    grid-template-columns: repeat(4, 4fr);
+    grid-gap: 10px;
+
+}
+.btn-success,.btn-error{
+    color: #fff;
+}
+.corTexto{
+    color: #00a96e;
+}
+.logoMenu{width: 165px;height: 209px;position: relative;top: -8vh;}
+
+.alinharCamposModal{
+    grid-template-columns: repeat(3, 3fr);
+}
+
+.alert-success,.alert-error{
+    color: #fff;
+}
