@@ -9,10 +9,19 @@ import LogoInvetario from "../../img/warehouse.png";
 import TabelaVenda from "./componentes/tabelaVenda";
 
 function Venda(){
+    const [produto, setProduto] = useState("");
+    const [itensVenda, setItensVenda] = useState([]);
 
     const adicionaItem = () => {
-
-
+        if (produto.trim() !== "") {
+            const novoItem = {
+                nome: produto,
+                codigo: "0001",
+                preco: "10"
+            };
+            setItensVenda([...itensVenda, novoItem]);
+            setProduto("");
+        }
     }
 
     return(
@@ -66,6 +75,7 @@ function Venda(){
                                 id="produto"
                                 name="produto"
                                 type="text"
+                                onChange={(e) => setProduto(e.target.value)}
                                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                             />
                         </div>
@@ -74,7 +84,7 @@ function Venda(){
                     <div/>
                     <div className="sm:col-span-6"/>
                 </div>
-                <TabelaVenda/>
+                <TabelaVenda itens={itensVenda} />
                 <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                     <div className="sm:col-span-2">
                         <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
