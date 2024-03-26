@@ -21,17 +21,17 @@ public class Cadastro {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idCadastro;
 
-    @Column( )
+    @Column
     private String nomeCadastro;
 
-    @Column( )
+    @Column
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", locale = "pt-BR", timezone = "America/Sao_Paulo")
     private Date dataNascimento;
 
-    @Column( )
+    @Column
     private String emailCadastro;
 
-    @Column( )
+    @Column
     private String senhaCadastro;
 
     // Getters e Setters
