@@ -17,7 +17,7 @@ Desenvolvimento de um Sistema Sociotécnico Inovador para aprimorar a gestão da
 
 ## Orientador(a)
 
-* <a href="https://www.linkedin.com/in/sandra-silveira-msc-itil-v3-foundation-320618/">Sandra Maria Silveira professor(a)</a>
+* Professor(a): <a href="https://www.linkedin.com/in/sandra-silveira-msc-itil-v3-foundation-320618/">Sandra Maria Silveira </a>
 
 ## Instruções de utilização
 

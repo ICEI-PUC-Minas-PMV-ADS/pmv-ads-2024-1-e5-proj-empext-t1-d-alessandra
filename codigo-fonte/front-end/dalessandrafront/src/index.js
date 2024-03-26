@@ -7,17 +7,17 @@ import Cadastro from './Pages/Cadastro/Cadastro';
 import Cliente from './Pages/Cliente/Cliente';
 import Venda from './Pages/Venda/Venda';
 import Estoque from './Pages/Estoque/Estoque';
+import Financeiro from "./Pages/Financeiro/Financeiro";
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
-import Financeiro from "./Pages/Financeiro/Financeiro";
 
 // Título da página
 document.title = "D'Alessandra - Modas";
 
 const router = createBrowserRouter([
   {
-    path: "/login",
+    path: "/",
     element: <Login />
   },
   {
@@ -25,12 +25,12 @@ const router = createBrowserRouter([
     element: <Cadastro />
   },
   {
-    path: "/financeiro",
-    element: <Financeiro />
+    path: "/estoque",
+    element: <Estoque />
   },
   {
-    path: "/",
-    element: <Estoque />
+    path: "/financeiro",
+    element: <Financeiro />
   },
   {
     path: "/cliente",

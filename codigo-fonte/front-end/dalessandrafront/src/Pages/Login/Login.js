@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "../estilo/login.css";
 import config from "../../config/config";
-import logo from "../../img/logo.png"; 
+import logo from "../../img/logo.png";
 
 function Login() {
   const [credentials, setCredentials] = useState({
@@ -31,30 +31,35 @@ function Login() {
   };
 
   return (
-    <div className="login-container">
-      <img src={logo} alt="Logo da empresa" />
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          name="email"
-          value={credentials.email}
-          onChange={handleChange}
-          placeholder="Email"
-        />
-        <input
-          type="password"
-          name="password"
-          value={credentials.password}
-          onChange={handleChange}
-          placeholder="Senha"
-        />
-        <button type="submit">Entrar</button>
-      </form>
-      <p className="error-message">{errorMessage}</p>
-      <p>
-        Não tem cadastro? <Link to="/Cadastro">Cadastre-se</Link>
-      </p>
+    <div>
+      {/* Elemento para o papel de parede */}
+      <div className="background"></div>
+      {/* Container principal */}
+      <div className="login-container">
+        <img src={logo} alt="Logo da empresa" />
+        <h2>Login</h2>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="email"
+            name="email"
+            value={credentials.email}
+            onChange={handleChange}
+            placeholder="Email"
+          />
+          <input
+            type="password"
+            name="password"
+            value={credentials.password}
+            onChange={handleChange}
+            placeholder="Senha"
+          />
+          <button type="submit">Entrar</button>
+        </form>
+        <p className="error-message">{errorMessage}</p>
+        <p>
+          Não tem cadastro? <Link to="/Cadastro">Cadastre-se</Link>
+        </p>
+      </div>
     </div>
   );
 }
