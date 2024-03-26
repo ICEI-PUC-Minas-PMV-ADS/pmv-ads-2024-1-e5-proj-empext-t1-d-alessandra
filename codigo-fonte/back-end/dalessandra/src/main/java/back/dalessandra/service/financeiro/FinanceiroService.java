@@ -5,9 +5,7 @@ import back.dalessandra.repository.financeiro.FinanceiroRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -48,6 +46,24 @@ public class FinanceiroService {
         return ("Excluido com sucesso");
     }
 
+    public List<Financeiro> findByMonthAndYear(int month, int year) {
+        List<Financeiro> financeiros = financeiroRepository.findAll();
+        List<Financeiro> financeirosDoMesEAno = new ArrayList<>();
+
+        for (Financeiro financeiro : financeiros) {
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(financeiro.getDataDespesa());
+            int mesDaDespesa = calendar.get(Calendar.MONTH) + 1; // Os meses em Calendar são baseados em zero
+            int anoDaDespesa = calendar.get(Calendar.YEAR);
+
+            if (mesDaDespesa == month && anoDaDespesa == year) {
+                financeirosDoMesEAno.add(financeiro);
+            }
+        }
+
+        return financeirosDoMesEAno;
+    }
+
     public float calcularTotalDespesas() {
         List<Financeiro> financeiros = financeiroRepository.findAll();
         float total = 0.0f;
@@ -56,4 +72,5 @@ public class FinanceiroService {
         }
         return total;
     }
+
 }

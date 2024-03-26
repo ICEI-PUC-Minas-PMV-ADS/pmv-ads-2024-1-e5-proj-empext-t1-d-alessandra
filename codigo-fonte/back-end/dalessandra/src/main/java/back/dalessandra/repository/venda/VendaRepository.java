@@ -30,6 +30,9 @@ public interface VendaRepository extends JpaRepository<Venda,Integer> {
             ":#{#venda.vlTotal})")
     void create(Venda venda);
 
+    @Query("SELECT SUM(f.vlTotal) FROM Venda f")
+    float calcularTotalVendas();
+
     @Modifying
     @Transactional
     @Query("delete from Venda where codVenda = :codVenda")

@@ -1,29 +1,63 @@
 import axios from "axios";
 import React from "react";
-import "../../Pages/estilo/estoque.css";
+import "../../Pages/estilo/financeiro.css";
 import config from "../../config/config";
 import { useEffect, useState } from "react";
 import Card from "../../Componentes/Card/Card";
 import Menu from "../../Componentes/Menu/Menu";
-import LogoInvetario from "../../img/warehouse.png";
+import Cash from "../../img/cash.png";
 import Filtro from "../../Componentes/Tabela/Filtro";
 import ModalIncluir from "../../Componentes/Modal/ModaisFinanças/modalncluirDespesa";
 import TabelaFinancas from "../../Componentes/Tabela/tabelaFinancas";
-function Financeiro(){
+function Financeiro() {
 
     const [financeiro, setFinanceiro] = useState([])
-    const [vendas, setVendas] = useState(0)
+    const [vendas, setVendas] = useState([])
+    const [valorVendas, setValorVendas] = useState(0)
+    const [valorFinanceiro, setValorFinanceiro] = useState(0)
     const [filtro, setFiltro] = useState('');
+    const [mes, setMes] = useState('');
+    const [ano, setAno] = useState('');
+
     useEffect(() => {
+        const dataAtual = new Date();
+        const mesAtual = dataAtual.toLocaleString('default', { month: 'long' });
+        const anoAtual = dataAtual.getFullYear();
+        setMes(mesAtual);
+        setAno(anoAtual);
+        obterFinanceiroPorMesEAno(mesAtual, anoAtual);
         obterFinanceiro()
         obterVendas()
-    },[])
+        obterValorTotal()
+        obterValorVendas()
+    }, [])
     const handleFiltroChange = (filtro) => {
         setFiltro(filtro);
     };
-    function obterFinanceiro(){
-        const headers ={"Content-Type":"application/json"}
-        axios.get(config.URL+'financeiro',{headers})
+
+    const handleFiltrar = () => {
+        if (mes && ano) {
+            obterFinanceiroPorMesEAno(mes, ano);
+        } else {
+            alert("Por favor, selecione o mês e o ano.");
+        }
+    };
+
+    function obterFinanceiroPorMesEAno(mes, ano) {
+        const headers = {"Content-Type":"application/json"};
+        axios.get(`${config.URL}financeiro/filtro?mes=${mes}&ano=${ano}`, {headers})
+            .then((response) => {
+                setFinanceiro(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+
+
+    function obterFinanceiro() {
+        const headers = { "Content-Type": "application/json" }
+        axios.get(config.URL + 'financeiro', { headers })
             .then((response) => {
                 setFinanceiro(response.data)
             })
@@ -31,9 +65,31 @@ function Financeiro(){
                 console.log(error)
             })
     }
-    function obterVendas(){
-        const headers ={"Content-Type":"application/json"}
-        axios.get(config.URL+'vendas',{headers})
+
+    function obterValorVendas() {
+        const headers = { "Content-Type": "application/json" }
+        axios.get(config.URL + 'vendas/valorTotalVendas', { headers })
+            .then((response) => {
+                setValorVendas(response.data)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
+
+    function obterValorTotal() {
+        const headers = { "Content-Type": "application/json" }
+        axios.get(config.URL + 'financeiro/valorTotalDespesas', { headers })
+            .then((response) => {
+                setValorFinanceiro(response.data)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
+    function obterVendas() {
+        const headers = { "Content-Type": "application/json" }
+        axios.get(config.URL + 'vendas', { headers })
             .then((response) => {
                 setVendas(response.data)
             })
@@ -42,33 +98,56 @@ function Financeiro(){
             })
     }
 
-    return(
+    return (
         <main className="bg-base-100 drawer lg:drawer-open" >
-            <Menu/>
+            <Menu />
             <br></br>
             <div className="drawer-content">
                 <section className="container mx-auto p-4 alinhamentoMenu2">
-                    <img  class="h-10 w-10" fill="none" viewBox="0 0 34 34" src={LogoInvetario}/>
+                    <img class="h-10 w-10" fill="none" viewBox="0 0 34 34" src={Cash} />
                     <h1 className="text-3xl font-bold">Financeiro</h1>
                 </section>
                 <section className="container mx-auto p-4 alinhamentoCards">
-                    <Card title="Valor Vendido: " textoExibir={vendas}/>
-                    <Card title="Valor Despesas:" textoExibir={"R$ "+financeiro}/>
+                    <Card title="Valor Vendido: " textoExibir={"R$ " + valorVendas} />
+                    <Card title="Valor Despesas:" textoExibir={"R$ " + valorFinanceiro} />
+                    <Card title="Balanço Total:" textoExibir={"R$ "} />
                 </section>
                 <br></br>
                 <br></br>
                 <section className="container mx-auto p-4 shadow-xl alinhamentoMenu2">
-                    <ModalIncluir/>
-                    <Filtro onFiltroChange={handleFiltroChange}/>
+                    <ModalIncluir />
+                    <div>
+                        <select value={mes} onChange={(e) => setMes(e.target.value)}>
+                            <option value={1}>Janeiro</option>
+                            <option value={2}>Fevereiro</option>
+                            <option value={3}>Março</option>
+                            <option value={4}>Abril</option>
+                            <option value={5}>Maio</option>
+                            <option value={6}>Junho</option>
+                            <option value={7}>Julho</option>
+                            <option value={8}>Agosto</option>
+                            <option value={9}>Setembro</option>
+                            <option value={10}>Outubro</option>
+                            <option value={11}>Novembro</option>
+                            <option value={12}>Dezembro</option>
+                        </select>
+                        <select value={ano} onChange={(e) => setAno(e.target.value)}>
+                            {Array.from({length: 10}, (v, i) => new Date().getFullYear() - i).map((year) => (
+                                <option key={year} value={year}>{year}</option>
+                            ))}
+                        </select>
+                        <button onClick={handleFiltrar}>Filtrar</button>
+                    </div>
+                    <Filtro onFiltroChange={handleFiltroChange} />
                 </section>
                 <br></br>
                 <section className="container mx-auto p-4 shadow-xl overflow-x-auto" >
                     <h3 className="text-2xl font-bold corTexto">Finanças</h3>
                     <br></br>
-                    <TabelaFinancas dados={financeiro} filtro={filtro}/>
+                    <TabelaFinancas dados={financeiro} filtro={filtro} />
                 </section>
             </div>
         </main>
     )
 
-}export default Financeiro;
+} export default Financeiro;
