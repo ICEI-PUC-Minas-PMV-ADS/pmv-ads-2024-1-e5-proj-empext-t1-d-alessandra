@@ -2,7 +2,6 @@ package back.dalessandra.service.estoque;
 
 import back.dalessandra.Model.Estoque;
 import back.dalessandra.repository.estoque.EstoqueRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +9,7 @@ import java.util.List;
 
 @Service
 
-public class EstoqueServiceMore extends  EstoqueService{
+public class EstoqueServiceBd extends  EstoqueService{
     @Autowired
     EstoqueRepository estoqueRepository;
         public String baixaNoEstoque(int id, int qtdSaida){
