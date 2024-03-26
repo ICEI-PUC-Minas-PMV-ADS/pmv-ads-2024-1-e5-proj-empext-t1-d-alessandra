@@ -1,7 +1,7 @@
 import config from "../../config/config";
 import axios from "axios";
 import React, { useState } from "react";
-import "../../Pages/estilo/estoque.css";
+import "../estilo/estoque.css";
 import Menu from "../../Componentes/Menu/Menu";
 import LogoInvetario from "../../img/warehouse.png";
 

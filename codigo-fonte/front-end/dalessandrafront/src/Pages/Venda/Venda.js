@@ -10,6 +10,11 @@ import TabelaVenda from "./componentes/tabelaVenda";
 
 function Venda(){
 
+    const adicionaItem = () => {
+
+
+    }
+
     return(
         <main className="bg-base-100 drawer lg:drawer-open" >
             <Menu/>
@@ -64,8 +69,8 @@ function Venda(){
                                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                             />
                         </div>
+                        <button className=" btn btn-success mt-6" onClick={adicionaItem}>Adicionar</button>
                     </div>
-                    <button className=" btn btn-success mt-6" >Adicionar</button>
                     <div/>
                     <div className="sm:col-span-6"/>
                 </div>
