@@ -1,6 +1,14 @@
 import React from "react";
 
 function TabelaVenda({ itens }) {
+
+    const validaDigito = (event) => {
+        const tecla = event.key;
+        if (!(tecla >= '0' && tecla <= '9') && tecla !== 'Backspace') {
+            event.preventDefault();
+        }
+    }
+
     return (
         <div className="overflow-y-auto max-h-80">
             <table className="table table-xs table-pin-rows table-pin-cols">
@@ -20,9 +28,9 @@ function TabelaVenda({ itens }) {
                         <td>{index + 1}</td>
                         <td>{item.nome}</td>
                         <td>{item.codigo}</td>
-                        <td><input type="number" defaultValue={1} /></td>
+                        <td><input type="number" onKeyDown={validaDigito} defaultValue={1} /></td>
                         <td>{item.preco}</td>
-                        <td>{item.preco}</td> {/* aqui você pode calcular o valor total se desejar */}
+                        <td>{item.preco}</td>
                     </tr>
                 ))}
                 </tbody>
