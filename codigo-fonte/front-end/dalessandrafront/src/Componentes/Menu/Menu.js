@@ -16,7 +16,7 @@ function Menu(){
             </ul>
           </details>
         </li>
-        <li><Link to="/">Estoque</Link></li>
+        <li><Link to="/estoque">Estoque</Link></li>
         <li><Link to ="/financeiro">Financeiro</Link></li>
         <li><a>Sair</a></li>
     </ul>
