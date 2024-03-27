@@ -29,7 +29,8 @@ public class ClienteService {
         return cliente;
     }
 
-    public Cliente update(Cliente cliente){
+    public Cliente update(Cliente cliente, Integer codCliente){
+        cliente.setCodCliente(codCliente);
         clienteRepository.update(cliente);
         return cliente;
     }

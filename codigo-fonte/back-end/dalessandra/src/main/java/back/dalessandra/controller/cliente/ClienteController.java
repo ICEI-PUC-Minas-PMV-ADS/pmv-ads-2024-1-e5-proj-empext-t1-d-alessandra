@@ -28,13 +28,13 @@ public class ClienteController {
     }
 
     @PostMapping
-    public Cliente create(Cliente cliente){
+    public Cliente create(@RequestBody Cliente cliente){
         return clienteService.create(cliente);
     }
 
     @PutMapping("/{codCliente}")
-    public Cliente update(Cliente cliente, @PathVariable Integer codCliente){
-        return clienteService.update(cliente);
+    public Cliente update(@RequestBody Cliente cliente, @PathVariable Integer codCliente){
+        return clienteService.update(cliente, codCliente);
     }
 
     @DeleteMapping("/{codCliente}")

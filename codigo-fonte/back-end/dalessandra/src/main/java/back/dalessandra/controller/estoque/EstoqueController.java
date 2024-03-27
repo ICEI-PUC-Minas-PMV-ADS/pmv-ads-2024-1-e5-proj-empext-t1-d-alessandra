@@ -2,10 +2,8 @@ package back.dalessandra.controller.estoque;
 
 import back.dalessandra.Model.Estoque;
 import back.dalessandra.service.estoque.EstoqueService;
-import back.dalessandra.service.estoque.EstoqueServiceMore;
-import lombok.RequiredArgsConstructor;
+import back.dalessandra.service.estoque.EstoqueServiceBd;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +16,7 @@ public class EstoqueController {
     @Autowired
     EstoqueService estoqueService;
     @Autowired
-    EstoqueServiceMore estoqueServiceMore;
+    EstoqueServiceBd estoqueServiceBd;
     @PostMapping()
     public void cadastrarEstoque(@RequestBody Estoque estoque){
         estoqueService.cadastrarEstoque(estoque);
@@ -33,36 +31,36 @@ public class EstoqueController {
     }
     @PutMapping("baixaItem/{codProduto}/{qtdSaida}")
     public String  darBaixaEstoque(@PathVariable("codProduto") int codProduto, @PathVariable("qtdSaida") int qtdSaida){
-       return estoqueServiceMore.baixaNoEstoque(codProduto, qtdSaida);
+       return estoqueServiceBd.baixaNoEstoque(codProduto, qtdSaida);
     }
     @PutMapping("adicionarMaisQuantidade/{cod}/{novaQtd}")
     public void atualizarQtdEstoque(@PathVariable("cod") int cod, @PathVariable("novaQtd") int novaQtd){
-        estoqueServiceMore.atualizarQtdEstoque(cod, novaQtd);
+        estoqueServiceBd.atualizarQtdEstoque(cod, novaQtd);
     }
     @GetMapping("buscarCodigoProduto/{nomeProduto}")
     public Estoque buscarCodigoProduto(@PathVariable("nomeProduto") String nomeProduto){
-        return estoqueServiceMore.buscarCodigoProduto(nomeProduto);
+        return estoqueServiceBd.buscarCodigoProduto(nomeProduto);
     }
     @GetMapping("quantidadeDeItemCadastrados")
     public int quantidadeDeItemCadastrados(){
-        return estoqueServiceMore.qtdItemCadastrados();
+        return estoqueServiceBd.qtdItemCadastrados();
     }
     @GetMapping("valorEstoqueComprado")
     public float valorEstoqueComprado(){
-        return estoqueServiceMore.valorEstoqueComprado();
+        return estoqueServiceBd.valorEstoqueComprado();
     }
     @GetMapping("filtroPorEstatus/{status}")
     public List<Estoque> filtroPorEstatus(@PathVariable("status") String status){
-        return estoqueServiceMore.filtroPorEstatus(status);
+        return estoqueServiceBd.filtroPorEstatus(status);
     }
     @PutMapping("atualizarValorVenda/{id}/{novoValor}")
     public String atualizarValorVenda(@PathVariable("id") int id, @PathVariable("novoValor") float novoValor){
-        estoqueServiceMore.atualizarValorVenda(id,novoValor);
+        estoqueServiceBd.atualizarValorVenda(id,novoValor);
         return ("Atualizado com sucesso");
     }
     @PutMapping("atualizarValorComprado/{id}/{novoValor}")
     public String atualizarValorComprado(@PathVariable("id") int id, @PathVariable("novoValor") float novoValor){
-        estoqueServiceMore.atualizarValorEstoque(id,novoValor);
+        estoqueServiceBd.atualizarValorEstoque(id,novoValor);
         return ("Atualizado com sucesso");
     }
 }

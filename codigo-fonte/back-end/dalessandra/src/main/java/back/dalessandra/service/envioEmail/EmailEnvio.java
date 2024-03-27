@@ -31,7 +31,7 @@ public class EmailEnvio {
 
             String emailContent =
                     "<header><img src=\"https://i.ibb.co/vd40tv7/Logo.png\" alt=\"logo\" border=\"0\"><header>"
-                    + "<h1>Olá</h1>"
+                    + "<h1>Olá !</h1>"
                     + "<p>" + content + "</p>"
                     + "<p>Atenciosamente,</p>"
                     + "<p>D'Alessandra Software</p>";

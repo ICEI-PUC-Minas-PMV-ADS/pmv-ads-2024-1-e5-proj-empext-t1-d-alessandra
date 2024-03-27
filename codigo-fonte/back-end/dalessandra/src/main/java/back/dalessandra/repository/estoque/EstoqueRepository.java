@@ -20,7 +20,9 @@ public interface EstoqueRepository extends JpaRepository<Estoque,Integer> {
     float valorEstoqueSemValorConsumidor();
 
     @Query("select u from Estoque u where status=?1")
-   List<Estoque> filtroPorEstatus(@Param("status") String status);
+    List<Estoque> filtroPorEstatus(@Param("status") String status);
 
+    @Query("SELECT u FROM Estoque u WHERE u.status='Em falta' OR u.status='Nivel critico'")
+    List<Estoque> verificarItemsCriticos();
 
 }
