@@ -5,36 +5,43 @@ import jakarta.annotation.PostConstruct;
 import back.dalessandra.service.envioEmail.EmailEnvio;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 @Service
 public class EstoqueServiceEmail extends EstoqueService{
     EmailEnvio emaiEnvio =new EmailEnvio();
     @PostConstruct
     public void init() {
-        eviarEmailNivelCriticoEstoque();
+        List<Estoque> estoqueBaixo = recuperarNivelBaixo();
+        if (estoqueBaixo!=null){
+            eviarEmailNivelCriticoEstoque(estoqueBaixo);
+        }
+
     }
 
-    public String eviarEmailNivelCriticoEstoque(){
-        List<Estoque> estoque = listarEstoque();
-        //if(estoque != null){
+    public String eviarEmailNivelCriticoEstoque(List<Estoque> estoque) {
+            LocalDateTime data = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+            String dataFormatada = data.format(formatter);
             StringBuilder htmlContent = new StringBuilder();
             htmlContent.append("<html>" +
                     "<head>" +
-                    "<title>Itens do Estoque</title>" +
+                    "<title>Relatorio do estoque</title>" +
                     "</head>" +
                     "<body>");
             htmlContent.append("<h1>Itens do Estoque</h1>");
             htmlContent.append(
                     "<table>"
-                            + "<thead>"+
-                            "<tr>"+
-                            "<th>Codigo</th>"+
-                            "<th>Produto</th>"+
-                            "<th>Marca</th>"+
-                            "<th>Status</th>"+
-                            "<th>Cor</th>"+
-                            "<th>Quantidade</th>"+
-                            "</tr>"+
+                            + "<thead>" +
+                            "<tr>" +
+                            "<th>Codigo</th>" +
+                            "<th>Produto</th>" +
+                            "<th>Marca</th>" +
+                            "<th>Status</th>" +
+                            "<th>Cor</th>" +
+                            "<th>Quantidade</th>" +
+                            "</tr>" +
                             "</thead>"
             );
             htmlContent.append("<tbody>");
@@ -52,9 +59,9 @@ public class EstoqueServiceEmail extends EstoqueService{
             htmlContent.append("</table>");
             htmlContent.append("</body></html>");
 
-            emaiEnvio.sendEmail("vitorhugoemail@gmail.com","Listar Estoque",htmlContent.toString());
+            emaiEnvio.sendEmail("vitorhugoemail@gmail.com", "Relatorio de estoque -"+dataFormatada, htmlContent.toString());
             return "enviado";
-        }
-        //return "Tudo ok";
-    //}
+        //}
+
+    }
 }

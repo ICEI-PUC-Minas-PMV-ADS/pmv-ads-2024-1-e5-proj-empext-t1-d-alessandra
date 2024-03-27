@@ -26,10 +26,6 @@ public class EstoqueService {
         estoque.setStatus("Bom");
         estoqueRepository.save(estoque);
     }
-
-    //@PostConstruct
-
-
     public List<Estoque> listarEstoque(){
         return estoqueRepository.findAll();
     }
@@ -37,6 +33,10 @@ public class EstoqueService {
     public String excluirProdutoEstoque(int id){
         estoqueRepository.deleteById(id);
         return ("Excluido com sucesso");
+    }
+
+    public List<Estoque> recuperarNivelBaixo(){
+        return estoqueRepository.verificarItemsCriticos();
     }
 
 
