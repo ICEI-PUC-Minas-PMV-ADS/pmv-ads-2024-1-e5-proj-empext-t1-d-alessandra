@@ -1,66 +1,34 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import config from '../../../config/config';
-import Alertasucesso from '../../Alertas/AlertaSucesso';
-import AlertaErro from '../../Alertas/AlertaErro';
+import axios from "axios";
+import React, { useState } from "react";
+import config from "../../../config/config";
+import AlertaErro from "../../Alertas/AlertaErro";
+import Alertasucesso from "../../Alertas/AlertaSucesso";
 
-function ModalEditar({ id }) {
+function ModalEditar({ id, tipoDespesaInicial, nomeDespesaInicial, valorDespesaInicial, dataDespesaInicial }) {
     console.log('ID recebido:', id);
-    const [tipoDespesa, setTipoDespesa] = useState('');
-    const [nomeDespesa, setNomeDespesa] = useState('');
-    const [valorDespesa, setValorDespesa] = useState('');
-    const [dataDespesa, setDataDespesa] = useState('');
+    const [tipoDespesa, setTipoDespesa] = useState(tipoDespesaInicial);
+    const [nomeDespesa, setNomeDespesa] = useState(nomeDespesaInicial);
+    const [valorDespesa, setValorDespesa] = useState(valorDespesaInicial);
+    const [dataDespesa, setDataDespesa] = useState(dataDespesaInicial);
+
     const [alertVisible, setAlertVisible] = useState(false);
     const [alertaErro, setAlertaErro] = useState(false);
-    const [mensagemError, setMensagemError] = useState('');
+    const [mensagemError, setMensagemError] = useState();
 
-    useEffect(() => {
-        const buscarDados = async () => {
-            try {
-                const response = await axios.get(config.URL + 'financeiro/' + id);
-                const dados = response.data;
-                setTipoDespesa(dados.tipoDespesa);
-                setNomeDespesa(dados.nomeDespesa);
-                setValorDespesa(dados.valorDespesa);
-                setDataDespesa(dados.dataDespesa);
-            } catch (error) {
-                console.error('Erro ao buscar dados:', error);
-            }
-        };
-
-        buscarDados();
-    }, [id]);
-
-    const capturaTipoDespesa = (event) => {
-        setTipoDespesa(event.target.value);
-    };
-
-    const capturaNomeDespesa = (event) => {
-        setNomeDespesa(event.target.value);
-    };
-
-    const capturaValorDespesa = (event) => {
-        setValorDespesa(event.target.value);
-    };
-
-    const capturaDataDespesa = (event) => {
-        setDataDespesa(event.target.value);
-    };
-
-    function salvar() {
+    function atualizar() {
         const headers = {
-            'accept': "*/*",
             'Content-Type': 'application/json'
-        };
+        }
 
         const data = {
             "tipoDespesa": tipoDespesa,
             "nomeDespesa": nomeDespesa,
             "valorDespesa": valorDespesa,
-            "dataDespesa": new Date(dataDespesa).toLocaleDateString('pt-BR')
-        };
+            "dataDespesa": new Date(dataDespesa).toLocaleDateString('pt-BR'),
+        }
 
-        axios.put(config.URL + 'financeiro/' + id, data, { headers })
+        axios.put(
+            config.URL + 'financeiro/' + id, data, { headers })
             .then((response) => {
                 if (response.status === 200) {
                     setAlertVisible(true);
@@ -73,46 +41,47 @@ function ModalEditar({ id }) {
             })
             .catch((error) => {
                 if (error.response.status === 400) {
-                    setMensagemError("Erro: " + error.response.status + ". Verifique se todos os campos estão digitados de maneira correta");
+                    setMensagemError("Erro: " + error.response.status + ". Verifique se todos os campos estão digitados corretamente.");
                     setAlertaErro(true);
                 } else {
                     setAlertaErro(true);
-                    setMensagemError("Ops! Aconteceu algum erro interno");
+                    setMensagemError("Ops! Ocorreu um erro interno.");
                 }
-            });
+            })
     }
 
     return (
         <div>
-            <button className="btn btn-success" onClick={() => document.getElementById('my_modal_editarFinanceiro' + id).showModal()}>
-                Editar
-            </button>
-            <dialog id={"my_modal_editarFinanceiro" + id} className="modal">
-                <div className="modal-box w-11/12 max-w-5xl alinharCamposModal">
-                    {alertVisible && <Alertasucesso message="Item atualizado com sucesso" />}
+            <button className="" onClick={() => document.getElementById('my_modal_editar' + id).showModal()}>Editar</button>
+            <dialog id={'my_modal_editar' + id} className="modal">
+                <div className="modal-box w-11/12 max-w-5xl">
+                    {alertVisible && <Alertasucesso message="Despesa atualizada com sucesso!" />}
                     {alertaErro && <AlertaErro message={mensagemError} />}
-                    <br />
+                    <br></br>
                     <h3 className="font-bold text-lg">Editar Despesa</h3>
-                    <p className="py-4">Preencha os campos abaixo para editar a despesa.</p>
-                    <select id="tipoDespesa" value={tipoDespesa} onChange={capturaTipoDespesa} className="select select-ghost w-full max-w-xs">
-                        <option disabled selected>Tipo Despesa</option>
+                    <select id="tipoDespesa" value={tipoDespesa} onChange={(e) => setTipoDespesa(e.target.value)} className="select select-ghost w-full max-w-xs">
+                        <option disabled>Tipo Despesa</option>
                         <option value="Contas">Contas</option>
                         <option value="Investimento">Investimento</option>
                         <option value="Imposto">Imposto</option>
                         <option value="Outros">Outros</option>
                         <option value="Utilidades">Utilidades</option>
                     </select>
-                    <input id="nomeDespesa" type="text" value={nomeDespesa} onChange={capturaNomeDespesa} placeholder="Descrição" className="input input-ghost w-full max-w-xs" />
-                    <input id="valorDespesa" type="number" value={valorDespesa} onChange={capturaValorDespesa} placeholder="Valor" className="input input-ghost w-full max-w-xs" />
-                    <input id="dataDespesa" type="date" value={dataDespesa} onChange={capturaDataDespesa} placeholder="Data" className="input input-ghost w-full max-w-xs" />
+                    <input type="text" value={nomeDespesa} onChange={(e) => setNomeDespesa(e.target.value)} placeholder="Descrição" className="input input-ghost w-full max-w-xs" />
+                    <input type="Valor" value={valorDespesa} onChange={(e) => setValorDespesa(e.target.value)} placeholder="Valor da Despesa" className="input input-ghost w-full max-w-xs" />
+                    <input type="date" value={dataDespesa} onChange={(e) => setDataDespesa(e.target.value)} placeholder="Data da Despesa" className="input input-ghost w-full max-w-xs" />
                     <div className="modal-action">
-                        <button className="btn btn-success" onClick={() => salvar()}>Salvar</button>
-                        <button className="btn" onClick={() => document.getElementById('my_modal_editarFinanceiro' + id).close()}>Cancelar</button>
+                        <button className="btn btn-success" onClick={atualizar}>Atualizar</button>
+                        <form method="dialog">
+                            <button className="btn" onClick={() => setAlertaErro(false)}>Fechar</button>
+                        </form>
                     </div>
                 </div>
             </dialog>
         </div>
-    );
+    )
 }
 
 export default ModalEditar;
+
+

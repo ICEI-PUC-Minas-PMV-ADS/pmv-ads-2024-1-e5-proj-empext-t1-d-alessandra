@@ -29,8 +29,7 @@ function ModalIncluir() {
             "tipoDespesa": tipoDespesa,
             "nomeDespesa": nomeDespesa,
             "valorDespesa": valorDespesa,
-            "dataDespesa": new Date(dataDespesa).toLocaleDateString('pt-BR')
-            
+            "dataDespesa": new Date(dataDespesa).toLocaleDateString('pt-BR'),
         }
     
 
