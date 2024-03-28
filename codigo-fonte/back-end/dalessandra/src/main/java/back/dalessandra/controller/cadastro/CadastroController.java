@@ -22,10 +22,10 @@ public class CadastroController {
     }
 
     @PostMapping("/cadastrar")
-    public ResponseEntity<?> cadastrarCadastro(Cadastro cadastro) {
+    public ResponseEntity<?> cadastrarCadastro(@RequestBody Cadastro cadastro) {
         try {
-            cadastroService.cadastrarCadastro(cadastro);
-            return ResponseEntity.status(HttpStatus.CREATED).body("Cadastro realizado com sucesso.");
+            Cadastro novoCadastro = cadastroService.cadastrarCadastro(cadastro);
+            return ResponseEntity.status(HttpStatus.CREATED).body("Cadastro realizado com sucesso");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Erro ao cadastrar: " + e.getMessage());
         }

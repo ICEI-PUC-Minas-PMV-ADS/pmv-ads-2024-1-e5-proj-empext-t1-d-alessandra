@@ -10,7 +10,7 @@ public class CadastroService {
     @Autowired
     private CadastroRepository cadastroRepository;
 
-    public void cadastrarCadastro(Cadastro cadastro) {
-        cadastroRepository.save(cadastro);
+    public Cadastro cadastrarCadastro(Cadastro cadastro) {
+        return cadastroRepository.save(cadastro);
     }
 }
