@@ -2,7 +2,6 @@ package back.dalessandra.service.estoque;
 
 import back.dalessandra.Model.Estoque;
 import back.dalessandra.repository.estoque.EstoqueRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +9,7 @@ import java.util.List;
 
 @Service
 
-public class EstoqueServiceMore extends  EstoqueService{
+public class EstoqueServiceBd extends  EstoqueService{
     @Autowired
     EstoqueRepository estoqueRepository;
         public String baixaNoEstoque(int id, int qtdSaida){
@@ -38,7 +37,9 @@ public class EstoqueServiceMore extends  EstoqueService{
                     return "Salvo com sucesso";
                     }
                 }
-                else { return "Produto nao existe";}
+            else {
+                    return "Produto nao existe";
+                }
              }
          public String atualizarStatus(float nivel){
             if(nivel<=20){
@@ -64,14 +65,14 @@ public class EstoqueServiceMore extends  EstoqueService{
                 estoqueRepository.save(produto);
             }
             else if(qtdAtual==0 && novaQtd!=0){
-
                 produto.setQuantidadeItem(novaQtd);
                 produto.setQtdAtual(novaQtd);
                 produto.setValorTotalEmEstoque(novaQtd*valorComprado);
                 produto.setValorTotalAVender(novaQtd*valorAvender);
                 produto.setStatus("Bom");
                 estoqueRepository.save(produto);
-            } else if (qtdAtual!=0 && novaQtd!=0) {
+            }
+            else if (qtdAtual!=0 && novaQtd!=0) {
                 int somaQtd = novaQtd+produto.getQtdAtual();
                 produto.setQuantidadeItem(somaQtd);
                 produto.setQtdAtual(somaQtd);
@@ -87,6 +88,7 @@ public class EstoqueServiceMore extends  EstoqueService{
         }
 
         public int qtdItemCadastrados(){
+
             return estoqueRepository.quantidadeItem();
         }
         public  float valorEstoqueComprado(){

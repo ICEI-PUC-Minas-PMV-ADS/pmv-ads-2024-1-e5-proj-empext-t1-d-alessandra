@@ -28,8 +28,11 @@ public class FinanceiroService {
     }
 
     public Financeiro update(Financeiro financeiro){
-        financeiroRepository.update(financeiro);
-        return financeiro;
+        return financeiroRepository.save(financeiro);
+    }
+
+    public Optional<Financeiro> findById(Integer idDespesa) {
+        return financeiroRepository.findById(idDespesa);
     }
 
     public Optional<Financeiro> findBydataDespesa(Date dataDespesa){
@@ -53,7 +56,7 @@ public class FinanceiroService {
         for (Financeiro financeiro : financeiros) {
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(financeiro.getDataDespesa());
-            int mesDaDespesa = calendar.get(Calendar.MONTH) + 1; // Os meses em Calendar são baseados em zero
+            int mesDaDespesa = calendar.get(Calendar.MONTH) + 1;
             int anoDaDespesa = calendar.get(Calendar.YEAR);
 
             if (mesDaDespesa == month && anoDaDespesa == year) {
@@ -63,6 +66,7 @@ public class FinanceiroService {
 
         return financeirosDoMesEAno;
     }
+
 
     public float calcularTotalDespesas() {
         List<Financeiro> financeiros = financeiroRepository.findAll();

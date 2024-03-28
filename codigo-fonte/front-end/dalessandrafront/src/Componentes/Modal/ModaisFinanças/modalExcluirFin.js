@@ -6,6 +6,7 @@ import LogoExlivraria from "../../../img/bin.png";
 import Alertasucesso from "../../Alertas/AlertaSucesso";
 
 function ModalExcluirFin({id}){
+    console.log('ID recebido:', id);
     const [alertVisible, setAlertVisible] = useState(false);
    function excluir(id){
        axios.delete(config.URL+'financeiro/'+id).

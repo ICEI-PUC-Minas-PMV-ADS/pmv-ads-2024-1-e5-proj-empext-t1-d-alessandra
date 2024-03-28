@@ -8,6 +8,7 @@ public class DalessandraApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(DalessandraApplication.class, args);
+
 	}
 
 }
