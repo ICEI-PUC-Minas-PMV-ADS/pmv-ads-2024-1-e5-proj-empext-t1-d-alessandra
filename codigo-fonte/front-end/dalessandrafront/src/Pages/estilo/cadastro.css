@@ -1,4 +1,3 @@
-/* Estilo para o papel de parede */
 .background {
   position: fixed;
   top: 0;
@@ -7,12 +6,10 @@
   height: 100%;
   z-index: -1;
   background-image: url("../../img/wallpaper.jpg");
-  /* Caminho para a imagem de papel de parede */
   background-size: cover;
   filter: brightness(70%);
 }
 
-/* Container principal */
 .cadastro-container {
   position: relative;
   max-width: 400px;
@@ -31,25 +28,21 @@
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Logo */
 .cadastro-container .logo {
   width: 150px;
   height: auto;
   margin: 0 auto 20px;
 }
 
-/* Título do formulário */
 .cadastro-container h2 {
   margin-bottom: 20px;
 }
 
-/* Formulário */
 .cadastro-container form {
   display: flex;
   flex-direction: column;
 }
 
-/* Campos de entrada */
 .cadastro-container input {
   margin-bottom: 10px;
   padding: 10px;
@@ -62,7 +55,6 @@
   border-color: #007bff;
 }
 
-/* Botão de envio */
 .cadastro-container button {
   padding: 10px;
   background-color: #28a745;
@@ -77,13 +69,11 @@
   background-color: #218838;
 }
 
-/* Mensagem de erro */
 .cadastro-container .error-message {
   color: #dc3545;
   margin-top: 20px;
 }
 
-/* Links */
 .cadastro-container p {
   margin-top: 20px;
   transition: color 0.3s;
