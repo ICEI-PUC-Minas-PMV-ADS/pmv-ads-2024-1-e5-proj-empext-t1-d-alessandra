@@ -25,8 +25,8 @@ function Login() {
     e.preventDefault();
     try {
       const response = await axios.post(`${config.URL}/login`, credentials);
-      // Lógica para lidar com a resposta do servidor após o login
-      history.push("/vendas"); // Redirecionar após o login bem-sucedido
+
+      history.push("/vendas"); 
     } catch (error) {
       setErrorMessage("Email ou senha incorretos.");
     }
