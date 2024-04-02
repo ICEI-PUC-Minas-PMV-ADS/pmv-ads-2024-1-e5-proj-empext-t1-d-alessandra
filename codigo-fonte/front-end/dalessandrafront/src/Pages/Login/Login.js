@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link, useHistory } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import "../estilo/login.css";
 import config from "../../config/config";
 import logo from "../../img/logo.png";
 
 function Login() {
+  const navigate = useNavigate()
   const [credentials, setCredentials] = useState({
     email: "",
     password: ""
   });
-  const [errorMessage, setErrorMessage] = useState("");
-  const history = useHistory();
+  //const [errorMessage, setErrorMessage] = useState("");
+  //const history = useHistory();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,16 +21,21 @@ function Login() {
       [name]: value
     });
   };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post(`${config.URL}/login`, credentials);
-
-      history.push("/vendas"); 
-    } catch (error) {
-      setErrorMessage("Email ou senha incorretos.");
-    }
+  const teste = () =>{
+      console.log("oi")
+  }
+  const handleSubmit =()=> {
+    axios.get(`${config.URL}login/validar/${credentials.email}/${credentials.password}`)
+    .then((response)=>{
+      if(response.status == 200 && response.data =="ok"){
+          console.log(response)
+         
+        return navigate("vendas")
+      }
+    })
+    .catch((error)=>{
+      console.log(error)
+    })
   };
 
   return (
@@ -38,7 +44,7 @@ function Login() {
       <div className="login-container">
         <img src={logo} alt="Logo da empresa" />
         <h2>Login</h2>
-        <form onSubmit={handleSubmit}>
+        <form>
           <input
             type="email"
             name="email"
@@ -53,9 +59,9 @@ function Login() {
             onChange={handleChange}
             placeholder="Senha"
           />
-          <button type="submit">Entrar</button>
+        
         </form>
-        <p className="error-message">{errorMessage}</p>
+        <button onClick={()=>handleSubmit()}>Entrar</button>
         <p>
           Não tem cadastro? <Link to="/Cadastro">Cadastre-se</Link>
         </p>
