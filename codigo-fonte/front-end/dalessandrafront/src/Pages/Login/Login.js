@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "../estilo/login.css";
 import config from "../../config/config";
 import logo from "../../img/logo.png";
@@ -11,6 +11,7 @@ function Login() {
     password: ""
   });
   const [errorMessage, setErrorMessage] = useState("");
+  const history = useHistory();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,6 +26,7 @@ function Login() {
     try {
       const response = await axios.post(`${config.URL}/login`, credentials);
       // Lógica para lidar com a resposta do servidor após o login
+      history.push("/vendas"); // Redirecionar após o login bem-sucedido
     } catch (error) {
       setErrorMessage("Email ou senha incorretos.");
     }
@@ -32,9 +34,7 @@ function Login() {
 
   return (
     <div>
-      {/* Elemento para o papel de parede */}
       <div className="background"></div>
-      {/* Container principal */}
       <div className="login-container">
         <img src={logo} alt="Logo da empresa" />
         <h2>Login</h2>

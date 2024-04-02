@@ -25,6 +25,10 @@ const router = createBrowserRouter([
     element: <Cadastro />
   },
   {
+    path: "/vendas",
+    element: <Venda />
+  },
+  {
     path: "/estoque",
     element: <Estoque />
   },
@@ -35,11 +39,7 @@ const router = createBrowserRouter([
   {
     path: "/cliente",
     element: <Cliente />
-  },
-  {
-    path: "/vendas",
-    element: <Venda />
-  },
+  }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

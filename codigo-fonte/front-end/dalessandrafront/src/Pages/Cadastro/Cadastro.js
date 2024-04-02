@@ -94,7 +94,7 @@ function Cadastro() {
           <button type="submit" onClick={() => handleSubmit()}>Cadastrar</button>
         </form>
         <p>
-          Já possui uma conta? <Link to="/login">Faça login</Link>
+          Já possui uma conta? <Link to="/">Faça login</Link>
         </p>
       </div>
     </div>
