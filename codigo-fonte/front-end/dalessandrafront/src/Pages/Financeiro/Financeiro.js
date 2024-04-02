@@ -8,6 +8,7 @@ import Cash from "../../img/cash.png";
 import ModalIncluir from "../../Componentes/Modal/ModaisFinanças/modalncluirDespesa";
 import TabelaFinancas from "../../Componentes/Tabela/tabelaFinancas";
 import Filtro from "../../Componentes/Tabela/Filtro";
+import FiltroData from "../../Componentes/Tabela/FiltroData";
 
 function Financeiro() {
 
@@ -16,68 +17,28 @@ function Financeiro() {
     const [valorVendas, setValorVendas] = useState(0);
     const [valorFinanceiro, setValorFinanceiro] = useState(0);
     const [filtro, setFiltro] = useState('');
-    const [mes, setMes] = useState('');
-    const [ano, setAno] = useState('');
-    const mesesDoAno = [
-        "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
-        "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
-    ];
-
-
-    useEffect(() => {
-        const dataAtual = new Date();
-        const mesAtual = dataAtual.getMonth() + 1;
-        const anoAtual = dataAtual.getFullYear();
-        setMes(mesAtual);
-        setAno(anoAtual);
-        obterFinanceiroPorMesEAno(mesAtual, anoAtual);
-        obterVendas();
-    }, []);
-
-    useEffect(() => {
-        obterValorTotal();
-        obterValorVendas();
-    }, [financeiro, vendas]);
 
     const handleFiltroChange = (filtro) => {
         setFiltro(filtro);
     };
 
-    const handleFiltrar = () => {
-        if (mes && ano) {
-            obterFinanceiroPorMesEAno(mes, ano);
-        } else {
-            alert("Por favor, selecione o mês e o ano.");
-        }
-    };
+    useEffect(() => {
+        obterFinanceiro();
+        obterValorTotal();
+        obterVendas();
+        obterValorVendas();
+    }, [])
 
-    function obterFinanceiroPorMesEAno(mes, ano) {
+    const obterFinanceiro = () => {
         const headers = { "Content-Type": "application/json" };
-        axios.get(`${config.URL}financeiro/filtro?mes=${mes}&ano=${ano}`, { headers })
+        axios.get(config.URL + 'financeiro', { headers })
             .then((response) => {
-                console.log("Dados brutos:", response.data);
-                const financeiroOrdenado = response.data.sort((a, b) => new Date(b.dataDespesa) - new Date(a.dataDespesa));
-                console.log("Financeiro Ordenado:", financeiroOrdenado);
-                setFinanceiro(financeiroOrdenado);
-                calcularValorDespesasMensais(financeiroOrdenado);
+                setFinanceiro(response.data);
             })
             .catch((error) => {
                 console.log(error);
             });
-    }
-
-    function calcularValorDespesasMensais(financeiroFiltrado) {
-        const despesasMensais = financeiroFiltrado.reduce((total, despesa) => {
-            const dataDespesa = new Date(despesa.dataDespesa);
-            const mesDespesa = dataDespesa.getMonth() + 1; // Adiciona 1 porque os meses vão de 0 a 11
-            if (mesDespesa === parseInt(mes, 10)) {
-                return total + despesa.valorDespesa;
-            } else {
-                return total;
-            }
-        }, 0);
-        setValorFinanceiro(despesasMensais);
-    }
+    };
 
 
     function obterValorTotal() {
@@ -132,21 +93,6 @@ function Financeiro() {
                 <section className="container mx-auto p-4 shadow-xl alinhamentoMenu2">
                     <ModalIncluir />
                     <div className="flex space-x-4">
-                        <select className="select select-ghost w-full max-w-xs" value={mes} onChange={(e) => setMes(e.target.value)}>
-                            <option value="">Selecione o mês</option>
-                            <option value="Todos">Todos</option>
-                            {mesesDoAno.map((month, index) => (
-                                <option key={index} value={index + 1}>{month}</option>
-                            ))}
-                        </select>
-                        <select className="select select-ghost w-full max-w-xs" value={ano} onChange={(e) => setAno(e.target.value)}>
-                            <option value="">Selecione o ano</option>
-                            <option value="Todos">Todos</option>
-                            {Array.from({ length: 10 }, (_, i) => new Date().getFullYear() - i).map((year) => (
-                                <option key={year} value={year}>{year}</option>
-                            ))}
-                        </select>
-                        <button className="btn btn-success" onClick={handleFiltrar}>Filtrar</button>
                         <Filtro onFiltroChange={handleFiltroChange} />
                     </div>
                 </section>
@@ -154,7 +100,7 @@ function Financeiro() {
                 <section className="container mx-auto p-4 shadow-xl overflow-x-auto" >
                     <h3 className="text-2xl font-bold corTexto">Finanças</h3>
                     <br></br>
-                    <TabelaFinancas dados={financeiro} filtro={filtro} />
+                        <TabelaFinancas dados={financeiro} filtro={filtro} />
                 </section>
             </div>
         </main>

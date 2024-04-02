@@ -4,12 +4,13 @@ import config from "../../../config/config";
 import AlertaErro from "../../Alertas/AlertaErro";
 import Alertasucesso from "../../Alertas/AlertaSucesso";
 
-function ModalEditar({ id, tipoDespesaInicial, nomeDespesaInicial, valorDespesaInicial, dataDespesaInicial }) {
+function ModalEditar({ id, tipoDespesaInicial, nomeDespesaInicial, valorDespesaInicial, dataDespesaInicial, dataVencimentoInicial }) {
     console.log('ID recebido:', id);
     const [tipoDespesa, setTipoDespesa] = useState(tipoDespesaInicial);
     const [nomeDespesa, setNomeDespesa] = useState(nomeDespesaInicial);
     const [valorDespesa, setValorDespesa] = useState(valorDespesaInicial);
     const [dataDespesa, setDataDespesa] = useState(dataDespesaInicial);
+    const [dataVencimento, setDataVencimento] = useState(dataVencimentoInicial);
 
     const [alertVisible, setAlertVisible] = useState(false);
     const [alertaErro, setAlertaErro] = useState(false);
@@ -25,6 +26,7 @@ function ModalEditar({ id, tipoDespesaInicial, nomeDespesaInicial, valorDespesaI
             "nomeDespesa": nomeDespesa,
             "valorDespesa": valorDespesa,
             "dataDespesa": new Date(dataDespesa).toLocaleDateString('pt-BR'),
+            "dataVencimento": new Date(dataVencimento).toLocaleDateString('pt-BR')
         }
 
         axios.put(
@@ -69,7 +71,8 @@ function ModalEditar({ id, tipoDespesaInicial, nomeDespesaInicial, valorDespesaI
                     </select>
                     <input type="text" value={nomeDespesa} onChange={(e) => setNomeDespesa(e.target.value)} placeholder="Descrição" className="input input-ghost w-full max-w-xs" />
                     <input type="Valor" value={valorDespesa} onChange={(e) => setValorDespesa(e.target.value)} placeholder="Valor da Despesa" className="input input-ghost w-full max-w-xs" />
-                    <input type="date" value={dataDespesa} onChange={(e) => setDataDespesa(e.target.value)} placeholder="Data da Despesa" className="input input-ghost w-full max-w-xs" />
+                    <input type="date" value={dataDespesa} onChange={(e) => setDataDespesa(e.target.value)} placeholder="Data do Pagamento" className="input input-ghost w-full max-w-xs" />
+                    <input type="date" value={dataVencimento} onChange={(e) => setDataVencimento(e.target.value)} placeholder="Data de Vencimento" className="input input-ghost w-full max-w-xs" />
                     <div className="modal-action">
                         <button className="btn btn-success" onClick={atualizar}>Atualizar</button>
                         <form method="dialog">

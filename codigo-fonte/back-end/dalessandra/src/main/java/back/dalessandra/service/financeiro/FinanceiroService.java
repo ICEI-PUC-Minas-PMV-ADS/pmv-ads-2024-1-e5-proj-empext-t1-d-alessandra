@@ -17,13 +17,14 @@ public class FinanceiroService {
         return financeiroRepository.findAll();
     }
 
-    /*public Financeiro cadastro(Financeiro financeiro) {
-        return financeiroRepository.save(financeiro);
-    }*/
-
     public Financeiro cadastro(Financeiro financeiro) {
         float totalDespesas = calcularTotalDespesas();
         financeiro.setValorTotalDespesas(totalDespesas);
+
+        if (financeiro.getDataVencimento() == null) {
+            financeiro.setDataVencimento(null);
+        }
+
         return financeiroRepository.save(financeiro);
     }
 
@@ -49,23 +50,32 @@ public class FinanceiroService {
         return ("Excluido com sucesso");
     }
 
-    public List<Financeiro> findByMonthAndYear(int month, int year) {
+    public List<Financeiro> findByDias(Integer dia, Integer mes, Integer ano) {
         List<Financeiro> financeiros = financeiroRepository.findAll();
-        List<Financeiro> financeirosDoMesEAno = new ArrayList<>();
 
-        for (Financeiro financeiro : financeiros) {
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTime(financeiro.getDataDespesa());
-            int mesDaDespesa = calendar.get(Calendar.MONTH) + 1;
-            int anoDaDespesa = calendar.get(Calendar.YEAR);
+        if (dia != null || mes != null || ano != null) {
+            List<Financeiro> financeirosFiltrados = new ArrayList<>();
 
-            if (mesDaDespesa == month && anoDaDespesa == year) {
-                financeirosDoMesEAno.add(financeiro);
+            for (Financeiro financeiro : financeiros) {
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(financeiro.getDataDespesa());
+                int diaDespesa = calendar.get(Calendar.DAY_OF_MONTH);
+                int mesDespesa = calendar.get(Calendar.MONTH) + 1;
+                int anoDespesa = calendar.get(Calendar.YEAR);
+
+                if ((dia == null || diaDespesa == dia) &&
+                        (mes == null || mesDespesa == mes) &&
+                        (ano == null || anoDespesa == ano)) {
+                    financeirosFiltrados.add(financeiro);
+                }
             }
-        }
 
-        return financeirosDoMesEAno;
+            return financeirosFiltrados;
+        } else {
+            return financeiros;
+        }
     }
+
 
 
     public float calcularTotalDespesas() {
@@ -76,5 +86,10 @@ public class FinanceiroService {
         }
         return total;
     }
+
+    public List<Financeiro> findAllOrderByDataDespesaDesc() {
+        return financeiroRepository.findAllOrderByDataDespesaDesc();
+    }
+
 
 }

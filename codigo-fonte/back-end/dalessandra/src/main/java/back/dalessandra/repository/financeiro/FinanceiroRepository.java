@@ -26,12 +26,13 @@ public interface FinanceiroRepository extends JpaRepository<Financeiro,Integer> 
 
     @Modifying
     @Transactional
-    @Query("insert into Financeiro (idDespesa, tipoDespesa, nomeDespesa, valorDespesa, dataDespesa) " +
+    @Query("insert into Financeiro (idDespesa, tipoDespesa, nomeDespesa, valorDespesa, dataDespesa, dataVencimento) " +
             "values (:#{#financeiro.idDespesa}, " +
             ":#{#financeiro.tipoDespesa}, " +
             ":#{#financeiro.nomeDespesa}, " +
             ":#{#financeiro.valorDespesa}, " +
-            ":#{#financeiro.dataDespesa})")
+            ":#{#financeiro.dataDespesa}, " +
+            ":#{#financeiro.dataVencimento})")
     void cadastro(Financeiro financeiro);
 
     @Modifying
@@ -39,7 +40,8 @@ public interface FinanceiroRepository extends JpaRepository<Financeiro,Integer> 
     @Query("update Financeiro set nomeDespesa = :#{#financeiro.nomeDespesa}, " +
             "tipoDespesa = :#{#financeiro.tipoDespesa}, " +
             "valorDespesa = :#{#financeiro.valorDespesa}, " +
-            "dataDespesa = :#{#financeiro.dataDespesa} " +
+            "dataDespesa = :#{#financeiro.dataDespesa}, " +
+            "dataVencimento = :#{#financeiro.dataVencimento} " +
             "where idDespesa = :#{#financeiro.idDespesa}")
     void update(Financeiro financeiro);
 
@@ -51,8 +53,11 @@ public interface FinanceiroRepository extends JpaRepository<Financeiro,Integer> 
     @Query("SELECT SUM(f.valorDespesa) FROM Financeiro f")
     float calcularTotalDespesas();
 
-    @Query("SELECT f FROM Financeiro f WHERE MONTH(f.dataDespesa) = :month AND YEAR(f.dataDespesa) = :year")
-    List<Financeiro> findByMonthAndYear(@Param("month") int month, @Param("year") int year);
+    @Query("SELECT f FROM Financeiro f WHERE (:dia is null or DAY(f.dataDespesa) = :dia) AND (:mes is null or MONTH(f.dataDespesa) = :mes) AND (:ano is null or YEAR(f.dataDespesa) = :ano)")
+    List<Financeiro> findByDias(@Param("dia") Integer dia, @Param("mes") Integer mes, @Param("ano") Integer ano);
 
+
+    @Query("SELECT f FROM Financeiro f ORDER BY f.dataDespesa DESC")
+    List<Financeiro> findAllOrderByDataDespesaDesc();
 
 }

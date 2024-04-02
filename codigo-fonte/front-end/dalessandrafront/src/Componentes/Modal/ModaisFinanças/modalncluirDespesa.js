@@ -10,11 +10,13 @@ function ModalIncluir() {
     const [nomeDespesa, setNomeDespesa] = useState()
     const [valorDespesa, setValorDespesa] = useState()
     const [dataDespesa, setDataDespesa] = useState()
+    const [dataVencimento, setDataVencimento] = useState()
 
     const capturaTipoDespesa = (event) => { setTipoDespesa(event.target.value); }
     const capturaNomeDespesa = (event) => { setNomeDespesa(event.target.value); }
     const capturaValorDespesa = (event) => { setValorDespesa(event.target.value); }
     const capturaDataDespesa = (event) => { setDataDespesa(event.target.value); }
+    const capturaDataVencimento = (event) => { setDataVencimento(event.target.value); }
 
     const [alertVisible, setAlertVisible] = useState(false);
     const [alertaErro, setAlertaErro] = useState(false);
@@ -30,6 +32,7 @@ function ModalIncluir() {
             "nomeDespesa": nomeDespesa,
             "valorDespesa": valorDespesa,
             "dataDespesa": new Date(dataDespesa).toLocaleDateString('pt-BR'),
+            "dataVencimento": new Date(dataVencimento).toLocaleDateString('pt-BR')
         }
     
 
@@ -80,7 +83,9 @@ function ModalIncluir() {
                         class="input input-ghost w-full max-w-xs" />
                     <input id="valorDespesa" type="Valor" onChange={capturaValorDespesa} placeholder="Valor da Despesa"
                         class="input input-ghost w-full max-w-xs" />
-                    <input id="dataDespesa" type="date" onChange={capturaDataDespesa} placeholder="Data da Despesa"
+                    <input id="dataDespesa" type="date" onChange={capturaDataDespesa} placeholder="Data da Pagamento"
+                        class="input input-ghost w-full max-w-xs" />
+                    <input id="dataVencimento" type="date" onChange={capturaDataVencimento} placeholder="Data de Vencimento"
                         class="input input-ghost w-full max-w-xs" />
                     <div className="modal-action">
 

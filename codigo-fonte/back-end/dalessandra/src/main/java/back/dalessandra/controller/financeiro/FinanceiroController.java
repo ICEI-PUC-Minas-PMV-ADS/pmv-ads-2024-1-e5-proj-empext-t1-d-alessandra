@@ -62,6 +62,7 @@ public class FinanceiroController {
         existingFinanceiro.setNomeDespesa(financeiro.getNomeDespesa());
         existingFinanceiro.setValorDespesa(financeiro.getValorDespesa());
         existingFinanceiro.setDataDespesa(financeiro.getDataDespesa());
+        existingFinanceiro.setDataVencimento(financeiro.getDataVencimento());
 
         financeiroService.update(existingFinanceiro);
 
@@ -80,8 +81,19 @@ public class FinanceiroController {
     }
 
     @GetMapping("/filtro")
-    public List<Financeiro> findByMonthAndYear(@RequestParam int mes, @RequestParam int ano) {
-        return financeiroService.findByMonthAndYear(mes, ano);
+    public List<Financeiro> findByDias(
+            @RequestParam(required = false) Integer dia,
+            @RequestParam(required = false) Integer mes,
+            @RequestParam(required = false) Integer ano) {
+
+        return financeiroService.findByDias(dia, mes, ano);
+    }
+
+
+
+    @GetMapping("/despesasOrdenadas")
+    public List<Financeiro> findAllOrderByDataDespesaDesc() {
+        return financeiroService.findAllOrderByDataDespesaDesc();
     }
 
     @DeleteMapping("{idDespesa}")
