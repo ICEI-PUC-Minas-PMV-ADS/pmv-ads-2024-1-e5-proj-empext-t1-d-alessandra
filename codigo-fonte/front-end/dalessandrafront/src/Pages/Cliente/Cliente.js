@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import "../estilo/estoque.css";
 import Menu from "../../Componentes/Menu/Menu";
 import LogoInvetario from "../../img/warehouse.png";
+import ModalCliente from "./components/listCliente";
 
 function Cliente(){
 
@@ -89,8 +90,14 @@ function Cliente(){
                 <img  class="h-10 w-10" fill="none" viewBox="0 0 34 34" src={LogoInvetario}/>
                 <h1 className="text-3xl font-bold">Novo Cliente</h1>
             </section>
-            <section className="container mx-auto p-4 shadow-xl overflow-x-auto" > 
-                <h3 className="text-2xl font-bold corTexto">Cadastro</h3>
+            <section className="container mx-auto p-4 shadow-xl overflow-x-auto" >
+                <div style={ {display: 'flex'}}>
+                    <h3 className="text-2xl font-bold corTexto my-2">Cadastro</h3>
+                    <button className="btn ml-5" onClick={() => document.getElementById('my_modal_5').showModal()}>
+                        Lista de Cliente
+                    </button>
+                    <ModalCliente/>
+                </div>
                 <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                     <div className="sm:col-span-1">
                         <label htmlFor="first-name" className="block text-sm font-medium leading-2 text-gray-900">
