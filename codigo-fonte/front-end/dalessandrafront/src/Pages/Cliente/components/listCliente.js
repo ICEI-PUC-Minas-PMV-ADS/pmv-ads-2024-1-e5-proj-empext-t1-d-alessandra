@@ -28,7 +28,7 @@ const ModalCliente = () => {
     }, []);
 
     return (
-        <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+        <dialog id="modalListCliente" className="modal modal-bottom sm:modal-middle">
             <div className="modal-box">
                 <h3 className="font-bold text-lg">Lista de clientes cadastrados</h3>
                 <Card className="w-full flex-col">
