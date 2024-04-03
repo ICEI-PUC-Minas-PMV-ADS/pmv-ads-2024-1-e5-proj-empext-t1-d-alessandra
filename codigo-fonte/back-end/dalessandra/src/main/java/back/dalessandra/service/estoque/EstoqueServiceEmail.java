@@ -59,7 +59,7 @@ public class EstoqueServiceEmail extends EstoqueService{
             htmlContent.append("</table>");
             htmlContent.append("</body></html>");
 
-            emaiEnvio.sendEmail("vitorhugoemail@gmail.com", "Relatorio de estoque -"+dataFormatada, htmlContent.toString());
+            emaiEnvio.sendEmail("pedroassis1707@gmail.com", "Relatorio de estoque -"+dataFormatada, htmlContent.toString());
             return "enviado";
         //}
 

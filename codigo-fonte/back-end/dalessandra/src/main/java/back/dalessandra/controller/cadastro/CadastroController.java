@@ -1,14 +1,13 @@
 package back.dalessandra.controller.cadastro;
 
 import back.dalessandra.Model.Cadastro;
-import back.dalessandra.service.CadastroService;
+import back.dalessandra.service.cadastro.CadastroService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @Controller
@@ -29,5 +28,9 @@ public class CadastroController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Erro ao cadastrar: " + e.getMessage());
         }
+    }
+    @GetMapping("")
+    public List<Cadastro> listarCadastros(){
+        return  cadastroService.listarUsuario();
     }
 }
