@@ -6,43 +6,42 @@ import AlertaErro from "../../Alertas/AlertaErro";
 import Alertasucesso from "../../Alertas/AlertaSucesso";
 function ModalAdicionar(){
 
-    const [nome,setNome] = useState()
-    const [marca,setMarca] = useState()
-    const [cor,setCor] = useState()
-    const [tipo,setTipo] =useState()
-    const [tamanho,setTamaho] =useState()
-    const [qtd,setQtd] = useState()
-    const [valorComprado,setValorComprado] =useState()
-    const [valorVendido,setValorVendido] =useState()
-    const [dataCadastro,setDataCadastro] = useState()
-
-    const capturaNome = (event) => {setNome(event.target.value); }
-    const capturaMarca = (event) => {setMarca(event.target.value); }
-    const capturaCor = (event) => {setCor(event.target.value); }
-    const capturaTipo = (event) => {setTipo(event.target.value); }
-    const capturaTamanho = (event) => {setTamaho(event.target.value); }
-    const capturaValorComprado = (event) => {setValorComprado(event.target.value); }
-    const capturaValorVendido = (event) => {setValorVendido(event.target.value); }
-    const capturaDataCadastro = (event) => {setDataCadastro(event.target.value); }
-    const capturarQtd = (event) => {setQtd(event.target.value); }
+    const [dados,setDados] = useState({
+        nome:"",
+        marca:" ",
+        cor:"",
+        tipo:"",
+        tamanho:"",
+        qtd:"",
+        valorComprado:"",
+        valorVendido:"",
+        dataCadastro:"",    
+    })
+    
     const [alertVisible, setAlertVisible] = useState(false);
     const [alertaErro, setAlertaErro] = useState(false);
     const [mensagemError,setMensagemError] = useState()
+    const capturarValores =(e)=>{
+        const {name,value} = e.target
+        setDados({
+             ...dados,
+            [name]:value
+         })
+    }
 
     function salvar(){
-
         const headers = config.HEADERS
         const data = {
-            "nomeProduto": nome,
-            "quantidadeItem": qtd,
-            "marca":marca,
-            "tipo":tipo,
-            "cor": cor,
-            "tamanho": tamanho,
-            "valorComprado": valorComprado,
-            "valorVenda": valorVendido,
-            "dataCadastro": new Date(dataCadastro).toLocaleDateString('pt-BR'),
-            "qtdAtual": qtd,
+            "nomeProduto": dados.nome,
+            "quantidadeItem": dados.qtd,
+            "marca":dados.marca,
+            "tipo":dados.tipo,
+            "cor": dados.cor,
+            "tamanho":dados.tamanho,
+            "valorComprado":dados.valorComprado,
+            "valorVenda": dados.valorVendido,
+            "dataCadastro": new Date(dados.dataCadastro).toLocaleDateString('pt-BR'),
+            "qtdAtual": dados.qtd,
         }
         
         axios.post(config.URL+'estoque',data,{ headers })
@@ -77,10 +76,10 @@ function ModalAdicionar(){
             <br></br>
                 <h3 className="font-bold text-lg">Registro</h3>
                 <p className="py-4">Adicionar novo item</p>
-                <input id="nome"   type="text" placeholder="Nome" onChange={capturaNome} class="input input-ghost w-full max-w-xs" />
-                <input id="marca" type="text" placeholder="Marca" onChange={capturaMarca}class="input input-ghost w-full max-w-xs" />
-                <input id="cor" type="text" placeholder="Cor" onChange={capturaCor}class="input input-ghost w-full max-w-xs" />
-                <select id="tipo" onChange={capturaTipo}className="select select-ghost w-full max-w-xs">
+                <input id="nome"   type="text" placeholder="Nome" name ="nome"onChange={capturarValores} class="input input-ghost w-full max-w-xs" />
+                <input id="marca" type="text" placeholder="Marca"name="marca" onChange={capturarValores}class="input input-ghost w-full max-w-xs" />
+                <input id="cor" type="text" placeholder="Cor" name="cor" onChange={capturarValores}class="input input-ghost w-full max-w-xs" />
+                <select id="tipo" name="tipo" onChange={capturarValores}className="select select-ghost w-full max-w-xs">
                         <option disabled selected>Tipo</option>
                         <option value="Verão">Verão</option>
                         <option value="Inverno">Inverno</option>
@@ -88,7 +87,7 @@ function ModalAdicionar(){
                         <option value="Formal">Formal</option>
                         <option value="Peça intima">Peça intima</option>
                 </select>
-                <select id="tamanhho" onChange={capturaTamanho}className="select select-ghost w-full max-w-xs">
+                <select id="tamanhho" name="tamanho" onChange={capturarValores}className="select select-ghost w-full max-w-xs">
                         <option disabled selected>Tamanho</option>
                         <option value="P - Infantil">P - Infantil</option>
                         <option value="M - Infantil">M - Infantil</option>
@@ -106,10 +105,10 @@ function ModalAdicionar(){
                         <option value="46 - Adulto">46 - Adulto</option>
                 </select>
                
-                <input id="qtd" type="text" onChange={capturarQtd} placeholder="Quantidade" class="input input-ghost w-full max-w-xs" />
-                <input id="valorcomprado" type="text" onChange={capturaValorComprado}  placeholder="Valor Comprado" class="input input-ghost w-full max-w-xs" />
-                <input id="valorvendido" type="text" onChange={capturaValorVendido}placeholder="Valor Vendido" class="input input-ghost w-full max-w-xs" />
-                <input id="datacadastro" type="date" onChange={capturaDataCadastro} placeholder="Data Cadastro" class="input input-ghost w-full max-w-xs" />
+                <input id="qtd" name="qtd" type="text" onChange={capturarValores} placeholder="Quantidade" class="input input-ghost w-full max-w-xs" />
+                <input id="valorcomprado" name="valorCompreado" type="text" onChange={capturarValores}  placeholder="Valor Comprado" class="input input-ghost w-full max-w-xs" />
+                <input id="valorvendido" name="valorVendido" type="text" onChange={capturarValores}placeholder="Valor Vendido" class="input input-ghost w-full max-w-xs" />
+                <input id="datacadastro" name="dataCadastro" type="date" onChange={capturarValores} placeholder="Data Cadastro" class="input input-ghost w-full max-w-xs" />
                 <div className="modal-action">
               
                     <button className=" btn btn-success" onClick={()=>salvar()}>Adicionar</button>
