@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public interface ClienteRepository extends JpaRepository<Cliente,Integer> {
 
-    @Query("select u from Cliente u")
+    @Query("select u from Cliente u order by codCliente")
     List<Cliente> findAll();
 
     @Query("select u from Cliente u where codCliente = :codCliente")
