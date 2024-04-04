@@ -59,7 +59,6 @@ function Financeiro() {
             })
     }
 
-    // Calcular o valor total das despesas filtradas
     const valorTotalDespesasFiltradas = financeiro.filter(item => {
         if (!filtroData) return true;
         const dataDespesa = item.dataDespesa.split('/');
