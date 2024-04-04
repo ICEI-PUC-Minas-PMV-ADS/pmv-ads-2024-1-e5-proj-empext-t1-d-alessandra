@@ -1,37 +1,33 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "../../Pages/estilo/financeiro.css";
+import TabelaFinancas from "../../Componentes/Tabela/tabelaFinancas";
 import config from "../../config/config";
 import Card from "../../Componentes/Card/Card";
 import Menu from "../../Componentes/Menu/Menu";
 import Cash from "../../img/cash.png";
 import ModalIncluir from "../../Componentes/Modal/ModaisFinanças/modalncluirDespesa";
-import TabelaFinancas from "../../Componentes/Tabela/tabelaFinancas";
-import Filtro from "../../Componentes/Tabela/Filtro";
-import FiltroData from "../../Componentes/Tabela/FiltroData";
+import FiltrarData from "../../Componentes/Tabela/FiltrarData";
 
 function Financeiro() {
-
     const [financeiro, setFinanceiro] = useState([]);
-    const [vendas, setVendas] = useState([]);
     const [valorVendas, setValorVendas] = useState(0);
     const [valorFinanceiro, setValorFinanceiro] = useState(0);
-    const [filtro, setFiltro] = useState('');
+    const [filtroData, setFiltroData] = useState({ dia: null, mes: null, ano: null });
 
-    const handleFiltroChange = (filtro) => {
-        setFiltro(filtro);
+    const handleFiltroDataChange = (filtroData) => {
+        setFiltroData(filtroData);
     };
 
     useEffect(() => {
         obterFinanceiro();
         obterValorTotal();
-        obterVendas();
         obterValorVendas();
-    }, [])
+    }, [filtroData]);
 
     const obterFinanceiro = () => {
         const headers = { "Content-Type": "application/json" };
-        axios.get(config.URL + 'financeiro', { headers })
+        axios.get(config.URL + 'financeiro/despesasOrdenadas', { headers })
             .then((response) => {
                 setFinanceiro(response.data);
             })
@@ -39,7 +35,6 @@ function Financeiro() {
                 console.log(error);
             });
     };
-
 
     function obterValorTotal() {
         const headers = { "Content-Type": "application/json" };
@@ -57,17 +52,6 @@ function Financeiro() {
         axios.get(config.URL + 'vendas/totalVendas', { headers })
             .then((response) => {
                 setValorVendas(response.data);
-            })
-            .catch((error) => {
-                console.log(error)
-            })
-    }
-
-    function obterVendas() {
-        const headers = { "Content-Type": "application/json" }
-        axios.get(config.URL + 'vendas', { headers })
-            .then((response) => {
-                setVendas(response.data)
             })
             .catch((error) => {
                 console.log(error)
@@ -93,18 +77,18 @@ function Financeiro() {
                 <section className="container mx-auto p-4 shadow-xl alinhamentoMenu2">
                     <ModalIncluir />
                     <div className="flex space-x-4">
-                        <Filtro onFiltroChange={handleFiltroChange} />
+                        <FiltrarData onFiltrarDataChange={handleFiltroDataChange} />
                     </div>
                 </section>
                 <br></br>
                 <section className="container mx-auto p-4 shadow-xl overflow-x-auto" >
                     <h3 className="text-2xl font-bold corTexto">Finanças</h3>
                     <br></br>
-                        <TabelaFinancas dados={financeiro} filtro={filtro} />
+                    <TabelaFinancas dados={financeiro} filtroData={filtroData} />
                 </section>
             </div>
         </main>
-    )
+    );
 }
 
 export default Financeiro;
