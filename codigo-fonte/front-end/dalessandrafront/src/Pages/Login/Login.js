@@ -1,18 +1,19 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../estilo/login.css";
 import config from "../../config/config";
 import logo from "../../img/logo.png";
 
 function Login() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [credentials, setCredentials] = useState({
     email: "",
     password: ""
   });
-  //const [errorMessage, setErrorMessage] = useState("");
-  //const history = useHistory();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [transitioning, setTransitioning] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,36 +22,39 @@ function Login() {
       [name]: value
     });
   };
-  const teste = () =>{
-      console.log("oi")
-  }
-  const handleSubmit =()=> {
-    axios.get(`${config.URL}login/validar/${credentials.email}/${credentials.password}`)
-    .then((response)=>{
-      if(response.status == 200 && response.data =="ok"){
-          console.log(response)
-         
-        return navigate("vendas")
+
+  const handleSubmit = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.get(`${config.URL}login/validar/${credentials.email}/${credentials.password}`);
+      if (response.status === 200 && response.data === "ok") {
+        setLoading(false);
+        setTransitioning(true);
+        setTimeout(() => {
+          navigate("/vendas");
+          setTransitioning(false);
+        }, 1000); // Aumentou para 1 segundo de duração da transição
       }
-    })
-    .catch((error)=>{
-      console.log(error)
-    })
+    } catch (error) {
+      setError("Credenciais inválidas. Por favor, tente novamente.");
+      setLoading(false);
+    }
   };
 
   return (
     <div>
-      <div className="background"></div>
-      <div className="login-container">
+      <div className={`background ${loading ? 'dark' : ''}`}></div>
+      <div className={`login-container ${transitioning ? 'transitioning' : ''}`}>
         <img src={logo} alt="Logo da empresa" />
         <h2>Login</h2>
-        <form>
+        <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
           <input
             type="email"
             name="email"
             value={credentials.email}
             onChange={handleChange}
             placeholder="Email"
+            required
           />
           <input
             type="password"
@@ -58,10 +62,14 @@ function Login() {
             value={credentials.password}
             onChange={handleChange}
             placeholder="Senha"
+            required
           />
-        
+          {error && <div className="error">{error}</div>}
+          <button type="submit" disabled={loading}>
+            {loading ? "Carregando..." : "Entrar"}
+          </button>
+          {loading && <div className="loading"></div>}
         </form>
-        <button onClick={()=>handleSubmit()}>Entrar</button>
         <p>
           Não tem cadastro? <Link to="/Cadastro">Cadastre-se</Link>
         </p>

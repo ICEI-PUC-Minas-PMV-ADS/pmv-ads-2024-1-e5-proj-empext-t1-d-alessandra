@@ -13,6 +13,7 @@ function Cadastro() {
     confirmarSenha: "",
     dataNascimento: ""
   });
+  const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (e) => {
@@ -23,36 +24,40 @@ function Cadastro() {
     });
   };
 
-  const handleSubmit = () => {
-    if (userData.senha !== userData.confirmarSenha) {
-      setErrorMessage("As senhas não coincidem.");
-      return;
-    }
+  const handleSubmit = async () => {
+    setLoading(true);
 
-    const headers = config.HEADERS
-    const data = {
-      "nomeCadastro": userData.nome,
-      "emailCadastro": userData.email,
-      "dataNascimento":new Date(userData.dataNascimento).toLocaleDateString('pt-BR'),
-      "senhaCadastro": userData.senha
+    try {
+      if (!userData.nome || !userData.email || !userData.senha || !userData.confirmarSenha || !userData.dataNascimento) {
+        throw new Error("Por favor, preencha todos os campos.");
+      }
 
+      if (userData.senha !== userData.confirmarSenha) {
+        throw new Error("As senhas não coincidem.");
+      }
+
+      const headers = config.HEADERS;
+      const data = {
+        nomeCadastro: userData.nome,
+        emailCadastro: userData.email,
+        dataNascimento: new Date(userData.dataNascimento).toLocaleDateString("pt-BR"),
+        senhaCadastro: userData.senha
+      };
+
+      const response = await axios.post(`${config.URL}cadastros/cadastrar`, data, { headers });
+      console.log(response);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      setErrorMessage(error.message);
+      console.error(error);
     }
-    
-    axios.post(`${config.URL}cadastros/cadastrar`, data, { headers })
-      .then((response) => {
-        console.log(response)
-      })
-      .catch((error) => {
-        setErrorMessage("Erro ao cadastrar. Por favor, tente novamente.");
-        console.log(error)
-      })
   };
-
 
   return (
     <div>
-      <div className="background"></div>
-      <div className="cadastro-container">
+      <div className={`background ${loading ? "dark" : ""}`}></div>
+      <div className={`cadastro-container ${loading ? "loading" : ""}`}>
         <img src={logo} alt="Logo" className="logo" />
         <h2>Cadastro</h2>
         <form>
@@ -91,8 +96,11 @@ function Cadastro() {
             onChange={handleChange}
             placeholder="Confirmar Senha"
           />
-          <button type="submit" onClick={() => handleSubmit()}>Cadastrar</button>
+          <button type="button" onClick={handleSubmit} disabled={loading}>
+            {loading ? "Carregando..." : "Cadastrar"}
+          </button>
         </form>
+        {errorMessage && <div className="error-message">{errorMessage}</div>}
         <p>
           Já possui uma conta? <Link to="/">Faça login</Link>
         </p>

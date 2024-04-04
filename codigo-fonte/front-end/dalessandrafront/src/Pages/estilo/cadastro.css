@@ -8,81 +8,126 @@
   background-image: url("../../img/wallpaper.jpg");
   background-size: cover;
   filter: brightness(70%);
+  transition: filter 0.5s ease;
+  display: flex;
+  align-items: center;
+}
+
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  color: #fff;
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.loading.active {
+  opacity: 1;
+}
+
+.loading::before {
+  content: "\u{1F4A5}";
 }
 
 .cadastro-container {
   position: relative;
   max-width: 400px;
-  margin: 0 auto;
-  padding: 40px;
+  margin: 2vh auto;
+  padding: 20px;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f9f9f9;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.9);
   text-align: center;
-  transition: box-shadow 0.3s;
-  top: 5vh;
-
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transform: scale(1);
+  transition: transform 0.5s ease;
 }
 
 .cadastro-container:hover {
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.cadastro-container .logo {
-  width: 150px;
-  height: auto;
-  margin: 0 auto 20px;
+  transform: scale(1.02);
 }
 
 .cadastro-container h2 {
-  margin-bottom: 20px;
-}
-
-.cadastro-container form {
-  display: flex;
-  flex-direction: column;
+  margin-bottom: 15px;
+  color: #333;
+  font-size: 24px;
+  transition: color 0.3s;
 }
 
 .cadastro-container input {
-  margin-bottom: 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
+  margin-bottom: 15px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
   transition: border-color 0.3s;
+  width: calc(100% - 24px);
+  box-sizing: border-box;
 }
 
 .cadastro-container input:focus {
-  border-color: #007bff;
+  border-color: #28a745;
+  outline: none;
 }
 
 .cadastro-container button {
-  padding: 10px;
+  margin-top: 15px;
+  padding: 12px 24px;
   background-color: #28a745;
   color: #fff;
   border: none;
-  border-radius: 3px;
+  border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
+  width: 92%;
+  box-sizing: border-box;
+  font-size: 16px;
 }
 
 .cadastro-container button:hover {
   background-color: #218838;
 }
 
-.cadastro-container .error-message {
-  color: #dc3545;
-  margin-top: 20px;
-}
-
 .cadastro-container p {
-  margin-top: 20px;
-  transition: color 0.3s;
+  margin-top: 15px;
+  color: #555;
+  font-size: 16px;
 }
 
 .cadastro-container p a {
   color: #007bff;
+  text-decoration: none;
 }
 
 .cadastro-container p a:hover {
   color: #0056b3;
+}
+
+.cadastro-container img {
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  margin: 0 auto 15px;
+  display: block;
+  border-radius: 10%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 2px solid #a3fdb7;
+  transition: transform 0.5s ease;
+}
+
+.cadastro-container img:hover {
+  transform: rotate(360deg);
+}
+
+.dark {
+  filter: brightness(10%);
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 14px;
+  margin-top: 10px;
 }
