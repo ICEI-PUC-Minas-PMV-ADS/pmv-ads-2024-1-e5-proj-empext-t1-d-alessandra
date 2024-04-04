@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import Menu from "../../Componentes/Menu/Menu";
 import LogoInvetario from "../../img/warehouse.png";
 import TabelaVenda from "./componentes/tabelaVenda";
+import { Input, Button } from "@material-tailwind/react";
 
 function Venda(){
     const [produto, setProduto] = useState("");
@@ -24,6 +25,9 @@ function Venda(){
         }
     }
 
+    const [email, setEmail] = React.useState("");
+    const onChange = ({ target }) => setEmail(target.value);
+
     return(
         <main className="bg-base-100 drawer lg:drawer-open" >
             <Menu/>
@@ -38,29 +42,38 @@ function Venda(){
                 <h3 className="text-2xl font-bold corTexto">Criar venda</h3>
                 <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                     <div className="sm:col-span-2">
-                        <label htmlFor="first-name" className="block text-sm font-medium leading-6 text-gray-900">
-                        Cliente
-                        </label>
-                        <div className="mt-2">
-                        <input
-                            type="text"
-                            name="first-name"
-                            id="primeiroNome"
-                            autoComplete="given-name"
-                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                        />
+
+                        <div className="relative flex w-full max-w-[24rem] mt-2">
+                            <Input
+                                type="text"
+                                label="Cliente"
+                                value={email}
+                                onChange={onChange}
+                                className="pr-20"
+                                containerProps={{
+                                    className: "min-w-0",
+                                }}
+                            />
+                            <Button
+                                size="sm"
+                                color="gray"
+                                className="!absolute right-1 top-1 rounded"
+                            >
+                                Procurar
+                            </Button>
                         </div>
+
                     </div>
                     <div className="sm:col-span-2">
                         <label htmlFor="first-name" className="block text-sm font-medium leading-6 text-gray-900">
-                        CPF
+                            CPF
                         </label>
                         <div className="mt-2">
-                        <input
-                            type="text"
-                            name="first-name"
-                            id="cpf"
-                            autoComplete="given-name"
+                            <input
+                                type="text"
+                                name="first-name"
+                                id="cpf"
+                                autoComplete="given-name"
                             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         />
                         </div>
