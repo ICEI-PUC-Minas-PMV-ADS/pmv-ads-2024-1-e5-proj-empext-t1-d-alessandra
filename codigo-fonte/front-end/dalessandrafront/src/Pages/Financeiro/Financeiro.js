@@ -11,6 +11,7 @@ import FiltrarData from "../../Componentes/Tabela/FiltrarData";
 
 function Financeiro() {
     const [financeiro, setFinanceiro] = useState([]);
+    const [vendas, setVendas] = useState([]);
     const [valorVendas, setValorVendas] = useState(0);
     const [valorFinanceiro, setValorFinanceiro] = useState(0);
     const [filtroData, setFiltroData] = useState({ dia: null, mes: null, ano: null });
@@ -58,32 +59,43 @@ function Financeiro() {
             })
     }
 
+    // Calcular o valor total das despesas filtradas
+    const valorTotalDespesasFiltradas = financeiro.filter(item => {
+        if (!filtroData) return true;
+        const dataDespesa = item.dataDespesa.split('/');
+        return (
+            (!filtroData.dia || filtroData.dia === dataDespesa[0]) &&
+            (!filtroData.mes || filtroData.mes === dataDespesa[1]) &&
+            (!filtroData.ano || filtroData.ano === dataDespesa[2])
+        );
+    }).reduce((acc, curr) => acc + parseFloat(curr.valorDespesa), 0);
+
     return (
-        <main className="bg-base-100 drawer lg:drawer-open" >
+        <main className="bg-base-100 drawer lg:drawer-open">
             <Menu />
-            <br></br>
+            <br />
             <div className="drawer-content">
                 <section className="container mx-auto p-4 alinhamentoMenu2">
-                    <img class="h-10 w-10" fill="none" viewBox="0 0 34 34" src={Cash} />
+                    <img className="h-10 w-10" fill="none" viewBox="0 0 34 34" src={Cash} />
                     <h1 className="text-3xl font-bold">Financeiro</h1>
                 </section>
                 <section className="container mx-auto p-4 alinhamentoCards">
                     <Card title="Valor Vendido: " textoExibir={"R$ " + (valorVendas)} />
-                    <Card title="Valor Despesas:" textoExibir={"R$ " + (valorFinanceiro)} />
-                    <Card title="Balanço Total:" textoExibir={"R$ " + (valorVendas - valorFinanceiro)} />
+                    <Card title="Valor Despesas:" textoExibir={"R$ " + (valorTotalDespesasFiltradas)} />
+                    <Card title="Balanço Total:" textoExibir={"R$ " + (valorVendas - valorTotalDespesasFiltradas)} />
                 </section>
-                <br></br>
-                <br></br>
+                <br />
+                <br />
                 <section className="container mx-auto p-4 shadow-xl alinhamentoMenu2">
                     <ModalIncluir />
                     <div className="flex space-x-4">
                         <FiltrarData onFiltrarDataChange={handleFiltroDataChange} />
                     </div>
                 </section>
-                <br></br>
+                <br />
                 <section className="container mx-auto p-4 shadow-xl overflow-x-auto" >
                     <h3 className="text-2xl font-bold corTexto">Finanças</h3>
-                    <br></br>
+                    <br />
                     <TabelaFinancas dados={financeiro} filtroData={filtroData} />
                 </section>
             </div>
