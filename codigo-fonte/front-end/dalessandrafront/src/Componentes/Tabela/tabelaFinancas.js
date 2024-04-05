@@ -1,6 +1,5 @@
 import React from 'react';
 import ModalExcluirFin from "../Modal/ModaisFinanças/modalExcluirFin";
-import ModalEditar from "../Modal/ModaisFinanças/ModalEditar";
 
 function TabelaFinancas({ dados, filtroData }) {
     const filtrarDados = (item) => {
@@ -38,7 +37,6 @@ function TabelaFinancas({ dados, filtroData }) {
                         <td>{item.dataDespesa}</td>
                         <td>{item.dataVencimento}</td>
                         <td><ModalExcluirFin id={item.idDespesa} /></td>
-                        <td><ModalEditar item={item.idDespesa} /></td>
                     </tr>
                 ))}
             </tbody>

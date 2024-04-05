@@ -28,10 +28,6 @@ public class FinanceiroService {
         return financeiroRepository.save(financeiro);
     }
 
-    public Financeiro update(Financeiro financeiro){
-        return financeiroRepository.save(financeiro);
-    }
-
     public Optional<Financeiro> findById(Integer idDespesa) {
         return financeiroRepository.findById(idDespesa);
     }

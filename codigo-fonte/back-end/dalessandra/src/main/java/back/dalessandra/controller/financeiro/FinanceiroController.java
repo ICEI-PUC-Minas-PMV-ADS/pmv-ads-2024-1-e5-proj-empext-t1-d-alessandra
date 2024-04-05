@@ -49,27 +49,6 @@ public class FinanceiroController {
         return financeiroService.findBytipoDespesa(tipoDespesa).orElse(null);
     }
 
-
-    @PutMapping("/{idDespesa}")
-    public ResponseEntity<Financeiro> update(@RequestBody Financeiro financeiro, @PathVariable Integer idDespesa) {
-        Optional<Financeiro> financeiroOptional = financeiroService.findById(idDespesa);
-        if (financeiroOptional.isEmpty()) {
-            return ResponseEntity.notFound().build();
-        }
-
-        Financeiro existingFinanceiro = financeiroOptional.get();
-        existingFinanceiro.setTipoDespesa(financeiro.getTipoDespesa());
-        existingFinanceiro.setNomeDespesa(financeiro.getNomeDespesa());
-        existingFinanceiro.setValorDespesa(financeiro.getValorDespesa());
-        existingFinanceiro.setDataDespesa(financeiro.getDataDespesa());
-        existingFinanceiro.setDataVencimento(financeiro.getDataVencimento());
-
-        financeiroService.update(existingFinanceiro);
-
-        return ResponseEntity.ok(existingFinanceiro);
-    }
-
-
     @PostMapping
     public Financeiro cadastro(@RequestBody Financeiro financeiro){
         return financeiroService.cadastro(financeiro);
@@ -88,9 +67,7 @@ public class FinanceiroController {
 
         return financeiroService.findByDias(dia, mes, ano);
     }
-
-
-
+    
     @GetMapping("/despesasOrdenadas")
     public List<Financeiro> findAllOrderByDataDespesaDesc() {
         return financeiroService.findAllOrderByDataDespesaDesc();
