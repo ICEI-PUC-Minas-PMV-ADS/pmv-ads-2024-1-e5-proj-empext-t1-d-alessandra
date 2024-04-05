@@ -73,6 +73,22 @@
   outline: none;
 }
 
+.cadastro-container input.error {
+  border-color: #dc3545 !important;
+}
+
+.cadastro-container input.vibrate {
+  animation: vibrate 0.3s;
+}
+
+@keyframes vibrate {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
 .cadastro-container button {
   margin-top: 15px;
   padding: 12px 24px;
@@ -130,4 +146,5 @@
   color: #dc3545;
   font-size: 14px;
   margin-top: 10px;
+  font-weight: bold;
 }
