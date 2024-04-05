@@ -64,18 +64,22 @@ Para a tela de Estoque, desenvolvemos quatro tipos de testes para garantir que t
 
 #### Plano de teste 1.1 - Autenticação de Cadastro de E-mail na Plataforma: 
 
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101743181/4e69efb7-568e-40d6-900b-852adadcac92
 
 
+#### Plano de teste 1.2 - Verificação de Cadastro sem Problemas e preenchimento obrigatorio de todos os campos:
 
-#### Plano de teste 1.2 - Verificação de Cadastro sem Problemas:
-
-
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101743181/89f9dd74-30b8-49c7-bd6c-48a06b8cea6e
 
 
 #### Plano de teste 1.3 - Restrição de Acesso a Usuários Cadastrados:
 
+⚠️⚠️⚠️ATENÇÃO: ESSA FUNCIONALIDADE ESTÁ SENDO DESENVOLVIDA PELA EQUIPE, EM POUCOS DIAS ESTARÁ DISPONIVEL. ⚠️⚠️⚠️
 
 
+#### Plano de teste 1.4 - Testes de interações com o usuário:
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101743181/69623a11-7853-4b4a-97a7-536ebe7763df
 
 
 
