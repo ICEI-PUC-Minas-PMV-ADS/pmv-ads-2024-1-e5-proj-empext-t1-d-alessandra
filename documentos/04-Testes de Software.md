@@ -1,29 +1,31 @@
 # Planos de Testes de Software
 
- ### 1 - Login/Cadastro
+ ### 1 - Funcionalidades Login/Cadastro
   
+Para a tela de Login e Cadastro, desenvolvemos quatro tipos de testes para garantir que tudo esteja funcionando conforme o previsto.
+
 **1.1 - Verificação de Cadastro de E-mail na Plataforma:**
 
-Objetivo: Prevenir a duplicidade de cadastros com o mesmo e-mail.
-Passos: Acessar a página de cadastro e preencher o formulário.
-Critério de Sucesso: Se o e-mail já estiver cadastrado, um alerta será emitido.
+- Objetivo: Prevenir a duplicidade de cadastros com o mesmo e-mail.
+- Passos: Acessar a página de cadastro e preencher o formulário.
+- Critério de Sucesso: Se o e-mail já estiver cadastrado, um alerta será emitido.
 
 **1.2 - Verificação de Cadastro sem Problemas:**
 
-Objetivo: Assegurar que todos os dados sejam enviados corretamente.
-Passos: Acessar a página de cadastro e preencher o formulário.
-Critério de Sucesso: Após o preenchimento correto, um alerta de confirmação de cadastro será exibido.
+- Objetivo: Assegurar que todos os dados sejam enviados corretamente.
+- Passos: Acessar a página de cadastro e preencher o formulário.
+- Critério de Sucesso: Após o preenchimento correto, um alerta de confirmação de cadastro será exibido.
 
 **1.3 - Restrição de Acesso a Usuários Cadastrados:**
 
-Objetivo: Garantir que apenas usuários cadastrados tenham acesso à plataforma.
-Passos: Tentar acessar a plataforma com um usuário não cadastrado.
-Critério de Sucesso: Se o usuário não estiver cadastrado, o acesso será negado pelo sistema.
+- Objetivo: Garantir que apenas usuários cadastrados tenham acesso à plataforma.
+- Passos: Tentar acessar a plataforma com um usuário não cadastrado.
+- Critério de Sucesso: Se o usuário não estiver cadastrado, o acesso será negado pelo sistema.
 
 
-### Fincionalodade estoque
+### Funcionalidades Estoque
 
-Para a tela de estoque pensamos em  4 tipos de teste para verificar se esta tudo funcionando de acordo com o espereado.
+Para a tela de Estoque, desenvolvemos quatro tipos de testes para garantir que tudo esteja funcionando conforme o previsto.
 
 01.0 - Registro de itens no estoque 
 
@@ -31,7 +33,7 @@ Para a tela de estoque pensamos em  4 tipos de teste para verificar se esta tudo
   - Passos: Aperta o botão novo registro preencher todos os dados e clicar em adicionar.
   - Criterio: Caso de sucesso, iria aparecer uma mensagem confirmando o cadastro e ele ira aparecer na lista.
      
-01.1 - Exclusao de registro 
+01.1 - Exclusão de registro 
  
   - Objetivo: Verificar se o item que o usuário deseja apagar esta sendo deletado de maneira correta.
   - Passos: Clicar na lixeira do item que deseja deletar e depois confimar.
@@ -60,7 +62,7 @@ Para a tela de estoque pensamos em  4 tipos de teste para verificar se esta tudo
 
 ### Funcionalidade de Cadastro/Login
 
-#### Plano de teste 1.1 - Verificação de Cadastro de E-mail na Plataforma: 
+#### Plano de teste 1.1 - Autenticação de Cadastro de E-mail na Plataforma: 
 
 
 
@@ -83,7 +85,7 @@ Para a tela de estoque pensamos em  4 tipos de teste para verificar se esta tudo
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/40009988/3336eb2b-9409-4766-a028-d1958821aa48
 
-#### Plano de teste 01.1 - Exclusao de registro 
+#### Plano de teste 01.1 - Exclusão de registro 
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/40009988/1e039393-229d-4700-9c86-cab33b459cd4
 
