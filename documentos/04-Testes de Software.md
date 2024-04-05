@@ -4,11 +4,11 @@
   
 Para a tela de Login e Cadastro, desenvolvemos quatro tipos de testes para garantir que tudo esteja funcionando conforme o previsto.
 
-**1.1 - Verificação de Cadastro de E-mail na Plataforma:**
+**1.1 - Autenticação de Cadastro de E-mail na Plataforma:**
 
-- Objetivo: Prevenir a duplicidade de cadastros com o mesmo e-mail.
+- Objetivo: Cadastrar o usuário no banco de dados do software e prevenir a duplicidade de cadastros com o mesmo e-mail.
 - Passos: Acessar a página de cadastro e preencher o formulário.
-- Critério de Sucesso: Se o e-mail já estiver cadastrado, um alerta será emitido.
+- Critério de Sucesso: Se o e-mail já estiver cadastrado, um alerta será emitido, caso for cadastrado pela primeira vez poderá ser redirecionado para a pagina de Login.
 
 **1.2 - Verificação de Cadastro sem Problemas:**
 
@@ -21,6 +21,12 @@ Para a tela de Login e Cadastro, desenvolvemos quatro tipos de testes para garan
 - Objetivo: Garantir que apenas usuários cadastrados tenham acesso à plataforma.
 - Passos: Tentar acessar a plataforma com um usuário não cadastrado.
 - Critério de Sucesso: Se o usuário não estiver cadastrado, o acesso será negado pelo sistema.
+
+**1.3 - Testes de interações com o usuário:**
+
+- Objetivo: Garantir que o usuário tenha a experiencia de intração com o software ao utiliza-lo:
+- Passos: Tentar acessar a plataforma e navegar entre as telas.
+- Critério de Sucesso: O software deverá realizar interações atraves de animações e alertas.
 
 
 ### Funcionalidades Estoque
