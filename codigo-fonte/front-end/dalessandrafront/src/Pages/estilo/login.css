@@ -1,3 +1,4 @@
+/* CSS */
 .background {
   position: fixed;
   top: 0;
@@ -104,6 +105,7 @@
 .login-container p a {
   color: #007bff;
   text-decoration: none;
+  transition: color 0.3s;
 }
 
 .login-container p a:hover {
@@ -119,11 +121,16 @@
   border-radius: 10%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border: 2px solid #a3fdb7;
-  transition: transform 0.5s ease;
+  transition: transform 0.5s ease; 
 }
 
 .login-container img:hover {
   transform: rotate(360deg);
+}
+
+.zoom-out {
+  transition: transform 2s ease; 
+  transform: scale(2); 
 }
 
 .dark {
@@ -142,3 +149,6 @@
   opacity: 0;
 }
 
+.link-transition {
+  transition: color 0.3s;
+}

@@ -1,3 +1,4 @@
+// JS
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
@@ -14,6 +15,7 @@ function Login() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [transitioning, setTransitioning] = useState(false);
+  const [zoomOut, setZoomOut] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -30,10 +32,11 @@ function Login() {
       if (response.status === 200 && response.data === "ok") {
         setLoading(false);
         setTransitioning(true);
+        setZoomOut(true);
         setTimeout(() => {
           navigate("/vendas");
           setTransitioning(false);
-        }, 1000); // Aumentou para 1 segundo de duração da transição
+        }, 1000);
       }
     } catch (error) {
       setError("Credenciais inválidas. Por favor, tente novamente.");
@@ -45,7 +48,7 @@ function Login() {
     <div>
       <div className={`background ${loading ? 'dark' : ''}`}></div>
       <div className={`login-container ${transitioning ? 'transitioning' : ''}`}>
-        <img src={logo} alt="Logo da empresa" />
+        <img src={logo} alt="Logo da empresa" className={zoomOut ? 'zoom-out' : ''} />
         <h2>Login</h2>
         <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
           <input
@@ -71,8 +74,9 @@ function Login() {
           {loading && <div className="loading"></div>}
         </form>
         <p>
-          Não tem cadastro? <Link to="/Cadastro">Cadastre-se</Link>
+          Não tem cadastro? <Link to="/Cadastro" className="link-transition">Cadastre-se</Link>
         </p>
+
       </div>
     </div>
   );

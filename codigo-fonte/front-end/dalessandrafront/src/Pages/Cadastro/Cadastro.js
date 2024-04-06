@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../estilo/cadastro.css";
 import config from "../../config/config";
 import logo from "../../img/logo.png";
@@ -15,7 +15,7 @@ function Cadastro() {
   });
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-
+  const navigate = useNavigate(); 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUserData({
@@ -47,6 +47,11 @@ function Cadastro() {
       const response = await axios.post(`${config.URL}cadastros/cadastrar`, data, { headers });
       console.log(response);
       setLoading(false);
+
+      setTimeout(() => {
+        navigate("/");
+      }, );
+      
     } catch (error) {
       setLoading(false);
       setErrorMessage(error.message);
@@ -67,6 +72,8 @@ function Cadastro() {
             value={userData.nome}
             onChange={handleChange}
             placeholder="Nome"
+            className={!userData.nome && errorMessage ? "error" : ""}
+            onFocus={() => setErrorMessage('')}
           />
           <input
             type="date"
@@ -74,6 +81,8 @@ function Cadastro() {
             value={userData.dataNascimento}
             onChange={handleChange}
             placeholder="Data de Nascimento"
+            className={!userData.dataNascimento && errorMessage ? "error" : ""}
+            onFocus={() => setErrorMessage('')}
           />
           <input
             type="text"
@@ -81,6 +90,8 @@ function Cadastro() {
             value={userData.email}
             onChange={handleChange}
             placeholder="Email"
+            className={!userData.email && errorMessage ? "error" : ""}
+            onFocus={() => setErrorMessage('')}
           />
           <input
             type="password"
@@ -88,6 +99,8 @@ function Cadastro() {
             value={userData.senha}
             onChange={handleChange}
             placeholder="Senha"
+            className={!userData.senha && errorMessage ? "error" : ""}
+            onFocus={() => setErrorMessage('')}
           />
           <input
             type="password"
@@ -95,6 +108,8 @@ function Cadastro() {
             value={userData.confirmarSenha}
             onChange={handleChange}
             placeholder="Confirmar Senha"
+            className={!userData.confirmarSenha && errorMessage ? "error" : ""}
+            onFocus={() => setErrorMessage('')}
           />
           <button type="button" onClick={handleSubmit} disabled={loading}>
             {loading ? "Carregando..." : "Cadastrar"}
