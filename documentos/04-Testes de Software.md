@@ -64,6 +64,29 @@ Para a tela de Estoque, desenvolvemos quatro tipos de testes para garantir que t
    - Criterio: Caso de sucesso se da quando aparece um alerta confirmando a alteração e o valor na lista estiver mudado
 
 
+### Funcionalidades Financeiro
+
+Na tela de Financeiro, foi desenvolvido três testes para garantir que tudo esteja funcionando conforme o previsto.
+
+01.0 - Registro de despesas 
+
+  - Objetivo: Verificar se as despesas cadastradas pelo usuário estão sendo salvas de maneira correta.
+  - Passos: Seleciona o botão "novo registro" preencher todos os dados e clica em "adicionar".
+  - Criterio: Caso de sucesso, iria aparecer uma mensagem confirmando o registro e ele irá aparecer na lista.
+     
+01.1 - Exclusão de despesas 
+ 
+  - Objetivo: Verificar se o item que o usuário deseja apagar esta sendo deletado de maneira correta.
+  - Passos: Clicar na lixeira do item que deseja deletar e depois confimar.
+  - Criterio: Caso de sucesso, irá aparecer uma mensagem dizendo que a operação foi executada com sucesso e o item não irá mais aparecer na lista.
+     
+01.2 - Atualização de dados da despesa 
+
+  - Objetivo: Verificar se o usuário consegue editar os dados da despesa.
+  - Passos: Acessar os tres pontos na frente do item que deseja, acessar a opção para editar o campo que deseja, preencher e salvar.
+  - Criterio: Caso de sucesso,irá aparecer uma mensagem de confirmação e o campo na lista será atualizado.
+
+
 # Evidências de Testes de Software
 
 ### Funcionalidade de Cadastro/Login
@@ -111,4 +134,16 @@ https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-ale
 #### Plano de teste 01.4 - Atualização de valor comprado 
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/40009988/238a5ba7-37b8-4fd8-b898-4c080793f375
+
+
+
+### Funcionalidade de estoque
+
+#### Plano de teste 01.0 - Registro de despesas
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/27317d02-96fc-4f95-870a-3218399aeb02
+
+#### Plano de teste 01.0 - Exclusão de despesas
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/797f2f6c-be4c-47f6-af80-5f4a173bdddc
 
