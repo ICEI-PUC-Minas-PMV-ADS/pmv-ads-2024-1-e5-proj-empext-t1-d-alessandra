@@ -50,19 +50,19 @@ function FiltrarData({ onFiltrarDataChange }) {
 
     return (
         <form onSubmit={handleSubmit} className="flex space-x-4 items-center">
-            <select name="dia" value={filtroData.dia} onChange={handleInputChange} className="input input-sm">
+            <select name="dia" value={filtroData.dia} onChange={handleInputChange} className="input input-ghost w-full max-w-xs">
                 <option value="">Dia</option>
                 {Array.from({ length: 31 }, (_, i) => i + 1).map(day => (
                     <option key={day} value={day.toString().padStart(2, '0')}>{day.toString().padStart(2, '0')}</option>
                 ))}
             </select>
-            <select name="mes" value={filtroData.mes} onChange={handleInputChange} className="input input-sm">
+            <select name="mes" value={filtroData.mes} onChange={handleInputChange} className="input input-ghost w-full max-w-xs">
                 <option value="">Mês</option>
                 {meses.map(month => (
                     <option key={month.numero} value={month.numero}>{month.nome}</option>
                 ))}
             </select>
-            <select name="ano" value={filtroData.ano} onChange={handleInputChange} className="input input-sm">
+            <select name="ano" value={filtroData.ano} onChange={handleInputChange} className=" input input-ghost w-full max-w-xs">
                 <option value="">Ano</option>
                 {Array.from({ length: 10 }, (_, i) => new Date().getFullYear() - i).map(year => (
                     <option key={year} value={year}>{year}</option>

@@ -67,7 +67,7 @@ public class FinanceiroController {
 
         return financeiroService.findByDias(dia, mes, ano);
     }
-    
+
     @GetMapping("/despesasOrdenadas")
     public List<Financeiro> findAllOrderByDataDespesaDesc() {
         return financeiroService.findAllOrderByDataDespesaDesc();
@@ -76,6 +76,61 @@ public class FinanceiroController {
     @DeleteMapping("{idDespesa}")
     public String excluirDespesa(@PathVariable("idDespesa") int idDespesa){
         return financeiroService.excluirDespesa(idDespesa);
+    }
+
+    @PutMapping("tipoDespesa/{idDespesa}")
+    public ResponseEntity<String> updateTipoDespesa(@PathVariable Integer idDespesa, @RequestBody String tipoDespesa) {
+        return updateAttribute(idDespesa, "tipoDespesa", tipoDespesa);
+    }
+
+    @PutMapping("nomeDespesa/{idDespesa}")
+    public ResponseEntity<String> updateNomeDespesa(@PathVariable Integer idDespesa, @RequestBody String nomeDespesa) {
+        return updateAttribute(idDespesa, "nomeDespesa", nomeDespesa);
+    }
+
+    @PutMapping("valorDespesa/{idDespesa}")
+    public ResponseEntity<String> updateValorDespesa(@PathVariable Integer idDespesa, @RequestBody float valorDespesa) {
+        return updateAttribute(idDespesa, "valorDespesa", valorDespesa);
+    }
+
+    @PutMapping("dataDespesa/{idDespesa}")
+    public ResponseEntity<String> updateDataDespesa(@PathVariable Integer idDespesa, @RequestBody Date dataDespesa) {
+        return updateAttribute(idDespesa, "dataDespesa", dataDespesa);
+    }
+
+    @PutMapping("dataVencimento/{idDespesa}")
+    public ResponseEntity<String> updateDataVencimento(@PathVariable Integer idDespesa, @RequestBody Date dataVencimento) {
+        return updateAttribute(idDespesa, "dataVencimento", dataVencimento);
+    }
+
+    private ResponseEntity<String> updateAttribute(Integer idDespesa, String attributeName, Object attributeValue) {
+        Optional<Financeiro> financeiroOptional = financeiroService.findById(idDespesa);
+        if (financeiroOptional.isPresent()) {
+            Financeiro financeiro = financeiroOptional.get();
+            switch (attributeName) {
+                case "tipoDespesa":
+                    financeiro.setTipoDespesa((String) attributeValue);
+                    break;
+                case "nomeDespesa":
+                    financeiro.setNomeDespesa((String) attributeValue);
+                    break;
+                case "valorDespesa":
+                    financeiro.setValorDespesa((float) attributeValue);
+                    break;
+                case "dataDespesa":
+                    financeiro.setDataDespesa((Date) attributeValue);
+                    break;
+                case "dataVencimento":
+                    financeiro.setDataVencimento((Date) attributeValue);
+                    break;
+                default:
+                    return ResponseEntity.badRequest().body("Atributo inválido");
+            }
+            financeiroService.cadastro(financeiro);
+            return ResponseEntity.ok(attributeName + " atualizado com sucesso");
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
 }
