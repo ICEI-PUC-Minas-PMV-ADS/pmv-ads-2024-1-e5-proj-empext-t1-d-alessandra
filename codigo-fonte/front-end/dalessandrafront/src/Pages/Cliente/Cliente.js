@@ -57,13 +57,25 @@ function Cliente(){
         }));
     };
 
-    const cadastrarCliente = async () => {
+    const cadastrarCliente = () => {
         const headers ={"Content-Type":"application/json"}
-        try{
-            await axios.post(config.URL+'cliente', clienteData);
-        } catch(error){
-            console.log(error)
+
+        const data = {
+            "nomeCliente": clienteData.nomeCliente,
+            "email": clienteData.email,
+            "telefone": clienteData.telefone,
+            "cpfCnpj": clienteData.cpfCnpj,
+            "rua": clienteData.rua,
+            "bairro": clienteData.bairro,
+            "cidade": clienteData.cidade,
+            "complemento": clienteData.complemento
         }
+        axios.post(config.URL+'cliente', data, {headers})
+       .then((response)=>{
+            console.log(response.status)
+       }).catch((error)=>{
+        console.log(error)
+       })
     }
 
     const atualizarCliente = async () => {
@@ -75,12 +87,12 @@ function Cliente(){
         }
     }
 
-    const gravar = async (codigo) => {
-        if(codigoDisabled == false) {
-            await cadastrarCliente()
-        } else {
-            await atualizarCliente(codigo)
-        }
+    const gravar = (codigo) => {
+        //if(codigoDisabled == false) {
+             cadastrarCliente()
+        //} else {
+          //  atualizarCliente(codigo)
+        //}
     }
 
     const resetFields = () => {
