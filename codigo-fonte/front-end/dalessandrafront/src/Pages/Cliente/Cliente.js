@@ -81,18 +81,18 @@ function Cliente(){
     const atualizarCliente = async () => {
         const headers ={"Content-Type":"application/json"}
         try{
-            await axios.put(config.URL+'cliente/'+ codigoCliente, clienteData);
+            await axios.put(config.URL+'cliente/'+ codigoCliente, clienteData, {headers});
         } catch(error){
             console.log(error)
         }
     }
 
     const gravar = (codigo) => {
-        //if(codigoDisabled == false) {
+        if(codigoDisabled == false) {
              cadastrarCliente()
-        //} else {
-          //  atualizarCliente(codigo)
-        //}
+        } else {
+            atualizarCliente(codigo)
+        }
     }
 
     const resetFields = () => {

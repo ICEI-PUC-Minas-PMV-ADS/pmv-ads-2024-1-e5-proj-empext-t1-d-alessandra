@@ -1,16 +1,20 @@
 import { Card, Typography } from "@material-tailwind/react";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function TabelaVenda({ itens }) {
-    const [listaItens, setListaItens] = useState(itens); // Usar um estado local para armazenar a lista de itens
+    const [listaItens, setListaItens] = useState([]);
+
+    useEffect(() => {
+        setListaItens(prevItens => [...prevItens, ...itens]);
+    }, [itens]);
 
     const removerItem = (index) => {
-        const novaLista = [...listaItens]; // Fazer uma cópia da lista de itens
-        novaLista.splice(index, 1); // Remover o item correspondente ao índice
-        setListaItens(novaLista); // Atualizar o estado com a nova lista de itens
+        const novaLista = [...listaItens];
+        novaLista.splice(index, 1);
+        setListaItens(novaLista);
     };
 
-    const showScroll = listaItens.length > 3; // Verifica se há mais de 3 itens para decidir se deve mostrar o scroll
+    const showScroll = listaItens.length > 3;
 
     return (
         <Card className={`h-full w-full ${showScroll ? 'overflow-y-auto' : ''}`}>
