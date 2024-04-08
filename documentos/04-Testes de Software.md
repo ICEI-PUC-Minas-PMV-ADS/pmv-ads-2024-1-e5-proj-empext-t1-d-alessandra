@@ -137,7 +137,7 @@ https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-ale
 
 
 
-### Funcionalidade de estoque
+### Funcionalidade de Despesas
 
 #### Plano de teste 01.0 - Registro de despesas
 
