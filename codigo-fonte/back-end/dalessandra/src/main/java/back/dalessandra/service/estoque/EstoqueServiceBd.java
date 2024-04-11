@@ -13,41 +13,27 @@ public class EstoqueServiceBd extends  EstoqueService{
     @Autowired
     EstoqueRepository estoqueRepository;
         public String baixaNoEstoque(int id, int qtdSaida){
-            Estoque produto = estoqueRepository.obterProduto(id);
-            if(produto!=null){
-                float qtdAtual = produto.getQtdAtual() ;
-                float novaQtd =  qtdAtual - qtdSaida;
-                float nivel=((novaQtd/qtdAtual)*100);
-                if(qtdSaida>qtdAtual){
-                    return "Não tem produto suficiente";
-                }
-                else if (novaQtd == 0){
-                    produto.setQtdAtual((int)novaQtd);
-                    produto.setStatus("Em falta");
-                    produto.setValorTotalEmEstoque(novaQtd);
-                    produto.setValorTotalAVender(novaQtd);
-                    estoqueRepository.save(produto);
-                    return "Salvo com sucesso";
-                }
-                else{
-                    atualizarStatus(nivel);
-                    produto.setQtdAtual((int)novaQtd);
-                    produto.setStatus(atualizarStatus(nivel));
-                    estoqueRepository.save(produto);
-                    return "Salvo com sucesso";
-                    }
-                }
-            else {
-                    return "Produto nao existe";
-                }
-             }
-         public String atualizarStatus(float nivel){
-            if(nivel<=20){
-                return ("Nivel critico");
+            Estoque produtoResgatado = estoqueRepository.obterProduto(id);
+
+            if(produtoResgatado!=null) {
+                return "Produto não existe";
             }
-            else {
-                return ("Bom");
+            float qtdItemExistente = produtoResgatado.getQtdAtual() ;
+            if(qtdSaida>qtdItemExistente){
+                return "Não tem produto suficiente";
             }
+            float novaQtd =  qtdItemExistente - qtdSaida;
+            float nivel=((novaQtd/qtdItemExistente)*100);
+            produtoResgatado.setQtdAtual((int)novaQtd);
+            if (novaQtd == 0){
+                produtoResgatado.setStatus("Em falta");
+                produtoResgatado.setValorTotalEmEstoque(novaQtd);
+                produtoResgatado.setValorTotalAVender(novaQtd);
+            } else {
+                produtoResgatado.setStatus(nivel <=20 ?"Nivel Critico":"Bom");
+            }
+                estoqueRepository.save(produtoResgatado);
+                return "Salvo com sucesso";
         }
 
         public void atualizarQtdEstoque(int id, int novaQtd){
@@ -55,40 +41,27 @@ public class EstoqueServiceBd extends  EstoqueService{
             int qtdAtual =produto.getQtdAtual();
             float valorComprado = produto.getValorComprado();
             float valorAvender = produto.getValorVenda();
-
-            if(novaQtd==0){
+            if (novaQtd == 0 || (qtdAtual == 0 && novaQtd != 0)) {
                 produto.setQuantidadeItem(novaQtd);
                 produto.setQtdAtual(novaQtd);
-                produto.setValorTotalEmEstoque(novaQtd);
-                produto.setValorTotalAVender(novaQtd);
-                produto.setStatus("Em falta");
-                estoqueRepository.save(produto);
-            }
-            else if(qtdAtual==0 && novaQtd!=0){
-                produto.setQuantidadeItem(novaQtd);
-                produto.setQtdAtual(novaQtd);
-                produto.setValorTotalEmEstoque(novaQtd*valorComprado);
-                produto.setValorTotalAVender(novaQtd*valorAvender);
-                produto.setStatus("Bom");
-                estoqueRepository.save(produto);
-            }
-            else if (qtdAtual!=0 && novaQtd!=0) {
-                int somaQtd = novaQtd+produto.getQtdAtual();
+                produto.setValorTotalEmEstoque(novaQtd * valorComprado);
+                produto.setValorTotalAVender(novaQtd * valorAvender);
+                produto.setStatus(novaQtd == 0 ? "Em falta" : "Bom");
+            } else if (qtdAtual != 0 && novaQtd != 0) {
+                int somaQtd = novaQtd + qtdAtual;
                 produto.setQuantidadeItem(somaQtd);
                 produto.setQtdAtual(somaQtd);
-                produto.setValorTotalEmEstoque(somaQtd*valorComprado);
-                produto.setValorTotalAVender(somaQtd*valorAvender);
+                produto.setValorTotalEmEstoque(somaQtd * valorComprado);
+                produto.setValorTotalAVender(somaQtd * valorAvender);
                 produto.setStatus("Bom");
-                estoqueRepository.save(produto);
             }
+            estoqueRepository.save(produto);
          }
 
         public Estoque buscarCodigoProduto(String nomeProduto){
             return estoqueRepository.buscarCodigoProduto(nomeProduto);
         }
-
         public int qtdItemCadastrados(){
-
             return estoqueRepository.quantidadeItem();
         }
         public  float valorEstoqueComprado(){
