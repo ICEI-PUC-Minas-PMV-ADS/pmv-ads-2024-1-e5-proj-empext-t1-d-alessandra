@@ -3,6 +3,7 @@ package back.dalessandra.service.venda;
 import back.dalessandra.Model.Financeiro;
 import back.dalessandra.Model.Venda;
 import back.dalessandra.repository.venda.VendaRepository;
+import back.dalessandra.service.estoque.EstoqueServiceBd;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,7 @@ import java.util.Optional;
 public class VendaService {
 
     private final VendaRepository vendaRepository;
+    private final EstoqueServiceBd estoqueServiceBd;
 
     public List<Venda> findAll() {
         return vendaRepository.findAll();
@@ -30,6 +32,12 @@ public class VendaService {
         Integer codigo = vendaRepository.findAll().size() + 1;
         venda.setCodVenda(codigo);
         vendaRepository.create(venda);
+//        List<Item> item = venda.setListaItens();
+//
+//        for (Item item1 : item) {
+//            itemRepository.create(item1);
+//            estoqueServiceBd.baixaNoEstoque(item1.getCodigo(), item1.getQuantidade());
+//        }
         return venda;
     }
 

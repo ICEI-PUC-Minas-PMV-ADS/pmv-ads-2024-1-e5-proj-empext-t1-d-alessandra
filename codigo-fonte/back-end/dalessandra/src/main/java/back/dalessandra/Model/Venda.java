@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Entity
@@ -25,6 +26,7 @@ public class Venda {
     @Column
     private Double vlTotal;
     private float valorTotalVendas;
+    //private List<Item> listaItens;
 
 
 }
