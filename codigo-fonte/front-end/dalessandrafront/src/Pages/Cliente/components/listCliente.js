@@ -12,7 +12,6 @@ import {
 
 const ModalCliente = () => {
     const [listaClientes, setListaClientes] = useState([]);
-
     useEffect(() => {
         const carregarClientes = async () => {
             const headers ={"Content-Type":"application/json"}

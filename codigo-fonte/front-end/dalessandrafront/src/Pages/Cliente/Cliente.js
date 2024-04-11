@@ -73,8 +73,10 @@ function Cliente(){
         axios.post(config.URL+'cliente', data, {headers})
        .then((response)=>{
             console.log(response.status)
+        alert("Cliente cadastrado com sucesso!");
+        resetFields();
        }).catch((error)=>{
-        console.log(error)
+        alert("Error ao cadastrar cliente!");
        })
     }
 
@@ -82,8 +84,9 @@ function Cliente(){
         const headers ={"Content-Type":"application/json"}
         try{
             await axios.put(config.URL+'cliente/'+ codigoCliente, clienteData, {headers});
+            alert("Cliente atualizado com sucesso!");
         } catch(error){
-            console.log(error)
+            alert("Error ao atualizar cliente!");
         }
     }
 
