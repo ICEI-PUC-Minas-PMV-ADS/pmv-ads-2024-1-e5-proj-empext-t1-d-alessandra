@@ -16,16 +16,19 @@ function Venda(){
     const [cpfCnpj, setCpfCnpj] = useState("");
     const [formaPagamento, setFormaPagamento] = React.useState("");
     const [itensVenda, setItensVenda] = useState([]);
+    const [novoItem, setNovoItem] = useState([{nome: "", codigo: "", preco: ""}]);
+    const [totalVenda, setTotalVenda] = useState(0);
 
-    const adicionaItem = () => {
+    const atualizarTotalVenda = (total) => {
+        setTotalVenda(total);
+    };
+
+
+    const adicionaList = () => {
+        setItensVenda([]);
         try{
             if (produto !== "") {
-                const novoItem = {
-                    nome: produto,
-                    codigo: "0001",
-                    preco: "10"
-                };
-                setItensVenda([...itensVenda, novoItem]);
+                setItensVenda([novoItem]);
                 setProduto("");
             }
         } catch{
@@ -34,8 +37,32 @@ function Venda(){
         }
     }
 
-    const limparLista = () => {
-        setItensVenda([]);
+    const procuraCliente = async() => {
+        if(codCliente === ""){
+            return;
+        }
+        try{
+            const response = await axios.get(config.URL + 'cliente/' + codCliente);
+            const clienteEncontrado = response.data;
+            setCodCliente(clienteEncontrado.codigo);
+            setCpfCnpj(clienteEncontrado.cpfCnpj);
+        }catch(error){
+            console.log(error);
+        }
+    }
+
+    const procurarProduto = async() => {
+        try{
+            const response = await axios.get(config.URL + 'estoque/buscarCodigoProduto/' + produto);
+            const produtoEncontrado = response.data;
+            setNovoItem({
+                nome: produtoEncontrado.nomeProduto,
+                codigo: produtoEncontrado.codProduto,
+                preco: produtoEncontrado.valorVenda
+            });
+        } catch(error){
+            console.log(error);
+        }
     }
 
     return(
@@ -57,6 +84,7 @@ function Venda(){
                                 label="Cliente"
                                 value={codCliente}
                                 onChange={(e) => setCodCliente(e.target.value)}
+                                onBlur={procuraCliente}
                                 className="pr-20"
                                 containerProps={{
                                     className: "min-w-0",
@@ -96,18 +124,19 @@ function Venda(){
                                 label="Produto"
                                 value={produto}
                                 onChange={(e) => setProduto(e.target.value)}
+                                onBlur={procurarProduto}
                                 className="pr-20"
                                 containerProps={{
                                     className: "min-w-0",
                                 }}
                             />
                         </div>
-                        <button className=" btn btn-success mt-6" onKeyDown={adicionaItem} onKeyUp={limparLista}>Adicionar</button>
+                        <button className=" btn btn-success mt-6" onClick={adicionaList} >Adicionar</button>
                     </div>
                     <div/>
                     <div className="sm:col-span-6"/>
                 </div>
-                <TabelaVenda itens={itensVenda}/>
+                <TabelaVenda itens={itensVenda} onUpdateTotal={atualizarTotalVenda}/>
                 <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                     <div className="sm:col-span-2">
                         <div className="relative flex w-full max-w-[24rem] mt-2">
@@ -123,7 +152,7 @@ function Venda(){
                             />
                         </div>
                     </div>
-                    <p className="sm:col-span-2 text-right text-2xl">Total Pedido: </p>
+                    <p className="sm:col-span-2 text-right text-2xl">Total Pedido: {totalVenda} </p>
                 </div>
                 <br/>
                 <button className=" btn btn-success ">Gravar</button>
