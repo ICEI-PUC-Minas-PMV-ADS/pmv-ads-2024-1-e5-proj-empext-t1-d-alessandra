@@ -56,7 +56,7 @@ https://jeweled-duckling-fd8.notion.site/fc759d8195f545b98ac6a06ec1d9cea6?v=9cac
 | RF-008 |O sistema deve listar as vendas do dia através de um filtro.	                                                |MÉDIA     |
 | RF-009 |O sistema deve ter a possibilidade de criar o cadastro do cliente.                                        	|ALTA      |
 | RF-010 |O sistema deve permitir o gerenciamento dos valores vendidos no dia/semana/mês.	                            |MÉDIA     |
-| RF-011 |O sistema deve permitir o gerenciamento de pagamento.	                                                        |ALTA      |
+| RF-011 |O sistema deve permitir selecionar formas de pagamento.	                                                        |ALTA      |
 | RF-012 |O sistema deve ser capaz de emitir dentro de um período, um alerta ao usuário sempre que um devedor estiver pendente de pagamento.	|ALTA      |
 | RF-013 |O sistema deve permitir que a loja consiga fazer o controle das suas despesas.                               	|ALTA      |
 | RF-014 |O sistema deve permitir o gerenciamento de despesas.                                                          |ALTA      |
