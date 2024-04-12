@@ -1,8 +1,8 @@
 package back.dalessandra.controller.venda;
 
 import back.dalessandra.Model.Venda;
+import back.dalessandra.Model.dto.VendaDto;
 import back.dalessandra.service.venda.VendaService;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,7 +35,7 @@ public class VendaController {
     }
 
     @PostMapping
-    public Venda create(@RequestBody Venda venda) {
+    public VendaDto create(@RequestBody VendaDto venda) {
         return vendaService.create(venda);
     }
 

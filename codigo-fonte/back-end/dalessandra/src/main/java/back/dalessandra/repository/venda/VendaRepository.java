@@ -1,6 +1,7 @@
 package back.dalessandra.repository.venda;
 
 import back.dalessandra.Model.Venda;
+import back.dalessandra.Model.dto.VendaDto;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -28,7 +29,7 @@ public interface VendaRepository extends JpaRepository<Venda,Integer> {
             ":#{#venda.dtVenda}, " +
             ":#{#venda.formaPagto}, " +
             ":#{#venda.vlTotal})")
-    void create(Venda venda);
+    void create(VendaDto venda);
 
     @Query("SELECT SUM(f.vlTotal) FROM Venda f")
     float calcularTotalVendas();

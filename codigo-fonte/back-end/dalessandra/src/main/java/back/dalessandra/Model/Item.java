@@ -1,31 +1,29 @@
 package back.dalessandra.Model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Data
 @Entity
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Venda {
+public class Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer codVenda;
     @Column
-    private LocalDateTime dtVenda;
+    private Integer codProduto;
     @Column
-    private Integer codCliente;
+    private Double valorUnit;
     @Column
-    private String formaPagto;
+    private Integer quantidade;
     @Column
     private Double vlTotal;
-    //private List<Item> listaItens;
-
-
 }
