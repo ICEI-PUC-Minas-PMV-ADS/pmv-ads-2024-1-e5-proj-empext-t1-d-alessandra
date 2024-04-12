@@ -2,19 +2,19 @@ package back.dalessandra.repository.venda;
 
 import back.dalessandra.Model.Item;
 import jakarta.transaction.Transactional;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ItemRepository extends JpaRepository<Item,Integer> {
+public interface ItemRepository extends JpaRepository<Item,Integer>{
 
     @Modifying
     @Transactional
-    @Query("insert into Item (codVenda, codProduto, quantidade, valorUnit, vlTotal)" +
-            "values (:#{item.codVenda}," +
-            ":#{item.codProduto},)" +
-            ":#{item.quantidade}," +
-            ":#{item.valorUnit}," +
-            ":#{item.vlTotal})")
+    @Query("insert into Item (codVenda, codProduto, valorUnit, quantidade, vlTotal)" +
+            "values (:#{#item.codVenda}," +
+            ":#{#item.codProduto}," +
+            ":#{#item.valorUnit}," +
+            ":#{#item.quantidade}," +
+            ":#{#item.vlTotal})")
     void create(Item item);
 }

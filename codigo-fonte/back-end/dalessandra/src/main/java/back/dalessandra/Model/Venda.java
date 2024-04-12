@@ -25,7 +25,6 @@ public class Venda {
     private String formaPagto;
     @Column
     private Double vlTotal;
-    //private List<Item> listaItens;
 
 
 }

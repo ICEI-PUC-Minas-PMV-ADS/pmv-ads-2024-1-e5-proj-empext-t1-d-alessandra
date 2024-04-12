@@ -19,7 +19,6 @@ import java.util.Optional;
 public class VendaService {
 
     private final VendaRepository vendaRepository;
-    private final EstoqueServiceBd estoqueServiceBd;
     private final ItemService itemService;
 
     public List<Venda> findAll() {
