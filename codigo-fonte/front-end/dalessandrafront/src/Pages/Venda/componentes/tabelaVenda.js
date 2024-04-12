@@ -1,7 +1,7 @@
 import { Card, Typography } from "@material-tailwind/react";
 import React, { useState, useEffect } from "react";
 
-function TabelaVenda({ itens, onUpdateTotal }) {
+function TabelaVenda({ itens, onUpdateTotal, onUpdateItens }) {
     const [listaItens, setListaItens] = useState([]);
     const [valorTotalVenda, setValorTotalVenda] = useState(0);
 
@@ -19,6 +19,7 @@ function TabelaVenda({ itens, onUpdateTotal }) {
         const novaLista = [...listaItens];
         novaLista.splice(index, 1);
         setListaItens(novaLista);
+        onUpdateItens(novaLista);
     };
 
     const atualizarQuantidade = (index, quantidade) => {

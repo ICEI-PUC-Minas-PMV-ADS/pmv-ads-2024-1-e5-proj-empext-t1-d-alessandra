@@ -11,7 +11,7 @@ import { Input, Button } from "@material-tailwind/react";
 import ModalCliente from "../Cliente/components/listCliente";
 
 function Venda(){
-    const [codCliente, setCodCliente] = React.useState("");
+    const [codCliente, setCodCliente] = useState(null);
     const [produto, setProduto] = useState("");
     const [cpfCnpj, setCpfCnpj] = useState("");
     const [formaPagamento, setFormaPagamento] = React.useState("");
@@ -23,12 +23,15 @@ function Venda(){
         setTotalVenda(total);
     };
 
+    const atualizarItensVenda = (novaListaItens) => {
+        setItensVenda(novaListaItens);
+    };
 
     const adicionaList = () => {
         setItensVenda([]);
         try{
             if (produto !== "") {
-                setItensVenda([novoItem]);
+                setItensVenda(prevItens => [...prevItens, novoItem]);
                 setProduto("");
             }
         } catch{
@@ -44,7 +47,6 @@ function Venda(){
         try{
             const response = await axios.get(config.URL + 'cliente/' + codCliente);
             const clienteEncontrado = response.data;
-            setCodCliente(clienteEncontrado.codigo);
             setCpfCnpj(clienteEncontrado.cpfCnpj);
         }catch(error){
             console.log(error);
@@ -65,6 +67,32 @@ function Venda(){
         }
     }
 
+    const cadastrarVenda = async () => {
+        const headers ={"Content-Type":"application/json"}
+
+        try{
+            const data = {
+                "codCliente": parseInt(codCliente),
+                "listaItens": itensVenda,
+                "formaPagto": formaPagamento,
+                "vlTotal": totalVenda
+            }
+            axios.post(config.URL + 'venda', data, {headers});
+            alert("Venda cadastrada com sucesso");
+            resetFields();
+        } catch(error){
+            alert("Erro ao cadastrar venda");
+        }
+    }
+
+    const resetFields = () => {
+            setCodCliente("");
+            setCpfCnpj("");
+            setProduto("");
+            setFormaPagamento("");
+            setItensVenda([]);
+    }
+    
     return(
         <main className="bg-base-100 drawer lg:drawer-open" >
             <Menu/>
@@ -80,11 +108,11 @@ function Venda(){
                     <div className="sm:col-span-2">
                         <div className="relative flex w-full max-w-[24rem] mt-2">
                             <Input
-                                type="text"
+                                type="number"
                                 label="Cliente"
                                 value={codCliente}
-                                onChange={(e) => setCodCliente(e.target.value)}
                                 onBlur={procuraCliente}
+                                onChange={(e) => setCodCliente(e.target.value)}
                                 className="pr-20"
                                 containerProps={{
                                     className: "min-w-0",
@@ -136,7 +164,7 @@ function Venda(){
                     <div/>
                     <div className="sm:col-span-6"/>
                 </div>
-                <TabelaVenda itens={itensVenda} onUpdateTotal={atualizarTotalVenda}/>
+                <TabelaVenda itens={itensVenda}  onUpdateTotal={atualizarTotalVenda}/>
                 <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                     <div className="sm:col-span-2">
                         <div className="relative flex w-full max-w-[24rem] mt-2">
@@ -155,7 +183,7 @@ function Venda(){
                     <p className="sm:col-span-2 text-right text-2xl">Total Pedido: {totalVenda} </p>
                 </div>
                 <br/>
-                <button className=" btn btn-success ">Gravar</button>
+                <button className=" btn btn-success " onClick={cadastrarVenda}>Gravar</button>
             </section>
             </div>
 
