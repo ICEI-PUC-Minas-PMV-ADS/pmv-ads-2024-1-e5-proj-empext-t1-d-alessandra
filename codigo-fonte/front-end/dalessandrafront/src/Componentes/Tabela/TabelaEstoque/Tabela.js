@@ -1,6 +1,6 @@
 import React from 'react';
-import SubMenuEstoque from '../Menu/subMenuEstoque';
-import ModalExcluir from "../Modal/ModiasEstoque/modalExcluir";
+import SubMenuEstoque from '../../SubMenu/subMenuEstoque';
+import ModalExcluir from "../../Modal/ModiasEstoque/modalExcluir";
 
 
 function Tabela({dados,filtro}){

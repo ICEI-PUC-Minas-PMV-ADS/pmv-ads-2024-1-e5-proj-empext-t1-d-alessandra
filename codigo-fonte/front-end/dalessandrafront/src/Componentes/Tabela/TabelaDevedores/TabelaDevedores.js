@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
 import dayjs from 'dayjs';
+import React, { useState } from 'react';
+import ExibirCompras from '../../Modal/ModalTelaDevedores/exibirCompras';
+import BaixaDevedor from '../../Modal/ModalTelaDevedores/baixaDevedor';
 function TabelaDevedores({ dados }){
     return (
         <table className="table table-xs">
@@ -22,10 +24,12 @@ function TabelaDevedores({ dados }){
                         <td>{item.nomeCliente}</td>
                         <td>{dayjs(item.dtVenda).format("DD/MM/YYYY")}</td>
                         <td>{dayjs(item.dtVenda).add(30,"day").format("DD/MM/YYYY")}</td>
-                        <td>{dayjs(dayjs(item.dtVenda).add(30,"day")).diff(item.dtVenda,'day')}</td>
+                        <td>{dayjs(dayjs(item.dtVenda).add(30,"day")).diff(dayjs(),'day')}</td>
                         <td>{item.formaPagto}</td>
                         <td>{item.codVenda}</td>
                         <td>{'R$ '+item.vlTotal}</td>
+                        <td><ExibirCompras id={item.codVenda}/></td>
+                        <td><BaixaDevedor id={item.codVenda}/></td>
                     </tr>
                 ))}
             </tbody>

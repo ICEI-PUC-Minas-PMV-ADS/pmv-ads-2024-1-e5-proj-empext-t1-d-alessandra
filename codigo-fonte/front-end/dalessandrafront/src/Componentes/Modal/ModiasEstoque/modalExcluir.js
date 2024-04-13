@@ -22,7 +22,7 @@ function ModalExcluir({id}){
      }
     return (
         <div>
-            <button className="" onClick={()=>document.getElementById('my_modal_excluir'+id).showModal()}><img  class="h-8 w-8" fill="none" viewBox="0 0 34 34" src={LogoExlivraria}/></button>
+            <button className="" onClick={()=>document.getElementById('my_modal_excluir'+id).showModal()}><img class="h-8 w-8" fill="none" viewBox="0 0 34 34" src={LogoExlivraria}/></button>
             <dialog id={'my_modal_excluir'+id} className="modal">
             <div className="modal-box w-11/12 max-w-5xl">
                 <h3 className="font-bold text-lg">Exlcuir!</h3>

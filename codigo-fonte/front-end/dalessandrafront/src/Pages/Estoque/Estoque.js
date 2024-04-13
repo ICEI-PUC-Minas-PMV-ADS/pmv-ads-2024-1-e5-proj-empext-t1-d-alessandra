@@ -7,8 +7,8 @@ import { useEffect, useState } from "react";
 import Card from "../../Componentes/Card/Card";
 import Menu from "../../Componentes/Menu/Menu";
 import LogoInvetario from "../../img/warehouse.png";
-import Tabela from "../../Componentes/Tabela/Tabela";
-import Filtro from "../../Componentes/Tabela/Filtro";
+import Tabela from "../../Componentes/Tabela/TabelaEstoque/Tabela";
+import Filtro from "../../Componentes/Tabela/TabelaEstoque/Filtro";
 import ModalAdicionar from "../../Componentes/Modal/ModiasEstoque/modalAdcionar";
 function Estoque(){
 

@@ -3,7 +3,7 @@ import axios from "axios"
 import config from "../../config/config"
 import { useEffect, useState } from "react"
 import Menu from "../../Componentes/Menu/Menu"
-import TabelaDevedores from "../../Componentes/Tabela/TabelaDevedores"
+import TabelaDevedores from "../../Componentes/Tabela/TabelaDevedores/TabelaDevedores"
 function Devedores(){
      
     const [clientesDevedores,setClientesDevedores]= useState([])

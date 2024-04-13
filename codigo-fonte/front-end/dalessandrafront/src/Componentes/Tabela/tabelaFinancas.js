@@ -1,6 +1,6 @@
 import React from 'react';
 import ModalExcluirFin from "../Modal/ModaisFinanças/modalExcluirFin";
-import SubMenuFinanceiro from '../Menu/subMenuFinanceiro';
+import SubMenuFinanceiro from '../SubMenu/subMenuFinanceiro';
 
 function TabelaFinancas({ dados, filtroData }) {
     const filtrarDados = (item) => {
