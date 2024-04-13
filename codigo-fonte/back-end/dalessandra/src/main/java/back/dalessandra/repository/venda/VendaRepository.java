@@ -6,6 +6,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.Optional;
@@ -38,4 +39,9 @@ public interface VendaRepository extends JpaRepository<Venda,Integer> {
     @Transactional
     @Query("delete from Venda where codVenda = :codVenda")
     void deleteByVenda(Integer codVenda);
+
+    @Query("select u from Venda u where codVenda=?1")
+    Venda recuperarDadosVedna(@Param("codVenda") int codVenda);
+
+
 }
