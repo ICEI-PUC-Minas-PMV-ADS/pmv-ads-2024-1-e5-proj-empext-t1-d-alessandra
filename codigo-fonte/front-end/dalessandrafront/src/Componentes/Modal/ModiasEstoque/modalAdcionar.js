@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import dayjs from "dayjs";
 import"../../../Pages/estilo/estoque.css";
 import config from "../../../config/config";
 import AlertaErro from "../../Alertas/AlertaErro";
@@ -40,7 +41,7 @@ function ModalAdicionar(){
             "tamanho":dados.tamanho,
             "valorComprado":dados.valorComprado,
             "valorVenda": dados.valorVendido,
-            "dataCadastro": new Date(dados.dataCadastro).toLocaleDateString('pt-BR'),
+            "dataCadastro": dayjs(dados.dataCadastro).format("DD/MM/YYYY"),
             "qtdAtual": dados.qtd,
         }
         
@@ -106,7 +107,7 @@ function ModalAdicionar(){
                 </select>
                
                 <input id="qtd" name="qtd" type="text" onChange={capturarValores} placeholder="Quantidade" class="input input-ghost w-full max-w-xs" />
-                <input id="valorcomprado" name="valorCompreado" type="text" onChange={capturarValores}  placeholder="Valor Comprado" class="input input-ghost w-full max-w-xs" />
+                <input id="valorcomprado" name="valorComprado" type="text" onChange={capturarValores}  placeholder="Valor Comprado" class="input input-ghost w-full max-w-xs" />
                 <input id="valorvendido" name="valorVendido" type="text" onChange={capturarValores}placeholder="Valor Vendido" class="input input-ghost w-full max-w-xs" />
                 <input id="datacadastro" name="dataCadastro" type="date" onChange={capturarValores} placeholder="Data Cadastro" class="input input-ghost w-full max-w-xs" />
                 <div className="modal-action">

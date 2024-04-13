@@ -1,5 +1,6 @@
 package back.dalessandra.controller.cliente;
 
+import back.dalessandra.Model.dto.ClienteDevedorDTO;
 import back.dalessandra.service.cliente.ClienteDevedorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +18,7 @@ public class ClientesDevedoresController {
     ClienteDevedorService clienteDevedor;
 
     @GetMapping("/listarClientesDevedores")
-    public List<?> listarClientesDevedores(){
+    public List<ClienteDevedorDTO> listarClientesDevedores(){
         return clienteDevedor.listarClientesDevedor();
     }
 

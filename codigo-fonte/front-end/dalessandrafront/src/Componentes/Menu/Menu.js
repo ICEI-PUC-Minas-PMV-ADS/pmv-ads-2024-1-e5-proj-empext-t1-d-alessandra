@@ -17,6 +17,7 @@ function Menu() {
           <ul>
             <li><Link to="/vendas">Venda</Link></li>
             <li><Link to="/cliente">Cliente</Link></li>
+            <li><Link to="/clienteDevedores">Clientes Inadimplentes</Link></li>
             <li><a>Relatório Venda</a></li>
             <li><a>Mais Vendidos</a></li>
           </ul>

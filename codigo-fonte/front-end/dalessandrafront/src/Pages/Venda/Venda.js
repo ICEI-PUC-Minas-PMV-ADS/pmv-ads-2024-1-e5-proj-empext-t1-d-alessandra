@@ -67,22 +67,25 @@ function Venda(){
         }
     }
 
-    const cadastrarVenda = async () => {
+    const cadastrarVenda = () => {
+        console.log(totalVenda)
         const headers ={"Content-Type":"application/json"}
-
-        try{
-            const data = {
-                "codCliente": parseInt(codCliente),
-                "listaItens": itensVenda,
-                "formaPagto": formaPagamento,
-                "vlTotal": totalVenda
-            }
-            axios.post(config.URL + 'venda', data, {headers});
+        const data = {
+            "codCliente": parseInt(codCliente),
+            "listaItens": itensVenda,
+            "formaPagto": formaPagamento,
+            "vlTotal": totalVenda
+        }
+        axios.post(config.URL + 'venda', data, {headers})
+        .then((response)=>{
             alert("Venda cadastrada com sucesso");
             resetFields();
-        } catch(error){
+            }
+        ).catch((error)=>{
+
             alert("Erro ao cadastrar venda");
-        }
+        })
+        
     }
 
     const resetFields = () => {
@@ -183,7 +186,7 @@ function Venda(){
                     <p className="sm:col-span-2 text-right text-2xl">Total Pedido: {totalVenda} </p>
                 </div>
                 <br/>
-                <button className=" btn btn-success " onClick={cadastrarVenda}>Gravar</button>
+                <button className=" btn btn-success " onClick={()=>cadastrarVenda()}>Gravar</button>
             </section>
             </div>
 
