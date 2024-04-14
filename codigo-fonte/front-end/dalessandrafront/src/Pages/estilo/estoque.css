@@ -4,6 +4,20 @@
     grid-gap: 10px;
      
 }
+.alinhamento {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+    gap: 10px; 
+}
+
+.alinhamento input{
+    display: block; 
+    width: 87%; 
+}
+.alinhamento select {
+    display: block; 
+    width: 100%; 
+}
 .btn-success,.btn-error{
     color: #fff;
 }

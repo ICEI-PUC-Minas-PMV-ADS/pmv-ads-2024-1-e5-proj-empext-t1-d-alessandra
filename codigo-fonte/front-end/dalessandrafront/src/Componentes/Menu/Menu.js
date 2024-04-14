@@ -16,8 +16,6 @@ function Menu() {
           <summary>Venda</summary>
           <ul>
             <li><Link to="/vendas">Venda</Link></li>
-            <li><Link to="/cliente">Cliente</Link></li>
-            <li><Link to="/clienteDevedores">Clientes Inadimplentes</Link></li>
             <li><a>Relatório Venda</a></li>
             <li><a>Mais Vendidos</a></li>
           </ul>
@@ -25,6 +23,18 @@ function Menu() {
       </li>
       <li><Link to="/estoque">Estoque</Link></li>
       <li><Link to="/financeiro">Financeiro</Link></li>
+      <li>
+      <details>
+          <summary>Clientes</summary>
+          <ul>
+            <li><Link to="/cliente">Cliente</Link></li>
+            <li><Link to="/clienteDevedores">Clientes Inadimplentes</Link></li>
+            <li><a>Historico dos clientes</a></li>
+          
+          </ul>
+        </details>
+
+      </li>
       <li><a onClick={handleLogout}>Sair</a></li>
     </ul>
   );
