@@ -10,13 +10,13 @@
     gap: 10px; 
 }
 
-.alinhamento input{
+.alinhamento > input{
     display: block; 
-    width: 87%; 
+    width: 99%; 
 }
-.alinhamento select {
+.alinhamento > select {
     display: block; 
-    width: 100%; 
+    width: 99%; 
 }
 .btn-success,.btn-error{
     color: #fff;
