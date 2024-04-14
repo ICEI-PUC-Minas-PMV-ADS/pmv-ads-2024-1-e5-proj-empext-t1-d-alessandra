@@ -1,4 +1,4 @@
-package back.dalessandra.Model.dto;
+package back.dalessandra.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

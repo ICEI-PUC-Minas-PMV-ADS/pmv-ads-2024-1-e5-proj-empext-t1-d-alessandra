@@ -1,10 +1,10 @@
 package back.dalessandra.service.cliente;
 
+import back.dalessandra.DTO.ListaComprasClienteDevedorDTO;
 import back.dalessandra.Model.Venda;
-import back.dalessandra.Model.dto.ClienteDevedorDTO;
+import back.dalessandra.DTO.ClienteDevedorDTO;
 import back.dalessandra.repository.cliente.ClienteDevedorRepository;
 import back.dalessandra.repository.venda.VendaRepository;
-import back.dalessandra.service.venda.VendaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,5 +28,7 @@ public class ClienteDevedorService {
       vendaRepository.save(vendaUpadate);
       return "salvo com sucesso";
     }
-
+    public List<ListaComprasClienteDevedorDTO> listarComprasClienteDevedor(int codVenda){
+        return clienteDevedorRepository.listarProdutosClienteDevedor(codVenda);
+    }
 }
