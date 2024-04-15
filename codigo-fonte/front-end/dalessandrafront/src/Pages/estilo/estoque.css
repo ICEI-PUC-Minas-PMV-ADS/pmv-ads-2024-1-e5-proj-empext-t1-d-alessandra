@@ -18,6 +18,10 @@
     display: block; 
     width: 99%; 
 }
+.logoVenda{
+    width: 1.79rem;
+    height: 1.79rem;
+}
 .btn-success,.btn-error{
     color: #fff;
 }
@@ -33,7 +37,14 @@
 .alert-success,.alert-error{
     color: #fff;
 }
-
+.logoConfig{
+    width: 2rem;
+    height: 2rem;
+}
+.configList{
+    position: relative;
+    top: 10rem;
+}
 /*.campos{
     position: relative;
     bottom: 21em;

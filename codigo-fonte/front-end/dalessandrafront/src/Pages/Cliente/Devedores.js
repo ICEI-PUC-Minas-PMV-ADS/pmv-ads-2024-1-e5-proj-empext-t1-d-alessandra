@@ -3,6 +3,7 @@ import axios from "axios"
 import config from "../../config/config"
 import { useEffect, useState } from "react"
 import Menu from "../../Componentes/Menu/Menu"
+import LogoDevedor from "../../img/perceber.png"
 import TabelaDevedores from "../../Componentes/Tabela/TabelaDevedores/TabelaDevedores"
 function Devedores(){
      
@@ -14,7 +15,6 @@ function Devedores(){
     useEffect(()=>{
         obeterDevedores()
     },[])
- 
     function obeterDevedores(){
         axios.get(`${config.URL}devedores/listarClientesDevedores`)
         .then((response)=>{
@@ -31,6 +31,7 @@ function Devedores(){
             <br></br>
             <div className="drawer-content">
                 <section className="container mx-auto p-4 alinhamentoMenu2"> 
+                    <img  class="h-10 w-10" fill="none" viewBox="0 0 34 34" src={LogoDevedor}/>
                     <h1 className="text-3xl font-bold">Clientes inadiplentes</h1>
                 </section>
                 <section className="container mx-auto p-4 shadow-xl alinhamentoMenu2">
