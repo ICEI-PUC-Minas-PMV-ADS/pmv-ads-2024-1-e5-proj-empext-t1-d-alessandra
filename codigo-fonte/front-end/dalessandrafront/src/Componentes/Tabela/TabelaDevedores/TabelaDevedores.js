@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import "../../../"
 import ExibirCompras from '../../Modal/ModalTelaDevedores/exibirCompras';
 import BaixaDevedor from '../../Modal/ModalTelaDevedores/baixaDevedor';
+import SubMenuDevedor from '../../SubMenu/subMenuDevedor';
 function TabelaDevedores({ dados,filtroCodVenda, filtroNome, filtroDataVenda }){
     
     const filtrarDados = (item) => {
@@ -16,6 +17,7 @@ function TabelaDevedores({ dados,filtroCodVenda, filtroNome, filtroDataVenda }){
         <table className="table table-xs">
             <thead>
                 <tr>
+                    <th></th>
                     <th>Cod.Cliente</th>
                     <th>Nome</th>
                     <th>Data da venda</th>
@@ -29,6 +31,13 @@ function TabelaDevedores({ dados,filtroCodVenda, filtroNome, filtroDataVenda }){
             <tbody>
                 {dados.filter(filtrarDados).map((item, index) => (
                     <tr key={index}>
+                        <td>
+                            <div class="avatar placeholder">
+                                <div class="bg-green-500 text-info-content rounded-full w-8">
+                                    <span>{item.nomeCliente[0]}</span>
+                                </div>
+                            </div> 
+                        </td>
                         <td>{item.codCliente}</td>
                         <td>{item.nomeCliente}</td>
                         <td>{dayjs(item.dtVenda).format("DD/MM/YYYY")}</td>
@@ -37,8 +46,7 @@ function TabelaDevedores({ dados,filtroCodVenda, filtroNome, filtroDataVenda }){
                         <td>{item.formaPagto}</td>
                         <td>{item.codVenda}</td>
                         <td>{'R$ '+item.vlTotal}</td>
-                        <td><ExibirCompras id={item.codVenda}/></td>
-                        <td><BaixaDevedor id={item.codVenda}/></td>
+                        <td><SubMenuDevedor id={item.codVenda}/></td>
                     </tr>
                 ))}
             </tbody>

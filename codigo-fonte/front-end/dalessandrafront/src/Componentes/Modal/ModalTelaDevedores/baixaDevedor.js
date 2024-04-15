@@ -45,7 +45,7 @@ function BaixaDevedor({id}){
     }
     return(
         <div>
-          <button className="" onClick={()=>document.getElementById('my_modal_baixaDevedor'+id).showModal()}><img class="h-8 w-8" fill="none" viewBox="0 0 34 34" src={Confirme}/></button>
+          <button className="" onClick={()=>document.getElementById('my_modal_baixaDevedor'+id).showModal()}>Dar baixa</button>
          <dialog id={"my_modal_baixaDevedor"+id} className="modal">
             <div className="modal-box w-11/12 max-w-5xl">
                 {alertVisible && <Alertasucesso message="Item adicionado com sucesso" />}
