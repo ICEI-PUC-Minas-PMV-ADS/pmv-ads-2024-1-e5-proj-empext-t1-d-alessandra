@@ -1,9 +1,8 @@
+import "../../../"
 import dayjs from 'dayjs';
 import React, { useState } from 'react';
-import "../../../"
-import ExibirCompras from '../../Modal/ModalTelaDevedores/exibirCompras';
-import BaixaDevedor from '../../Modal/ModalTelaDevedores/baixaDevedor';
 import SubMenuDevedor from '../../SubMenu/subMenuDevedor';
+import config from "../../../config/config";
 function TabelaDevedores({ dados,filtroCodVenda, filtroNome, filtroDataVenda }){
     
     const filtrarDados = (item) => {
@@ -41,8 +40,8 @@ function TabelaDevedores({ dados,filtroCodVenda, filtroNome, filtroDataVenda }){
                         <td>{item.codCliente}</td>
                         <td>{item.nomeCliente}</td>
                         <td>{dayjs(item.dtVenda).format("DD/MM/YYYY")}</td>
-                        <td>{dayjs(item.dtVenda).add(30,"day").format("DD/MM/YYYY")}</td>
-                        <td>{dayjs(dayjs(item.dtVenda).add(30,"day")).diff(dayjs(new Date()),'day')}</td>
+                        <td>{dayjs(item.dtVenda).add(config.PERIODOCOBRANCA,"day").format("DD/MM/YYYY")}</td>
+                        <td>{dayjs(dayjs(item.dtVenda).add(config.PERIODOCOBRANCA,"day")).diff(dayjs(new Date()),'day')}</td>
                         <td>{item.formaPagto}</td>
                         <td>{item.codVenda}</td>
                         <td>{'R$ '+item.vlTotal}</td>

@@ -45,6 +45,12 @@
     position: relative;
     top: 10rem;
 }
+.botoesAlterarParametros{
+    position: relative;
+    left: 24em;
+    bottom: 3.5em;
+    width: 5rem;
+}
 /*.campos{
     position: relative;
     bottom: 21em;

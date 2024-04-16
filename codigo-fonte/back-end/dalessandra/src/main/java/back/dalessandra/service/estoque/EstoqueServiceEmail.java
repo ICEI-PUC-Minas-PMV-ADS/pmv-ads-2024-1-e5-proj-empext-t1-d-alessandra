@@ -1,8 +1,11 @@
 package back.dalessandra.service.estoque;
 
 import back.dalessandra.Model.Estoque;
+import back.dalessandra.repository.Configuracao.ConfiguracaoRepository;
+import back.dalessandra.service.configuracao.configuracaoService;
 import jakarta.annotation.PostConstruct;
 import back.dalessandra.service.envioEmail.EmailEnvio;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -11,16 +14,19 @@ import java.util.List;
 @Service
 public class EstoqueServiceEmail extends EstoqueService{
     EmailEnvio emaiEnvio =new EmailEnvio();
+    @Autowired
+    configuracaoService confg;
     @PostConstruct
     public void init() {
         List<Estoque> estoqueBaixo = recuperarNivelBaixo();
-        if (estoqueBaixo!=null){
+        if (estoqueBaixo.size()!=0){
             eviarEmailNivelCriticoEstoque(estoqueBaixo);
         }
 
     }
 
     public String eviarEmailNivelCriticoEstoque(List<Estoque> estoque) {
+            String email = confg.recuperandoParametroEmail();
             LocalDateTime data = LocalDateTime.now();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
             String dataFormatada = data.format(formatter);
@@ -59,7 +65,7 @@ public class EstoqueServiceEmail extends EstoqueService{
             htmlContent.append("</table>");
             htmlContent.append("</body></html>");
 
-            emaiEnvio.sendEmail("vitor@gmail.com", "Relatorio de estoque -"+dataFormatada, htmlContent.toString());
+            emaiEnvio.sendEmail(email, "Relatorio de estoque -"+dataFormatada, htmlContent.toString());
             return "enviado";
         //}
 
