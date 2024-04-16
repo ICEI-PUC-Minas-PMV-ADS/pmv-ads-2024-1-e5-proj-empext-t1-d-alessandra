@@ -59,8 +59,8 @@ function Venda(){
             const produtoEncontrado = response.data;
             setNovoItem({
                 nome: produtoEncontrado.nomeProduto,
-                codigo: produtoEncontrado.codProduto,
-                preco: produtoEncontrado.valorVenda
+                codProduto: produtoEncontrado.codProduto,
+                valorUnit: produtoEncontrado.valorVenda
             });
         } catch(error){
             console.log(error);
@@ -82,7 +82,6 @@ function Venda(){
             resetFields();
             }
         ).catch((error)=>{
-
             alert("Erro ao cadastrar venda");
         })
         

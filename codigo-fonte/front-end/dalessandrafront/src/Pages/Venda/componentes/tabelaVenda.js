@@ -6,6 +6,7 @@ function TabelaVenda({ itens, onUpdateTotal, onUpdateItens }) {
     const [valorTotalVenda, setValorTotalVenda] = useState(0);
 
     useEffect(() => {
+        onUpdateTotal(valorTotalVenda);
         const total = listaItens.reduce((acc, item) => acc + item.valorTotal, 0);
         setValorTotalVenda(total);
         onUpdateTotal(total); 
@@ -19,13 +20,13 @@ function TabelaVenda({ itens, onUpdateTotal, onUpdateItens }) {
         const novaLista = [...listaItens];
         novaLista.splice(index, 1);
         setListaItens(novaLista);
-        onUpdateItens(novaLista);
+        //onUpdateItens(novaLista);
     };
 
     const atualizarQuantidade = (index, quantidade) => {
         const novaLista = [...listaItens];
         novaLista[index].quantidade = quantidade;
-        novaLista[index].valorTotal = quantidade * novaLista[index].preco; 
+        novaLista[index].valorTotal = quantidade * novaLista[index].valorUnit; 
         setListaItens(novaLista);
     };
 
@@ -93,7 +94,7 @@ function TabelaVenda({ itens, onUpdateTotal, onUpdateItens }) {
                     </tr>
                 </thead>
                 <tbody>
-                    {listaItens.map(({ nome, codigo, preco, quantidade, valorTotal }, index) => (
+                    {listaItens.map(({ nome, codProduto, valorUnit, quantidade, valorTotal }, index) => (
                         <tr key={index} className={index % 2 === 0 ? "even:bg-blue-gray-50/50" : ""}>
                             <td className="p-4">
                                 <Typography variant="small" color="blue-gray" className="font-normal">
@@ -102,20 +103,20 @@ function TabelaVenda({ itens, onUpdateTotal, onUpdateItens }) {
                             </td>
                             <td className="p-4">
                                 <Typography variant="small" color="blue-gray" className="font-normal">
-                                    {codigo}
+                                    {codProduto}
                                 </Typography>
                             </td>
                             <td className="p-4">
-                                <input type="number" defaultValue={quantidade} onChange={(e) => atualizarQuantidade(index, e.target.value)} />
+                                <input type="number" defaultValue={quantidade ?? 1} onChange={(e) => atualizarQuantidade(index, e.target.value)} />
                             </td>
                             <td className="p-4">
                                 <Typography variant="small" color="blue-gray" className="font-normal">
-                                    {preco}
+                                    {valorUnit}
                                 </Typography>
                             </td>
                             <td className="p-4">
                                 <Typography variant="small" color="blue-gray" className="font-normal">
-                                    {valorTotal}
+                                    {valorTotal ?? valorUnit}
                                 </Typography>
                             </td>
                             <td className="p-4 cursor-pointer" onClick={() => removerItem(index)}>
