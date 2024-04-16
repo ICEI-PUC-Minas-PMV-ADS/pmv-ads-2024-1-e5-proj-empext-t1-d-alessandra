@@ -3,7 +3,7 @@ import React from 'react';
 import axios from 'axios';
 import { useState,useEffect } from 'react';
 import config from '../../../config/config';
-
+import CardAlertaItemNaoEncontrado from '../../Card/CardAlertaItemNaoEncontrado';
 import logoOlho from'../../../img/open-eye-icon.png' 
 import dayjs from 'dayjs';
 function ExibirCompras({id}){
@@ -42,7 +42,12 @@ function ExibirCompras({id}){
                             </tr>
                         </thead>
                         <tbody>
-                            {compras.map((item, index)  => (
+                            {
+                            
+                            (compras.length === 0) ?(    
+                                <CardAlertaItemNaoEncontrado  textoExibir="Nenhum item encotrando"/>
+                            ) : (
+                            compras.map((item, index)  => (
                                 <tr key={index}>
                                     <td>{item.nomeProduto}</td>
                                     <td>{item.tamanho}</td>
@@ -50,7 +55,8 @@ function ExibirCompras({id}){
                                     <td>{item.vlTotal}</td>
                                     <td>{ dayjs(item.dtVenda).format("DD/MM/YYYY")}</td>
                                     </tr>
-                                ))}
+                                )))
+                            }
                         </tbody>
                     </table>
                     <div className="modal-action">

@@ -40,9 +40,9 @@ function ModalAtualizarValorVenda({id}){
        <div>
             <button className="" onClick={()=>document.getElementById('my_modal_editarValorVenda'+id).showModal()}>Editar valor de venda</button>
             <dialog id={"my_modal_editarValorVenda"+id} className="modal">
-            <div className="modal-box w-11/12 max-w-5xl">
             {alertVisible && <Alertasucesso message="Valor salvo com sucesso" />}
             {alertaErro && <AlertaErro message={mensagemError} />}
+            <div className="modal-box w-11/12 max-w-5xl">
             <br></br>
                     <h3 className="font-bold text-lg">Atualizar valor de Venda</h3>
                     <p className="py-4">Digite o novo valor de venda do produto</p>

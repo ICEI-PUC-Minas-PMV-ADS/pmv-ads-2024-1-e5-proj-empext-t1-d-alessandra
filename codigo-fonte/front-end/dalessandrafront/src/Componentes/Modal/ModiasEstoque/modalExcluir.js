@@ -24,10 +24,10 @@ function ModalExcluir({id}){
         <div>
             <button className="" onClick={()=>document.getElementById('my_modal_excluir'+id).showModal()}><img class="h-8 w-8" fill="none" viewBox="0 0 34 34" src={LogoExlivraria}/></button>
             <dialog id={'my_modal_excluir'+id} className="modal">
+            {alertVisible && <Alertasucesso message="Item excluído com sucesso!" />}
             <div className="modal-box w-11/12 max-w-5xl">
                 <h3 className="font-bold text-lg">Exlcuir!</h3>
                 <p className="py-4">Tem certeza que deseja excluir esse produto ?</p>
-                {alertVisible && <Alertasucesso message="Item excluído com sucesso!" />}
                 <br></br>
                 <div className="modal-action">
                     <button className="btn btn-error" color={"#fff"} onClick={()=>excluir(id)}>Excluir</button>   

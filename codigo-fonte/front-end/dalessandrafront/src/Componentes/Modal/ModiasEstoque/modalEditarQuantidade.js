@@ -40,9 +40,9 @@ function ModalEditarQuantidade({id}){
         <div>
             <button className="" onClick={()=>document.getElementById('my_modal_adcionarvalor'+id).showModal()}>Editar quantidade</button>
             <dialog id={"my_modal_adcionarvalor"+id} className="modal">
-                <div className="modal-box w-11/12 max-w-5xl">
                 {alertVisible && <Alertasucesso message="Atualizado com sucesso" />}
                 {alertaErro && <AlertaErro message={mensagemError} />}
+                <div className="modal-box w-11/12 max-w-5xl">
                 <br></br>
                   <h3 className="font-bold text-lg">Atualizar estoque</h3>
                   <p className="py-4">Atualiza a quantidade do produto</p>

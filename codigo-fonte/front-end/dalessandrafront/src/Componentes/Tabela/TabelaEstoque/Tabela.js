@@ -1,6 +1,7 @@
 import React from 'react';
 import SubMenuEstoque from '../../SubMenu/subMenuEstoque';
 import ModalExcluir from "../../Modal/ModiasEstoque/modalExcluir";
+import CardAlertaItemNaoEncontrado from '../../Card/CardAlertaItemNaoEncontrado';
 
 
 function Tabela({dados,filtro}){
@@ -42,8 +43,21 @@ function Tabela({dados,filtro}){
                 </tr>
             </thead>
             <tbody>
-                {dados.filter(filtrarDados).map((item, index) => (
-                    <tr key={index}>
+                {
+                (dados.length === 0) ?(    
+                    <CardAlertaItemNaoEncontrado  textoExibir="Nenhum produto cadastrado no estoque"/>
+                ) : (
+                
+                dados.filter(filtrarDados).map((item, index) => {
+                    const status = item.status;
+                    let classeBg = '';
+                        if (status == "Bom") {
+                            classeBg = 'text-success';
+                        } else if (status=="Em falta" || status=="Nivel Critico") {
+                            classeBg = 'text-warning';
+                        } 
+                    return(
+                   <tr key={index}>
                         <td>{item.codProduto}</td>
                         <td>{item.nomeProduto}</td>
                         <td>{item.marca}</td>
@@ -54,12 +68,12 @@ function Tabela({dados,filtro}){
                         <td>{'R$ '+item.valorComprado}</td>
                         <td>{'R$ '+item.valorVenda}</td>
                         <td>{'R$ '+item.valorTotalEmEstoque}</td>
-                        <td>{item.status}</td>
+                        <td className={`${classeBg}`}>{item.status}</td>
                         <td>{item.dataCadastro}</td>
                         <td><ModalExcluir id={item.codProduto}/></td>
                         <td><SubMenuEstoque id={item.codProduto}/></td>
                     </tr>
-                ))}
+)}))}
             </tbody>
         </table>
     )

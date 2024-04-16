@@ -65,9 +65,9 @@ function ModalIncluir() {
         <div>
             <button className="btn btn-success" onClick={() => document.getElementById('my_modal_20240310L').showModal()} color={"#fff"}>Novo Registro</button>
             <dialog id="my_modal_20240310L" className="modal">
-                <div className="modal-box w-11/12 max-w-5xl alinharCamposModal">
                     {alertVisible && <Alertasucesso message="Item adicionado com sucesso" />}
                     {alertaErro && <AlertaErro message={mensagemError} />}
+                <div className="modal-box w-11/12 max-w-5xl alinharCamposModal">
                     <br></br>
                     <h3 className="font-bold text-lg">Registro</h3>
                     <p className="py-4">Registrar Despesa</p>

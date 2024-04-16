@@ -39,9 +39,9 @@ function ModalEditarNomeDespesa({id}) {
         <div>
             <button className="" onClick={() => document.getElementById('my_modal_editar_nome_despesa_' + id).showModal()}>Editar Nome da Despesa</button>
             <dialog id={"my_modal_editar_nome_despesa_" + id} className="modal">
-                <div className="modal-box w-11/12 max-w-5xl">
                     {alertVisible && <Alertasucesso message="Atualizado com sucesso" />}
                     {alertaErro && <AlertaErro message={mensagemError} />}
+                <div className="modal-box w-11/12 max-w-5xl">
                     <br></br>
                     <h3 className="font-bold text-lg">Editar Nome da Despesa</h3>
                     <input type="text" className="input input-bordered" placeholder="Nome de Despesa" value={nomeDespesa} onChange={handleNomeDespesaChange} />
