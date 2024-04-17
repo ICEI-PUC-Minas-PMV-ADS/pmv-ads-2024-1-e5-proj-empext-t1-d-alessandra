@@ -28,11 +28,19 @@ public class EstoqueService {
         estoque.setStatus("Bom");
         estoqueRepository.save(estoque);
     }
-    public Page<Estoque> listarEstoque(int numeroPagina, int tamanhoPagina){
-        PageRequest pageRequest = PageRequest.of(numeroPagina, tamanhoPagina);
-        return estoqueRepository.findAll(pageRequest);
+    public Page<Estoque> listarEstoque(int numeroPagina, int tamanhoPagina,String nomeProduto,String status){
+
+        if(nomeProduto==null && status==null) {
+            PageRequest pageRequest = PageRequest.of(numeroPagina, tamanhoPagina);
+            return estoqueRepository.findAll(pageRequest);
+        }
+        return filtro(numeroPagina,tamanhoPagina,nomeProduto,status);
     }
 
+    public Page<Estoque>filtro(int numeroPagina, int tamanhoPagina,String nomeProduto,String status){
+        PageRequest pageRequest = PageRequest.of(numeroPagina, tamanhoPagina);
+        return estoqueRepository.filroEstoque(nomeProduto,status,pageRequest);
+    }
     public String excluirProdutoEstoque(int id){
         estoqueRepository.deleteById(id);
         return ("Excluido com sucesso");

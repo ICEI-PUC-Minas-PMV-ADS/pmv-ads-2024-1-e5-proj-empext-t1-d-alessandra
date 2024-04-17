@@ -51,7 +51,7 @@ function Tabela({dados,filtro}){
                 dados.filter(filtrarDados).map((item, index) => {
                     const status = item.status;
                     let classeBg = '';
-                        if (status == "Bom") {
+                        if (status == "Bom" || status=="bom") {
                             classeBg = 'text-success';
                         } else if (status=="Em falta" || status=="Nivel Critico") {
                             classeBg = 'text-warning';

@@ -23,8 +23,8 @@ public class EstoqueController {
         estoqueService.cadastrarEstoque(estoque);
     }
     @GetMapping()
-    public Page<Estoque> listarEstoque(@RequestParam(defaultValue = "0") int pagina, @RequestParam(defaultValue = "10") int tamanhoPagina){
-        return estoqueService.listarEstoque(pagina, tamanhoPagina);
+    public Page<Estoque> listarEstoque(@RequestParam(defaultValue = "0") int pagina, @RequestParam(defaultValue = "10") int tamanhoPagina, @RequestParam(required = false) String nomeProdudo, @RequestParam(required = false) String status){
+        return estoqueService.listarEstoque(pagina, tamanhoPagina,nomeProdudo,status);
     }
     @DeleteMapping("{id}")
     public String apagarProdutoEstoque(@PathVariable("id") int id){

@@ -1,6 +1,8 @@
 package back.dalessandra.repository.estoque;
 
 import back.dalessandra.Model.Estoque;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -25,4 +27,6 @@ public interface EstoqueRepository extends JpaRepository<Estoque,Integer> {
     @Query("SELECT u FROM Estoque u WHERE u.status='Em falta' OR u.status='Nivel critico'")
     List<Estoque> verificarItemsCriticos();
 
+    @Query("SELECT u FROM Estoque u WHERE u.nomeProduto LIKE %:nomeProduto% OR u.status = :status")
+    Page<Estoque>filroEstoque(String nomeProduto, String status, PageRequest pageRequest);
 }

@@ -16,19 +16,25 @@ function Estoque(){
     const [quantidadeEstoque, setQuantidadeEstoque] = useState(0)
     const [valorEstoque, setValorEstoque] = useState(0)
     const [filtro, setFiltro] = useState('');
+    const [statusFiltro,statusSet]= useState('')
     const [paginaAtua,setPaginaAtual]= useState(0)
     const [numerosPaginas,setNumerosPaginas]=useState(0)
     useEffect(() => {
-        obeterEstoque(paginaAtua)
+        obeterEstoque(paginaAtua,filtro,statusFiltro)
         obterQuantidadeItemEstoque()
         obterValorEstoque()
     },[paginaAtua])
     const handleFiltroChange = (filtro) => {
         setFiltro(filtro);
+        obeterEstoque(paginaAtua,filtro,statusFiltro)
     };
-    async function obeterEstoque(paginaAtua){
+    const handlestatus = (statusFiltro) => {
+        statusSet(statusFiltro);
+        obeterEstoque(paginaAtua,filtro,statusFiltro,statusFiltro)
+    };
+    async function obeterEstoque(paginaAtua,nomeProduto,status){
         const headers ={"Content-Type":"application/json"}
-        axios.get(`${config.URL}estoque?pagina=${paginaAtua}&tamanhoPagina=10`,{headers})
+        axios.get(`${config.URL}estoque?pagina=${paginaAtua}&tamanhoPagina=10&nomeProdudo=${nomeProduto}&status=${status}`,{headers})
              .then((response) => {
                 setEstoque(response.data.content)
                 setNumerosPaginas(response.data.totalPages)
@@ -84,17 +90,29 @@ function Estoque(){
             <br></br>
             <br></br>
             <section className="container mx-auto p-4 shadow-xl alinhamentoMenu2">
-                <ModalAdicionar/>
-                <Filtro onFiltroChange={handleFiltroChange}/>
-                <div className="join">
-                    <button className="join-item btn" onClick={handlePaginaAnterior}>«</button>
-                    <button className="join-item btn">Page {paginaAtua}</button>
-                    <button className="join-item btn" onClick={handleProximaPagina}>»</button>
-                </div>
+                <label class="form-control w-full max-w-xs">
+                        <div class="label"><span class="label-text">Nome produto:</span></div>
+                        <Filtro onFiltroChange={handleFiltroChange}/>
+                </label>
+                <label class="form-control w-full max-w-xs">
+                        <div class="label"><span class="label-text">Nome produto:</span></div>
+                        <Filtro onFiltroChange={handlestatus}/>
+                </label>
+                
+               
+                <label class="form-control w-full max-w-xs">
+                    <div class="label"><span class="label-text">Data da compra:</span></div>
+                    <ModalAdicionar/>    
+                </label>
             </section>
             <br></br>
             <section className="container mx-auto p-4 shadow-xl overflow-x-auto" > 
                 <h3 className="text-2xl font-bold corTexto">Itens do Estoque</h3>
+                <div className="join">
+                    <button className="join-item btn" onClick={handlePaginaAnterior}>«</button>
+                    <button className="join-item btn">Pagina { paginaAtua}</button>
+                    <button className="join-item btn" onClick={handleProximaPagina}>»</button>
+                </div>
                 <br></br>
                 <Tabela dados={estoque} filtro={filtro}/>
                
