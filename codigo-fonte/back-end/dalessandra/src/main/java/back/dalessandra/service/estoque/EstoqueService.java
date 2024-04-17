@@ -46,8 +46,9 @@ public class EstoqueService {
         return ("Excluido com sucesso");
     }
 
-    public List<Estoque> recuperarNivelBaixo(){
-        return estoqueRepository.verificarItemsCriticos();
+    public Page<Estoque> recuperarNivelBaixo(int numeroPagina, int tamanhoPagina){
+        PageRequest pageRequest = PageRequest.of(numeroPagina, tamanhoPagina);
+        return estoqueRepository.verificarItemsCriticos(pageRequest);
     }
 
 

@@ -16,14 +16,16 @@ function Estoque(){
     const [quantidadeEstoque, setQuantidadeEstoque] = useState(0)
     const [valorEstoque, setValorEstoque] = useState(0)
     const [filtro, setFiltro] = useState('');
-    const [statusFiltro,statusSet]= useState('')
+    const [statusFiltro,statusSet]= useState('Nivel Critico')
     const [paginaAtua,setPaginaAtual]= useState(0)
     const [numerosPaginas,setNumerosPaginas]=useState(0)
+    const [nivelCriticoEbaixo,setNivel]=useState(false)
     useEffect(() => {
-        obeterEstoque(paginaAtua,filtro,statusFiltro)
+        obeterEstoque(paginaAtua,filtro)
         obterQuantidadeItemEstoque()
         obterValorEstoque()
-    },[paginaAtua])
+      //  buscaNivelcritico()
+    },[paginaAtua,filtro, nivelCriticoEbaixo])
     const handleFiltroChange = (filtro) => {
         setFiltro(filtro);
         obeterEstoque(paginaAtua,filtro,statusFiltro)
@@ -32,16 +34,39 @@ function Estoque(){
         statusSet(statusFiltro);
         obeterEstoque(paginaAtua,filtro,statusFiltro,statusFiltro)
     };
-    async function obeterEstoque(paginaAtua,nomeProduto,status){
+    async function obeterEstoque(paginaAtua,nomeProduto){
         const headers ={"Content-Type":"application/json"}
-        axios.get(`${config.URL}estoque?pagina=${paginaAtua}&tamanhoPagina=10&nomeProdudo=${nomeProduto}&status=${status}`,{headers})
-             .then((response) => {
-                setEstoque(response.data.content)
-                setNumerosPaginas(response.data.totalPages)
-                })
-            .catch((error) => {
-                    console.log(error)
-                })
+        if(nivelCriticoEbaixo==false ){
+            axios.get(`${config.URL}estoque?pagina=${paginaAtua}&tamanhoPagina=10&nomeProdudo=${nomeProduto}`,{headers})
+                 .then((response) => {
+                    setEstoque(response.data.content)
+                    setNumerosPaginas(response.data.totalPages)
+                    })
+                .catch((error) => {
+                        console.log(error)
+                    })
+        }
+        else{
+            setNivel(true)
+            let paginaMinha
+            if(paginaAtua==undefined){
+                paginaMinha=0
+            }
+            else{paginaMinha=paginaAtua}
+            axios.get(`${config.URL}estoque/recuperarNivelCriticoESemEstoque?pagina=${paginaMinha}&tamanhoPagina=10`,{headers})
+            .then((response) => {
+               setEstoque(response.data.content)
+               setNumerosPaginas(response.data.totalPages)
+               setPaginaAtual(0)
+              // setTimeout(() => {
+                //setAlertVisible(false);
+                //window.location.reload(); 
+              //}, 1);
+               })
+           .catch((error) => {
+                   console.log(error)
+               })
+        }
      }
      function obterQuantidadeItemEstoque(){
         const headers ={"Content-Type":"application/json"}
@@ -74,6 +99,12 @@ function Estoque(){
             setPaginaAtual(paginaAtua + 1);
         }
     };
+    function buscaNivelcritico (validador){
+        //console.log(validador)
+        console.log('Busca Nível Crítico:', validador);
+        setNivel(validador)
+        obeterEstoque(0, filtro, statusFiltro)
+    }
     return(
         <main className="bg-base-100 drawer lg:drawer-open" >
             <Menu/>
@@ -95,13 +126,23 @@ function Estoque(){
                         <Filtro onFiltroChange={handleFiltroChange}/>
                 </label>
                 <label class="form-control w-full max-w-xs">
-                        <div class="label"><span class="label-text">Nome produto:</span></div>
-                        <Filtro onFiltroChange={handlestatus}/>
+                    <div class="label"><span class="label-text">Status:</span></div>
+                    <select id="tipo" name="tipo" onChange={(e)=>{
+                         console.log('Valor selecionado:', e.target.value);
+                         if (e.target.value === "true") {
+                             buscaNivelcritico(true);
+                         } else if (e.target.value === "false") {
+                             setNivel(false);
+                             window.location.reload();
+                         
+                         }}}className="select select-bordered w-full max-w-xs">        
+                            <option value="false">Todos</option>        
+                            <option value="true">Nivel Critico/Em falta</option>
+                    </select>  
                 </label>
-                
                
                 <label class="form-control w-full max-w-xs">
-                    <div class="label"><span class="label-text">Data da compra:</span></div>
+                    <div class="label" color={"#fff"}><span class="label-text text-bg-neutral-content" ><br></br></span></div>
                     <ModalAdicionar/>    
                 </label>
             </section>

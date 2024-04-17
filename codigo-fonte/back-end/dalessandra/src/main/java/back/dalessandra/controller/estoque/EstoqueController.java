@@ -26,6 +26,10 @@ public class EstoqueController {
     public Page<Estoque> listarEstoque(@RequestParam(defaultValue = "0") int pagina, @RequestParam(defaultValue = "10") int tamanhoPagina, @RequestParam(required = false) String nomeProdudo, @RequestParam(required = false) String status){
         return estoqueService.listarEstoque(pagina, tamanhoPagina,nomeProdudo,status);
     }
+    @GetMapping("recuperarNivelCriticoESemEstoque")
+    public Page<Estoque>recuperarNivelCriticoESemEstoque(@RequestParam(defaultValue = "0") int pagina, @RequestParam(defaultValue = "10") int tamanhoPagina){
+        return estoqueService.recuperarNivelBaixo(pagina, tamanhoPagina);
+    }
     @DeleteMapping("{id}")
     public String apagarProdutoEstoque(@PathVariable("id") int id){
         return estoqueService.excluirProdutoEstoque(id);
