@@ -6,6 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 @Data
 @Entity
 @Builder
@@ -32,4 +35,6 @@ public class Cliente {
     private String cidade;
     @Column
     private String complemento;
+    @Column
+    private LocalDate dtCadastro;
 }

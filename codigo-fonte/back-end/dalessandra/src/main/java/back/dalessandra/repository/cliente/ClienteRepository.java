@@ -19,7 +19,7 @@ public interface ClienteRepository extends JpaRepository<Cliente,Integer> {
 
     @Modifying
     @Transactional
-    @Query("insert into Cliente (codCliente, nomeCliente, email, telefone, cpfCnpj, rua, bairro, cidade, complemento) " +
+    @Query("insert into Cliente (codCliente, nomeCliente, email, telefone, cpfCnpj, rua, bairro, cidade, complemento, dtCadastro) " +
             "values (:#{#cliente.codCliente}, " +
             ":#{#cliente.nomeCliente}, " +
             ":#{#cliente.email}, " +
@@ -28,7 +28,8 @@ public interface ClienteRepository extends JpaRepository<Cliente,Integer> {
             ":#{#cliente.rua}, " +
             ":#{#cliente.bairro}, " +
             ":#{#cliente.cidade}, " +
-            ":#{#cliente.complemento})")
+            ":#{#cliente.complemento}," +
+            ":#{#cliente.dtCadastro})")
     void create(Cliente cliente);
 
     @Modifying

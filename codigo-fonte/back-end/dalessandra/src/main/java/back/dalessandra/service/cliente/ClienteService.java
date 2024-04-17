@@ -5,6 +5,8 @@ import back.dalessandra.repository.cliente.ClienteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,6 +27,7 @@ public class ClienteService {
     public Cliente create(Cliente cliente) {
         Integer codigo = clienteRepository.findAll().size() + 1;
         cliente.setCodCliente(codigo);
+        cliente.setDtCadastro(LocalDate.now());
         clienteRepository.create(cliente);
         return cliente;
     }
