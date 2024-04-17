@@ -17,12 +17,11 @@ public class EstoqueServiceBd {
     @Autowired
     EstoqueRepository estoqueRepository;
     public String baixaNoEstoque(int id, int qtdSaida){
-        int idRecebido = id;
         Estoque produtoResgatado = estoqueRepository.obterProduto(id);
 
-        //if(produtoResgatado!=null) {
-        //  return "Produto não existe";
-        //}
+        if(produtoResgatado==null) {
+          return "Produto não existe";
+        }
         float qtdItemExistente = produtoResgatado.getQtdAtual() ;
         if(qtdSaida>qtdItemExistente){
             return "Não tem produto suficiente";

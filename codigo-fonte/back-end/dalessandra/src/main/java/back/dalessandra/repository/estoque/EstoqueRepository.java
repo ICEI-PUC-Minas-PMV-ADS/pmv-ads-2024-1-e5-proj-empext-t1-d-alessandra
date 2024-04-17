@@ -11,7 +11,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface EstoqueRepository extends JpaRepository<Estoque,Integer> {
-    @Query("select u from Estoque u where codProduto = ?1")
+    @Query("select U from Estoque U where codProduto=?1 ")
     Estoque obterProduto(@Param("codProduto") int codProduto);
 
     @Query("select u from Estoque u where nomeProduto =?1")
