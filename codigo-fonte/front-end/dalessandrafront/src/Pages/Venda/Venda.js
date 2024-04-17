@@ -9,6 +9,7 @@ import LogoInvetario from "../../img/warehouse.png";
 import TabelaVenda from "./componentes/tabelaVenda";
 import { Input, Button } from "@material-tailwind/react";
 import ModalCliente from "../Cliente/components/listCliente";
+import { cpf, cnpj } from 'cpf-cnpj-validator'; 
 
 function Venda(){
     const [codCliente, setCodCliente] = useState(null);
@@ -137,7 +138,9 @@ function Venda(){
                                 <Input
                                     type="text"
                                     label="CPF/CNPJ"
-                                    value={cpfCnpj}
+                                    value={cpfCnpj.length <= 12
+                                    ? cpf.format(cpfCnpj)
+                                    : cnpj.format(cpfCnpj)}
                                     onChange={(e) => setCpfCnpj(e.target.value)}
                                     className="pr-20"
                                     containerProps={{

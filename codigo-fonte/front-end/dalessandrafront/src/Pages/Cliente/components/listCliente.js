@@ -9,6 +9,7 @@ import {
     Card,
     Typography,
 } from "@material-tailwind/react";
+import { cpf } from 'cpf-cnpj-validator'; 
 
 const ModalCliente = () => {
     const [listaClientes, setListaClientes] = useState([]);
@@ -42,7 +43,7 @@ const ModalCliente = () => {
                                         {cliente.nomeCliente}
                                     </Typography>
                                     <Typography variant="small" color="gray" className="font-normal">
-                                        {cliente.cpfCnpj}
+                                       {cpf.format(cliente.cpfCnpj)}
                                     </Typography>
                                 </div>
                             </ListItem>

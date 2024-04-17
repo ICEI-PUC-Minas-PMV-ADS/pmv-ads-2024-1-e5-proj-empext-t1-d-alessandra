@@ -5,6 +5,7 @@ import "../estilo/estoque.css";
 import Menu from "../../Componentes/Menu/Menu";
 import LogoInvetario from "../../img/warehouse.png";
 import ModalCliente from "./components/listCliente";
+import { cpf, cnpj } from 'cpf-cnpj-validator'; 
 
 function Cliente(){
 
@@ -112,6 +113,7 @@ function Cliente(){
         setCodigoCliente("");
         setCodigoDisabled(false);
     }
+    
 
     return(
         <main className="bg-base-100 drawer lg:drawer-open" >
@@ -203,11 +205,13 @@ function Cliente(){
                                 <input
                                     id="cpfCnpj"
                                     name="cpfCnpj"
-                                    type="number"
-                                    autoComplete="number"
+                                    type="text"
+                                    autoComplete="text"
                                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     onChange={handleChange}
-                                    value={clienteData.cpfCnpj}
+                                    value={clienteData.cpfCnpj.length <= 12 
+                                        ? cpf.format(clienteData.cpfCnpj)
+                                        : cnpj.format(clienteData.cpfCnpj)}
                                 />
                             </div>
                         </div>
