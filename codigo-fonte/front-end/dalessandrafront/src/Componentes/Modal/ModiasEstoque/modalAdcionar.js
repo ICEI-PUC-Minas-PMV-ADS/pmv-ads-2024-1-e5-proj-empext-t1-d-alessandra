@@ -33,7 +33,7 @@ function ModalAdicionar(){
     function salvar(){
         const headers = config.HEADERS
         const data = {
-            "nomeProduto": dados.nome,
+            "nomeProduto": dados.nome+' '+dados.tamanho+' '+dados.marca+' '+dados.cor,
             "quantidadeItem": dados.qtd,
             "marca":dados.marca,
             "tipo":dados.tipo,
@@ -47,13 +47,22 @@ function ModalAdicionar(){
         
         axios.post(config.URL+'estoque',data,{ headers })
             .then((response)=>{
-                if (response.status === 200) {
+                if (response.status === 200 && response.data!=="Produto já Cadastrado") {
                     setAlertVisible(true); 
                     setAlertaErro(false)
                     setTimeout(() => {
                       setAlertVisible(false);
                       window.location.reload(); 
                     }, 1000);
+                  }
+                  else {
+                    setAlertVisible(false); 
+                    setAlertaErro(true)
+                    setMensagemError(response.data)
+                    //setTimeout(() => {
+                      //setAlertVisible(false);
+                      //window.location.reload(); 
+                    //}, 1000);
                   }
               })
             .catch((error)=>{ 

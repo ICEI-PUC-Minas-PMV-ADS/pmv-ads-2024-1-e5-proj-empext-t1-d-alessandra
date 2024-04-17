@@ -5,6 +5,8 @@ import back.dalessandra.repository.Configuracao.ConfiguracaoRepository;
 import back.dalessandra.service.configuracao.configuracaoService;
 import jakarta.annotation.PostConstruct;
 import back.dalessandra.service.envioEmail.EmailEnvio;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +14,10 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 @Service
-public class EstoqueServiceEmail extends EstoqueService{
+@AllArgsConstructor
+@NoArgsConstructor
+
+public class EstoqueServiceEmail{
     EmailEnvio emaiEnvio =new EmailEnvio();
     @Autowired
     configuracaoService confg;

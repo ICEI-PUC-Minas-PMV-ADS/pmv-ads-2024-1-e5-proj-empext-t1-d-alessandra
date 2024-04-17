@@ -19,8 +19,8 @@ public class EstoqueController {
     @Autowired
     EstoqueServiceBd estoqueServiceBd;
     @PostMapping()
-    public void cadastrarEstoque(@RequestBody Estoque estoque){
-        estoqueService.cadastrarEstoque(estoque);
+    public String cadastrarEstoque(@RequestBody Estoque estoque){
+        return estoqueService.cadastrarEstoque(estoque);
     }
     @GetMapping()
     public Page<Estoque> listarEstoque(@RequestParam(defaultValue = "0") int pagina, @RequestParam(defaultValue = "10") int tamanhoPagina, @RequestParam(required = false) String nomeProdudo, @RequestParam(required = false) String status){

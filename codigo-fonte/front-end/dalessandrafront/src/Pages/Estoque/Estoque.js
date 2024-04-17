@@ -24,15 +24,10 @@ function Estoque(){
         obeterEstoque(paginaAtua,filtro)
         obterQuantidadeItemEstoque()
         obterValorEstoque()
-      //  buscaNivelcritico()
     },[paginaAtua,filtro, nivelCriticoEbaixo])
     const handleFiltroChange = (filtro) => {
         setFiltro(filtro);
         obeterEstoque(paginaAtua,filtro,statusFiltro)
-    };
-    const handlestatus = (statusFiltro) => {
-        statusSet(statusFiltro);
-        obeterEstoque(paginaAtua,filtro,statusFiltro,statusFiltro)
     };
     async function obeterEstoque(paginaAtua,nomeProduto){
         const headers ={"Content-Type":"application/json"}
@@ -99,7 +94,7 @@ function Estoque(){
             setPaginaAtual(paginaAtua + 1);
         }
     };
-    function buscaNivelcritico (validador){
+    async function buscaNivelcritico (validador){
         //console.log(validador)
         console.log('Busca Nível Crítico:', validador);
         setNivel(validador)
@@ -130,6 +125,7 @@ function Estoque(){
                     <select id="tipo" name="tipo" onChange={(e)=>{
                          console.log('Valor selecionado:', e.target.value);
                          if (e.target.value === "true") {
+                            //setPaginaAtual(0)
                              buscaNivelcritico(true);
                          } else if (e.target.value === "false") {
                              setNivel(false);

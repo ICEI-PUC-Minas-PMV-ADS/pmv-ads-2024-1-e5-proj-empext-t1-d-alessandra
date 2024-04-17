@@ -19,7 +19,7 @@ public class Estoque {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer codProduto;
-    @Column(length = 30)
+    @Column(length = 100)
     private String nomeProduto;
     @Column
     private int quantidadeItem;

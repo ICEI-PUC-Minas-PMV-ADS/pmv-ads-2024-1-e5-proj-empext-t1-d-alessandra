@@ -15,18 +15,29 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class EstoqueService {
-    @Autowired
-    EstoqueRepository estoqueRepository;
-    EmailEnvio emaiEnvio =new EmailEnvio();
-    public void cadastrarEstoque(Estoque estoque){
-        int qtdAtual = estoque.getQuantidadeItem();
-        float valorComprado = estoque.getValorComprado();
-        float valorAvender = estoque.getValorVenda();
-        estoque.setQtdAtual(qtdAtual);
-        estoque.setValorTotalEmEstoque(valorComprado*qtdAtual);
-        estoque.setValorTotalAVender(valorAvender*qtdAtual);
-        estoque.setStatus("Bom");
-        estoqueRepository.save(estoque);
+    private final EstoqueRepository estoqueRepository;
+    private final EstoqueServiceBd estoqueServiceBd;
+    private final EmailEnvio emaiEnvio;
+
+    public String cadastrarEstoque(Estoque estoque){
+        String verificarProdutoExistente= estoque.getNomeProduto();
+        if(estoqueServiceBd.buscarCodigoProduto(verificarProdutoExistente)==null){
+            String d="entrei";
+            int qtdAtual = estoque.getQuantidadeItem();
+            float valorComprado = estoque.getValorComprado();
+            float valorAvender = estoque.getValorVenda();
+            estoque.setQtdAtual(qtdAtual);
+            estoque.setValorTotalEmEstoque(valorComprado*qtdAtual);
+            estoque.setValorTotalAVender(valorAvender*qtdAtual);
+            estoque.setStatus("Bom");
+            estoqueRepository.save(estoque);
+            return "Cadastrado Com sucesso";
+
+        }else {
+            return "Produto já Cadastrado";
+        }
+
+
     }
     public Page<Estoque> listarEstoque(int numeroPagina, int tamanhoPagina,String nomeProduto,String status){
 

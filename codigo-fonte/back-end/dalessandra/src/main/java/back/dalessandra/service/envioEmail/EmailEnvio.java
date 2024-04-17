@@ -2,9 +2,11 @@ package back.dalessandra.service.envioEmail;
 import jakarta.mail.*;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Properties;
+@Service
 public class EmailEnvio {
 
     private String host = "smtp.gmail.com";
