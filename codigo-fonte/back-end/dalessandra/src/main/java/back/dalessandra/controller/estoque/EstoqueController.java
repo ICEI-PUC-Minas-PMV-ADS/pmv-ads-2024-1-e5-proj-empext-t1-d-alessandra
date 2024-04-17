@@ -4,6 +4,7 @@ import back.dalessandra.Model.Estoque;
 import back.dalessandra.service.estoque.EstoqueService;
 import back.dalessandra.service.estoque.EstoqueServiceBd;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,8 +23,8 @@ public class EstoqueController {
         estoqueService.cadastrarEstoque(estoque);
     }
     @GetMapping()
-    public List<Estoque> listarEstoque(){
-        return  estoqueService.listarEstoque();
+    public Page<Estoque> listarEstoque(@RequestParam(defaultValue = "0") int pagina, @RequestParam(defaultValue = "10") int tamanhoPagina){
+        return estoqueService.listarEstoque(pagina, tamanhoPagina);
     }
     @DeleteMapping("{id}")
     public String apagarProdutoEstoque(@PathVariable("id") int id){

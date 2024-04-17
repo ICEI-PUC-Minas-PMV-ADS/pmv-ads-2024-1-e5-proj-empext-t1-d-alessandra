@@ -6,6 +6,8 @@ import back.dalessandra.service.envioEmail.EmailEnvio;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,8 +28,9 @@ public class EstoqueService {
         estoque.setStatus("Bom");
         estoqueRepository.save(estoque);
     }
-    public List<Estoque> listarEstoque(){
-        return estoqueRepository.findAll();
+    public Page<Estoque> listarEstoque(int numeroPagina, int tamanhoPagina){
+        PageRequest pageRequest = PageRequest.of(numeroPagina, tamanhoPagina);
+        return estoqueRepository.findAll(pageRequest);
     }
 
     public String excluirProdutoEstoque(int id){

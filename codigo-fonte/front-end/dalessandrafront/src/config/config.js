@@ -29,7 +29,6 @@ async function recuperandoEmail() {
         return null;
     }
 }
-
 const config = {
     URL: 'http://localhost:8080/',
     HEADERS : { 

@@ -16,14 +16,14 @@ public class EstoqueServiceEmail extends EstoqueService{
     EmailEnvio emaiEnvio =new EmailEnvio();
     @Autowired
     configuracaoService confg;
-    @PostConstruct
-    public void init() {
-        List<Estoque> estoqueBaixo = recuperarNivelBaixo();
-        if (estoqueBaixo.size()!=0){
-            eviarEmailNivelCriticoEstoque(estoqueBaixo);
-        }
+    //@PostConstruct
+    //public void init() {
+      //  List<Estoque> estoqueBaixo = recuperarNivelBaixo();
+        //if (estoqueBaixo.size()!=0){
+          //  eviarEmailNivelCriticoEstoque(estoqueBaixo);
+        //}
 
-    }
+    //}
 
     public String eviarEmailNivelCriticoEstoque(List<Estoque> estoque) {
             String email = confg.recuperandoParametroEmail();

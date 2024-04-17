@@ -16,19 +16,22 @@ function Estoque(){
     const [quantidadeEstoque, setQuantidadeEstoque] = useState(0)
     const [valorEstoque, setValorEstoque] = useState(0)
     const [filtro, setFiltro] = useState('');
+    const [paginaAtua,setPaginaAtual]= useState(0)
+    const [numerosPaginas,setNumerosPaginas]=useState(0)
     useEffect(() => {
-        obeterEstoque()
+        obeterEstoque(paginaAtua)
         obterQuantidadeItemEstoque()
         obterValorEstoque()
-    },[])
+    },[paginaAtua])
     const handleFiltroChange = (filtro) => {
         setFiltro(filtro);
     };
-    function obeterEstoque(){
+    async function obeterEstoque(paginaAtua){
         const headers ={"Content-Type":"application/json"}
-        axios.get(config.URL+'estoque',{headers})
+        axios.get(`${config.URL}estoque?pagina=${paginaAtua}&tamanhoPagina=10`,{headers})
              .then((response) => {
-                setEstoque(response.data)
+                setEstoque(response.data.content)
+                setNumerosPaginas(response.data.totalPages)
                 })
             .catch((error) => {
                     console.log(error)
@@ -54,6 +57,17 @@ function Estoque(){
                     console.log(error)
                 })
      }
+     const handlePaginaAnterior = () => {
+        if (paginaAtua > 0) {
+            setPaginaAtual(paginaAtua - 1);
+        }
+    };
+
+    const handleProximaPagina = () => {
+        if (paginaAtua < numerosPaginas - 1) {
+            setPaginaAtual(paginaAtua + 1);
+        }
+    };
     return(
         <main className="bg-base-100 drawer lg:drawer-open" >
             <Menu/>
@@ -65,19 +79,25 @@ function Estoque(){
             </section>
             <section className="container mx-auto p-4 alinhamentoCards">
                 <Card title="Total de Itens: " textoExibir={quantidadeEstoque}/>
-                <Card title="Valor total do estoque:" textoExibir={"R$ "+valorEstoque}/>
+                <Card title="Valor total do estoque:" textoExibir={"R$ "+parseFloat(valorEstoque)}/>
             </section>
             <br></br>
             <br></br>
             <section className="container mx-auto p-4 shadow-xl alinhamentoMenu2">
                 <ModalAdicionar/>
                 <Filtro onFiltroChange={handleFiltroChange}/>
+                <div className="join">
+                    <button className="join-item btn" onClick={handlePaginaAnterior}>«</button>
+                    <button className="join-item btn">Page {paginaAtua}</button>
+                    <button className="join-item btn" onClick={handleProximaPagina}>»</button>
+                </div>
             </section>
             <br></br>
             <section className="container mx-auto p-4 shadow-xl overflow-x-auto" > 
                 <h3 className="text-2xl font-bold corTexto">Itens do Estoque</h3>
                 <br></br>
                 <Tabela dados={estoque} filtro={filtro}/>
+               
             </section>
             </div>
         </main>

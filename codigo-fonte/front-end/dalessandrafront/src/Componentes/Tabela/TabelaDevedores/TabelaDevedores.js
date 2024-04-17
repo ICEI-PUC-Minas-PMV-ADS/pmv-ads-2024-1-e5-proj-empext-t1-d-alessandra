@@ -14,6 +14,7 @@ function TabelaDevedores({ dados,filtroCodVenda, filtroNome, filtroDataVenda }){
         );
     };
     return (
+        <div>
         <table className="table table-xs">
             <thead>
                 <tr>
@@ -69,6 +70,8 @@ function TabelaDevedores({ dados,filtroCodVenda, filtroNome, filtroDataVenda }){
                 }
             </tbody>
         </table>
+          
+        </div>
     )
 }
 
