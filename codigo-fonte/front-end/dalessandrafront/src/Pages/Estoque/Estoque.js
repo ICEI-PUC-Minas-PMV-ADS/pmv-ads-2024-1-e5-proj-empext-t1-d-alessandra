@@ -30,38 +30,23 @@ function Estoque(){
         obeterEstoque(paginaAtua,filtro,statusFiltro)
     };
     async function obeterEstoque(paginaAtua,nomeProduto){
-        const headers ={"Content-Type":"application/json"}
-        if(nivelCriticoEbaixo==false ){
-            axios.get(`${config.URL}estoque?pagina=${paginaAtua}&tamanhoPagina=10&nomeProdudo=${nomeProduto}`,{headers})
-                 .then((response) => {
-                    setEstoque(response.data.content)
-                    setNumerosPaginas(response.data.totalPages)
-                    })
-                .catch((error) => {
-                        console.log(error)
-                    })
-        }
-        else{
-            setNivel(true)
-            let paginaMinha
-            if(paginaAtua==undefined){
-                paginaMinha=0
+        const headers = { "Content-Type": "application/json" };
+        try {
+            if (!nivelCriticoEbaixo) {
+                const response = await axios.get(`${config.URL}estoque?pagina=${paginaAtua}&tamanhoPagina=10&nomeProdudo=${nomeProduto}`, { headers });
+                setEstoque(response.data.content);
+                setNumerosPaginas(response.data.totalPages);
+            } else {
+                const paginaMinha = paginaAtua === undefined ? 0 : paginaAtua;
+                const response = await axios.get(`${config.URL}estoque/recuperarNivelCriticoESemEstoque?pagina=${paginaMinha}&tamanhoPagina=10`, { headers });
+                setEstoque(response.data.content);
+                setNumerosPaginas(response.data.totalPages);
+                setPaginaAtual(0);
             }
-            else{paginaMinha=paginaAtua}
-            axios.get(`${config.URL}estoque/recuperarNivelCriticoESemEstoque?pagina=${paginaMinha}&tamanhoPagina=10`,{headers})
-            .then((response) => {
-               setEstoque(response.data.content)
-               setNumerosPaginas(response.data.totalPages)
-               setPaginaAtual(0)
-              // setTimeout(() => {
-                //setAlertVisible(false);
-                //window.location.reload(); 
-              //}, 1);
-               })
-           .catch((error) => {
-                   console.log(error)
-               })
+        } catch (error) {
+            console.error(error);
         }
+        
      }
      function obterQuantidadeItemEstoque(){
         const headers ={"Content-Type":"application/json"}
@@ -98,7 +83,15 @@ function Estoque(){
         //console.log(validador)
         console.log('Busca Nível Crítico:', validador);
         setNivel(validador)
-        obeterEstoque(0, filtro, statusFiltro)
+        if(validador==true){
+            await obeterEstoque(0, filtro, statusFiltro)
+            setPaginaAtual(0)
+        }
+        else{
+            setTimeout(() => {
+                window.location.reload(); 
+              }, 1000)
+        }
     }
     return(
         <main className="bg-base-100 drawer lg:drawer-open" >
@@ -121,22 +114,13 @@ function Estoque(){
                         <Filtro onFiltroChange={handleFiltroChange}/>
                 </label>
                 <label class="form-control w-full max-w-xs">
-                    <div class="label"><span class="label-text">Status:</span></div>
-                    <select id="tipo" name="tipo" onChange={(e)=>{
-                         console.log('Valor selecionado:', e.target.value);
-                         if (e.target.value === "true") {
-                            //setPaginaAtual(0)
-                             buscaNivelcritico(true);
-                         } else if (e.target.value === "false") {
-                             setNivel(false);
-                             window.location.reload();
-                         
-                         }}}className="select select-bordered w-full max-w-xs">        
-                            <option value="false">Todos</option>        
-                            <option value="true">Nivel Critico/Em falta</option>
-                    </select>  
+                    <div class="label"><span class="label-text">Listar Proutos</span></div>
+                    <button className="btn btn-success" onClick={()=>buscaNivelcritico(false)}>Todos</button>
+                </label> 
+                <label class="form-control w-full max-w-xs">
+                    <div class="label"><span class="label-text">Listar Proutos</span></div>
+                    <button className="btn btn-success" onClick={()=>buscaNivelcritico(true)}>Nivel Critico/ Em Falta</button>       
                 </label>
-               
                 <label class="form-control w-full max-w-xs">
                     <div class="label" color={"#fff"}><span class="label-text text-bg-neutral-content" ><br></br></span></div>
                     <ModalAdicionar/>    
