@@ -24,7 +24,8 @@ function Venda(){
         setTotalVenda(total);
     };
 
-    const atualizarItensVenda = (novaListaItens) => {
+    const receberLista = (novaListaItens) => {
+        setItensVenda([]);
         setItensVenda(novaListaItens);
     };
 
@@ -169,7 +170,7 @@ function Venda(){
                     <div/>
                     <div className="sm:col-span-6"/>
                 </div>
-                <TabelaVenda itens={itensVenda}  onUpdateTotal={atualizarTotalVenda}/>
+                <TabelaVenda itens={itensVenda}  onUpdateTotal={atualizarTotalVenda} enviaLista={receberLista}/>
                 <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                     <div className="sm:col-span-2">
                         <div className="relative flex w-full max-w-[24rem] mt-2">

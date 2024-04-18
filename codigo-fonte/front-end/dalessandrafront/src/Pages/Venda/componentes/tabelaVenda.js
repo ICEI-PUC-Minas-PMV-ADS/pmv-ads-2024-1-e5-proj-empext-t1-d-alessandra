@@ -1,7 +1,7 @@
 import { Card, Typography } from "@material-tailwind/react";
 import React, { useState, useEffect } from "react";
 
-function TabelaVenda({ itens, onUpdateTotal, onUpdateItens }) {
+function TabelaVenda({ itens, onUpdateTotal, enviaLista }) {
     const [listaItens, setListaItens] = useState([]);
     const [valorTotalVenda, setValorTotalVenda] = useState(0);
 
@@ -20,7 +20,7 @@ function TabelaVenda({ itens, onUpdateTotal, onUpdateItens }) {
         const novaLista = [...listaItens];
         novaLista.splice(index, 1);
         setListaItens(novaLista);
-        //onUpdateItens(novaLista);
+        enviaListaHandler(novaLista);
     };
 
     const atualizarQuantidade = (index, quantidade) => {
@@ -28,6 +28,10 @@ function TabelaVenda({ itens, onUpdateTotal, onUpdateItens }) {
         novaLista[index].quantidade = quantidade;
         novaLista[index].valorTotal = quantidade * novaLista[index].valorUnit; 
         setListaItens(novaLista);
+    };
+
+    const enviaListaHandler = (novaLista) => {
+        enviaLista(novaLista);
     };
 
     const showScroll = listaItens.length > 3;
