@@ -17,6 +17,8 @@ public class Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer nrSequencia;
+    @Column
     private Integer codVenda;
     @Column
     private Integer codProduto;

@@ -37,7 +37,7 @@ public class VendaService {
         venda.setDtVenda(LocalDateTime.now());
         vendaRepository.create(venda);
         List<Item> item = venda.getListaItens();
-        itemService.create(item);
+        itemService.create(item, codigo);
         return venda;
     }
 

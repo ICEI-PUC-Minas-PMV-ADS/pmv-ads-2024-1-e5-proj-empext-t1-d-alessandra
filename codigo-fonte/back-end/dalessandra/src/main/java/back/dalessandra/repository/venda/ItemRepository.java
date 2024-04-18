@@ -17,4 +17,7 @@ public interface ItemRepository extends JpaRepository<Item,Integer>{
             ":#{#item.quantidade}," +
             ":#{#item.vlTotal})")
     void create(Item item);
+
+    @Query(value = "SELECT MAX(nr_sequencia) FROM Item", nativeQuery = true)
+    Integer sequenceItem();
 }
