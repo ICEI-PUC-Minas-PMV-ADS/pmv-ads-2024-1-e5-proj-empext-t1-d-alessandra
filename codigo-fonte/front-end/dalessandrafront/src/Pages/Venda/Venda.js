@@ -268,12 +268,12 @@ function Venda() {
                                         </td>
                                         <td className="p-4">
                                             <Typography variant="small" color="blue-gray" className="font-normal">
-                                                {valorUnit}
+                                                {"R$" + valorUnit}
                                             </Typography>
                                         </td>
                                         <td className="p-4">
                                             <Typography variant="small" color="blue-gray" className="font-normal">
-                                                {vlTotal ?? valorUnit}
+                                                {"R$" + vlTotal ?? valorUnit}
                                             </Typography>
                                         </td>
                                         <td className="p-4 cursor-pointer" onClick={() => removerItem(index)}>
@@ -301,7 +301,7 @@ function Venda() {
                                 />
                             </div>
                         </div>
-                        <p className="sm:col-span-2 text-right text-2xl">Total Pedido: {totalVenda} </p>
+                        <p className="sm:col-span-2 text-right text-2xl">Total Pedido: R$ {totalVenda} </p>
                     </div>
                     <br />
                     <button className="btn btn-success" onClick={cadastrarVenda}>Gravar</button>
