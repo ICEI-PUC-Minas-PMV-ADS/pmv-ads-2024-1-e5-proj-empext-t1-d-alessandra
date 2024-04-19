@@ -1,8 +1,12 @@
 package back.dalessandra.controller.cliente;
 
+import back.dalessandra.DTO.DadosClientesDTO;
+import back.dalessandra.DTO.ListaHistoricoClienteDTO;
 import back.dalessandra.Model.Cliente;
 import back.dalessandra.service.cliente.ClienteService;
+import back.dalessandra.service.cliente.HistoricoClienteService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +21,8 @@ public class ClienteController {
 
     private final ClienteService clienteService;
 
+    @Autowired
+     HistoricoClienteService historicoClienteService;
     @GetMapping
     public List<Cliente> findAll(){
         return clienteService.findAll();
@@ -42,4 +48,14 @@ public class ClienteController {
     public void deleteByCliente(@PathVariable Integer codCliente){
         clienteService.deleteByCliente(codCliente);
     }
+
+    @GetMapping("/listaDeClientesComNomeEmail")
+    public List<ListaHistoricoClienteDTO> listaDeClientesComNomeEmail(){
+        return  historicoClienteService.clientesCadastradoNaPlaforma();
+    }
+    @GetMapping("/reuperarDadosCompletosClientes/{id}")
+    public DadosClientesDTO reuperarDadosCompletosClientes(@PathVariable("id")int id){
+        return historicoClienteService.recuperarDadosCliente(id);
+    }
+
 }

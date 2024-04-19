@@ -1,6 +1,8 @@
 package back.dalessandra.repository.cliente;
 
+import back.dalessandra.DTO.DadosClientesDTO;
 import back.dalessandra.DTO.ListaComprasClienteDevedorDTO;
+import back.dalessandra.DTO.ListaHistoricoClienteDTO;
 import back.dalessandra.Model.Cliente;
 import back.dalessandra.DTO.ClienteDevedorDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -25,5 +27,51 @@ public interface ClienteDevedorRepository extends JpaRepository<Cliente,Integer>
                 "\ti.codProduto = e.codProduto\n" +
                 "where i.codVenda = ?1"
         ) List<ListaComprasClienteDevedorDTO> listarProdutosClienteDevedor(@Param("codVenda") int codVenda);
+
+        @Query("select new back.dalessandra.DTO.ListaHistoricoClienteDTO(cli.codCliente, " +
+                "cli.nomeCliente, " +
+                "cli.email, " +
+                "count(v.codVenda) as qtdDeCompra, " +
+                "COUNT(CASE WHEN v.formaPagto = 'AN' THEN 1 END) AS qtdComprasPendentesPagamento) " +
+                "from " +
+                "Cliente cli " +
+                "left join " +
+                "Venda v " +
+                "on " +
+                "cli.codCliente = v.codCliente " +
+                "group by " +
+                "cli.codCliente, cli.nomeCliente, cli.email")
+        List<ListaHistoricoClienteDTO> clientesCadastrados();
+
+        @Query("select new back.dalessandra.DTO.DadosClientesDTO(\n" +
+                "\t c.codCliente,\n" +
+                "\t c.nomeCliente,\n" +
+                "\t c.cpfCnpj,\n" +
+                "\t c.email,\n" +
+                "\t c.telefone,\n" +
+                "\t c.rua || ', ' || c.bairro || ' - ' || c.cidade AS endereco,\n" +
+                "\t c.dtCadastro,\n" +
+                "\t count(v.codVenda)as qtdDeCompra,\n" +
+                "\t COUNT(CASE WHEN v.formaPagto = 'AN' THEN 1 END) AS qtdComprasPendentesPagamento)\n" +
+                //"\t ARRAY_AGG(CASE WHEN v.formaPagto = 'AN' THEN v.codVenda END) WITHIN GROUP (ORDER BY v.codVenda) AS pedidosPendentesPagamento)\n" +
+                " from \n" +
+                " \tCliente c\n" +
+                " left join \n" +
+                " \tVenda v \n" +
+                " on \n" +
+                " \tc.codCliente = v.codCliente\n" +
+                " where \n" +
+                " \tc.codCliente =?1\n" +
+                " group by \n" +
+                " \tc.nomeCliente,\n" +
+                "\tc.email,\n" +
+                "\tc.codCliente, \n" +
+                "\tc.rua,\n" +
+                "\tc.bairro, \n" +
+                "\tc.cidade,\n" +
+                "\tc.telefone,\n" +
+                "\tc.cpfCnpj,\n" +
+                "\tc.dtCadastro")
+        DadosClientesDTO informacoesCliente(@Param("codCliente") int codCliente);
 
 }
