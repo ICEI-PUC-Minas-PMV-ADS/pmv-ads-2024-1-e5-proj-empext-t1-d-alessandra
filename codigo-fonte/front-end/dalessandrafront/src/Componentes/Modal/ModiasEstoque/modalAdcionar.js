@@ -31,6 +31,8 @@ function ModalAdicionar(){
     }
 
     function salvar(){
+        const valorCompradoFormatado = dados.valorComprado.includes(',') ? dados.valorComprado.replace(',', '.') : dados.valorComprado
+        const valorVendaFormatado = dados.valorVendido.includes(',') ? dados.valorVendido.replace(',', '.') : dados.valorVendido
         const headers = config.HEADERS
         const data = {
             "nomeProduto": dados.nome+' '+dados.tamanho+' '+dados.marca+' '+dados.cor,
@@ -39,8 +41,8 @@ function ModalAdicionar(){
             "tipo":dados.tipo,
             "cor": dados.cor,
             "tamanho":dados.tamanho,
-            "valorComprado":dados.valorComprado,
-            "valorVenda": dados.valorVendido,
+            "valorComprado":valorCompradoFormatado,
+            "valorVenda": valorVendaFormatado,
             "dataCadastro": dayjs(dados.dataCadastro).format("DD/MM/YYYY"),
             "qtdAtual": dados.qtd,
         }

@@ -40,9 +40,9 @@ function TabelaDevedores({ dados,filtroCodVenda, filtroNome, filtroDataVenda }){
                         let classeBg = '';
                         if (diasRestantes >= 20) {
                             classeBg = 'bg-success';
-                        } else if (diasRestantes >5 || diasRestantes <= 19) {
+                        } else if (diasRestantes >=5 && diasRestantes <= 19) {
                             classeBg = 'bg-warning';
-                        } else if(diasRestantes <= 0) {
+                        } else{
                             classeBg = 'bg-error';
                         }
                         return(

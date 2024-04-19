@@ -104,7 +104,7 @@ function Estoque(){
             </section>
             <section className="container mx-auto p-4 alinhamentoCards">
                 <Card title="Total de Itens: " textoExibir={quantidadeEstoque}/>
-                <Card title="Valor total do estoque:" textoExibir={"R$ "+parseFloat(valorEstoque)}/>
+                <Card title="Valor total do estoque:" textoExibir={"R$ "+valorEstoque.toFixed(2)}/>
             </section>
             <br></br>
             <br></br>
