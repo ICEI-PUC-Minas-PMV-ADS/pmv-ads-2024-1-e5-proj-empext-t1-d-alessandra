@@ -3,11 +3,14 @@ package back.dalessandra.repository.venda;
 import back.dalessandra.Model.Venda;
 import back.dalessandra.Model.dto.VendaDto;
 import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,6 +24,9 @@ public interface VendaRepository extends JpaRepository<Venda,Integer> {
 
     @Query("select u from Venda u where formaPagto = ?1")
     List<Venda> findByFormaPagto(String formaPagto);
+
+    @Query("select u from Venda u where dtVenda = ?1")
+    Page<Venda> findByDiaVenda(LocalDateTime dtVenda, Pageable pageable);
 
     @Modifying
     @Transactional

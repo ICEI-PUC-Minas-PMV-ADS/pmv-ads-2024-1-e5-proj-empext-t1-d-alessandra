@@ -7,7 +7,10 @@ import back.dalessandra.Model.dto.VendaDto;
 import back.dalessandra.repository.venda.VendaRepository;
 import back.dalessandra.service.estoque.EstoqueServiceBd;
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -29,6 +32,10 @@ public class VendaService {
 
     public Optional<Venda> findByCodVenda(Integer codVenda) {
         return vendaRepository.findByCodVenda(codVenda);
+    }
+
+    public Page<Venda> findByDiaVenda(LocalDateTime dtVenda, Pageable pageable) {
+        return vendaRepository.findByDiaVenda(dtVenda, pageable);
     }
 
     public VendaDto create(VendaDto venda) {
