@@ -27,12 +27,12 @@ public interface FinanceiroRepository extends JpaRepository<Financeiro,Integer> 
     @Modifying
     @Transactional
     @Query("insert into Financeiro (idDespesa, tipoDespesa, nomeDespesa, valorDespesa, dataDespesa, dataVencimento) " +
-            "values (:#{#financeiro.idDespesa}, " +
-            ":#{#financeiro.tipoDespesa}, " +
-            ":#{#financeiro.nomeDespesa}, " +
-            ":#{#financeiro.valorDespesa}, " +
-            ":#{#financeiro.dataDespesa}, " +
-            ":#{#financeiro.dataVencimento})")
+          "values (:#{#financeiro.idDespesa}, " +
+          ":#{#financeiro.tipoDespesa}, " +
+          ":#{#financeiro.nomeDespesa}, " +
+          ":#{#financeiro.valorDespesa}, " +
+          ":#{#financeiro.dataDespesa}, " +
+          ":#{#financeiro.dataVencimento})")
     void cadastro(Financeiro financeiro);
 
     @Modifying
@@ -41,7 +41,7 @@ public interface FinanceiroRepository extends JpaRepository<Financeiro,Integer> 
     void deleteById(Integer idDespesa);
 
     @Query("SELECT SUM(f.valorDespesa) FROM Financeiro f")
-    float calcularTotalDespesas();
+     float calcularTotalDespesas();
 
     @Query("SELECT f FROM Financeiro f WHERE (:dia is null or DAY(f.dataDespesa) = :dia) AND (:mes is null or MONTH(f.dataDespesa) = :mes) AND (:ano is null or YEAR(f.dataDespesa) = :ano)")
     List<Financeiro> findByDias(@Param("dia") Integer dia, @Param("mes") Integer mes, @Param("ano") Integer ano);
@@ -50,4 +50,6 @@ public interface FinanceiroRepository extends JpaRepository<Financeiro,Integer> 
     @Query("SELECT f FROM Financeiro f ORDER BY f.dataDespesa DESC")
     List<Financeiro> findAllOrderByDataDespesaDesc();
 
+    @Query("select f from Financeiro f where idDespesa = ?1")
+    Financeiro updateDespesa(@Param("idDespesa") int idDespesa);
 }

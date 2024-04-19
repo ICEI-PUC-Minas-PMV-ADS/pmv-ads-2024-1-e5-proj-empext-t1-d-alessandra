@@ -5,6 +5,8 @@ import back.dalessandra.Model.Venda;
 import back.dalessandra.service.financeiro.FinanceiroService;
 import back.dalessandra.service.venda.VendaService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -17,13 +19,12 @@ import java.util.Optional;
 @Controller
 @RestController
 @RequestMapping("/financeiro")
-@RequiredArgsConstructor
 public class FinanceiroController {
+    @Autowired
+     FinanceiroService financeiroService;
 
-
-    private final FinanceiroService financeiroService;
-
-    private final VendaService vendaService;
+    @Autowired
+     VendaService vendaService;
 
     @GetMapping
     public List<Financeiro> findAll() {
@@ -78,14 +79,9 @@ public class FinanceiroController {
         return financeiroService.excluirDespesa(idDespesa);
     }
 
-    @PutMapping("tipoDespesa/{idDespesa}")
+    /*@PutMapping("tipoDespesa/{idDespesa}")
     public ResponseEntity<String> updateTipoDespesa(@PathVariable Integer idDespesa, @RequestBody String tipoDespesa) {
         return updateAttribute(idDespesa, "tipoDespesa", tipoDespesa);
-    }
-
-    @PutMapping("nomeDespesa/{idDespesa}")
-    public ResponseEntity<String> updateNomeDespesa(@PathVariable Integer idDespesa, @RequestBody String nomeDespesa) {
-        return updateAttribute(idDespesa, "nomeDespesa", nomeDespesa);
     }
 
     @PutMapping("valorDespesa/{idDespesa}")
@@ -101,36 +97,13 @@ public class FinanceiroController {
     @PutMapping("dataVencimento/{idDespesa}")
     public ResponseEntity<String> updateDataVencimento(@PathVariable Integer idDespesa, @RequestBody Date dataVencimento) {
         return updateAttribute(idDespesa, "dataVencimento", dataVencimento);
-    }
+    }*/
 
-    private ResponseEntity<String> updateAttribute(Integer idDespesa, String attributeName, Object attributeValue) {
-        Optional<Financeiro> financeiroOptional = financeiroService.findById(idDespesa);
-        if (financeiroOptional.isPresent()) {
-            Financeiro financeiro = financeiroOptional.get();
-            switch (attributeName) {
-                case "tipoDespesa":
-                    financeiro.setTipoDespesa((String) attributeValue);
-                    break;
-                case "nomeDespesa":
-                    financeiro.setNomeDespesa((String) attributeValue);
-                    break;
-                case "valorDespesa":
-                    financeiro.setValorDespesa((float) attributeValue);
-                    break;
-                case "dataDespesa":
-                    financeiro.setDataDespesa((Date) attributeValue);
-                    break;
-                case "dataVencimento":
-                    financeiro.setDataVencimento((Date) attributeValue);
-                    break;
-                default:
-                    return ResponseEntity.badRequest().body("Atributo inválido");
-            }
-            financeiroService.cadastro(financeiro);
-            return ResponseEntity.ok(attributeName + " atualizado com sucesso");
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
+    @PutMapping("atualizarNomeDespesa/{idDespesa}/{nomeDespesa}")
 
+    public String trocarNomeDespesa(@PathVariable("idDespesa") int idDespesa,
+                                  @PathVariable("nomeDespesa") String nomeDespesa){
+         financeiroService.updateNomeDespesa(idDespesa, nomeDespesa);
+         return "Salvo com sucesso";
+    }
 }

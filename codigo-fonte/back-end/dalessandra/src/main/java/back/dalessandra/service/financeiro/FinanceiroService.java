@@ -1,5 +1,6 @@
 package back.dalessandra.service.financeiro;
 
+import back.dalessandra.Model.Estoque;
 import back.dalessandra.Model.Financeiro;
 import back.dalessandra.repository.financeiro.FinanceiroRepository;
 import lombok.RequiredArgsConstructor;
@@ -85,6 +86,12 @@ public class FinanceiroService {
 
     public List<Financeiro> findAllOrderByDataDespesaDesc() {
         return financeiroRepository.findAllOrderByDataDespesaDesc();
+    }
+    public void updateNomeDespesa(int idDespesa, String nomeDespesa){
+        Financeiro despesaAlterar = financeiroRepository.updateDespesa(idDespesa);
+        despesaAlterar.setNomeDespesa(nomeDespesa);
+        financeiroRepository.save(despesaAlterar);
+
     }
 
 
