@@ -17,7 +17,7 @@ public class ItemService {
 
     public List<Item> create(List<Item> items, Integer codigo) {
         for(Item item : items) {
-            Integer numero = itemRepository.sequenceItem() + 1;
+            Integer numero = itemRepository.sequenceItem() != null ?  itemRepository.sequenceItem() + 1 :;
             item.setNrSequencia(numero);
             item.setCodVenda(codigo);
             itemRepository.create(item);
