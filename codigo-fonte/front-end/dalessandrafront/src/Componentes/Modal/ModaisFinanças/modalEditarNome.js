@@ -10,9 +10,10 @@ function ModalEditarNomeDespesa({id}) {
     const [alertaErro, setAlertaErro] = useState(false);
     const [mensagemError, setMensagemError] = useState();
     const handleNomeDespesaChange = (event) => { setNomeDespesa(event.target.value); }
-
+    console.log(id)
     function salvar() {
-        axios.put(config.URL+'financeiro/nomeDespesa'+id+nomeDespesa)
+        console.log(id)
+        axios.put(config.URL+'financeiro/atualizarNomeDespesa/'+id+'/'+nomeDespesa)
             .then((response) => {
                 if (response.status === 200) {
                     setAlertaErro(false)
