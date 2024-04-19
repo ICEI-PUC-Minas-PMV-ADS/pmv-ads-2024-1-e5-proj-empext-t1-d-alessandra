@@ -24,6 +24,16 @@ function Cadastro() {
     });
   };
 
+  const checkExistingEmail = async () => {
+    try {
+      const response = await axios.get(`${config.URL}cadastros/verificar-email/${userData.email}`);
+      return response.data.exists;
+    } catch (error) {
+      console.error(error);
+      return false;
+    }
+  };
+
   const handleSubmit = async () => {
     setLoading(true);
 
@@ -34,6 +44,13 @@ function Cadastro() {
 
       if (userData.senha !== userData.confirmarSenha) {
         throw new Error("As senhas não coincidem.");
+      }
+
+      const emailExists = await checkExistingEmail();
+      if (emailExists) {
+        setErrorMessage("Este email já está cadastrado.");
+        setLoading(false);
+        return; 
       }
 
       const headers = config.HEADERS;
@@ -51,10 +68,10 @@ function Cadastro() {
       setTimeout(() => {
         navigate("/");
       }, );
-      
+
     } catch (error) {
+      setErrorMessage("Email já cadastrado");
       setLoading(false);
-      setErrorMessage(error.message);
       console.error(error);
     }
   };
