@@ -1,23 +1,22 @@
+import React, { useState, useEffect } from 'react';
 import {
-    Card,
-    CardBody,
-    CardHeader,
-    Typography,
-  } from "@material-tailwind/react";
-  import Chart from "react-apexcharts";
-  import { ShoppingCartIcon } from "@heroicons/react/24/outline";
-   
-  const chartConfig = {
-    type: "line",
-    height: 240,
-    width: 1080,
-    series: [
-      {
-        name: "Valor",
-        data: [50, 40, 300, 320, 500, 350, 200, 230, 500],
-      },
-    ],
+  Card,
+  CardBody,
+  CardHeader,
+  Typography,
+} from "@material-tailwind/react";
+import Chart from "react-apexcharts";
+import { ShoppingCartIcon } from "@heroicons/react/24/outline";
+import axios from "axios";
+import config from '../../../config/config';
+
+const Graphic = () => {
+  const [chartData, setChartData] = useState({
+    series: [{ name: "Valor", data: [] }],
     options: {
+      type: "line",
+      height: 400,
+    
       chart: {
         toolbar: {
           show: false,
@@ -95,36 +94,58 @@ import {
         theme: "dark",
       },
     },
-  };
-   
-  export default function Graphic() {
-    return (
-      <Card>
-        <CardHeader
-          floated={false}
-          shadow={false}
-          color="transparent"
-          className="flex flex-col gap-4 rounded-none md:flex-row md:items-center"
-        >
-          <div className="w-max rounded-lg bg-gray-900 p-5 text-white">
-            <ShoppingCartIcon className="h-6 w-6" />
-          </div>
-          <div>
-            <Typography variant="h6" color="blue-gray">
-              Gráfico de Vendas Diárias
-            </Typography>
-            <Typography
-              variant="small"
-              color="gray"
-              className="max-w-sm font-normal"
-            >
-              
-            </Typography>
-          </div>
-        </CardHeader>
-        <CardBody className="px-2 pb-0">
-          <Chart {...chartConfig} />
-        </CardBody>
-      </Card>
-    );
+  });
+
+  function obterDataAtual() {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(4 ).padStart(2, '0'); 
+    const day = String(11).padStart(2, '0'); 
+    return `${year}-${month}-${day}`;
   }
+
+  useEffect(() => {
+    const headers = {"Content-Type": "application/json"};
+    const dataAtual = obterDataAtual();
+    axios.get(`${config.URL}venda/grafico-dia?dtVenda=${dataAtual}`, {headers})
+      .then(response => {
+        const vlTotalData = response.data.map(item => item.vlTotal);
+        setChartData(prevState => ({
+          ...prevState,
+          series: [{ name: "Valor", data: vlTotalData }],
+        }));
+      })
+      .catch(error => console.error('Erro ao buscar dados:', error));
+  }, []);
+
+  return (
+    <Card>
+      <CardHeader
+        floated={false}
+        shadow={false}
+        color="transparent"
+        className="flex flex-col gap-4 rounded-none md:flex-row md:items-center"
+      >
+        <div className="w-max rounded-lg bg-gray-900 p-5 text-white">
+          <ShoppingCartIcon className="h-6 w-6" />
+        </div>
+        <div>
+          <Typography variant="h6" color="blue-gray">
+            Gráfico de Vendas Diárias
+          </Typography>
+          <Typography
+            variant="small"
+            color="gray"
+            className="max-w-sm font-normal"
+          >
+          </Typography>
+        </div>
+      </CardHeader>
+      <CardBody className="px-2 pb-0">
+        <Chart {...chartData} />
+      </CardBody>
+    </Card>
+  );
+};
+
+export default Graphic;
