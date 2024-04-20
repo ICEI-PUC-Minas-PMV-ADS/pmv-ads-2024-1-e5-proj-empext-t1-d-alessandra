@@ -3,6 +3,7 @@ package back.dalessandra.service.venda;
 import back.dalessandra.Model.Financeiro;
 import back.dalessandra.Model.Item;
 import back.dalessandra.Model.Venda;
+import back.dalessandra.Model.VendaFilter;
 import back.dalessandra.Model.dto.VendaDto;
 import back.dalessandra.repository.venda.VendaRepository;
 import back.dalessandra.service.estoque.EstoqueServiceBd;
@@ -13,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -34,8 +36,20 @@ public class VendaService {
         return vendaRepository.findByCodVenda(codVenda);
     }
 
-    public Page<Venda> findByDiaVenda(LocalDateTime dtVenda, Pageable pageable) {
-        return vendaRepository.findByDiaVenda(dtVenda, pageable);
+    public Page<Venda> findByDiaVenda(LocalDate dtVenda, Pageable pageable) {
+        VendaFilter filter = VendaFilter.builder()
+                .dataInicio(dtVenda.atStartOfDay())
+                .dataFim(dtVenda.atTime(23, 59, 59))
+                .build();
+        return vendaRepository.findByDiaVenda(filter, pageable);
+    }
+
+    public List<Venda> findByDiaVenda(LocalDate dtVenda) {
+        VendaFilter filter = VendaFilter.builder()
+                .dataInicio(dtVenda.atStartOfDay())
+                .dataFim(dtVenda.atTime(23, 59, 59))
+                .build();
+        return vendaRepository.findByDiaVenda(filter);
     }
 
     public VendaDto create(VendaDto venda) {

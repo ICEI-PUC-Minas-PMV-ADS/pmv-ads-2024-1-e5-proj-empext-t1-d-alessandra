@@ -1,6 +1,7 @@
 package back.dalessandra.repository.venda;
 
 import back.dalessandra.Model.Venda;
+import back.dalessandra.Model.VendaFilter;
 import back.dalessandra.Model.dto.VendaDto;
 import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
@@ -25,8 +26,11 @@ public interface VendaRepository extends JpaRepository<Venda,Integer> {
     @Query("select u from Venda u where formaPagto = ?1")
     List<Venda> findByFormaPagto(String formaPagto);
 
-    @Query("select u from Venda u where dtVenda = ?1")
-    Page<Venda> findByDiaVenda(LocalDateTime dtVenda, Pageable pageable);
+    @Query("select u from Venda u where dtVenda >= :#{#filter.dataInicio} and dtVenda <= :#{#filter.dataFim}")
+    Page<Venda> findByDiaVenda(VendaFilter filter, Pageable pageable);
+
+    @Query("select u from Venda u where dtVenda >= :#{#filter.dataInicio} and dtVenda <= :#{#filter.dataFim}")
+    List<Venda> findByDiaVenda(VendaFilter filter);
 
     @Modifying
     @Transactional

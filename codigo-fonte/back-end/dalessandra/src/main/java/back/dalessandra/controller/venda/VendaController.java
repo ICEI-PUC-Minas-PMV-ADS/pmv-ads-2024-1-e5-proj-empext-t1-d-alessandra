@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -38,8 +39,13 @@ public class VendaController {
     }
 
     @GetMapping("/relatorio-dia")
-    public Page<Venda> findByDiaVenda(LocalDateTime dtVenda, Pageable pageable) {
+    public Page<Venda> findByDiaVenda(LocalDate dtVenda, Pageable pageable) {
         return vendaService.findByDiaVenda(dtVenda, pageable);
+    }
+
+    @GetMapping("/grafico-dia")
+    public List<Venda> findByDiaVenda(LocalDate dtVenda) {
+        return vendaService.findByDiaVenda(dtVenda);
     }
 
     @PostMapping
