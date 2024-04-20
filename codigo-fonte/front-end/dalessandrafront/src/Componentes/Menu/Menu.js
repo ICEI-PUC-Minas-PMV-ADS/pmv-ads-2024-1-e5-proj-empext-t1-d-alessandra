@@ -24,7 +24,7 @@ function Menu() {
           <summary><img  class="logoVenda" fill="none" viewBox="0 0 34 34" src={LogoVendas}/>Venda</summary>
           <ul>
             <li><Link to="/vendas">Venda</Link></li>
-            <li><a>Relatório Venda</a></li>
+            <li><Link to="/relatorio-venda">Relatório Venda</Link></li>
             <li><a>Mais Vendidos</a></li>
           </ul>
         </details>
