@@ -1,6 +1,8 @@
 package back.dalessandra.service.cliente;
 
+import back.dalessandra.DTO.HistoricoComprasClienteDTO;
 import back.dalessandra.Model.Cliente;
+import back.dalessandra.repository.cliente.ClienteDevedorRepository;
 import back.dalessandra.repository.cliente.ClienteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,7 @@ import java.util.Optional;
 public class ClienteService {
 
     private final ClienteRepository clienteRepository;
+    private final ClienteDevedorRepository clienteDevedorRepository;
 
     public List<Cliente> findAll() {
         return clienteRepository.findAll();
@@ -40,5 +43,16 @@ public class ClienteService {
 
     public void deleteByCliente(Integer codCliente){
         clienteRepository.deleteByCliente(codCliente);
+    }
+
+    public List<HistoricoComprasClienteDTO> historicoComprasCliente(int codCliente,String tipoDeListagem){
+        if(tipoDeListagem.toLowerCase() == "compras recentes"){
+            return  clienteDevedorRepository.comprarRecentes(codCliente);
+        }
+        else if(tipoDeListagem.toLowerCase() == "compras pendentes"){
+            return  clienteDevedorRepository.comprasEmAberto(codCliente);
+        }else {
+            return clienteDevedorRepository.todasAsCompras(codCliente);
+        }
     }
 }

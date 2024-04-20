@@ -1,6 +1,7 @@
 package back.dalessandra.controller.cliente;
 
 import back.dalessandra.DTO.DadosClientesDTO;
+import back.dalessandra.DTO.HistoricoComprasClienteDTO;
 import back.dalessandra.DTO.ListaHistoricoClienteDTO;
 import back.dalessandra.Model.Cliente;
 import back.dalessandra.service.cliente.ClienteService;
@@ -53,9 +54,14 @@ public class ClienteController {
     public List<ListaHistoricoClienteDTO> listaDeClientesComNomeEmail(){
         return  historicoClienteService.clientesCadastradoNaPlaforma();
     }
-    @GetMapping("/reuperarDadosCompletosClientes/{id}")
-    public DadosClientesDTO reuperarDadosCompletosClientes(@PathVariable("id")int id){
+    @GetMapping("/reuperarDadosCompletosClientes/{codCliente}")
+    public DadosClientesDTO reuperarDadosCompletosClientes(@PathVariable("codCliente")int id){
         return historicoClienteService.recuperarDadosCliente(id);
+    }
+
+    @GetMapping("/listarHistoricoDeCompraClienteComFiltro/{codCliente}/{tipoDeListagem}")
+    public List<HistoricoComprasClienteDTO> listarHistoricoDeCompraClienteComFiltro(@PathVariable("codCliente") int codCliente, @PathVariable("tipoDeListagem") String tipoDeListagem){
+        return  clienteService.historicoComprasCliente(codCliente,tipoDeListagem);
     }
 
 }

@@ -1,4 +1,5 @@
 import CardAlertaItemNaoEncontrado from "../../Card/CardAlertaItemNaoEncontrado";
+import ModalHistorico from "../../Modal/ModaisHistorico/ModalHistorico"
 function ListaHistorico({dados}){
     
     console.log(dados)
@@ -25,6 +26,7 @@ function ListaHistorico({dados}){
                             <td>{item.codCliente}</td>
                             <td>{item.nomeCliente}</td>
                             <td>{item.email}</td>
+                            <td><ModalHistorico id={item.codCliente}/></td>
                             <td> {
                                 item.qtdComprasPendentesPagamento !== 0 && 
                                 (<div className="badge badge-warning">Pagamentos Pendentes</div>)
