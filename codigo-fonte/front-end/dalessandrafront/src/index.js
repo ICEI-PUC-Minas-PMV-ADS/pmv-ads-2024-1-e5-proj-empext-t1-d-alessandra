@@ -12,6 +12,7 @@ import Financeiro from "./Pages/Financeiro/Financeiro";
 import Devedores from './Pages/Cliente/Devedores';
 import Configuracao from './Pages/Configurações/Configuracoes';
 import reportWebVitals from './reportWebVitals';
+import Historico from './Pages/Cliente/Historico';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
 
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
   {
     path: "/configuracao",
     element: <Configuracao />
+  },
+  {
+    path: "/historico",
+    element: <Historico />
   }
 ]);
 

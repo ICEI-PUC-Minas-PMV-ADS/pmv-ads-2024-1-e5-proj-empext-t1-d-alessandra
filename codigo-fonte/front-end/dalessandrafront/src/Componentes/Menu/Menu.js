@@ -37,7 +37,7 @@ function Menu() {
           <ul>
             <li><Link to="/cliente">Cliente</Link></li>
             <li><Link to="/clienteDevedores">Clientes Inadimplentes</Link></li>
-            <li><a>Historico dos clientes</a></li>
+            <li><Link to="/historico">Historico dos clientes</Link></li>
           </ul>
         </details>
 
