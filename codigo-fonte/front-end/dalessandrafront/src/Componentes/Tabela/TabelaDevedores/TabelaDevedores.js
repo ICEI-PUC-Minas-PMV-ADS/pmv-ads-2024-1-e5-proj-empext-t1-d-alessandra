@@ -1,9 +1,9 @@
 import "../../../"
 import dayjs from 'dayjs';
 import React, { useState } from 'react';
+import config from "../../../config/config";
 import SubMenuDevedor from '../../SubMenu/subMenuDevedor';
 import CardAlertaItemNaoEncontrado from '../../Card/CardAlertaItemNaoEncontrado'
-import config from "../../../config/config";
 function TabelaDevedores({ dados,filtroCodVenda, filtroNome, filtroDataVenda }){
     
     const filtrarDados = (item) => {

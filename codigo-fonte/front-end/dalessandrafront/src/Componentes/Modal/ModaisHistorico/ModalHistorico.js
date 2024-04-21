@@ -1,17 +1,19 @@
 
 import React from 'react';
 import axios from 'axios';
+import "../../../Pages/estilo/estoque.css"
 import { useState,useEffect } from 'react';
+import config from '../../../config/config';
 import CardDadosPessoais from '../../Card/CardHistorico';
 import CardInfromacoesCompra from '../../Card/CardInfromacoesCompra';
-import config from '../../../config/config';
 import logoOlho from'../../../img/open-eye-icon.png' 
-import CardAlertaItemNaoEncontrado from '../../Card/CardAlertaItemNaoEncontrado';
+
 import dayjs from 'dayjs';
 function ExibirCompras({id}){
    const[dadosCliente,setDadosCliente] = useState([])   
    const [dadosComprasPendentes,setDadosComprasPendentes] = useState([])
-    function obterDadosCliente(){
+   const [comprasRecentes,setComprasRecentes]=useState([])
+    async function obterDadosCliente(){
         axios.get(`${config.URL}cliente/reuperarDadosCompletosClientes/${id}`)
         .then((response)=>{
             setDadosCliente(response.data)
@@ -23,9 +25,20 @@ function ExibirCompras({id}){
 
     }
     function listarCompraDosDevedores(){
-        axios.get(`${config.URL}devedores/obetrProdutosDevidos/${id}`)
+        axios.get(`${config.URL}cliente/listarHistoricoDeCompraClienteComFiltro/${id}/compras pendentes`)
         .then((response)=>{
             setDadosComprasPendentes(response.data)
+           
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
+
+    }
+    function listarComprasRecentes(){
+        axios.get(`${config.URL}cliente/listarHistoricoDeCompraClienteComFiltro/${id}/compras recentes`)
+        .then((response)=>{
+            setComprasRecentes(response.data)
            
         })
         .catch((error)=>{
@@ -37,6 +50,7 @@ function ExibirCompras({id}){
         document.getElementById('my_modal_modalhistorico' + id).showModal();
         obterDadosCliente()
         listarCompraDosDevedores()
+        listarComprasRecentes()
     }
 
     function calcularDiferencaData(cadastro) {
@@ -58,23 +72,24 @@ function ExibirCompras({id}){
     }
     return(
         <div>
-            <button className="" onClick={chamarModal}>Historico</button>
+            <button className="" onClick={chamarModal}>Exibir Historico</button>
             <dialog id={"my_modal_modalhistorico"+id} className="modal">
                 <div className="modal-box w-11/12 max-w-5xl">
-                    <section className="container mx-auto p-4"> 
-                        <div class="avatar">
-                            <div class="w-24 rounded-full">
-                                <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                            </div>
+                    <section className="container mx-auto p-4 perfil"> 
+                    <div class="avatar placeholder">
+                        <div class="bg-neutral text-neutral-content rounded-full w-24">
+                            <span class="text-3xl">U</span>
                         </div>
+                    </div> 
                         <h1 className="text-3xl font-bold">{dadosCliente.nomeCliente}</h1>
                         <p className="text-lg">Cliente há, {calcularDiferencaData(dadosCliente.dtCadastro)}</p>
                     </section>
                         <br></br>
-                    <section className="container mx-auto p-4"> 
-                        <CardDadosPessoais title={"Informacoes pessoais"} cpf={dadosCliente.cpfCnpj} email={dadosCliente.email} telefone={dadosCliente.telefone} endereco={dadosCliente.endereco}/>
                         <br></br>
-                        <CardInfromacoesCompra  compras={dadosComprasPendentes} id ={id} title={"Dados de compra"} qtdDeCompra={ dadosCliente.qtdDeCompra}  qtdComprasPendentesPagamento={ dadosCliente.qtdComprasPendentesPagamento}/>
+                    <section className="container mx-auto p-4"> 
+                        <CardDadosPessoais title={"Informações pessoais"} cpf={dadosCliente.cpfCnpj} email={dadosCliente.email} telefone={dadosCliente.telefone} endereco={dadosCliente.endereco}/>
+                        <br></br>
+                        <CardInfromacoesCompra id={id} comprasRecentes={comprasRecentes} compras={dadosComprasPendentes}  title={"Dados de compra"} qtdDeCompra={ dadosCliente.qtdDeCompra}  qtdComprasPendentesPagamento={ dadosCliente.qtdComprasPendentesPagamento}/>
                     </section>
                     <div className="modal-action">
                         <form method="dialog">

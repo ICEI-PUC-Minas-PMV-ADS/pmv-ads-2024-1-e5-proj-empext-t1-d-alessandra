@@ -51,6 +51,25 @@
     bottom: 3.5em;
     width: 5rem;
 }
+.perfil{
+    position: relative;
+    left: 15rem;
+}
+.perfil>h1{
+    position: relative;
+    right: 0em;
+    width: 90em;
+}
+.perfil>p{
+    position: relative;
+    
+}
+.verMais{
+    position: relative;
+    left: 28em;
+    top:1em;
+}
+
 /*.campos{
     position: relative;
     bottom: 21em;

@@ -117,7 +117,7 @@ public interface ClienteDevedorRepository extends JpaRepository<Cliente,Integer>
                         "INNER JOIN Venda v ON c.codCliente = v.codCliente " +
                         "INNER JOIN Item i ON v.codVenda = i.codVenda " +
                         "INNER JOIN Estoque e ON i.codProduto = e.codProduto " +
-                        "WHERE c.codCliente = ?1 and v.formaPagto = 'AN'" +
+                        "WHERE c.codCliente = ?1 and v.formaPagto = 'AN' " +
                         "ORDER BY v.dtVenda DESC "
 
         )

@@ -1,24 +1,59 @@
 
 import ExibirCompras from "../Modal/ModalTelaDevedores/exibirCompras";
 import CardAlertaItemNaoEncontrado from "./CardAlertaItemNaoEncontrado";
+import ModalTodasCompras from "../Modal/ModaisHistorico/ModalTodasCompras"
 import dayjs from 'dayjs';
 function CardInfromacoesCompra(props) {
     return (
       <div className="card w-46 bg-base-100 shadow-xl">
         <div className="card-body">
-          <h3 className="card-title text-3xl font-bold ">{props.title}</h3>
-          
-          <div className="collapse collapse-arrow bg-base-200">
-                <input type="radio" name="my-accordion-2" defaultChecked /> 
+          <h3 className="card-title text-3xl font-bold ">{props.title}</h3>  
+          <div className="collapse collapse-arrow join-item border border-base-300">
+                <input type="radio" name="my-accordion-2" /> 
                 <div className="collapse-title text-xl font-medium">
                     <p className="text-1xl font-bold">{"Quantidade de compras: "+ props.qtdDeCompra}</p>
                 </div>
                 <div className="collapse-content"> 
-                    <p>hello</p>
-                </div>
+                    <p className="text-1xl font-bold">{"Compras recentes:"}</p>
+                    <br></br>
+                    <table className="table table-xs">
+                                <thead>
+                                    <tr>
+                                        <th>Cod.Venda</th>
+                                        <th>Produto</th>
+                                        <th>Quantidade</th>
+                                        <th>Valor Total</th>
+                                        <th>Data da compra</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {
+                                    
+                                    (props.comprasRecentes.length === 0) ?(    
+                                        <tr>
+                                            <td colSpan="6">Nenhum item encotrando</td>
+                                        </tr>
+                                        
+                                    ) : (
+                                    props.comprasRecentes.map((item, index)  => (
+                                        <tr key={index}>
+                                            <td>{item.codVenda}</td>
+                                            <td>{item.nomeProduto}</td>
+                                            <td>{item.quantidade}</td>
+                                            <td>{item.vlTotal}</td>
+                                            <td>{ dayjs(item.dtVenda).format("DD/MM/YYYY")}</td>
+                                            </tr>
+                                        )
+                                      )
+                                    )
+                                }
+                                </tbody>
+                        </table>
+                        <ModalTodasCompras id={props.id}/>
+                    </div>
             </div>
 
-            <div className="collapse collapse-arrow bg-base-200">
+            <div className="collapse collapse-arrow join-item border border-base-300">
                 <input type="radio" name="my-accordion-2" /> 
                 <div className="collapse-title text-xl font-medium">
                     <p className="text-1xl font-bold">{"Quantidade de compras em aberto: "+ props.qtdComprasPendentesPagamento}</p>
@@ -27,8 +62,8 @@ function CardInfromacoesCompra(props) {
                     <table className="table table-xs">
                             <thead>
                                 <tr>
+                                    <th>Cod.Venda</th>
                                     <th>Produto</th>
-                                    <th>Tamanho</th>
                                     <th>Quantidade</th>
                                     <th>Valor Total</th>
                                     <th>Data da compra</th>
@@ -38,12 +73,14 @@ function CardInfromacoesCompra(props) {
                                 {
                                 
                                 (props.compras.length === 0) ?(    
-                                    <CardAlertaItemNaoEncontrado  textoExibir="Nenhum item encotrando"/>
+                                    <tr>
+                                    <td colSpan="6">Nenhum item encotrando</td>
+                                    </tr>
                                 ) : (
                                 props.compras.map((item, index)  => (
                                     <tr key={index}>
+                                        <td>{item.codVenda}</td>
                                         <td>{item.nomeProduto}</td>
-                                        <td>{item.tamanho}</td>
                                         <td>{item.quantidade}</td>
                                         <td>{item.vlTotal}</td>
                                         <td>{ dayjs(item.dtVenda).format("DD/MM/YYYY")}</td>

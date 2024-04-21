@@ -1,5 +1,4 @@
 package back.dalessandra.controller.cliente;
-
 import back.dalessandra.DTO.DadosClientesDTO;
 import back.dalessandra.DTO.HistoricoComprasClienteDTO;
 import back.dalessandra.DTO.ListaHistoricoClienteDTO;
@@ -60,6 +59,7 @@ public class ClienteController {
     }
 
     @GetMapping("/listarHistoricoDeCompraClienteComFiltro/{codCliente}/{tipoDeListagem}")
+
     public List<HistoricoComprasClienteDTO> listarHistoricoDeCompraClienteComFiltro(@PathVariable("codCliente") int codCliente, @PathVariable("tipoDeListagem") String tipoDeListagem){
         return  clienteService.historicoComprasCliente(codCliente,tipoDeListagem);
     }

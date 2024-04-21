@@ -46,10 +46,10 @@ public class ClienteService {
     }
 
     public List<HistoricoComprasClienteDTO> historicoComprasCliente(int codCliente,String tipoDeListagem){
-        if(tipoDeListagem.toLowerCase() == "compras recentes"){
+        if(tipoDeListagem.equalsIgnoreCase("compras recentes")){
             return  clienteDevedorRepository.comprarRecentes(codCliente);
         }
-        else if(tipoDeListagem.toLowerCase() == "compras pendentes"){
+        else if(tipoDeListagem.equalsIgnoreCase("compras pendentes")){
             return  clienteDevedorRepository.comprasEmAberto(codCliente);
         }else {
             return clienteDevedorRepository.todasAsCompras(codCliente);
