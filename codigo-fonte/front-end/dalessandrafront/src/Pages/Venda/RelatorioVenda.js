@@ -47,9 +47,12 @@ function RelatorioVenda() {
                     <img  class="h-10 w-10" fill="none" viewBox="0 0 34 34" src={LogoVenda}/>
                     <h1 className="text-3xl font-bold">Relatório Venda</h1>
                 </section>
-                <section className="container mx-auto p-4 overflow-x-auto" style={{ height: '400px' }}>
+                <div>
+                <section className="container mx-auto p-4 overflow-x-auto" >
                     <Graphic/>
-                </section>
+                </section>   
+                </div>
+                
                 <br></br>
                 <section className="container mx-auto p-4 shadow-xl overflow-x-auto" > 
                     <h3 className="text-2xl font-bold corTexto">Vendas do dia</h3>

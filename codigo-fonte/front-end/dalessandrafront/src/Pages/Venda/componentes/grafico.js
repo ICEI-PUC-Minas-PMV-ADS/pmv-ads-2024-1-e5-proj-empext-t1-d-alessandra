@@ -15,8 +15,6 @@ const Graphic = () => {
     series: [{ name: "Valor", data: [] }],
     options: {
       type: "line",
-      height: 400,
-    
       chart: {
         toolbar: {
           show: false,
@@ -76,7 +74,7 @@ const Graphic = () => {
       grid: {
         show: true,
         borderColor: "#dddddd",
-        strokeDashArray: 5,
+        strokeDashArray: 10,
         xaxis: {
           lines: {
             show: true,
@@ -142,7 +140,7 @@ const Graphic = () => {
         </div>
       </CardHeader>
       <CardBody className="px-2 pb-0">
-        <Chart {...chartData} />
+        <Chart {...chartData} height={300} />
       </CardBody>
     </Card>
   );
