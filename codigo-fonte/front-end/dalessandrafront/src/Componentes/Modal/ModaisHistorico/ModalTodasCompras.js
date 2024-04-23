@@ -53,7 +53,7 @@ function ExibirCompras({id}){
                                             <td>{item.codVenda}</td>
                                             <td>{item.nomeProduto}</td>
                                             <td>{item.quantidade}</td>
-                                            <td>{item.vlTotal}</td>
+                                            <td>{"R$ "+item.vlTotal.toFixed(2)}</td>
                                             <td>{ dayjs(item.dtVenda).format("DD/MM/YYYY")}</td>
                                         </tr>
                                          )

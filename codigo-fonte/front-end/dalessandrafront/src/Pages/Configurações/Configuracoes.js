@@ -2,15 +2,15 @@ import axios from "axios";
 import "../../Pages/estilo/estoque.css"
 import config from "../../config/config";
 import Menu from "../../Componentes/Menu/Menu";
-import AlertaErro from "../../Componentes/Alertas/AlertaErro";
-import Alertasucesso from "../../Componentes/Alertas/AlertaSucesso";
 import React, { useState,useEffect } from "react";
 import LogoConfig from "../../img/configuracao.png"
+import AlertaErro from "../../Componentes/Alertas/AlertaErro";
+import Alertasucesso from "../../Componentes/Alertas/AlertaSucesso";
 function Configuracao(){
     const [diasmandaremail,setDiasmandarEmail]=useState(1);
     const [diasCobranca,setDiasCobraca] = useState(1) 
     const [emailsNotificacoes,setEmailsNotificacoes] =useState(1);
-    const[alertVisible, setAlertVisible] = useState(false);
+    const [alertVisible, setAlertVisible] = useState(false);
     const [alertaErro, setAlertaErro] = useState(false);
     const [mensagemError,setMensagemError] = useState()
     useEffect(() => {

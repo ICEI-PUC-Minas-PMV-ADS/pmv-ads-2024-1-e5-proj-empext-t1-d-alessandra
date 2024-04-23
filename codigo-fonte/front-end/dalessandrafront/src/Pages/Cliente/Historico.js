@@ -1,6 +1,6 @@
 import axios from "axios";
-import { useEffect,useState } from "react";
 import config from "../../config/config";
+import { useEffect,useState } from "react";
 import Menu from "../../Componentes/Menu/Menu";
 import ListaHistorico from "../../Componentes/Lista/ListaHistorico/ListaHistorico";
 

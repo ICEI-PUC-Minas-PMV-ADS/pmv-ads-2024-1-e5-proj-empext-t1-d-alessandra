@@ -1,8 +1,6 @@
-import CardAlertaItemNaoEncontrado from "../../Card/CardAlertaItemNaoEncontrado";
 import ModalHistorico from "../../Modal/ModaisHistorico/ModalHistorico"
+import CardAlertaItemNaoEncontrado from "../../Card/CardAlertaItemNaoEncontrado";
 function ListaHistorico({dados}){
-    
-    console.log(dados)
     return(
         <div className="overflow-x-auto h-96">
         <table className="table table-pin-rows">
@@ -11,7 +9,6 @@ function ListaHistorico({dados}){
                     <th>Codigo do cliente</th>
                     <th>Cliente</th>
                     <th>Email</th>
-                   
                 </tr>
             </thead>
             <tbody>

@@ -69,7 +69,10 @@
     left: 28em;
     top:1em;
 }
-
+.avatarHistorico{
+    left: 12rem;
+    bottom: 2em;
+}
 /*.campos{
     position: relative;
     bottom: 21em;

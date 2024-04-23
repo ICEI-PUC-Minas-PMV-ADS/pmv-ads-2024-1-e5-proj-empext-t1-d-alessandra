@@ -1,6 +1,4 @@
 
-import ExibirCompras from "../Modal/ModalTelaDevedores/exibirCompras";
-import CardAlertaItemNaoEncontrado from "./CardAlertaItemNaoEncontrado";
 import ModalTodasCompras from "../Modal/ModaisHistorico/ModalTodasCompras"
 import dayjs from 'dayjs';
 function CardInfromacoesCompra(props) {
@@ -14,7 +12,7 @@ function CardInfromacoesCompra(props) {
                     <p className="text-1xl font-bold">{"Quantidade de compras: "+ props.qtdDeCompra}</p>
                 </div>
                 <div className="collapse-content"> 
-                    <p className="text-1xl font-bold">{"Compras recentes:"}</p>
+                    <p className="text-1xl font-bold">{"Itens comprados recentemente:"}</p>
                     <br></br>
                     <table className="table table-xs">
                                 <thead>
@@ -40,7 +38,7 @@ function CardInfromacoesCompra(props) {
                                             <td>{item.codVenda}</td>
                                             <td>{item.nomeProduto}</td>
                                             <td>{item.quantidade}</td>
-                                            <td>{item.vlTotal}</td>
+                                            <td>{"R$ "+item.vlTotal.toFixed(2)}</td>
                                             <td>{ dayjs(item.dtVenda).format("DD/MM/YYYY")}</td>
                                             </tr>
                                         )
@@ -82,7 +80,7 @@ function CardInfromacoesCompra(props) {
                                         <td>{item.codVenda}</td>
                                         <td>{item.nomeProduto}</td>
                                         <td>{item.quantidade}</td>
-                                        <td>{item.vlTotal}</td>
+                                        <td>{"R$ "+item.vlTotal.toFixed(2)}</td>
                                         <td>{ dayjs(item.dtVenda).format("DD/MM/YYYY")}</td>
                                         </tr>
                                     )))
