@@ -1,5 +1,6 @@
 package back.dalessandra.Model.dto;
 
+import back.dalessandra.Model.Cliente;
 import back.dalessandra.Model.Item;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,4 +23,5 @@ public class VendaDto {
     private LocalDateTime dtVenda;
     private Double vlTotal;
     private List<Item> listaItens;
+    private Cliente cliente;
 }

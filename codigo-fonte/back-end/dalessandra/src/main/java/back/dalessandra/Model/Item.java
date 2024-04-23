@@ -23,6 +23,8 @@ public class Item {
     @Column
     private Integer codProduto;
     @Column
+    private String descProduto;
+    @Column
     private Double valorUnit;
     @Column
     private Integer quantidade;

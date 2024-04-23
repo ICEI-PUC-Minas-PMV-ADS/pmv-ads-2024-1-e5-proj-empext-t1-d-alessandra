@@ -15,6 +15,10 @@ public class ItemService {
     private final EstoqueServiceBd estoqueServiceBd;
     private final ItemRepository itemRepository;
 
+    public List<Item> findByCodVenda(Integer codVenda) {
+        return itemRepository.findByCodVenda(codVenda);
+    }
+
     public List<Item> create(List<Item> items, Integer codigo) {
         for(Item item : items) {
             Integer numero = itemRepository.sequenceItem() != null ?  itemRepository.sequenceItem() + 1 : 1;

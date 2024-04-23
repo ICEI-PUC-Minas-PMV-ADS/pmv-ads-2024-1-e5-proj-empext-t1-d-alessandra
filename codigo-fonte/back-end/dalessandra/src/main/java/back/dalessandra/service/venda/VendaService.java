@@ -6,6 +6,7 @@ import back.dalessandra.Model.Venda;
 import back.dalessandra.Model.VendaFilter;
 import back.dalessandra.Model.dto.VendaDto;
 import back.dalessandra.repository.venda.VendaRepository;
+import back.dalessandra.service.cliente.ClienteService;
 import back.dalessandra.service.estoque.EstoqueServiceBd;
 import lombok.RequiredArgsConstructor;
 
@@ -25,6 +26,7 @@ public class VendaService {
 
     private final VendaRepository vendaRepository;
     private final ItemService itemService;
+    private final ClienteService clienteService;
 
     public List<Venda> findAll() {
         return vendaRepository.findAll();
@@ -32,8 +34,24 @@ public class VendaService {
 
     public List<Venda> findByFormaPagto(String formaPagto) {return vendaRepository.findByFormaPagto(formaPagto);}
 
-    public Optional<Venda> findByCodVenda(Integer codVenda) {
-        return vendaRepository.findByCodVenda(codVenda);
+    public Optional<VendaDto> findByCodVenda(Integer codVenda) {
+        var itens = itemService.findByCodVenda(codVenda);
+        var venda =  vendaRepository.findByCodVenda(codVenda);
+        var cliente = clienteService.findByCodCliente(venda.get().getCodCliente());
+
+        if (venda.isPresent()) {
+            VendaDto vendaDto = VendaDto.builder()
+                    .codVenda(venda.get().getCodVenda())
+                    .codCliente(venda.get().getCodCliente())
+                    .formaPagto(venda.get().getFormaPagto())
+                    .dtVenda(venda.get().getDtVenda())
+                    .vlTotal(venda.get().getVlTotal())
+                    .listaItens(itens)
+                    .cliente(cliente.get())
+                    .build();
+            return Optional.of(vendaDto);
+        }
+        return Optional.empty();
     }
 
     public Page<Venda> findByDiaVenda(LocalDate dtVenda, Pageable pageable) {

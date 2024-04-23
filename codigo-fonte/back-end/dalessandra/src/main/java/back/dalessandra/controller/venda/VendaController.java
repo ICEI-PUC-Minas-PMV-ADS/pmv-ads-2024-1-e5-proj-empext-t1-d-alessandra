@@ -29,7 +29,7 @@ public class VendaController {
     }
 
     @GetMapping("/{codVenda}")
-    public Venda findByCodVenda(@PathVariable Integer codVenda) {
+    public VendaDto findByCodVenda(@PathVariable Integer codVenda) {
         return vendaService.findByCodVenda(codVenda).orElse(null);
     }
 
