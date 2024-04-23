@@ -14,7 +14,7 @@ function Tabela({ dados, filtro }) {
 
     const handleCloseModal = () => {
         setModalOpen(false);
-        setCodVendaSelecionado(null); // Resetando o codVenda selecionado ao fechar o modal
+        setCodVendaSelecionado(null);
     };
 
     return (
@@ -27,7 +27,7 @@ function Tabela({ dados, filtro }) {
                         <th>Forma Pagamento</th>
                         <th>Data Venda</th>
                         <th>Valor Total</th>
-                        <th>Ações</th> {/* Cabeçalho para a coluna de ações */}
+                        <th>Detalhe</th> 
                     </tr>
                 </thead>
                 <tbody>

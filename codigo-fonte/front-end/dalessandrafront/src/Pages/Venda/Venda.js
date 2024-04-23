@@ -31,7 +31,7 @@ function Venda() {
         try {
             if (novoItem !== "") {
                 setItensVenda(prevItens => [...prevItens, {
-                    nome: novoItem.nome,
+                    descProduto: novoItem.descProduto,
                     codProduto: novoItem.codProduto,
                     valorUnit: novoItem.valorVenda,
                     quantidade: 1,
@@ -64,7 +64,7 @@ function Venda() {
             const produtoEncontrado = response.data;
             setProduto(produtoEncontrado.nomeProduto);
             setNovoItem({
-                nome: produtoEncontrado.nomeProduto,
+                descProduto: produtoEncontrado.nomeProduto,
                 codProduto: produtoEncontrado.codProduto,
                 valorVenda: produtoEncontrado.valorVenda
             });
@@ -251,11 +251,11 @@ function Venda() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {itensVenda.map(({ nome, codProduto, valorUnit, quantidade, vlTotal }, index) => (
+                                {itensVenda.map(({ descProduto, codProduto, valorUnit, quantidade, vlTotal }, index) => (
                                     <tr key={index} className={index % 2 === 0 ? "even:bg-blue-gray-50/50" : ""}>
                                         <td className="p-4">
                                             <Typography variant="small" color="blue-gray" className="font-normal">
-                                                {nome}
+                                                {descProduto}
                                             </Typography>
                                         </td>
                                         <td className="p-4">
