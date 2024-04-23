@@ -140,7 +140,7 @@ const Graphic = () => {
         </div>
       </CardHeader>
       <CardBody className="px-2 pb-0">
-        <Chart {...chartData} height={300} />
+        <Chart {...chartData} height={300}/>
       </CardBody>
     </Card>
   );
