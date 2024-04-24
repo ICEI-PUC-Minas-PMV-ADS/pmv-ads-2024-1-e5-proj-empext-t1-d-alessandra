@@ -2,9 +2,10 @@ package back.dalessandra.Model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Size;
 import lombok.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 
@@ -27,10 +28,10 @@ public class Financeiro {
     private float valorDespesa;
     @Column
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", locale = "pt-BR", timezone = "America/Sao_Paulo")
-    private Date dataDespesa;
+    private LocalDate dataDespesa;
     @Column
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", locale = "pt-BR", timezone = "America/Sao_Paulo")
-    private Date dataVencimento;
+    private LocalDate dataVencimento;
     @JsonIgnore
     private float valorTotalDespesas;
 

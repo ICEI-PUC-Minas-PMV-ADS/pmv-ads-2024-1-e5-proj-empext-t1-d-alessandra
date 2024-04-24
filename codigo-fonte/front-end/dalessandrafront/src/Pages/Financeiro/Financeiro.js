@@ -50,7 +50,7 @@ function Financeiro() {
 
     function obterValorVendas() {
         const headers = { "Content-Type": "application/json" };
-        axios.get(config.URL + 'vendas/totalVendas', { headers })
+        axios.get(config.URL + 'venda/totalVendas', { headers })
             .then((response) => {
                 setValorVendas(response.data);
             })
@@ -79,15 +79,15 @@ function Financeiro() {
                     <h1 className="text-3xl font-bold">Financeiro</h1>
                 </section>
                 <section className="container mx-auto p-4 alinhamentoCards">
-                    <Card title="Valor Vendido: " textoExibir={"R$ " + (valorVendas)} />
-                    <Card title="Valor Despesas:" textoExibir={"R$ " + (valorTotalDespesasFiltradas)} />
-                    <Card title="Balanço Total:" textoExibir={"R$ " + (valorVendas - valorTotalDespesasFiltradas)} />
+                    <Card title="Valor Vendido: " textoExibir={"R$ " + (valorVendas).toFixed(2)} />
+                    <Card title="Valor Despesas:" textoExibir={"R$ " + (valorTotalDespesasFiltradas).toFixed(2)} />
+                    <Card title="Balanço Total:" textoExibir={"R$ " + (valorVendas - valorTotalDespesasFiltradas).toFixed(2)} />
                 </section>
                 <br />
                 <br />
                 <section className="container mx-auto p-4 shadow-xl alinhamentoMenu2">
                     <ModalIncluir />
-                    <div className="flex space-x-4">
+                    <div class="flex space-x-4">
                         <FiltrarData onFiltrarDataChange={handleFiltroDataChange} />
                     </div>
                 </section>

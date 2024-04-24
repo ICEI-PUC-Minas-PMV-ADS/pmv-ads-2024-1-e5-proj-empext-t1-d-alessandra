@@ -1,12 +1,14 @@
 package back.dalessandra.service.financeiro;
 
-import back.dalessandra.Model.Estoque;
 import back.dalessandra.Model.Financeiro;
 import back.dalessandra.repository.financeiro.FinanceiroRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.Date;
+import java.time.LocalDate;
 
 @Service
 @RequiredArgsConstructor
@@ -47,32 +49,6 @@ public class FinanceiroService {
         return ("Excluido com sucesso");
     }
 
-    public List<Financeiro> findByDias(Integer dia, Integer mes, Integer ano) {
-        List<Financeiro> financeiros = financeiroRepository.findAll();
-
-        if (dia != null || mes != null || ano != null) {
-            List<Financeiro> financeirosFiltrados = new ArrayList<>();
-
-            for (Financeiro financeiro : financeiros) {
-                Calendar calendar = Calendar.getInstance();
-                calendar.setTime(financeiro.getDataDespesa());
-                int diaDespesa = calendar.get(Calendar.DAY_OF_MONTH);
-                int mesDespesa = calendar.get(Calendar.MONTH) + 1;
-                int anoDespesa = calendar.get(Calendar.YEAR);
-
-                if ((dia == null || diaDespesa == dia) &&
-                        (mes == null || mesDespesa == mes) &&
-                        (ano == null || anoDespesa == ano)) {
-                    financeirosFiltrados.add(financeiro);
-                }
-            }
-
-            return financeirosFiltrados;
-        } else {
-            return financeiros;
-        }
-    }
-
 
 
     public float calcularTotalDespesas() {
@@ -92,6 +68,30 @@ public class FinanceiroService {
         despesaAlterar.setNomeDespesa(nomeDespesa);
         financeiroRepository.save(despesaAlterar);
 
+    }
+    public void updateTipoDespesa(int idDespesa, String tipoDespesa){
+        Financeiro tipoAlterar = financeiroRepository.updateDespesa(idDespesa);
+        tipoAlterar.setTipoDespesa(tipoDespesa);
+        financeiroRepository.save(tipoAlterar);
+
+    }
+    public void updateValorDespesa(int idDespesa, float valorDespesa){
+        Financeiro valorAlterar = financeiroRepository.updateDespesa(idDespesa);
+        valorAlterar.setValorDespesa(valorDespesa);
+        financeiroRepository.save(valorAlterar);
+
+    }
+
+    public void updateDataDespesa(int idDespesa, @DateTimeFormat(pattern = "dd/MM/yyyy") LocalDate dataDespesa) {
+        Financeiro dataDespesaAlterar = financeiroRepository.updateDespesa(idDespesa);
+        dataDespesaAlterar.setDataDespesa(dataDespesa);
+        financeiroRepository.save(dataDespesaAlterar);
+    }
+
+    public void updateDataVencimento(int idDespesa, @DateTimeFormat(pattern = "dd/MM/yyyy") LocalDate dataVencimento) {
+        Financeiro dataVencimentoAlterar = financeiroRepository.updateDespesa(idDespesa);
+        dataVencimentoAlterar.setDataVencimento(dataVencimento);
+        financeiroRepository.save(dataVencimentoAlterar);
     }
 
 
