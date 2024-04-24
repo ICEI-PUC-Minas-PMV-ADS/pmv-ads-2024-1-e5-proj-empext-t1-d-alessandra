@@ -1,30 +1,37 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "../../Pages/estilo/financeiro.css";
-import TabelaFinancas from "../../Componentes/Tabela/tabelaFinancas";
+import TabelaFinancas from "../../Componentes/Tabela/TabelaFinanceiro/tabelaFinancas";
 import config from "../../config/config";
 import Card from "../../Componentes/Card/Card";
 import Menu from "../../Componentes/Menu/Menu";
 import Cash from "../../img/cash.png";
 import ModalIncluir from "../../Componentes/Modal/ModaisFinanças/modalncluirDespesa";
-import FiltrarData from "../../Componentes/Tabela/FiltrarData";
+import FiltrarData from "../../Componentes/Tabela/TabelaFinanceiro/FiltrarData";
+import FiltroInput from "../../Componentes/Tabela/TabelaFinanceiro/FiltroInput";
 
 function Financeiro() {
     const [financeiro, setFinanceiro] = useState([]);
     const [vendas, setVendas] = useState([]);
     const [valorVendas, setValorVendas] = useState(0);
     const [valorFinanceiro, setValorFinanceiro] = useState(0);
+    const [filtro, setFiltro] = useState(0);
     const [filtroData, setFiltroData] = useState({ dia: null, mes: null, ano: null });
 
     const handleFiltroDataChange = (filtroData) => {
         setFiltroData(filtroData);
     };
 
+    const handleFiltroChange = (filtro) => {
+        setFiltro(filtro);
+        obterFinanceiro(filtro)
+    };
+
     useEffect(() => {
-        obterFinanceiro();
+        obterFinanceiro(filtro);
         obterValorTotal();
         obterValorVendas();
-    }, [filtroData]);
+    }, [filtroData, filtro]);
 
     const obterFinanceiro = () => {
         const headers = { "Content-Type": "application/json" };
@@ -88,6 +95,7 @@ function Financeiro() {
                 <section className="container mx-auto p-4 shadow-xl alinhamentoMenu2">
                     <ModalIncluir />
                     <div class="flex space-x-4">
+                        <FiltroInput onFiltroChange={handleFiltroChange}/>
                         <FiltrarData onFiltrarDataChange={handleFiltroDataChange} />
                     </div>
                 </section>
