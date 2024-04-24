@@ -11,6 +11,8 @@ function RelatorioVenda() {
     const [venda, setVenda] = useState([]);
     const [numerosPaginas, setNumerosPaginas] = useState(0);
     const [paginaAtual, setPaginaAtual] = useState(0);
+    const [filtroDataVenda, setFiltroDataVenda] = useState(obterDataAtual());
+    const [dadosVenda, setDadosVenda] = useState([]);
 
     function obterDataAtual() {
         const today = new Date();
@@ -22,16 +24,21 @@ function RelatorioVenda() {
 
     useEffect(() => {
         loadData();
-    }, [paginaAtual]);
+    }, [paginaAtual, filtroDataVenda]);
+
+    const changeDate = (e) => {
+        setFiltroDataVenda(e.target.value);
+        loadData();
+    }
 
     async function loadData() {
         const headers = { "Content-Type": "application/json" };
-        const dataAtual = obterDataAtual();
         setLoading(true);
         try {
-            const response = await axios.get(`${config.URL}venda/relatorio-dia?dtVenda=${dataAtual}&page=${paginaAtual}&size=${10}`, { headers });
+            const response = await axios.get(`${config.URL}venda/relatorio-dia?dtVenda=${filtroDataVenda}&page=${paginaAtual}&size=${10}`, { headers });
             setVenda(response.data.content);
             setNumerosPaginas(response.data.totalPages);
+            setDadosVenda(response.data.content);
         } catch (error) {
             console.error(error);
         }
@@ -62,13 +69,23 @@ function RelatorioVenda() {
                 </section>
                 <div>
                     <section className="container mx-auto p-4 overflow-x-auto" >
-                        <Graphic />
+                        <Graphic dadosVenda={dadosVenda}/>
                     </section>
                 </div>
-
                 <br />
                 <section className="container mx-auto p-4 shadow-xl overflow-x-auto" >
-                    <h3 className="text-2xl font-bold corTexto">Vendas do dia</h3>
+                    <div className="flex justify-between items-center">
+                        <h3 className="text-2xl font-bold corTexto">Vendas do dia</h3>
+                        <div className="drawer-content">
+                            <input
+                                type="date"
+                                value={filtroDataVenda}
+                                onChange={changeDate}
+                                placeholder="Data da Compra"
+                                className="input input-bordered input-success w-full max-w-xs"
+                            />
+                        </div>
+                    </div>
                     <br />
                     <div className="join">
                         <button className="join-item btn" onClick={backPage}>«</button>

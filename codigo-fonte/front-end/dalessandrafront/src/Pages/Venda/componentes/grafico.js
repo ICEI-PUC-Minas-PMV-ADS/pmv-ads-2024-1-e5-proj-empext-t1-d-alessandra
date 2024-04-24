@@ -1,3 +1,4 @@
+// Graphic.js
 import React, { useState, useEffect } from 'react';
 import {
   Card,
@@ -10,7 +11,7 @@ import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import axios from "axios";
 import config from '../../../config/config';
 
-const Graphic = () => {
+const Graphic = (props) => {
   const [chartData, setChartData] = useState({
     series: [{ name: "Valor", data: [] }],
     options: {
@@ -94,27 +95,13 @@ const Graphic = () => {
     },
   });
 
-  function obterDataAtual() {
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, '0'); 
-    const day = String(today.getDate()).padStart(2, '0');
-    return `${year}-${month}-${day}`;
-}
-
   useEffect(() => {
-    const headers = {"Content-Type": "application/json"};
-    const dataAtual = obterDataAtual();
-    axios.get(`${config.URL}venda/grafico-dia?dtVenda=${dataAtual}`, {headers})
-      .then(response => {
-        const vlTotalData = response.data.map(item => item.vlTotal);
-        setChartData(prevState => ({
-          ...prevState,
-          series: [{ name: "Valor", data: vlTotalData }],
-        }));
-      })
-      .catch(error => console.error('Erro ao buscar dados:', error));
-  }, []);
+    const vlTotalData = props.dadosVenda.map(item => item.vlTotal);
+    setChartData(prevState => ({
+      ...prevState,
+      series: [{ name: "Valor", data: vlTotalData }],
+    }));
+  }, [props.dadosVenda]);
 
   return (
     <Card>
