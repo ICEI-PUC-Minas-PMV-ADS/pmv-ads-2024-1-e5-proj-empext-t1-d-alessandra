@@ -1,6 +1,8 @@
 package back.dalessandra.service.venda;
 
 import back.dalessandra.Model.Item;
+import back.dalessandra.Model.dto.ItemDto;
+import back.dalessandra.Model.filter.ItemFilter;
 import back.dalessandra.repository.venda.ItemRepository;
 import back.dalessandra.service.estoque.EstoqueServiceBd;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +19,10 @@ public class ItemService {
 
     public List<Item> findByCodVenda(Integer codVenda) {
         return itemRepository.findByCodVenda(codVenda);
+    }
+
+    public List<ItemDto> findMaisVendidos(ItemFilter filter) {
+        return itemRepository.findMaisVendidos(filter);
     }
 
     public List<Item> create(List<Item> items, Integer codigo) {

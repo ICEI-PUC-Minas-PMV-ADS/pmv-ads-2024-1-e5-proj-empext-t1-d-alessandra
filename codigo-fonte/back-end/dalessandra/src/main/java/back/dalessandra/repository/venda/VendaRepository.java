@@ -1,7 +1,7 @@
 package back.dalessandra.repository.venda;
 
 import back.dalessandra.Model.Venda;
-import back.dalessandra.Model.VendaFilter;
+import back.dalessandra.Model.filter.VendaFilter;
 import back.dalessandra.Model.dto.VendaDto;
 import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
@@ -11,7 +11,6 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 

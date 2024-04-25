@@ -1,16 +1,13 @@
 package back.dalessandra.service.venda;
 
-import back.dalessandra.Model.Financeiro;
 import back.dalessandra.Model.Item;
 import back.dalessandra.Model.Venda;
-import back.dalessandra.Model.VendaFilter;
+import back.dalessandra.Model.filter.VendaFilter;
 import back.dalessandra.Model.dto.VendaDto;
 import back.dalessandra.repository.venda.VendaRepository;
 import back.dalessandra.service.cliente.ClienteService;
-import back.dalessandra.service.estoque.EstoqueServiceBd;
 import lombok.RequiredArgsConstructor;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;

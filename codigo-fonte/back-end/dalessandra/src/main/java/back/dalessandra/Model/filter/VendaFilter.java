@@ -1,4 +1,4 @@
-package back.dalessandra.Model;
+package back.dalessandra.Model.filter;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

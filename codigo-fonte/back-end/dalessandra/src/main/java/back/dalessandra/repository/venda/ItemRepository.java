@@ -1,6 +1,8 @@
 package back.dalessandra.repository.venda;
 
 import back.dalessandra.Model.Item;
+import back.dalessandra.Model.dto.ItemDto;
+import back.dalessandra.Model.filter.ItemFilter;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -26,4 +28,11 @@ public interface ItemRepository extends JpaRepository<Item,Integer>{
 
     @Query("select u from Item u where codVenda = ?1")
     List<Item> findByCodVenda(Integer codVenda);
+
+    @Query("SELECT NEW back.dalessandra.Model.dto.ItemDto(i.codProduto, i.descProduto, e.tipo, e.qtdAtual) " +
+            "FROM Item i " +
+            "INNER JOIN Estoque e ON i.codProduto = e.codProduto " +
+            "GROUP BY i.codProduto, i.descProduto, e.tipo, e.qtdAtual " +
+            "ORDER BY SUM(i.quantidade) DESC")
+    List<ItemDto> findMaisVendidos(ItemFilter filter);
 }
