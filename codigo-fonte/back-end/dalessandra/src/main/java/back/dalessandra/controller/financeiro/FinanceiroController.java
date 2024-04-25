@@ -101,7 +101,7 @@ public class FinanceiroController {
         return "Salvo com Sucesso";
     }
 
-    @PutMapping("atualizarDataDespesa/{idDespesa}/{dataDespesa}")
+    @PutMapping("atualizarDataDespesa/{idDespesa}")
 
     public String trocarDataDespesa(@PathVariable("idDespesa")int idDespesa,
                                     @RequestParam("dataDespesa")
@@ -110,7 +110,7 @@ public class FinanceiroController {
         return "Salvo com Sucesso";
     }
 
-    @PutMapping("atualizarDataVencimento/{idDespesa}/{dataVencimento}")
+    @PutMapping("atualizarDataVencimento/{idDespesa}")
 
     public String trocarDataVencimento(@PathVariable("idDespesa")int idDespesa,
                                        @RequestParam("dataVencimento")

@@ -3,6 +3,7 @@ import axios from 'axios';
 import config from '../../../config/config';
 import AlertaErro from '../../Alertas/AlertaErro';
 import Alertasucesso from '../../Alertas/AlertaSucesso';
+import dayjs from 'dayjs';
 
 function ModalEditarDataVencimento({id}) {
     const [dataVencimento, setDataVencimento] = useState(0);
@@ -13,7 +14,7 @@ function ModalEditarDataVencimento({id}) {
     console.log(id)
     function salvar() {
         console.log(id)
-        axios.put(config.URL+'financeiro/atualizarDataVencimento/'+id+'/'+dataVencimento)
+        axios.put(config.URL+'financeiro/atualizarDataVencimento/'+id+'?dataVencimento='+dayjs(dataVencimento).format("DD/MM/YYYY"))
             .then((response) => {
                 if (response.status === 200) {
                     setAlertaErro(false)

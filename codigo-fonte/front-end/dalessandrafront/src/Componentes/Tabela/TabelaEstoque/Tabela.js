@@ -8,25 +8,7 @@ import { Tag } from 'primereact/tag';
 
 
 function Tabela({dados,filtro}){
-    const filtrarDados = (item) => {
-        const codProduto = (item.codProduto || '').toString();
-        const nomeProduto = (item.nomeProduto || '').toString();
-        const marca = (item.marca || '').toString();
-        const cor = (item.cor || '').toString();
-        const tamanho = (item.tamanho || '').toString();
-        const qtdAtual = (item.qtdAtual || '').toString();
-        const valorComprado = (item.valorComprado || '').toString();
-        const valorVenda = (item.valorVenda || '').toString();
-        const status = (item.status || '').toString();
-        const dataCadastro = (item.dataCadastro || '').toString();
 
-        return (
-            codProduto.toLowerCase().includes(filtro.toLowerCase()) ||
-            nomeProduto.toLowerCase().includes(filtro.toLowerCase()) ||
-            tamanho.toLowerCase().includes(filtro.toLowerCase()) ||
-            status.toLowerCase().includes(filtro.toLowerCase()) 
-        );
-    };
     return (
         <DataTable value={dados} size={"large"}  tableStyle={{ minWidth: '70rem',justifyContent:"center", fontSize:'small'}}>
             <Column field="codProduto" header="Cod.Produto"/>

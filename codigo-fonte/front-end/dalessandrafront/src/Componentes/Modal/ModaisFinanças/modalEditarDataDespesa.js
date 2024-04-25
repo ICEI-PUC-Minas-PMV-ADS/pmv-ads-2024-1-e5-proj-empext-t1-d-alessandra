@@ -3,7 +3,7 @@ import axios from 'axios';
 import config from '../../../config/config';
 import AlertaErro from '../../Alertas/AlertaErro';
 import Alertasucesso from '../../Alertas/AlertaSucesso';
-
+import dayjs from 'dayjs';
 function ModalEditarDataDespesa({id}) {
     const [dataDespesa, setDataDespesa] = useState(0);
     const [alertVisible, setAlertVisible] = useState(false);
@@ -13,7 +13,7 @@ function ModalEditarDataDespesa({id}) {
     console.log(id)
     function salvar() {
         console.log(id)
-        axios.put(config.URL+'financeiro/atualizarDataDespesa/'+id+'/'+dataDespesa)
+        axios.put(config.URL+'financeiro/atualizarDataDespesa/'+id+'?dataDespesa='+ dayjs(dataDespesa).format("DD/MM/YYYY"))
             .then((response) => {
                 if (response.status === 200) {
                     setAlertaErro(false)

@@ -151,10 +151,7 @@ function Estoque(){
                     <button className="join-item btn">Pagina {paginaAtua} de {numerosPaginas}</button>
                     <button className="join-item btn" onClick={handleProximaPagina}>»</button>
                 </div>
-
-              
-                <br></br>
-               
+                <br></br>          
             </section>
             </div>
         </main>

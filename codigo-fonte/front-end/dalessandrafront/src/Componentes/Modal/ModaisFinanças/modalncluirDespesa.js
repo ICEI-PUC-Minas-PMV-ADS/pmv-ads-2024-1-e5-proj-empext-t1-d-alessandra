@@ -4,6 +4,7 @@ import "../../../Pages/estilo/estoque.css";
 import config from "../../../config/config";
 import AlertaErro from "../../Alertas/AlertaErro";
 import Alertasucesso from "../../Alertas/AlertaSucesso";
+import dayjs from "dayjs";
 function ModalIncluir() {
 
     const [tipoDespesa, setTipoDespesa] = useState()
@@ -31,8 +32,8 @@ function ModalIncluir() {
             "tipoDespesa": tipoDespesa,
             "nomeDespesa": nomeDespesa,
             "valorDespesa": valorDespesa,
-            "dataDespesa": new Date(dataDespesa).toLocaleDateString('pt-BR'),
-            "dataVencimento": new Date(dataVencimento).toLocaleDateString('pt-BR')
+            "dataDespesa": dayjs(dataDespesa).format("DD/MM/YYYY"),
+            "dataVencimento":dayjs(dataVencimento).format("DD/MM/YYYY")
         }
     
 
