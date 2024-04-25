@@ -2,8 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import { useState } from 'react';
 import config from '../../../config/config';
-import AlertaErro from '../../Alertas/AlertaNovo';
-import Alertasucesso from '../../Alertas/AlertaNovo';
+import AlertaErro from '../../Alertas/Alerta';
+import Alertasucesso from '../../Alertas/Alerta';
 function ModalAtualizarValorVenda({id}){
     const [code,setCode] = useState('')
     const [qtd, setQtd] = useState(0);

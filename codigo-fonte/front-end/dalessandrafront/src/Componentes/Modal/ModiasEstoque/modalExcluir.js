@@ -3,7 +3,7 @@ import React from "react";
 import { useState } from "react";
 import config from "../../../config/config";
 import LogoExlivraria from "../../../img/bin.png";
-import Alertasucesso from "../../Alertas/AlertaNovo";
+import Alertasucesso from "../../Alertas/Alerta";
 
 function ModalExcluir({id}){
     const [code,setCod] =useState('')

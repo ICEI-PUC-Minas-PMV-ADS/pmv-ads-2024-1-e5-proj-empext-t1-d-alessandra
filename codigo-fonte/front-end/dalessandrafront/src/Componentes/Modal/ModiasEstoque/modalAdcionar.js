@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import dayjs from "dayjs";
 import"../../../Pages/estilo/estoque.css";
 import config from "../../../config/config";
-import AlertaErro from "../../Alertas/AlertaNovo"
-import Alertasucesso from "../../Alertas/AlertaNovo";
+import AlertaErro from "../../Alertas/Alerta"
+import Alertasucesso from "../../Alertas/Alerta";
 function ModalAdicionar(){
 
     const [dados,setDados] = useState({
