@@ -7,6 +7,7 @@ import Cadastro from './Pages/Cadastro/Cadastro';
 import Cliente from './Pages/Cliente/Cliente';
 import Venda from './Pages/Venda/Venda';
 import RelatorioVenda from './Pages/Venda/RelatorioVenda';
+import MaisVendidos from './Pages/Venda/RelatorioMaisVendidos';
 import Estoque from './Pages/Estoque/Estoque';
 import Financeiro from "./Pages/Financeiro/Financeiro";
 import Devedores from './Pages/Cliente/Devedores';
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
   {
     path: "/relatorio-venda",
     element: <RelatorioVenda />
+  },
+  {
+    path: "/mais-vendidos",
+    element: <MaisVendidos />
   },
   {
     path: "/estoque",

@@ -25,7 +25,7 @@ function Menu() {
           <ul>
             <li><Link to="/vendas">Venda</Link></li>
             <li><Link to="/relatorio-venda">Relatório Venda</Link></li>
-            <li><a>Mais Vendidos</a></li>
+            <li><Link to="/mais-vendidos">Mais Vendidos</Link></li>
           </ul>
         </details>
       </li>
