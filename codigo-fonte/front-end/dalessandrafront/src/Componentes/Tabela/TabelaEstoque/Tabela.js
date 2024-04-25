@@ -39,15 +39,19 @@ function Tabela({dados,filtro}){
             <Column field='valorComprado' header='Valor de compra'body={(rowData)=>(<span>R$ {rowData.valorComprado}</span>)}/>
             <Column field='valorVenda' header='Valor de venda'body={(rowData)=>(<span>R$ {rowData.valorVenda}</span>)}/>
             <Column field='valorTotalEmEstoque' header='Valor de estoque'body={(rowData)=>(<span>R$ {rowData.valorTotalEmEstoque}</span>)}/>        
-            <Column field="status" header="Status" 
-            body={(rowData)=>{
-                if(rowData.status == 'bom' || rowData.status == 'Bom'){
-                    <span><Tag severity="success" value="Success">rowData.status</Tag></span>
-                }else{
-                    <Tag severity="success" value="Success">rowData.status</Tag>
-                }
-            }
-            }/>
+            <Column field="status" header="Status"
+                body={(rowData) => {
+                    if (rowData.status === 'bom') {
+                        return <Tag severity="success" value={rowData.status}></Tag>;
+                    } 
+                    else if(rowData.status=="Em falta"){
+                        return <Tag severity="danger" value={rowData.status}></Tag>;
+                    }
+                    else if(rowData.status=="Nivel Critico"){
+                        return <Tag severity="warning" value={rowData.status}></Tag>;
+                    }
+                }}
+            />
             <Column body={(rowData) => (<ModalExcluir id={rowData.codProduto}/>)} />
             <Column body={(rowData) => (<SubMenuEstoque id={rowData.codProduto}/>)} />
         </DataTable>
