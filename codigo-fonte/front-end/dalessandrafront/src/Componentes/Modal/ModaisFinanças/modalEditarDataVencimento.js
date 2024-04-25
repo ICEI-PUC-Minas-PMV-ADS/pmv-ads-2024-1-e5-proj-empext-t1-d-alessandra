@@ -39,7 +39,7 @@ function ModalEditarDataVencimento({id}) {
 
     return (
         <div>
-            <button className="" onClick={() => document.getElementById('my_modal_editar_data_vencimento_' + id).showModal()}>Editar Data Vencimento da Despesa</button>
+            <button className="" onClick={() => document.getElementById('my_modal_editar_data_vencimento_' + id).showModal()}>Editar Data Vencimento</button>
             <dialog id={"my_modal_editar_data_vencimento_" + id} className="modal">
                     {alertVisible && <Alertasucesso message="Atualizado com sucesso" />}
                     {alertaErro && <AlertaErro message={mensagemError} />}
