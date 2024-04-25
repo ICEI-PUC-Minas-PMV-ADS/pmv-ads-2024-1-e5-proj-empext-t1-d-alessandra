@@ -4,12 +4,14 @@ import React from "react";
 import "../../Pages/estilo/estoque.css";
 import config from "../../config/config";
 import { useEffect, useState } from "react";
+import { Dropdown } from 'primereact/dropdown'
 import Card from "../../Componentes/Card/Card";
 import Menu from "../../Componentes/Menu/Menu";
 import LogoInvetario from "../../img/warehouse.png";
 import Tabela from "../../Componentes/Tabela/TabelaEstoque/Tabela";
 import Filtro from "../../Componentes/Tabela/TabelaEstoque/Filtro";
 import ModalAdicionar from "../../Componentes/Modal/ModiasEstoque/modalAdcionar";
+
 function Estoque(){
 
     const [estoque, setEstoque] = useState([])
@@ -20,15 +22,24 @@ function Estoque(){
     const [paginaAtua,setPaginaAtual]= useState(0)
     const [numerosPaginas,setNumerosPaginas]=useState(0)
     const [nivelCriticoEbaixo,setNivel]=useState(false)
+
+    const options = [
+        { label: 'Todos', value: false },
+        { label: 'Nível Crítico', value: true }
+    ];
+    const [selectedOption, setSelectedOption] = useState(null);
+   
     useEffect(() => {
         obeterEstoque(paginaAtua,filtro)
         obterQuantidadeItemEstoque()
         obterValorEstoque()
     },[paginaAtua,filtro, nivelCriticoEbaixo])
+    
     const handleFiltroChange = (filtro) => {
         setFiltro(filtro);
         obeterEstoque(paginaAtua,filtro,statusFiltro)
     };
+    
     async function obeterEstoque(paginaAtua,nomeProduto){
         const headers = { "Content-Type": "application/json" };
         try {
@@ -80,7 +91,6 @@ function Estoque(){
         }
     };
     async function buscaNivelcritico (validador){
-        //console.log(validador)
         console.log('Busca Nível Crítico:', validador);
         setNivel(validador)
         if(validador==true){
@@ -93,6 +103,11 @@ function Estoque(){
               }, 1000)
         }
     }
+
+    const handleOptionChange = (e) => {
+        setSelectedOption(e.value);
+        buscaNivelcritico(e.value);
+    };
     return(
         <main className="bg-base-100 drawer lg:drawer-open" >
             <Menu/>
@@ -113,14 +128,14 @@ function Estoque(){
                         <div class="label"><span class="label-text">Nome produto:</span></div>
                         <Filtro onFiltroChange={handleFiltroChange}/>
                 </label>
+                <br></br>
                 <label class="form-control w-full max-w-xs">
-                    <div class="label"><span class="label-text">Listar Proutos</span></div>
-                    <button className="btn btn-success" onClick={()=>buscaNivelcritico(false)}>Todos</button>
-                </label> 
-                <label class="form-control w-full max-w-xs">
-                    <div class="label"><span class="label-text">Listar Proutos</span></div>
-                    <button className="btn btn-success" onClick={()=>buscaNivelcritico(true)}>Nivel Critico/ Em Falta</button>       
+                    <div class="label"><span class="label-text">Filtro status:</span></div>
+                    <Dropdown value={selectedOption} onChange={handleOptionChange} options={options} optionLabel="label" 
+                        placeholder="Todos" className="w-full md:w-14rem mb-2 custom-dropdown"showClear 
+                    />            
                 </label>
+        
                 <label class="form-control w-full max-w-xs">
                     <div class="label" color={"#fff"}><span class="label-text text-bg-neutral-content" ><br></br></span></div>
                     <ModalAdicionar/>    
@@ -133,9 +148,11 @@ function Estoque(){
                 <Tabela dados={estoque} filtro={filtro}/>
                 <div className="join">
                     <button className="join-item btn" onClick={handlePaginaAnterior}>«</button>
-                    <button className="join-item btn">Pagina { paginaAtua}</button>
+                    <button className="join-item btn">Pagina {paginaAtua} de {numerosPaginas}</button>
                     <button className="join-item btn" onClick={handleProximaPagina}>»</button>
                 </div>
+
+              
                 <br></br>
                
             </section>

@@ -4,6 +4,7 @@ import ModalExcluir from "../../Modal/ModiasEstoque/modalExcluir";
 import CardAlertaItemNaoEncontrado from '../../Card/CardAlertaItemNaoEncontrado';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
+import { Tag } from 'primereact/tag';
 
 
 function Tabela({dados,filtro}){
@@ -38,7 +39,15 @@ function Tabela({dados,filtro}){
             <Column field='valorComprado' header='Valor de compra'body={(rowData)=>(<span>R$ {rowData.valorComprado}</span>)}/>
             <Column field='valorVenda' header='Valor de venda'body={(rowData)=>(<span>R$ {rowData.valorVenda}</span>)}/>
             <Column field='valorTotalEmEstoque' header='Valor de estoque'body={(rowData)=>(<span>R$ {rowData.valorTotalEmEstoque}</span>)}/>        
-            <Column field="status" header="Status" />
+            <Column field="status" header="Status" 
+            body={(rowData)=>{
+                if(rowData.status == 'bom' || rowData.status == 'Bom'){
+                    <span><Tag severity="success" value="Success">rowData.status</Tag></span>
+                }else{
+                    <Tag severity="success" value="Success">rowData.status</Tag>
+                }
+            }
+            }/>
             <Column body={(rowData) => (<ModalExcluir id={rowData.codProduto}/>)} />
             <Column body={(rowData) => (<SubMenuEstoque id={rowData.codProduto}/>)} />
         </DataTable>
