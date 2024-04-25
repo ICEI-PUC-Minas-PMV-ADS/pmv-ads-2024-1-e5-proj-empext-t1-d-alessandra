@@ -2,8 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import { useState } from 'react';
 import config from '../../../config/config';
-import AlertaErro from '../../Alertas/AlertaErro';
-import Alertasucesso from '../../Alertas/AlertaSucesso';
+import AlertaErro from '../../Alertas/AlertaNovo'
+import Alertasucesso from '../../Alertas/AlertaNovo';
 
 function ModalEditarQuantidade({id}){
 
@@ -12,14 +12,17 @@ function ModalEditarQuantidade({id}){
     const [alertaErro, setAlertaErro] = useState(false);
     const [mensagemError,setMensagemError] = useState()
     const handleInputChange = (event) => {setQtd(event.target.value); }
+    const [code,setCode] = useState('')
     function adicionarMais(){
         axios.put(config.URL+'estoque/adicionarMaisQuantidade/'+id+'/'+qtd)
         .then((response) => {
             if (response.status === 200) {
                 setAlertaErro(false)
                 setAlertVisible(true); 
+                setCode(response.status)
                 setTimeout(() => {
                   setAlertVisible(false);
+                  setCode('')
                   window.location.reload(); 
                 }, 1000);
               }
@@ -27,10 +30,12 @@ function ModalEditarQuantidade({id}){
         })
         .catch((error) => {
             if(error.response.status === 400){
+                setCode(error.response.status)
                 setMensagemError("Erro: "+error.response.status+". Verifique se todos os campos estão digitados de maneira correta")
                 setAlertaErro(true)
             }
             else{
+                setCode(error.response.status)
                 setAlertaErro(true)
                 setMensagemError("Ops ! Aconteceu algum erro interno")
             }
@@ -40,8 +45,8 @@ function ModalEditarQuantidade({id}){
         <div>
             <button className="" onClick={()=>document.getElementById('my_modal_adcionarvalor'+id).showModal()}>Editar quantidade</button>
             <dialog id={"my_modal_adcionarvalor"+id} className="modal">
-                {alertVisible && <Alertasucesso message="Atualizado com sucesso" />}
-                {alertaErro && <AlertaErro message={mensagemError} />}
+                {alertVisible && <Alertasucesso code={code} />}
+                {alertaErro && <AlertaErro code={code} />}
                 <div className="modal-box w-11/12 max-w-5xl">
                 <br></br>
                   <h3 className="font-bold text-lg">Atualizar estoque</h3>

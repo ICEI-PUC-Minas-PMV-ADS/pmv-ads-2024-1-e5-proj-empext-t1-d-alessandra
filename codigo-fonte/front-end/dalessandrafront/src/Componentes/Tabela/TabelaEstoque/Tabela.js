@@ -2,6 +2,8 @@ import React from 'react';
 import SubMenuEstoque from '../../SubMenu/subMenuEstoque';
 import ModalExcluir from "../../Modal/ModiasEstoque/modalExcluir";
 import CardAlertaItemNaoEncontrado from '../../Card/CardAlertaItemNaoEncontrado';
+import { DataTable } from 'primereact/datatable';
+import { Column } from 'primereact/column';
 
 
 function Tabela({dados,filtro}){
@@ -25,57 +27,21 @@ function Tabela({dados,filtro}){
         );
     };
     return (
-        <table className="table table-xs">
-            <thead>
-                <tr>
-                    <th>Cod.Produto</th>
-                    <th>Produto</th>
-                    <th>Marca</th>
-                    <th>Cor</th>
-                    <th>Tamanho</th>
-                    <th>Tipo</th>
-                    <th>Qtd</th>
-                    <th>Preço Compra</th>
-                    <th>Preço Venda</th>
-                    <th>Preço total compra</th>
-                    <th>Status</th>
-                    <th>Data Cadastro</th>
-                </tr>
-            </thead>
-            <tbody>
-                {
-                (dados.length === 0) ?(    
-                    <CardAlertaItemNaoEncontrado  textoExibir="Nenhum produto cadastrado no estoque"/>
-                ) : (
-                
-                dados.filter(filtrarDados).map((item, index) => {
-                    const status = item.status;
-                    let classeBg = '';
-                        if (status == "Bom" || status=="bom") {
-                            classeBg = 'text-success';
-                        } else if (status=="Em falta" || status=="Nivel Critico") {
-                            classeBg = 'text-warning';
-                        } 
-                    return(
-                   <tr key={index}>
-                        <td>{item.codProduto}</td>
-                        <td>{item.nomeProduto}</td>
-                        <td>{item.marca}</td>
-                        <td>{item.cor}</td>
-                        <td>{item.tamanho}</td>
-                        <td>{item.tipo}</td>
-                        <td>{item.qtdAtual}</td>
-                        <td>{'R$ '+item.valorComprado}</td>
-                        <td>{'R$ '+item.valorVenda}</td>
-                        <td>{'R$ '+item.valorTotalEmEstoque}</td>
-                        <td className={`${classeBg}`}>{item.status}</td>
-                        <td>{item.dataCadastro}</td>
-                        <td><ModalExcluir id={item.codProduto}/></td>
-                        <td><SubMenuEstoque id={item.codProduto}/></td>
-                    </tr>
-)}))}
-            </tbody>
-        </table>
+        <DataTable value={dados} size={"large"}  tableStyle={{ minWidth: '70rem',justifyContent:"center", fontSize:'small'}}>
+            <Column field="codProduto" header="Cod.Produto"/>
+            <Column field="nomeProduto" header="Nome Produto"/>
+            <Column field='marca' header='Marca'/>
+            <Column field='cor' header='Cor'/>
+            <Column field='tamanho' header='Tamanho'/>
+            <Column field='tipo' header='Tipo'/>
+            <Column field='qtdAtual' header='Qtd'/>
+            <Column field='valorComprado' header='Valor de compra'body={(rowData)=>(<span>R$ {rowData.valorComprado}</span>)}/>
+            <Column field='valorVenda' header='Valor de venda'body={(rowData)=>(<span>R$ {rowData.valorVenda}</span>)}/>
+            <Column field='valorTotalEmEstoque' header='Valor de estoque'body={(rowData)=>(<span>R$ {rowData.valorTotalEmEstoque}</span>)}/>        
+            <Column field="status" header="Status" />
+            <Column body={(rowData) => (<ModalExcluir id={rowData.codProduto}/>)} />
+            <Column body={(rowData) => (<SubMenuEstoque id={rowData.codProduto}/>)} />
+        </DataTable>
     )
 }
 

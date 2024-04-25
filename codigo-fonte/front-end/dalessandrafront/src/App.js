@@ -1,3 +1,5 @@
+import "primereact/resources/themes/mdc-light-deeppurple/theme.css"
+
 function App() {
   return (
     <div className="App">

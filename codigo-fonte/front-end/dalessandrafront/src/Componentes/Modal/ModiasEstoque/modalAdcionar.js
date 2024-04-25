@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import dayjs from "dayjs";
 import"../../../Pages/estilo/estoque.css";
 import config from "../../../config/config";
-import AlertaErro from "../../Alertas/AlertaErro";
-import Alertasucesso from "../../Alertas/AlertaSucesso";
+import AlertaErro from "../../Alertas/AlertaNovo"
+import Alertasucesso from "../../Alertas/AlertaNovo";
 function ModalAdicionar(){
 
     const [dados,setDados] = useState({
@@ -22,6 +22,7 @@ function ModalAdicionar(){
     const [alertVisible, setAlertVisible] = useState(false);
     const [alertaErro, setAlertaErro] = useState(false);
     const [mensagemError,setMensagemError] = useState()
+    const [code,setCode] = useState('')
     const capturarValores =(e)=>{
         const {name,value} = e.target
         setDados({
@@ -52,8 +53,10 @@ function ModalAdicionar(){
                 if (response.status === 200 && response.data!=="Produto já Cadastrado") {
                     setAlertVisible(true); 
                     setAlertaErro(false)
+                    setCode(response.status)
                     setTimeout(() => {
                       setAlertVisible(false);
+                      setCode('')
                       window.location.reload(); 
                     }, 1000);
                   }
@@ -61,19 +64,20 @@ function ModalAdicionar(){
                     setAlertVisible(false); 
                     setAlertaErro(true)
                     setMensagemError(response.data)
-                    //setTimeout(() => {
-                      //setAlertVisible(false);
-                      //window.location.reload(); 
-                    //}, 1000);
+                    setCode(500)
                   }
               })
             .catch((error)=>{ 
                 if(error.response.status === 400){
+                   setCode(error.response.status)
                    setMensagemError("Erro: "+error.response.status+". Verifique se todos os campos estão digitados de maneira correta")
                    setAlertaErro(true)
+                   setAlertaErro(false)
                 }
                 else{
+                    setCode(error.response.status)
                     setAlertaErro(true)
+
                     setMensagemError("Ops ! Aconteceu algum erro interno")
                  }
            })    
@@ -82,8 +86,8 @@ function ModalAdicionar(){
         <div>
         <button className="btn btn-success" onClick={()=>document.getElementById('my_modal_20240310').showModal()} color={"#fff"}>Novo Registro</button>
         <dialog id="my_modal_20240310" className="modal">
-                {alertVisible && <Alertasucesso message="Item adicionado com sucesso" />}
-                {alertaErro && <AlertaErro message={mensagemError} />}
+                {alertVisible && <Alertasucesso code={code} />}
+                {alertaErro && <AlertaErro code={code} />}
             <div className="modal-box w-11/12 max-w-5xl alinharCamposModal">
                 <br></br>
                 <h3 className="font-bold text-lg">Registro</h3>

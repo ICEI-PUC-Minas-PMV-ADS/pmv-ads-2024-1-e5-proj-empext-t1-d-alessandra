@@ -129,13 +129,14 @@ function Estoque(){
             <br></br>
             <section className="container mx-auto p-4 shadow-xl overflow-x-auto" > 
                 <h3 className="text-2xl font-bold corTexto">Itens do Estoque</h3>
+                <br></br>
+                <Tabela dados={estoque} filtro={filtro}/>
                 <div className="join">
                     <button className="join-item btn" onClick={handlePaginaAnterior}>«</button>
                     <button className="join-item btn">Pagina { paginaAtua}</button>
                     <button className="join-item btn" onClick={handleProximaPagina}>»</button>
                 </div>
                 <br></br>
-                <Tabela dados={estoque} filtro={filtro}/>
                
             </section>
             </div>

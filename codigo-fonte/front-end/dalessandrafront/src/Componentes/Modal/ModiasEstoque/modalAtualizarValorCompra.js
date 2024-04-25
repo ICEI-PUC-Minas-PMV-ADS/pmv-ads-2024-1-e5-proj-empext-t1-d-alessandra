@@ -2,11 +2,11 @@ import React from 'react';
 import axios from 'axios';
 import { useState } from 'react';
 import config from '../../../config/config';
-import Alertasucesso from '../../Alertas/AlertaSucesso';
-import AlertaErro from '../../Alertas/AlertaErro';
+import Alertasucesso from '../../Alertas/AlertaNovo';
+import AlertaErro from '../../Alertas/AlertaNovo';
 
 function ModalAtualizarValorCompra({id}){
-
+    const [code,setCode] = useState('')
     const [qtd, setQtd] = useState(0);
     const [alertVisible, setAlertVisible] = useState(false);
     const [alertaErro, setAlertaErro] = useState(false);
@@ -19,6 +19,7 @@ function ModalAtualizarValorCompra({id}){
             if (response.status === 200) {
                 setAlertVisible(true);
                 setAlertaErro(false) 
+                setCode(response.status)
                 setTimeout(() => {
                   setAlertVisible(false);
                   window.location.reload(); 
@@ -28,11 +29,13 @@ function ModalAtualizarValorCompra({id}){
         })
         .catch((error) => {
             if(error.response.status === 400){
+                setCode(error.response.status)
                 setMensagemError("Erro: "+error.response.status+". Verifique se todos os campos estão digitados de maneira correta")
                 setAlertaErro(true)
              }
              else{
                  setAlertaErro(true)
+                 setCode(error.response.status)
                  setMensagemError("Ops ! Aconteceu algum erro interno")
               }
         })
@@ -41,8 +44,8 @@ function ModalAtualizarValorCompra({id}){
        <div>
             <button className="" onClick={()=>document.getElementById('my_modal_editarValorCompra'+id).showModal()}>Editar valor comprado</button>
             <dialog id={"my_modal_editarValorCompra"+id} className="modal">
-            {alertVisible && <Alertasucesso message="Valor salvo com sucesso" />}
-            {alertaErro && <AlertaErro message={mensagemError} />}
+            {alertVisible && <Alertasucesso code={code}/>}
+            {alertaErro && <AlertaErro code={code} />}
             <div className="modal-box w-11/12 max-w-5xl">
             <br></br>
                     <h3 className="font-bold text-lg">Atualizar valor comprado</h3>
