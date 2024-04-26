@@ -10,7 +10,7 @@ public class loginService {
     private loginRepository loginRepository;
 
     public String validarUsario(String email, String senha){
-        if(loginRepository.validarUsuario(email, senha)!=null){
+        if(loginRepository.validarUsuario(email, senha).size()!=0){
             return "Validado com sucesso";
         }
         return "Erro ao tentar encontrar o usuario";
