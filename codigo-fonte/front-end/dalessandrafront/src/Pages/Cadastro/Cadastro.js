@@ -11,11 +11,14 @@ function Cadastro() {
     email: "",
     senha: "",
     confirmarSenha: "",
-    dataNascimento: ""
+    dataNascimento: "",
+    cpfCnpj: ""
   });
+
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate(); 
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUserData({
@@ -38,7 +41,7 @@ function Cadastro() {
     setLoading(true);
 
     try {
-      if (!userData.nome || !userData.email || !userData.senha || !userData.confirmarSenha || !userData.dataNascimento) {
+      if (!userData.nome || !userData.email || !userData.senha || !userData.confirmarSenha || !userData.dataNascimento || !userData.cpfCnpj) {
         throw new Error("Por favor, preencha todos os campos.");
       }
 
@@ -58,7 +61,8 @@ function Cadastro() {
         nomeCadastro: userData.nome,
         emailCadastro: userData.email,
         dataNascimento: new Date(userData.dataNascimento).toLocaleDateString("pt-BR"),
-        senhaCadastro: userData.senha
+        senhaCadastro: userData.senha,
+        cpfCnpj: userData.cpfCnpj
       };
 
       const response = await axios.post(`${config.URL}cadastros/cadastrar`, data, { headers });
@@ -67,12 +71,35 @@ function Cadastro() {
 
       setTimeout(() => {
         navigate("/");
-      }, );
+      }, 2000); // Redirecionar para a página inicial após 2 segundos (2000 milissegundos)
 
     } catch (error) {
-      setErrorMessage("Email já cadastrado");
+      setErrorMessage(error.message);
       setLoading(false);
       console.error(error);
+    }
+  };
+
+  const isCPF = (str) => {
+    return str.length === 11 && !isNaN(str);
+  };
+
+  const isCNPJ = (str) => {
+    return str.length === 14 && !isNaN(str);
+  };
+
+  const handleCPFCNPJChange = (e) => {
+    const { value } = e.target;
+    setUserData({
+      ...userData,
+      cpfCnpj: value
+    });
+
+    // Verificar se é CPF ou CNPJ
+    if (isCPF(value) || isCNPJ(value)) {
+      setErrorMessage(""); // Limpar mensagem de erro se for um CPF ou CNPJ válido
+    } else {
+      setErrorMessage("CPF ou CNPJ inválido.");
     }
   };
 
@@ -108,6 +135,15 @@ function Cadastro() {
             onChange={handleChange}
             placeholder="Email"
             className={!userData.email && errorMessage ? "error" : ""}
+            onFocus={() => setErrorMessage('')}
+          />
+          <input
+            type="text"
+            name="cpfCnpj"
+            value={userData.cpfCnpj}
+            onChange={handleCPFCNPJChange}
+            placeholder="CPF ou CNPJ"
+            className={!userData.cpfCnpj && errorMessage ? "error" : ""}
             onFocus={() => setErrorMessage('')}
           />
           <input

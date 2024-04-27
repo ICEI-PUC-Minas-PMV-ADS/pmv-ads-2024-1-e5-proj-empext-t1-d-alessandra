@@ -25,6 +25,9 @@ public class Cadastro {
     private String nomeCadastro;
 
     @Column
+    private String cpfCnpj;
+
+    @Column
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", locale = "pt-BR", timezone = "America/Sao_Paulo")
     private Date dataNascimento;
 
@@ -33,6 +36,7 @@ public class Cadastro {
 
     @Column
     private String senhaCadastro;
+
 
     // Getters e Setters
 }
