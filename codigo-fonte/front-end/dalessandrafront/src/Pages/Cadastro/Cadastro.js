@@ -17,13 +17,39 @@ function Cadastro() {
 
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    let formattedValue = value;
+
+    if (name === "email") {
+      // Permitir letras, números, pontos, hífens, underscores e arrobas no email
+      formattedValue = value.replace(/[^\w.\-@]/g, "");
+    }
+
+    if (name === "cpfCnpj") {
+      const onlyNumbers = value.replace(/\D/g, "");
+      if (onlyNumbers.length > 14) {
+        return;
+      }
+      if (onlyNumbers.length <= 11) {
+        formattedValue = onlyNumbers
+          .replace(/(\d{3})(\d)/, "$1.$2")
+          .replace(/(\d{3})(\d)/, "$1.$2")
+          .replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+      } else {
+        formattedValue = onlyNumbers
+          .replace(/(\d{2})(\d)/, "$1.$2")
+          .replace(/(\d{3})(\d)/, "$1.$2")
+          .replace(/(\d{3})(\d)/, "$1/$2")
+          .replace(/(\d{4})(\d{1,2})$/, "$1-$2");
+      }
+    }
+
     setUserData({
       ...userData,
-      [name]: value
+      [name]: formattedValue
     });
   };
 
@@ -53,7 +79,7 @@ function Cadastro() {
       if (emailExists) {
         setErrorMessage("Este email já está cadastrado.");
         setLoading(false);
-        return; 
+        return;
       }
 
       const headers = config.HEADERS;
@@ -71,35 +97,12 @@ function Cadastro() {
 
       setTimeout(() => {
         navigate("/");
-      }, 2000); // Redirecionar para a página inicial após 2 segundos (2000 milissegundos)
+      }, 2000);
 
     } catch (error) {
       setErrorMessage(error.message);
       setLoading(false);
       console.error(error);
-    }
-  };
-
-  const isCPF = (str) => {
-    return str.length === 11 && !isNaN(str);
-  };
-
-  const isCNPJ = (str) => {
-    return str.length === 14 && !isNaN(str);
-  };
-
-  const handleCPFCNPJChange = (e) => {
-    const { value } = e.target;
-    setUserData({
-      ...userData,
-      cpfCnpj: value
-    });
-
-    // Verificar se é CPF ou CNPJ
-    if (isCPF(value) || isCNPJ(value)) {
-      setErrorMessage(""); // Limpar mensagem de erro se for um CPF ou CNPJ válido
-    } else {
-      setErrorMessage("CPF ou CNPJ inválido.");
     }
   };
 
@@ -116,8 +119,6 @@ function Cadastro() {
             value={userData.nome}
             onChange={handleChange}
             placeholder="Nome"
-            className={!userData.nome && errorMessage ? "error" : ""}
-            onFocus={() => setErrorMessage('')}
           />
           <input
             type="date"
@@ -125,8 +126,6 @@ function Cadastro() {
             value={userData.dataNascimento}
             onChange={handleChange}
             placeholder="Data de Nascimento"
-            className={!userData.dataNascimento && errorMessage ? "error" : ""}
-            onFocus={() => setErrorMessage('')}
           />
           <input
             type="text"
@@ -134,17 +133,13 @@ function Cadastro() {
             value={userData.email}
             onChange={handleChange}
             placeholder="Email"
-            className={!userData.email && errorMessage ? "error" : ""}
-            onFocus={() => setErrorMessage('')}
           />
           <input
             type="text"
             name="cpfCnpj"
             value={userData.cpfCnpj}
-            onChange={handleCPFCNPJChange}
+            onChange={handleChange}
             placeholder="CPF ou CNPJ"
-            className={!userData.cpfCnpj && errorMessage ? "error" : ""}
-            onFocus={() => setErrorMessage('')}
           />
           <input
             type="password"
@@ -152,8 +147,6 @@ function Cadastro() {
             value={userData.senha}
             onChange={handleChange}
             placeholder="Senha"
-            className={!userData.senha && errorMessage ? "error" : ""}
-            onFocus={() => setErrorMessage('')}
           />
           <input
             type="password"
@@ -161,8 +154,6 @@ function Cadastro() {
             value={userData.confirmarSenha}
             onChange={handleChange}
             placeholder="Confirmar Senha"
-            className={!userData.confirmarSenha && errorMessage ? "error" : ""}
-            onFocus={() => setErrorMessage('')}
           />
           <button type="button" onClick={handleSubmit} disabled={loading}>
             {loading ? "Carregando..." : "Cadastrar"}
