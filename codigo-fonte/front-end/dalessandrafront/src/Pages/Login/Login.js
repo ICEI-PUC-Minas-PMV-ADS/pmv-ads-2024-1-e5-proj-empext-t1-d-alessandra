@@ -1,4 +1,3 @@
-// JS
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
@@ -25,7 +24,8 @@ function Login() {
     });
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     setLoading(true);
     try {
       const response = await axios.get(`${config.URL}login/validar/${credentials.email}/${credentials.password}`);
@@ -37,9 +37,12 @@ function Login() {
           navigate("/vendas");
           setTransitioning(false);
         }, 1000);
+      } else {
+        setError("Usuário não cadastrado. Por favor, realize o cadastro antes de fazer o login.");
+        setLoading(false);
       }
     } catch (error) {
-      setError("Credenciais inválidas. Por favor, tente novamente.");
+      setError("Ocorreu um erro. Por favor, tente novamente mais tarde.");
       setLoading(false);
     }
   };
@@ -50,7 +53,7 @@ function Login() {
       <div className={`login-container ${transitioning ? 'transitioning' : ''}`}>
         <img src={logo} alt="Logo da empresa" className={zoomOut ? 'zoom-out' : ''} />
         <h2>Login</h2>
-        <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
+        <form onSubmit={handleSubmit}>
           <input
             type="email"
             name="email"
@@ -76,7 +79,6 @@ function Login() {
         <p>
           Não tem cadastro? <Link to="/Cadastro" className="link-transition">Cadastre-se</Link>
         </p>
-
       </div>
     </div>
   );
