@@ -74,7 +74,6 @@ function Cadastro() {
         throw new Error("As senhas não coincidem.");
       }
 
-      // Check if the "@" symbol is present in the email
       if (!userData.email.includes("@")) {
         throw new Error("Por favor, insira um email válido.");
       }
