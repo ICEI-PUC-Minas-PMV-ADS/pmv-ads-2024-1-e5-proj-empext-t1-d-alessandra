@@ -13,24 +13,8 @@
   align-items: center;
 }
 
-.loading {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 24px;
-  color: #fff;
-  z-index: 999;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-.loading.active {
-  opacity: 1;
-}
-
-.loading::before {
-  content: "\u{1F4A5}";
+.dark {
+  filter: brightness(10%);
 }
 
 .cadastro-container {
@@ -52,10 +36,13 @@
 }
 
 .cadastro-container h2 {
-  margin-bottom: 15px;
-  color: #333;
-  font-size: 24px;
-  transition: color 0.3s;
+  margin-bottom: 20px;
+  color: #28a745; 
+  font-size: 32px; 
+  text-align: center; 
+  border-radius: 5px; 
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); 
+  transition: color 0.3s, font-size 0.3s;
 }
 
 .cadastro-container input {
@@ -69,42 +56,34 @@
 }
 
 .cadastro-container input:focus {
-  border-color: #28a745;
+  border-color: #28a745; 
   outline: none;
 }
 
-.cadastro-container input.error {
-  border-color: #dc3545 !important;
-}
-
-.cadastro-container input.vibrate {
-  animation: vibrate 0.3s;
-}
-
-@keyframes vibrate {
-  0% { transform: translateX(0); }
-  25% { transform: translateX(-5px); }
-  50% { transform: translateX(5px); }
-  75% { transform: translateX(-5px); }
-  100% { transform: translateX(0); }
-}
-
 .cadastro-container button {
-  margin-top: 15px;
+  margin-top: 20px;
   padding: 12px 24px;
-  background-color: #28a745;
+  background-color: #28a745; 
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
-  width: 92%;
+  width: 90%; 
   box-sizing: border-box;
-  font-size: 16px;
+  font-size: 18px; 
 }
 
 .cadastro-container button:hover {
-  background-color: #218838;
+  background-color: #218838; 
+}
+
+.error-message {
+  color: #dc3545; 
+  font-size: 14px;
+  margin-top: 10px;
+  font-weight: bold;
+  text-align: center; 
 }
 
 .cadastro-container p {
@@ -119,32 +98,19 @@
 }
 
 .cadastro-container p a:hover {
-  color: #0056b3;
+  color: #0056b3; 
 }
 
 .cadastro-container img {
   width: 100%;
   max-width: 220px;
   height: auto;
-  margin: 0 auto 15px;
+  margin: 0 auto 20px;
   display: block;
-  border-radius: 10%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border: 2px solid #a3fdb7;
+  border-radius: 15%;
   transition: transform 0.5s ease;
 }
 
 .cadastro-container img:hover {
-  transform: rotate(360deg);
-}
-
-.dark {
-  filter: brightness(10%);
-}
-
-.error-message {
-  color: #dc3545;
-  font-size: 14px;
-  margin-top: 10px;
-  font-weight: bold;
+  transform: rotate(360deg); 
 }

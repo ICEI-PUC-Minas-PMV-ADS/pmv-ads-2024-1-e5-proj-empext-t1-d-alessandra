@@ -24,7 +24,6 @@ function Cadastro() {
     let formattedValue = value;
 
     if (name === "email") {
-      // Permitir letras, números, pontos, hífens, underscores e arrobas no email
       formattedValue = value.replace(/[^\w.\-@]/g, "");
     }
 
@@ -111,7 +110,7 @@ function Cadastro() {
       <div className={`background ${loading ? "dark" : ""}`}></div>
       <div className={`cadastro-container ${loading ? "loading" : ""}`}>
         <img src={logo} alt="Logo" className="logo" />
-        <h2>Cadastro</h2>
+        <h2><i class="fas fa-user-plus"></i> Cadastro</h2>
         <form>
           <input
             type="text"
