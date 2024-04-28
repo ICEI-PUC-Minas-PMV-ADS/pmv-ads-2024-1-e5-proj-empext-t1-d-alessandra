@@ -74,6 +74,11 @@ function Cadastro() {
         throw new Error("As senhas não coincidem.");
       }
 
+      // Check if the "@" symbol is present in the email
+      if (!userData.email.includes("@")) {
+        throw new Error("Por favor, insira um email válido.");
+      }
+
       const emailExists = await checkExistingEmail();
       if (emailExists) {
         setErrorMessage("Este email já está cadastrado.");
@@ -110,7 +115,7 @@ function Cadastro() {
       <div className={`background ${loading ? "dark" : ""}`}></div>
       <div className={`cadastro-container ${loading ? "loading" : ""}`}>
         <img src={logo} alt="Logo" className="logo" />
-        <h2><i class="fas fa-user-plus"></i> Cadastro</h2>
+        <h2><i className="fas fa-user-plus"></i> Cadastro</h2>
         <form>
           <input
             type="text"
