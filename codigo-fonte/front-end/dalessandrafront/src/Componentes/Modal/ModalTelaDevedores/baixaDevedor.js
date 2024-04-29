@@ -3,14 +3,15 @@
 import axios from 'axios';
 import { useState } from 'react';
 import config from '../../../config/config';
-import AlertaErro from '../../Alertas/AlertaErro';
-import Alertasucesso from '../../Alertas/AlertaSucesso';
+import AlertaErro from '../../Alertas/Alerta';
+import Alertasucesso from '../../Alertas/Alerta';
 import Confirme from'../../../img/confirme.png' 
 function BaixaDevedor({id}){
    
     const[alertVisible, setAlertVisible] = useState(false);
     const [alertaErro, setAlertaErro] = useState(false);
     const [mensagemError,setMensagemError] = useState()
+    const [code,setCode]=useState('')
     
     const [dados,setDados] = useState({
         metodoPagamento:"",
@@ -28,9 +29,11 @@ function BaixaDevedor({id}){
             axios.put(`${config.URL}devedores/updatePagamento/${id}/${dados.metodoPagamento}`)
             .then((response)=>{
                 if (response.status === 200) {
+                    setCode(response.status)
                     setAlertVisible(true); 
                     setAlertaErro(false)
                     setTimeout(() => {
+                      setCode("")
                       setAlertVisible(false);
                       window.location.reload(); 
                     }, 1000);
@@ -38,6 +41,7 @@ function BaixaDevedor({id}){
             })
             .catch((error)=>{
                 console.log(error)
+                setCode(error.response.status)
                 setAlertaErro(true)
                 setMensagemError("Ops ! Aconteceu algum erro interno")
             })
@@ -47,8 +51,8 @@ function BaixaDevedor({id}){
         <div>
           <button className="" onClick={()=>document.getElementById('my_modal_baixaDevedor'+id).showModal()}>Dar baixa</button>
          <dialog id={"my_modal_baixaDevedor"+id} className="modal">
-                {alertVisible && <Alertasucesso message="Item adicionado com sucesso" />}
-                {alertaErro && <AlertaErro message={mensagemError} />}
+                {alertVisible && <Alertasucesso code={code} />}
+                {alertaErro && <AlertaErro code={code} />}
             <div className="modal-box w-11/12 max-w-5xl">
                 <br></br>
                 <h3 className="font-bold text-lg">Deseja prosseguir ?</h3>

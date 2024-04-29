@@ -22,6 +22,7 @@ public class configuracaoController {
     }
     @GetMapping("/recuperandoParametroDiasCobranca")
     public String recuperandoParametroDiasCobranca(){
+
         return configServe.recuperandoParametroDiasDeCobraca();
     }
     @PutMapping("/atualizarValorParametro/{id}/{valor}")

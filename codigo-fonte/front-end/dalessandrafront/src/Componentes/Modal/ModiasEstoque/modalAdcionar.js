@@ -52,7 +52,7 @@ function ModalAdicionar(){
             .then((response)=>{
                 if (response.status === 200 && response.data!=="Produto já Cadastrado") {
                     setAlertVisible(true); 
-                    setAlertaErro(false)
+                    //setAlertaErro(false)
                     setCode(response.status)
                     setTimeout(() => {
                       setAlertVisible(false);
@@ -60,25 +60,19 @@ function ModalAdicionar(){
                       window.location.reload(); 
                     }, 1000);
                   }
-                  else {
-                    setAlertVisible(false); 
-                    setAlertaErro(true)
-                    setMensagemError(response.data)
-                    setCode(500)
-                  }
               })
             .catch((error)=>{ 
+                setAlertVisible(true)
                 if(error.response.status === 400){
                    setCode(error.response.status)
                    setMensagemError("Erro: "+error.response.status+". Verifique se todos os campos estão digitados de maneira correta")
-                   setAlertaErro(true)
-                   setAlertaErro(false)
+                   //setAlertaErro(true)
+                   //setAlertaErro(false)
                 }
                 else{
                     setCode(error.response.status)
-                    setAlertaErro(true)
-
-                    setMensagemError("Ops ! Aconteceu algum erro interno")
+                    //setAlertaErro(true)
+                    //setMensagemError("Ops ! Aconteceu algum erro interno")
                  }
            })    
         }
@@ -87,7 +81,7 @@ function ModalAdicionar(){
         <button className="btn btn-success" onClick={()=>document.getElementById('my_modal_20240310').showModal()} color={"#fff"}>Novo Registro</button>
         <dialog id="my_modal_20240310" className="modal">
                 {alertVisible && <Alertasucesso code={code} />}
-                {alertaErro && <AlertaErro code={code} />}
+               
             <div className="modal-box w-11/12 max-w-5xl alinharCamposModal">
                 <br></br>
                 <h3 className="font-bold text-lg">Registro</h3>

@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import config from "../../../config/config";
 import SubMenuDevedor from '../../SubMenu/subMenuDevedor';
 import CardAlertaItemNaoEncontrado from '../../Card/CardAlertaItemNaoEncontrado'
+import { Tag } from 'primereact/tag';
 function TabelaDevedores({ dados,filtroCodVenda, filtroNome, filtroDataVenda }){
     
     const filtrarDados = (item) => {
@@ -18,7 +19,7 @@ function TabelaDevedores({ dados,filtroCodVenda, filtroNome, filtroDataVenda }){
         <table className="table table-xs">
             <thead>
                 <tr>
-                    <th></th>
+                    
                     <th>Cod.Cliente</th>
                     <th>Nome</th>
                     <th>Data da venda</th>
@@ -37,23 +38,8 @@ function TabelaDevedores({ dados,filtroCodVenda, filtroNome, filtroDataVenda }){
                     ) : 
                     dados.filter(filtrarDados).map((item, index) => {
                         const diasRestantes = dayjs(dayjs(item.dtVenda).add(config.PERIODOCOBRANCA, "day")).diff(dayjs(new Date()), 'day');
-                        let classeBg = '';
-                        if (diasRestantes >= 20) {
-                            classeBg = 'bg-success';
-                        } else if (diasRestantes >=5 && diasRestantes <= 19) {
-                            classeBg = 'bg-warning';
-                        } else{
-                            classeBg = 'bg-error';
-                        }
                         return(
                             <tr key={index}>
-                                <td>
-                                    <div class="avatar placeholder">
-                                        <div class={`${classeBg} text-info-content rounded-full w-8`}>
-                                            <span>{item.nomeCliente[0]}</span>
-                                        </div>
-                                    </div> 
-                                </td>
                                 <td>{item.codCliente}</td>
                                 <td>{item.nomeCliente}</td>
                                 <td>{dayjs(item.dtVenda).format("DD/MM/YYYY")}</td>
@@ -61,10 +47,15 @@ function TabelaDevedores({ dados,filtroCodVenda, filtroNome, filtroDataVenda }){
                                 <td>{dayjs(dayjs(item.dtVenda).add(config.PERIODOCOBRANCA,"day")).diff(dayjs(new Date()),'day')}</td>
                                 <td>{item.formaPagto}</td>
                                 <td>{item.codVenda}</td>
-                                <td>{'R$ '+item.vlTotal}</td>
+                                <td>{'R$ '+item.vlTotal.toFixed(2)}</td>
+                                <td>
+                                    {diasRestantes >= 20 && (<Tag severity="success" value={"Dentro do prazo"}></Tag>)}
+                                    {diasRestantes >= 5 && diasRestantes <= 19 && (<Tag severity="warning" value={"Prazo quase acabando"}></Tag>)}
+                                    {diasRestantes < 5 && (<Tag severity="danger" value={"Acabou o prazo"}></Tag>)}
+                                </td>
                                 <td><SubMenuDevedor id={item.codVenda}/></td>
                             </tr>
-                         )
+                          )
                         }
                       )
                 }

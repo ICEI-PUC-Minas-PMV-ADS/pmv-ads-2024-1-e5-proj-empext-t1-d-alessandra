@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @Entity
 @Getter
 @Setter
@@ -19,4 +21,5 @@ public class Configuracoes {
     private  String parametro;
     @Column
     private String valorParametro;
+
 }

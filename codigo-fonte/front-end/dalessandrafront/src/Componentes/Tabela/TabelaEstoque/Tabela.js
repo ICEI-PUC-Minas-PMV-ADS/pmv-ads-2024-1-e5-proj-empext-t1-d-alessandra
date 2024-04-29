@@ -23,7 +23,7 @@ function Tabela({dados,filtro}){
             <Column field='valorTotalEmEstoque' header='Valor de estoque'body={(rowData)=>(<span>R$ {rowData.valorTotalEmEstoque}</span>)}/>        
             <Column field="status" header="Status"
                 body={(rowData) => {
-                    if (rowData.status === 'bom') {
+                    if (rowData.status === 'bom' ||rowData.status === 'Bom' ) {
                         return <Tag severity="success" value={rowData.status}></Tag>;
                     } 
                     else if(rowData.status=="Em falta"){
