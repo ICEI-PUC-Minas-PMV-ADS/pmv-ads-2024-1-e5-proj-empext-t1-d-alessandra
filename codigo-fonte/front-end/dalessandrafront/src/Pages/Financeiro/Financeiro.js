@@ -12,7 +12,7 @@ import FiltroInput from "../../Componentes/Tabela/TabelaFinanceiro/FiltroInput";
 
 function Financeiro() {
     const [financeiro, setFinanceiro] = useState([]);
-    const [vendas, setVendas] = useState([]);
+    const [venda, setVenda] = useState([]);
     const [valorVendas, setValorVendas] = useState(0);
     const [valorFinanceiro, setValorFinanceiro] = useState(0);
     const [filtro, setFiltro] = useState(0);
@@ -29,6 +29,7 @@ function Financeiro() {
 
     useEffect(() => {
         obterFinanceiro(filtro);
+        obterVenda();
         obterValorTotal();
         obterValorVendas();
     }, [filtroData, filtro]);
@@ -43,6 +44,35 @@ function Financeiro() {
                 console.log(error);
             });
     };
+
+    const obterVenda =() => {
+        const headers = { "Content-Type": "application/json" };
+        axios.get(config.URL + 'venda', { headers })
+            .then((response) => {
+                console.log("Dados brutos de vendas:", response.data);
+                const vendasComDataFormatada = response.data.map(item => ({
+                    ...item,
+                    dtVenda: new Date(item.dtVenda).toLocaleDateString('pt-BR', { timeZone: 'UTC' })
+                }));
+                console.log("Dados de vendas com data formatada:", vendasComDataFormatada);
+                const vendasFiltradas = vendasComDataFormatada.filter(item => {
+                    if (!filtroData) return true;
+                    const dtVenda = item.dtVenda.split('/');
+                    return (
+                        (!filtroData.dia || filtroData.dia === dtVenda[0]) &&
+                        (!filtroData.mes || filtroData.mes === dtVenda[1]) &&
+                        (!filtroData.ano || filtroData.ano === dtVenda[2])
+                    );
+                });
+                console.log("Vendas filtradas:", vendasFiltradas);
+                setVenda(vendasFiltradas);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+    
+    
 
     function obterValorTotal() {
         const headers = { "Content-Type": "application/json" };
@@ -76,6 +106,17 @@ function Financeiro() {
         );
     }).reduce((acc, curr) => acc + parseFloat(curr.valorDespesa), 0);
 
+    const valorTotalVendasFiltradas = venda.filter(item => {
+        if (!filtroData) return true;
+        const dtVenda = new Date(item.dtVenda).toLocaleDateString('pt-BR', { timeZone: 'UTC' }).split('/');
+        return (
+            (!filtroData.dia || filtroData.dia === dtVenda[0]) &&
+            (!filtroData.mes || filtroData.mes === dtVenda[1]) &&
+            (!filtroData.ano || filtroData.ano === dtVenda[2])
+        );
+    }).reduce((acc, curr) => acc + parseFloat(curr.vlTotal), 0);
+    
+
     return (
         <main className="bg-base-100 drawer lg:drawer-open">
             <Menu />
@@ -86,9 +127,9 @@ function Financeiro() {
                     <h1 className="text-3xl font-bold">Financeiro</h1>
                 </section>
                 <section className="container mx-auto p-4 alinhamentoCards">
-                    <Card title="Valor Vendido: " textoExibir={"R$ " + (valorVendas).toFixed(2)} />
+                    <Card title="Valor Vendido: " textoExibir={"R$ " + (valorTotalVendasFiltradas).toFixed(2)} />
                     <Card title="Valor Despesas:" textoExibir={"R$ " + (valorTotalDespesasFiltradas).toFixed(2)} />
-                    <Card title="Balanço Total:" textoExibir={"R$ " + (valorVendas - valorTotalDespesasFiltradas).toFixed(2)} />
+                    <Card title="Balanço Total:" textoExibir={"R$ " + (valorTotalVendasFiltradas - valorTotalDespesasFiltradas).toFixed(2)} />
                 </section>
                 <br />
                 <br />

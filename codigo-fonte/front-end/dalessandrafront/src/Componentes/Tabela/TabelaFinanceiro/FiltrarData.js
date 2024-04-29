@@ -27,9 +27,9 @@ function FiltrarData({ onFiltrarDataChange }) {
             [name]: value
         }));
     };
-
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log("Valores do filtro ao submeter:", filtroData);
         onFiltrarDataChange(filtroData);
     };
 
