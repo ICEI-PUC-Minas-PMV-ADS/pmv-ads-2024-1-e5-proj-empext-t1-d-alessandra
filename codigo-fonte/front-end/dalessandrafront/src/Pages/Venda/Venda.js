@@ -9,6 +9,7 @@ import ModalCliente from "../Cliente/components/listCliente";
 import { cpf, cnpj } from 'cpf-cnpj-validator';
 import AlertaSucesso from "../../Componentes/Alertas/AlertaSucesso";
 import AlertaErro from "../../Componentes/Alertas/AlertaErro";
+import { Dropdown } from 'primereact/dropdown';
 
 function Venda() {
     const [codCliente, setCodCliente] = useState(null);
@@ -20,6 +21,13 @@ function Venda() {
     const [novoItem, setNovoItem] = useState([]);
     const [alertVisible, setAlertVisible] = useState(false);
     const [alertaErro, setAlertaErro] = useState(false);
+    const formasPagto = [
+        {label: 'CC - Cartao de crédito', value: 'CC'},
+        {label: 'CD - Cartao de Debito', value: 'CD'},
+        {label: 'AN - Anotado', value: 'AN'},
+        {label: 'PIX', value: 'PIX'},
+        {label: 'Dinheiro', value: 'Dinheiro'}
+    ];
 
 
     const atualizarTotalVenda = () => {
@@ -289,16 +297,15 @@ function Venda() {
                     <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                         <div className="sm:col-span-2">
                             <div className="relative flex w-full max-w-[24rem] mt-2">
-                                <Input
-                                    type="text"
-                                    label="Forma Pagamento"
-                                    value={formaPagamento}
-                                    onChange={(e) => setFormaPagamento(e.target.value)}
-                                    className="pr-20"
-                                    containerProps={{
-                                        className: "min-w-0",
-                                    }}
-                                />
+                                <Dropdown 
+                                    optionLabel="label"
+                                    optionValue="value"
+                                    style={{ width: '80%' , border: '1px solid #ccc'}}
+                                    value={formaPagamento} 
+                                    options={formasPagto} 
+                                    onChange={(e) => setFormaPagamento(e.value)} 
+                                    placeholder="Forma de Pagamento"
+                                    />
                             </div>
                         </div>
                         <p className="sm:col-span-2 text-right text-2xl">Total Pedido: R$ {totalVenda} </p>
