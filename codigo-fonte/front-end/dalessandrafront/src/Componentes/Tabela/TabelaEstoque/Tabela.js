@@ -1,10 +1,9 @@
 import React from 'react';
+import { Tag } from 'primereact/tag';
+import { Column } from 'primereact/column';
+import { DataTable } from 'primereact/datatable';
 import SubMenuEstoque from '../../SubMenu/subMenuEstoque';
 import ModalExcluir from "../../Modal/ModiasEstoque/modalExcluir";
-import CardAlertaItemNaoEncontrado from '../../Card/CardAlertaItemNaoEncontrado';
-import { DataTable } from 'primereact/datatable';
-import { Column } from 'primereact/column';
-import { Tag } from 'primereact/tag';
 
 
 function Tabela({dados,filtro}){

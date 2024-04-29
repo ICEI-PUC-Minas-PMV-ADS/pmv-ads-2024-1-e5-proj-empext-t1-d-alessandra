@@ -40,7 +40,6 @@ function BaixaDevedor({id}){
                   }
             })
             .catch((error)=>{
-                console.log(error)
                 setCode(error.response.status)
                 setAlertaErro(true)
                 setMensagemError("Ops ! Aconteceu algum erro interno")

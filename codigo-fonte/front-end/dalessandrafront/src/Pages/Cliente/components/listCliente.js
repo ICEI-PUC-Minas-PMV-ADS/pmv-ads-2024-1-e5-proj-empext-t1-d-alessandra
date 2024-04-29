@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import config from "../../../config/config";
+import { Tag } from 'primereact/tag';
 import {
     List,
     ListItem,

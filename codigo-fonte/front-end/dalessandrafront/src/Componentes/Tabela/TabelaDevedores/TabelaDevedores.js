@@ -1,10 +1,11 @@
 import "../../../"
 import dayjs from 'dayjs';
+import { Tag } from 'primereact/tag';
 import React, { useState } from 'react';
+import "../../../Pages/estilo/estoque.css"
 import config from "../../../config/config";
 import SubMenuDevedor from '../../SubMenu/subMenuDevedor';
 import CardAlertaItemNaoEncontrado from '../../Card/CardAlertaItemNaoEncontrado'
-import { Tag } from 'primereact/tag';
 function TabelaDevedores({ dados,filtroCodVenda, filtroNome, filtroDataVenda }){
     
     const filtrarDados = (item) => {
@@ -16,15 +17,15 @@ function TabelaDevedores({ dados,filtroCodVenda, filtroNome, filtroDataVenda }){
     };
     return (
         <div>
-        <table className="table table-xs">
+        <table className="table table-xs alinharItemTabela">
             <thead>
                 <tr>
                     
                     <th>Cod.Cliente</th>
                     <th>Nome</th>
                     <th>Data da venda</th>
-                    <th>Data prevista para Pagamento</th>
-                    <th>Dias que falta para o Pagamento</th>
+                    <th>Data para pagamento</th>
+                    <th>Dias para o Pagamento</th>
                     <th>Forma de Pagamento</th>
                     <th>Cod.Venda</th>
                     <th>Valor Total</th>

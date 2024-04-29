@@ -1,5 +1,5 @@
 import "primereact/resources/themes/mdc-light-deeppurple/theme.css"
-
+import 'primeicons/primeicons.css';
 function App() {
   return (
     <div className="App">
