@@ -1,7 +1,6 @@
 package back.dalessandra.service.configuracao;
 
 import back.dalessandra.Model.Configuracoes;
-import back.dalessandra.Model.Estoque;
 import back.dalessandra.repository.Configuracao.ConfiguracaoRepository;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -43,6 +43,9 @@ public class configuracaoService {
     }
     public String recuperandoParameFrequenciaNotificao(){
         return configuracaoRepository.recuperandoParameFrequenciaNotificao();
+    }
+    public Date recuperandoDataEnvioEmail(){
+       return  configuracaoRepository.recuperandoUltimaModificacao();
     }
     public void setarParametro(int id,String valor){
         Configuracoes config = configuracaoRepository.updateParametro(id);

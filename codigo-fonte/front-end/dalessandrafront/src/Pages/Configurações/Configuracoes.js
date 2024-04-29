@@ -49,7 +49,7 @@ function Configuracao(){
             </section>
             <section className="container mx-auto p-4 shadow-xl">
                 <label class="form-control w-full max-w-xs">
-                        <div class="label"><span class="label-text">Definir frequencia de alerta estoque em dais:</span></div>
+                        <div class="label"><span class="label-text">Definir frequencia de alerta estoque em dias:</span></div>
                         <input
                             type="text"
                             value={diasmandaremail}
