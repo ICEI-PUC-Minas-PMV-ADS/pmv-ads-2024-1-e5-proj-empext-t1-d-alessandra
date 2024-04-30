@@ -28,63 +28,105 @@ Para a tela de Login e Cadastro, desenvolvemos quatro tipos de testes para garan
 - Passos: Tentar acessar a plataforma e navegar entre as telas.
 - Critério de Sucesso: O software deverá realizar interações atraves de animações e alertas.
 
-
-### Funcionalidades Estoque
+### 2 - Funcionalidades Estoque
 
 Para a tela de Estoque, desenvolvemos quatro tipos de testes para garantir que tudo esteja funcionando conforme o previsto.
 
-01.0 - Registro de itens no estoque 
+**2.1 - Registro de itens no estoque**
 
   - Objetivo: Verificar se os itens que o usuário tenta cadastra estao sendo salvos de maneira correta.
   - Passos: Aperta o botão novo registro preencher todos os dados e clicar em adicionar.
   - Criterio: Caso de sucesso, iria aparecer uma mensagem confirmando o cadastro e ele ira aparecer na lista.
      
-01.1 - Exclusão de registro 
- 
+**2.2 - Exclusão de registro** 
   - Objetivo: Verificar se o item que o usuário deseja apagar esta sendo deletado de maneira correta.
   - Passos: Clicar na lixeira do item que deseja deletar e depois confimar.
   - Criterio: Caso de sucesso, iria aparecer uma mensagem dizendo que a operção foi executada com sucesso e o intem não vai mais aparecer na lista.
      
-01.2 - Atualização de quantidade de produto em estoque 
-
+**2.3 - Atualização de quantidade de produto em estoque** 
   - Objetivo: Verificar se o usuário consegue adicionar mais quantidade de proddutos a um item.
- - Passos: Acessar os tres pontinho na frente do item que deseja, acessar a opção atualizar quantidade, preencher e salvar.
- - Criterio: Caso de sucesso,ira aparecer uma mensagem de confirmação e a quantidade na lista será atualizada.
+  - Passos: Acessar os tres pontinho na frente do item que deseja, acessar a opção atualizar quantidade, preencher e salvar.
+  - Criterio: Caso de sucesso,ira aparecer uma mensagem de confirmação e a quantidade na lista será atualizada.
 
-01.3 - Atualização de valor de venda
+**2.4 - Atualização de valor de venda**
 
    - Objetivo: Verificar se o usuário consegue atlerar o preco de venda do produto em especifico.
    - Passos: Acessar os três pontinhos do lado do intem que deseja e clicar na opção alterar o valor de venda.
    - Criterio: Caso de sucesso, ira aparecer uma mensagem indicando que a opecao foi realizada com sucesso e na lista de estoque seu valor será atualizado.
        
-01.4 - Atualização de valor comprado 
+**2.5 - Atualização de valor comprado** 
 
    - Objetivo: Verificar se o usuário consegue editar o valor que ele comprou o item
    - Passos: Acessar os três pontinhos, ir na opção atualizar valor de compra, digitar o novo valor e mandar salvar 
    - Criterio: Caso de sucesso se da quando aparece um alerta confirmando a alteração e o valor na lista estiver mudado
 
+**2.6 - Verificar se quando e realizada a venda de um produto a quantidade no estoque e atualizada** 
 
-### Funcionalidades Financeiro
+   - Objetivo: Verificar se ocorre a baixa do item no estoque quando e realozada uma cenda do mesmo
+   - Passos: Acessar a tela de vendas, registra uma venda com qualquer produto do estoque, voltar na tela de estoque e verificar se a quantidade modificou
+   - Criterio: Caso de sucesso se da quando a quantidade de poduto for menor que a inicial
+
+
+### 3 - Funcionalidades Financeiro
 
 Na tela de Financeiro, foi desenvolvido três testes para garantir que tudo esteja funcionando conforme o previsto.
 
-01.0 - Registro de despesas 
+**3.1 - Registro de despesas** 
 
   - Objetivo: Verificar se as despesas cadastradas pelo usuário estão sendo salvas de maneira correta.
   - Passos: Seleciona o botão "novo registro" preencher todos os dados e clica em "adicionar".
   - Criterio: Caso de sucesso, iria aparecer uma mensagem confirmando o registro e ele irá aparecer na lista.
      
-01.1 - Exclusão de despesas 
+**3.2 - Exclusão de despesas** 
  
   - Objetivo: Verificar se o item que o usuário deseja apagar esta sendo deletado de maneira correta.
   - Passos: Clicar na lixeira do item que deseja deletar e depois confimar.
   - Criterio: Caso de sucesso, irá aparecer uma mensagem dizendo que a operação foi executada com sucesso e o item não irá mais aparecer na lista.
      
-01.2 - Atualização de dados da despesa 
+**3.3 - Atualização de dados da despesa** 
 
   - Objetivo: Verificar se o usuário consegue editar os dados da despesa.
   - Passos: Acessar os tres pontos na frente do item que deseja, acessar a opção para editar o campo que deseja, preencher e salvar.
   - Criterio: Caso de sucesso,irá aparecer uma mensagem de confirmação e o campo na lista será atualizado.
+
+### 4 - Clientes inadiplentes
+
+Na tela de Financeiro, foi desenvolvido três testes para garantir que tudo esteja funcionando conforme o previsto.
+
+**4.1 - Filtro por cliente** 
+
+  - Objetivo: Verificar se o filtro de cliente esta funcionando.
+  - Passos: Na parte superior da pagina devera digitar o nome de um cliente.
+  - Criterio: Caso de sucesso, ira listar todas as compras pendentes dos cliente.
+     
+**4.2 - Dar baixa no clinete devedor** 
+ 
+  - Objetivo: Verificar se consegue atualizar o stauts de pendencia do cliente.
+  - Passos: Entrar na tela de clientes inadiplentes, escolher um cliente, acessar o menu lateral da tabela e ir na sessão dar baixa.
+  - Criterio: Caso de sucesso, após dar a baixa quando voltar a tela principal o cliente não estará mais na lista.
+     
+**4.3 - Extrato das compras pendetes** 
+
+  - Objetivo: Verificar se está buscandoas compras devidas do clinete.
+  - Passos: Entrar na tela de clientes inadiplentes, escolher um cliente, acessar o menu lateral da tabela e ir na sessão extrato.
+  - Criterio: Caso de sucesso, ira abri um modal listando todos os produtos devidos do cliente.
+
+### 5 - Historico dos clientes
+
+Na tela de Financeiro, foi desenvolvido três testes para garantir que tudo esteja funcionando conforme o previsto.
+
+**5.1 - Listagem de todos os cliente e sinalização dos devedores** 
+
+  - Objetivo: Verificar a pagina consegue listar todos os clientes e sinalizar quem tem compra pendente.
+  - Passos: No menu esquerdo acesse a aba cliente, historico cliente, e clique nela.
+  - Criterio: Caso de sucesso, ira listar todos os cliente e caso ele tenha pendencia havera um notificação.
+     
+**5.2 - Exibir Historico** 
+
+  - Objetivo: Verificar se as informações dos clientes estão aparecendo.
+  - Passos: Na tela historico clinte, clique em exibir historico.
+  - Criterio: Caso de sucesso, ira aparecer as informações pessoais dos clintes, tempo de cadastro e outras informações.
+     
 
 
 # Evidências de Testes de Software
