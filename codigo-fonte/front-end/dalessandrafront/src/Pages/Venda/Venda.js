@@ -21,6 +21,7 @@ function Venda() {
     const [novoItem, setNovoItem] = useState([]);
     const [alertVisible, setAlertVisible] = useState(false);
     const [alertaErro, setAlertaErro] = useState(false);
+    const [valoresUnitarios, setValoresUnitarios] = useState([]);
     const formasPagto = [
         {label: 'CC - Cartao de crédito', value: 'CC'},
         {label: 'CD - Cartao de Debito', value: 'CD'},
@@ -121,7 +122,7 @@ function Venda() {
     const atualizarQuantidade = (index, quantidade) => {
         const novaLista = [...itensVenda];
         novaLista[index].quantidade = quantidade;
-        novaLista[index].vlTotal = quantidade * novaLista[index].valorUnit;
+        novaLista[index].vlTotal = quantidade * novaLista[index].valoresUnitarios;
         setItensVenda(novaLista);
         atualizarTotalVenda();
     };
@@ -272,12 +273,16 @@ function Venda() {
                                             </Typography>
                                         </td>
                                         <td className="p-4">
-                                            <input type="number" defaultValue={quantidade ?? 1} onChange={(e) => atualizarQuantidade(index, e.target.value)} />
+                                            <input type="number" min="0" style={{ border: '1px solid #ccc', borderRadius: '4px', padding: '2px', width: '100px'}} defaultValue={quantidade ?? 1} onChange={(e) => atualizarQuantidade(index, e.target.value)} />
                                         </td>
                                         <td className="p-4">
-                                            <Typography variant="small" color="blue-gray" className="font-normal">
-                                                {"R$" + valorUnit}
-                                            </Typography>
+                                        <input 
+                                        type="number" 
+                                        min="0" 
+                                        style={{ border: '1px solid #ccc', borderRadius: '4px', padding: '2px', width: '100px'}} 
+                                        defaultValue={valorUnit ?? 1} 
+                                        onChange={(e) => setValoresUnitarios(e.target.value)}
+                                    />
                                         </td>
                                         <td className="p-4">
                                             <Typography variant="small" color="blue-gray" className="font-normal">
