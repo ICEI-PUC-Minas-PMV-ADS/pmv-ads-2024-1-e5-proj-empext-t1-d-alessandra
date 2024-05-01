@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import config from "../../config/config";
 import Menu from "../../Componentes/Menu/Menu";
 import LogoVenda from "../../img/caixa-eletronico.png";
-import TabelaMaisVendidos from "./componentes/tabelaMaisVendidos";
+import TabelaMaisVendidos from "./components/tabelaMaisVendidos";
 
 function MaisVendidos() {
     const [itens, setItens] = useState([]);

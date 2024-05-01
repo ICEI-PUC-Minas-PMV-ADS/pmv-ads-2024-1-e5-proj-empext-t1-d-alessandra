@@ -2,9 +2,9 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Menu from "../../Componentes/Menu/Menu";
 import LogoVenda from "../../img/caixa-eletronico.png";
-import Graphic from "./componentes/grafico";
+import Graphic from "./components/grafico";
 import config from "../../config/config";
-import Tabela from "./componentes/tabela";
+import Tabela from "./components/tabela";
 
 function RelatorioVenda() {
     const [loading, setLoading] = React.useState(false);

@@ -6,6 +6,7 @@ import { Input, Button, Card, Typography } from "@material-tailwind/react";
 import Menu from "../../Componentes/Menu/Menu";
 import LogoInvetario from "../../img/warehouse.png";
 import ModalCliente from "../Cliente/components/listCliente";
+import ModalItem from "./components/listaItem";
 import { cpf, cnpj } from 'cpf-cnpj-validator';
 import AlertaSucesso from "../../Componentes/Alertas/AlertaSucesso";
 import AlertaErro from "../../Componentes/Alertas/AlertaErro";
@@ -201,6 +202,15 @@ function Venda() {
                                         className: "min-w-0",
                                     }}
                                 />
+                                <Button
+                                    size="sm"
+                                    color="gray"
+                                    className="!absolute right-1 top-1 rounded"
+                                    onClick={() => document.getElementById('modalListaItem').showModal()}
+                                >
+                                    Procurar
+                                </Button>
+                                <ModalItem />
                             </div>
                             <button className="btn btn-success mt-6" onClick={adicionaList}>Adicionar</button>
                         </div>
