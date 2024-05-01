@@ -21,7 +21,6 @@ function Venda() {
     const [novoItem, setNovoItem] = useState([]);
     const [alertVisible, setAlertVisible] = useState(false);
     const [alertaErro, setAlertaErro] = useState(false);
-    const [valoresUnitarios, setValoresUnitarios] = useState([]);
     const formasPagto = [
         {label: 'CC - Cartao de crédito', value: 'CC'},
         {label: 'CD - Cartao de Debito', value: 'CD'},
@@ -120,9 +119,18 @@ function Venda() {
     };
 
     const atualizarQuantidade = (index, quantidade) => {
+
         const novaLista = [...itensVenda];
         novaLista[index].quantidade = quantidade;
-        novaLista[index].vlTotal = quantidade * novaLista[index].valoresUnitarios;
+        novaLista[index].vlTotal = quantidade * novaLista[index].valorUnit;
+        setItensVenda(novaLista);
+        atualizarTotalVenda();
+    };
+
+    const atualizarPreco = (index, valorUnit) => {
+        const novaLista = [...itensVenda];
+        novaLista[index].valorUnit = valorUnit;
+        novaLista[index].vlTotal = valorUnit * novaLista[index].quantidade;
         setItensVenda(novaLista);
         atualizarTotalVenda();
     };
@@ -281,7 +289,7 @@ function Venda() {
                                         min="0" 
                                         style={{ border: '1px solid #ccc', borderRadius: '4px', padding: '2px', width: '100px'}} 
                                         defaultValue={valorUnit ?? 1} 
-                                        onChange={(e) => setValoresUnitarios(e.target.value)}
+                                        onChange={(e) => atualizarPreco(index, e.target.value)}
                                     />
                                         </td>
                                         <td className="p-4">
