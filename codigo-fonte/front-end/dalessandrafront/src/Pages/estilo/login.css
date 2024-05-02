@@ -51,16 +51,67 @@
   opacity: 0;
 }
 
-.login-container:hover {
-  transform: scale(1.02);
+.login-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.login-container form.resetting {
+  opacity: 0;
+}
+
+.login-container form input,
+.login-container form button {
+  margin-bottom: 15px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.login-container form button {
+  background-color: #28a745;
+  color: #fff;
+  cursor: pointer;
+}
+
+.login-container form button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.login-container form .error {
+  color: red;
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+.login-container form p {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.login-container form p a {
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.login-container form p a:hover {
+  color: #0056b3;
 }
 
 .login-container h2 {
   margin-bottom: 20px;
-  color: #28a745; 
+  color: #28a745;
   font-size: 32px;
-  text-align: center; 
-  border-radius: 5px; 
+  text-align: center;
+  border-radius: 5px;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
   transition: color 0.3s, font-size 0.3s;
 }
@@ -123,7 +174,7 @@
   border-radius: 10%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border: 2px solid #a3fdb7;
-  transition: transform 0.5s ease; 
+  transition: transform 0.5s ease;
 }
 
 .login-container img:hover {
@@ -131,8 +182,8 @@
 }
 
 .zoom-out {
-  transition: transform 2s ease; 
-  transform: scale(2); 
+  transition: transform 2s ease;
+  transform: scale(2);
 }
 
 .dark {
