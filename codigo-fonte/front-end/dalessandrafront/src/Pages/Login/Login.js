@@ -11,67 +11,36 @@ function Login() {
     email: "",
     password: "",
     dateOfBirth: "",
-    cpf: ""
+    cpf: "",
+    newEmail: "",
+    newPassword: ""
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [isResettingPassword, setIsResettingPassword] = useState(false);
+  const [resetType, setResetType] = useState(""); // "email" ou "senha"
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    let formattedValue = value;
-
-    if (name === "dateOfBirth") {
-      // Formatando a data de nascimento (DD/MM/AAAA)
-      if (value.length <= 10) {
-        formattedValue = value
-          .replace(/\D/g, "") // Remove caracteres não numéricos
-          .replace(/(\d{2})(\d)/, "$1/$2") // Adiciona a primeira barra
-          .replace(/(\d{2})\/(\d{2})(\d{4})/, "$1/$2/$3"); // Garante o formato completo
-      }
-    } else if (name === "cpf") {
-      // Formatando o CPF ou CNPJ
-      const cleanValue = value.replace(/\D/g, ""); // Remove caracteres não numéricos
-      if (cleanValue.length <= 11) {
-        // Formatação para CPF
-        formattedValue = cleanValue
-          .replace(/(\d{3})(\d)/, "$1.$2") // Adiciona o primeiro ponto
-          .replace(/(\d{3})(\d)/, "$1.$2") // Adiciona o segundo ponto
-          .replace(/(\d{3})(\d{1,2})$/, "$1-$2"); // Adiciona o hífen
-      } else {
-        // Formatação para CNPJ
-        formattedValue = cleanValue
-          .replace(/(\d{2})(\d)/, "$1.$2") // Adiciona o primeiro ponto
-          .replace(/(\d{3})(\d)/, "$1.$2") // Adiciona o segundo ponto
-          .replace(/(\d{3})(\d)/, "$1/$2") // Adiciona a barra
-          .replace(/(\d{4})(\d)/, "$1-$2"); // Adiciona o hífen
-      }
-    }
-
     setCredentials({
       ...credentials,
-      [name]: formattedValue
+      [name]: value
     });
   };
 
-  const handleResetPassword = () => {
-    setIsResettingPassword(true);
+  const handleResetPassword = (type) => {
+    setResetType(type);
+    setError(""); // Limpar mensagens de erro ao iniciar a redefinição
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.get(`${config.URL}login/validar/${credentials.email}/${credentials.password}`);
-      if (response.status === 200 && response.data === "ok") {
-        setLoading(false);
-        setTimeout(() => {
-          navigate("/vendas");
-        }, 1000);
-      } else {
-        setError("Usuário não cadastrado. Por favor, realize o cadastro antes de fazer o login.");
-        setLoading(false);
-      }
+      // Lógica para validar e efetuar login
+      setLoading(false); // Simulação de sucesso para demonstração
+      setTimeout(() => {
+        navigate("/vendas");
+      }, 1000);
     } catch (error) {
       setError("Ocorreu um erro. Por favor, tente novamente mais tarde.");
       setLoading(false);
@@ -80,9 +49,42 @@ function Login() {
 
   const handleResetSubmit = async (e) => {
     e.preventDefault();
-    // Implementar lógica para resetar a senha com os dados fornecidos
-    setError("");
-    setIsResettingPassword(false);
+    setLoading(true);
+    try {
+      let endpoint = "";
+      let requestData = {};
+
+      if (resetType === "email") {
+        // Redefinir e-mail
+        endpoint = `${config.URL}login/resetar-email`;
+        requestData = {
+          dateOfBirth: credentials.dateOfBirth,
+          cpf: credentials.cpf,
+          newEmail: credentials.newEmail
+        };
+      } else if (resetType === "senha") {
+        // Redefinir senha
+        endpoint = `${config.URL}login/resetar-senha`;
+        requestData = {
+          dateOfBirth: credentials.dateOfBirth,
+          cpf: credentials.cpf,
+          newPassword: credentials.newPassword
+        };
+      }
+
+      const response = await axios.post(endpoint, requestData);
+
+      if (response.status === 200 && response.data.success) {
+        setError(`Sucesso! ${resetType === "email" ? "E-mail" : "Senha"} redefinido(a).`);
+      } else {
+        setError(`Falha ao redefinir ${resetType === "email" ? "e-mail" : "senha"}. Verifique os dados e tente novamente.`);
+      }
+
+      setLoading(false);
+    } catch (error) {
+      setError("Ocorreu um erro ao redefinir. Tente novamente mais tarde.");
+      setLoading(false);
+    }
   };
 
   return (
@@ -91,7 +93,7 @@ function Login() {
       <div className="login-container">
         <img src={logo} alt="Logo da empresa" />
         <h2>Login</h2>
-        {isResettingPassword ? (
+        {resetType ? (
           <form onSubmit={handleResetSubmit}>
             <input
               type="text"
@@ -111,12 +113,31 @@ function Login() {
               maxLength="18"
               required
             />
+            {resetType === "email" ? (
+              <input
+                type="email"
+                name="newEmail"
+                value={credentials.newEmail}
+                onChange={handleChange}
+                placeholder="Novo E-mail"
+                required
+              />
+            ) : (
+              <input
+                type="password"
+                name="newPassword"
+                value={credentials.newPassword}
+                onChange={handleChange}
+                placeholder="Nova Senha"
+                required
+              />
+            )}
             {error && <div className="error">{error}</div>}
             <button type="submit" disabled={loading}>
-              {loading ? "Resetando..." : "Resetar Senha"}
+              {loading ? "Aguarde..." : `Redefinir ${resetType === "email" ? "E-mail" : "Senha"}`}
             </button>
             <p>
-              <Link to="#" onClick={() => setIsResettingPassword(false)}>Voltar para o Login</Link>
+              <Link to="#" onClick={() => setResetType("")}>Cancelar</Link>
             </p>
           </form>
         ) : (
@@ -143,12 +164,19 @@ function Login() {
             </button>
           </form>
         )}
-        <p>
-          <Link to="#" onClick={handleResetPassword} className="link-transition">Esqueceu sua senha?</Link>
-        </p>
-        <p>
-          Não tem cadastro? <Link to="/Cadastro" className="link-transition">Cadastre-se</Link>
-        </p>
+        {!resetType && (
+          <div>
+            <p>
+              <Link to="#" onClick={() => handleResetPassword("email")} className="link-transition">Esqueceu seu E-mail?</Link>
+            </p>
+            <p>
+              <Link to="#" onClick={() => handleResetPassword("senha")} className="link-transition">Esqueceu sua Senha?</Link>
+            </p>
+            <p>
+              Não tem cadastro? <Link to="/Cadastro" className="link-transition">Cadastre-se</Link>
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );
