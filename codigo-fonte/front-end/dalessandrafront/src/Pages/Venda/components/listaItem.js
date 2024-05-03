@@ -1,30 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import config from "../../../config/config";
-import { Tag } from 'primereact/tag';
 import {
     List,
     ListItem,
     ListItemPrefix,
-    Avatar,
     Card,
     Typography,
 } from "@material-tailwind/react";
-import { cpf } from 'cpf-cnpj-validator'; 
 import { Paginator } from 'primereact/paginator';
 
 const ListaItem = () => {
-    const [listaClientes, setListaClientes] = useState([]);
     const [listaItem, setListaItem] = useState([]);
+    const [totalItens, setTotalItens] = useState(0);
+    const [first, setFirst] = useState(0);
 
     useEffect(() => {
         const carregarClientes = async () => {
             const headers ={"Content-Type":"application/json"}
             try{
-                // const response = await axios.get(config.URL+'cliente');
-                // setListaClientes(response.data);
-                const response = await axios.get(config.URL+'estoque', {headers});
+                const response = await axios.get(config.URL+`estoque?tamanhoPagina=${5}`, {headers});
                 setListaItem(response.data?.content);
+                setTotalItens(response.data?.totalElements);
             } catch(error){
                 console.log(error)
             }
@@ -32,6 +29,17 @@ const ListaItem = () => {
 
         carregarClientes();
     }, []);
+
+    const onPageChange = async (event) => {
+        setFirst(event.first);
+        const headers ={"Content-Type":"application/json"}
+        try{
+            const response = await axios.get(config.URL+`estoque?tamanhoPagina=${5}&pagina=${event.page}`, {headers});
+            setListaItem(response.data?.content);
+        } catch(error){
+            console.log(error)
+        }
+    }
 
     return (
         <dialog id="modalListaItem" className="modal modal-bottom sm:modal-middle">
@@ -57,10 +65,10 @@ const ListaItem = () => {
                     </List>
                 </Card>
                 <Paginator 
-                    first={1} 
-                    rows={10} 
-                    totalRecords={50} 
-                    // onPageChange={onPageChange} 
+                    first={first} 
+                    rows={5} 
+                    totalRecords={totalItens} 
+                    onPageChange={onPageChange} 
                     template={{ layout: 'PrevPageLink CurrentPageReport NextPageLink' }} 
                 />
                 <div className="modal-action">
