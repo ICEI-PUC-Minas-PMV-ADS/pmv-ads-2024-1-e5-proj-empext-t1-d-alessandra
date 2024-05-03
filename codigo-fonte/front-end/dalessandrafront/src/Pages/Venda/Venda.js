@@ -36,7 +36,7 @@ function Venda() {
         setTotalVenda(total);
     };
 
-    const adicionaList = () => {
+    const adicionaList = async () => {
         try {
             if (novoItem !== "") {
                 setItensVenda(prevItens => [...prevItens, {
@@ -69,17 +69,32 @@ function Venda() {
 
     const procurarProduto = async () => {
         try {
-            const response = await axios.get(config.URL + 'estoque/buscarCodigoProduto/' + produto);
-            const produtoEncontrado = response.data;
-            setProduto(produtoEncontrado.nomeProduto);
-            setNovoItem({
-                descProduto: produtoEncontrado.nomeProduto,
-                codProduto: produtoEncontrado.codProduto,
-                valorVenda: produtoEncontrado.valorVenda
-            });
-        } catch (error) {
-            console.log(error);
+            if (produto !== "") {
+                const response = await axios.get(config.URL + 'estoque/buscarCodigoProduto/' + produto);
+                const produtoEncontrado = response.data;
+                const novoItem = {
+                    descProduto: produtoEncontrado.nomeProduto,
+                    codProduto: produtoEncontrado.codProduto,
+                    valorVenda: produtoEncontrado.valorVenda
+                };
+                setItensVenda(prevItens => [...prevItens, {
+                    descProduto: novoItem.descProduto,
+                    codProduto: novoItem.codProduto,
+                    valorUnit: novoItem.valorVenda,
+                    quantidade: 1,
+                    vlTotal: novoItem.valorVenda
+                }]);
+                atualizarTotalVenda();
+                setProduto("");
+            }
+        } catch {
+            AlertaErro("Erro ao adicionar item");
         }
+    };
+
+
+    const handleProdutoSelecionado = (nomeProduto) => {
+        setProduto(nomeProduto); 
     };
 
     const cadastrarVenda = () => {
@@ -96,7 +111,8 @@ function Venda() {
                 setAlertaErro(false);
                 setTimeout(() => {
                     setAlertVisible(false); 
-                  }, 1000);
+                  }, 500);
+                  resetFields();
             
             }).catch((error) => {
                 setAlertaErro(true);
@@ -196,7 +212,6 @@ function Venda() {
                                     label="Produto"
                                     value={produto}
                                     onChange={(e) => setProduto(e.target.value)}
-                                    onBlur={procurarProduto}
                                     className="pr-20"
                                     containerProps={{
                                         className: "min-w-0",
@@ -210,9 +225,9 @@ function Venda() {
                                 >
                                     Procurar
                                 </Button>
-                                <ModalItem />
+                                <ModalItem onItemSelected={handleProdutoSelecionado}/>
                             </div>
-                            <button className="btn btn-success mt-6" onClick={adicionaList}>Adicionar</button>
+                            <button className="btn btn-success mt-6" onClick={procurarProduto}>Adicionar</button>
                         </div>
                         <div />
                         <div className="sm:col-span-6" />

@@ -10,7 +10,7 @@ import {
 } from "@material-tailwind/react";
 import { Paginator } from 'primereact/paginator';
 
-const ListaItem = () => {
+const ListaItem = ({ onItemSelected }) => {
     const [listaItem, setListaItem] = useState([]);
     const [totalItens, setTotalItens] = useState(0);
     const [first, setFirst] = useState(0);
@@ -41,6 +41,10 @@ const ListaItem = () => {
         }
     }
 
+    const handleItemClick = (nomeProduto) => {
+        onItemSelected(nomeProduto);
+    }
+
     return (
         <dialog id="modalListaItem" className="modal modal-bottom sm:modal-middle">
             <div className="modal-box">
@@ -48,7 +52,7 @@ const ListaItem = () => {
                 <Card className="w-full flex-col">
                     <List>
                         {listaItem.map(item => (
-                            <ListItem key={item.id}>
+                            <ListItem key={item.id} onClick={() => handleItemClick(item.nomeProduto)}>
                                 <ListItemPrefix>
                                     {item.codProduto}
                                 </ListItemPrefix>
