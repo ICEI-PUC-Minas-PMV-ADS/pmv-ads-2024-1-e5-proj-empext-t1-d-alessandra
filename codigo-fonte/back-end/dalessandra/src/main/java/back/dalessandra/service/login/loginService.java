@@ -21,7 +21,7 @@ public class loginService {
     }
     public String upadeSenha(@DateTimeFormat(pattern = "dd/MM/yyyy") LocalDate dataNascimento, String cpfCnpj, String novaSenha){
         Cadastro usuarioUpdateSenha = loginRepository.encontrarUsuario(dataNascimento,cpfCnpj);
-        if(usuarioUpdateSenha!=null){
+        if(loginRepository.encontrarUsuario(dataNascimento,cpfCnpj)!=null){
             usuarioUpdateSenha.setSenhaCadastro(novaSenha);
             loginRepository.save(usuarioUpdateSenha);
             return "Senha alterada Com Sucesso";

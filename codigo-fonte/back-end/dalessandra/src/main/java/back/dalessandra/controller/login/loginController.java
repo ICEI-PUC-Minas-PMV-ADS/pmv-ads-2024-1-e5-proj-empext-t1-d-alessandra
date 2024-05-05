@@ -16,14 +16,14 @@ import java.time.LocalDate;
 public class loginController {
    @Autowired
    private loginService loginService;
-    @GetMapping("/validar/{email}/{senha}")
-    private String validarUsuario(@PathVariable("email")String email, @PathVariable("senha") String senha){
+    @GetMapping("/validar")
+    private String validarUsuario(@RequestParam("email")String email, @RequestParam("senha") String senha){
         if (loginService.validarUsario(email,senha)=="Validado com sucesso"){
             return "ok";
         }
         return "erro";
     }
-    @PutMapping("/updateSenha/{dataNascimento}/{cpfCpnj}/{novaSenha}")
+    @PutMapping("/updateSenha/{cpfCpnj}/{novaSenha}")
     private String updateSenha(
             @RequestParam("dataNascimento") @DateTimeFormat(pattern = "dd/MM/yyyy")LocalDate dataNascimento,
             @PathVariable("cpfCpnj")String cpfCpnj,
