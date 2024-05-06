@@ -204,3 +204,12 @@ https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-ale
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/797f2f6c-be4c-47f6-af80-5f4a173bdddc
 
+
+
+### Funcionalidade de Vendas
+
+#### Plano de teste 01.0 - Registro de Venda
+
+
+
+#### Plano de teste 01.1 - Seleção de Forma de Pagamento
