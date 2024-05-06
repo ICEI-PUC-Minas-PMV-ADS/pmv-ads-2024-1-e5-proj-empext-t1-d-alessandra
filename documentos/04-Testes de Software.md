@@ -126,7 +126,22 @@ Na tela de Financeiro, foi desenvolvido três testes para garantir que tudo este
   - Objetivo: Verificar se as informações dos clientes estão aparecendo.
   - Passos: Na tela historico clinte, clique em exibir historico.
   - Criterio: Caso de sucesso, ira aparecer as informações pessoais dos clintes, tempo de cadastro e outras informações.
-     
+
+### 6 - Funcionalidades Vendas
+
+Na tela de Vendas, foi desenvolvido dois testes para garantir que tudo esteja funcionando confome o previsto.
+
+**6.1 - Registro de vendas**
+
+  - Objetivo: Verificar se as vendas que o usuário cadastra está sendo salva corretamente.
+  - Passos: Selecionar o menu "Venda", selecionar o sub-menu "Venda", incluir o cliente correspondente, incluir os itens desejados, selecionar a forma de pagamento e clicar em "Gravar".
+  - Criterio: Caso de sucesso, iria aparecer uma mensagem confirmando que a venda foi feita com sucesso e irá ser apresentada no relatório diário.
+
+**6.2 - Seleção de Forma de Pagamento**
+
+  - Objetivo: Possibilidade de escolher alguma forma de pagamento.
+  - Passos: Selecionar o menu "Venda", selecionar o sub-menu "Venda" e no campo "Forma de Pagamento" ao clicar, ser apresentado as formas de pagamentos.
+  - Criterio: Caso de sucesso, a forma de pagamento selecionada será apresentada no campo "Forma de Pagamento".
 
 
 # Evidências de Testes de Software
