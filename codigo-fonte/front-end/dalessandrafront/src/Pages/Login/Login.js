@@ -6,6 +6,7 @@ import config from "../../config/config";
 import logo from "../../img/logo.png";
 import dayjs from "dayjs";
 import InputMask from "react-input-mask";
+import { Alert } from "@material-tailwind/react";
 
 function Login() {
   const navigate = useNavigate();
@@ -35,12 +36,12 @@ function Login() {
   };
 
   const handleSubmit = () => {
+    console.log(credentials.cpfOrCnpj)
+    const cpfCnpjMascarado = maskCpfCnpj(credentials.cpfOrCnpj)
+    console.log(cpfCnpjMascarado)
     axios
       .put(
-        `${config.URL}login/updateSenha/${credentials.cpfOrCnpj}/${credentials.newPassword}?dataNascimento=${dayjs(
-          credentials.dateOfBirth
-        ).format("DD/MM/YYYY")}`
-      )
+        `${config.URL}login/updateSenha/${cpfCnpjMascarado}/${credentials.newPassword}?dataNascimento=${dayjs(credentials.dateOfBirth).format("DD/MM/YYYY")}`)
       .then((response) => {
         setLoading(true);
         setTimeout(() => {
@@ -72,28 +73,17 @@ function Login() {
       });
   };
 
-  const handleCpfOrCnpjChange = (e) => {
-    const { value } = e.target;
-    let formattedValue = value;
-
-    const numericValue = value.replace(/\D/g, "");
-
-    if (numericValue.length === 11) {
-      formattedValue = numericValue.replace(
-        /^(\d{3})(\d{3})(\d{3})(\d{2})$/,
-        "$1.$2.$3-$4"
-      ); 
-    } else if (numericValue.length === 14) {
-      formattedValue = numericValue.replace(
-        /^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})$/,
-        "$1.$2.$3/$4-$5"
-      ); 
+  const maskCpfCnpj = (e) => {
+    const cleanedValue = e.replace(/\D/g, '');
+  
+    if (cleanedValue.length === 11) {
+      return cleanedValue.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+    } else if (cleanedValue.length === 14) {
+      return cleanedValue.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1.$2.$3/$4-$5');
+    } else if(cleanedValue.length===10 || cleanedValue.length>14) {
+      return alert("Cpf ou CNPJ Invalido");
     }
 
-    setCredentials({
-      ...credentials,
-      cpfOrCnpj: formattedValue
-    });
   };
 
   return (
@@ -113,11 +103,11 @@ function Login() {
               maxLength="10"
               required
             />
-            <InputMask
-              mask=""
-              maskPlaceholder=""
-              onChange={handleCpfOrCnpjChange}
-              value={credentials.cpfOrCnpj}
+            <input
+              type="text"
+              name="cpfOrCnpj"
+              value={maskCpfCnpj(credentials.cpfOrCnpj)}
+              onChange={handleChange}
               placeholder="CPF ou CNPJ"
               required
             />

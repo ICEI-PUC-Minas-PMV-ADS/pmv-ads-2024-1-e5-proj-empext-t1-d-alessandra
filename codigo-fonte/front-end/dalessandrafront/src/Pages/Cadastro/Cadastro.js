@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "../estilo/cadastro.css";
 import config from "../../config/config";
 import logo from "../../img/logo.png";
-
+import dayjs from "dayjs";
 function Cadastro() {
   const [userData, setUserData] = useState({
     nome: "",
@@ -89,7 +89,7 @@ function Cadastro() {
       const data = {
         nomeCadastro: userData.nome,
         emailCadastro: userData.email,
-        dataNascimento: new Date(userData.dataNascimento).toLocaleDateString("pt-BR"),
+        dataNascimento: dayjs(userData.dataNascimento).format("DD/MM/YYYY"),
         senhaCadastro: userData.senha,
         cpfCnpj: userData.cpfCnpj
       };
