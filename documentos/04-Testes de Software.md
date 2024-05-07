@@ -160,7 +160,7 @@ https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-ale
 
 #### Plano de teste 1.3 - Restrição de Acesso a Usuários Cadastrados:
 
-⚠️⚠️⚠️ATENÇÃO: ESSA FUNCIONALIDADE ESTÁ SENDO DESENVOLVIDA PELA EQUIPE, EM POUCOS DIAS ESTARÁ DISPONIVEL. ⚠️⚠️⚠️
+
 
 
 #### Plano de teste 1.4 - Testes de interações com o usuário:
@@ -171,47 +171,72 @@ https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-ale
 
 ### Funcionalidade de estoque
 
-#### Plano de teste 01.0 - Registro de itens no estoque 
+#### Plano de teste 02.0 - Registro de itens no estoque 
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/40009988/3336eb2b-9409-4766-a028-d1958821aa48
 
-#### Plano de teste 01.1 - Exclusão de registro 
+#### Plano de teste 02.1 - Exclusão de registro 
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/40009988/1e039393-229d-4700-9c86-cab33b459cd4
 
-#### Plano de teste 01.2 - Atualização de quantidade de produto em estoque 
+#### Plano de teste 02.2 - Atualização de quantidade de produto em estoque 
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/40009988/554fb268-82c1-47cb-a319-16b19c0c8b22
 
-#### Plano de teste 01.3 - Atualização de valor de venda
+#### Plano de teste 02.3 - Atualização de valor de venda
 
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/40009988/1ddb7c5d-bb83-451c-ab3d-10c79b3c5889
 
-#### Plano de teste 01.4 - Atualização de valor comprado 
+#### Plano de teste 02.4 - Atualização de valor comprado 
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/40009988/238a5ba7-37b8-4fd8-b898-4c080793f375
 
+#### Plano de teste 02.5 - Verificar se quando e realizada a venda de um produto a quantidade no estoque e atualizada
 
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/40009988/43e343ab-797a-4f85-9acf-cb357b7e544f
 
 ### Funcionalidade de Despesas
 
-#### Plano de teste 01.0 - Registro de despesas
+#### Plano de teste 03.0 - Registro de despesas
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/27317d02-96fc-4f95-870a-3218399aeb02
 
-#### Plano de teste 01.0 - Exclusão de despesas
+#### Plano de teste 03.1 - Exclusão de despesas
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/797f2f6c-be4c-47f6-af80-5f4a173bdddc
 
+### 4 - Clientes inadiplentes
 
+#### Plano de teste 4.1 - Filtro por cliente tela ( tela clientes inadiplentes)
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/40009988/880ec401-4198-4ab1-b91a-684efa793207
+     
+#### Plano de teste 4.2 - Dar baixa no clinete devedor 
+ 
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/40009988/030410ab-0075-40c4-9b93-c49e372c5881
+
+#### Plano de teste 4.3 - Extrato das compras pendetes
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/40009988/8ef874ed-aae5-4396-bde4-2f40328a2401
+
+
+### 5 - Historico dos clientes
+
+#### Plano de teste 5.1 - Listagem de todos os cliente e sinalização dos devedores*
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/40009988/c32cda64-503b-4da1-ae5b-3c1af07fdf3d
+
+#### Plano de teste 5.2 - Exibir Historico 
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/40009988/c50a0cb3-934e-4e44-8546-d81358ad966f
 
 ### Funcionalidade de Vendas
 
-#### Plano de teste 01.0 - Registro de Venda
+#### Plano de teste 06.0 - Registro de Venda
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/85502110/294eab05-9dbc-4a45-b97f-ede0500ab625
 
-#### Plano de teste 01.1 - Seleção de Forma de Pagamento
+#### Plano de teste 06.1 - Seleção de Forma de Pagamento
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/85502110/4e364a99-72ba-424a-8273-442d47809c24
