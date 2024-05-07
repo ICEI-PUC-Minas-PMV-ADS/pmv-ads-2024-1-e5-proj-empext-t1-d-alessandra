@@ -70,9 +70,9 @@ function ModalIncluir() {
                     {alertaErro && <AlertaErro message={mensagemError} />}
                 <div className="modal-box w-11/12 max-w-5xl alinharCamposModal">
                     <br></br>
-                    <h3 className="font-bold text-lg">Registro</h3>
-                    <p className="py-4">Registrar Despesa</p>
-                    <select id="tipoDespesa" onChange={capturaTipoDespesa} className="select select-ghost w-full max-w-xs">
+                    <h3 className="font-bold text-lg">Registro de Despesa</h3>
+                    <br></br>
+                    <select id="tipoDespesa" onChange={capturaTipoDespesa} className="select select-bordered w-full max-w-xs mb-4 mr-7">
                         <option disabled selected>Tipo Despesa</option>
                         <option value="Contas">Contas</option>
                         <option value="Investimento">Investimento</option>
@@ -81,13 +81,13 @@ function ModalIncluir() {
                         <option value="Utilidades">Utilidades</option>
                     </select>
                     <input id="nomeDespesa" type="text" placeholder="Descrição" onChange={capturaNomeDespesa}
-                        class="input input-ghost w-full max-w-xs" />
-                    <input id="valorDespesa" type="Valor" onChange={capturaValorDespesa} placeholder="Valor da Despesa"
-                        class="input input-ghost w-full max-w-xs" />
-                    <input id="dataDespesa" type="date" onChange={capturaDataDespesa} placeholder="Data da Pagamento"
-                        class="input input-ghost w-full max-w-xs" />
+                        class="input input-bordered input-success w-full max-w-xs mb-4 mr-7" />
+                    <input id="valorDespesa" type="Valor" step="any" onChange={capturaValorDespesa} placeholder="Valor da Despesa"
+                        class="input input-bordered input-success w-full max-w-xs mb-4 mr-7" />
+                    <input id="dataDespesa" type="date" onChange={capturaDataDespesa} placeholder="Data de Pagamento"
+                        class="input input-bordered input-success w-full max-w-xs mb-4 mr-7" />
                     <input id="dataVencimento" type="date" onChange={capturaDataVencimento} placeholder="Data de Vencimento"
-                        class="input input-ghost w-full max-w-xs" />
+                        class="input input-bordered input-success w-full max-w-xs mb-4 mr-7" />
                     <div className="modal-action">
 
                         <button className=" btn btn-success" onClick={() => salvar()}>Adicionar</button>
