@@ -6,11 +6,15 @@ import Menu from "../../Componentes/Menu/Menu";
 import LogoInvetario from "../../img/warehouse.png";
 import ModalCliente from "./components/listCliente";
 import { cpf, cnpj } from 'cpf-cnpj-validator'; 
+import AlertaSucesso from "../../Componentes/Alertas/AlertaSucesso";
+import AlertaErro from "../../Componentes/Alertas/AlertaErro";
 
 function Cliente(){
 
     const [codigoDisabled, setCodigoDisabled] = useState(false);
     const [codigoCliente, setCodigoCliente] = useState("");
+    const [alertVisible, setAlertVisible] = useState(false);
+    const [alertaErro, setAlertaErro] = useState(false);
 
     const [clienteData, setClienteData] = useState({
         codigo: "",
@@ -73,11 +77,17 @@ function Cliente(){
         }
         axios.post(config.URL+'cliente', data, {headers})
        .then((response)=>{
-            console.log(response.status)
-        alert("Cliente cadastrado com sucesso!");
-        resetFields();
+        setAlertVisible(true); 
+                setAlertaErro(false);
+                setTimeout(() => {
+                    setAlertVisible(false); 
+                  }, 1500);
+                  resetFields();
        }).catch((error)=>{
-        alert("Error ao cadastrar cliente!");
+        console.log(error);
+        setTimeout(() => {
+            setAlertVisible(false); 
+          }, 1500);
        })
     }
 
@@ -124,6 +134,8 @@ function Cliente(){
                 <h1 className="text-3xl font-bold">Novo Cliente</h1>
             </section>
                 <section className="container mx-auto p-4 shadow-xl overflow-x-auto">
+                {alertVisible && <AlertaSucesso message="Cliente cadastrado com sucesso!" />}
+                {alertaErro && <AlertaErro message="Ocorreu um erro ao cadastrar o cliente! Verifique as informações." />}
                     <div style={{display: 'flex'}}>
                         <h3 className="text-2xl font-bold corTexto my-2">Cadastro</h3>
                         <button className="btn ml-5"
@@ -206,6 +218,7 @@ function Cliente(){
                                     id="cpfCnpj"
                                     name="cpfCnpj"
                                     type="text"
+                                    maxLength={16}
                                     autoComplete="text"
                                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     onChange={handleChange}
