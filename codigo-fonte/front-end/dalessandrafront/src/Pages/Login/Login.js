@@ -11,12 +11,12 @@ function Login() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [resetType, setResetType] = useState(""); // "email" ou "senha"
+  const [resetType, setResetType] = useState(""); 
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
     dateOfBirth: "",
-    cpfOrCnpj: "", // Renomeado para cpfOrCnpj
+    cpfOrCnpj: "", 
     newEmail: "",
     newPassword: ""
   });
@@ -31,7 +31,7 @@ function Login() {
 
   const handleResetPassword = (type) => {
     setResetType(type);
-    setError(""); // Limpar mensagens de erro ao iniciar a redefinição
+    setError(""); 
   };
 
   const handleSubmit = () => {
@@ -76,20 +76,18 @@ function Login() {
     const { value } = e.target;
     let formattedValue = value;
 
-    // Remover caracteres não numéricos
     const numericValue = value.replace(/\D/g, "");
 
-    // Verificar se é CPF (11 dígitos) ou CNPJ (14 dígitos)
     if (numericValue.length === 11) {
       formattedValue = numericValue.replace(
         /^(\d{3})(\d{3})(\d{3})(\d{2})$/,
         "$1.$2.$3-$4"
-      ); // Aplicar máscara de CPF
+      ); 
     } else if (numericValue.length === 14) {
       formattedValue = numericValue.replace(
         /^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})$/,
         "$1.$2.$3/$4-$5"
-      ); // Aplicar máscara de CNPJ
+      ); 
     }
 
     setCredentials({
