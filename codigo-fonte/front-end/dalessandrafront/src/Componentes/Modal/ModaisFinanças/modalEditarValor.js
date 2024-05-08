@@ -5,7 +5,7 @@ import AlertaErro from '../../Alertas/AlertaErro';
 import Alertasucesso from '../../Alertas/AlertaSucesso';
 
 function ModalEditarValorDespesa({id}) {
-    const [valorDespesa, setValorDespesa] = useState(0);
+    const [valorDespesa, setValorDespesa] = useState();
     const [alertVisible, setAlertVisible] = useState(false);
     const [alertaErro, setAlertaErro] = useState(false);
     const [mensagemError, setMensagemError] = useState();
@@ -45,7 +45,7 @@ function ModalEditarValorDespesa({id}) {
                 <div className="modal-box w-11/12 max-w-5xl">
                     <br></br>
                     <h3 className="font-bold text-lg">Editar Valor da Despesa</h3>
-                    <input type="Valor" className="input input-bordered" placeholder="Valor da Despesa" value={valorDespesa} onChange={handleValorDespesaChange} />
+                    <input type="Valor" class="input input-bordered input-success w-full max-w-xs mb-4 mr-7" placeholder="Valor da Despesa" value={valorDespesa} onChange={handleValorDespesaChange} />
                     <div className="modal-action">
                         <button className="btn btn-success" onClick={salvar}>Salvar</button>
                         <form method="dialog">

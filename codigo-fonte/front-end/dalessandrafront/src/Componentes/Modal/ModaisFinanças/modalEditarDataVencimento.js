@@ -6,7 +6,7 @@ import Alertasucesso from '../../Alertas/AlertaSucesso';
 import dayjs from 'dayjs';
 
 function ModalEditarDataVencimento({id}) {
-    const [dataVencimento, setDataVencimento] = useState(0);
+    const [dataVencimento, setDataVencimento] = useState();
     const [alertVisible, setAlertVisible] = useState(false);
     const [alertaErro, setAlertaErro] = useState(false);
     const [mensagemError, setMensagemError] = useState();
@@ -46,7 +46,7 @@ function ModalEditarDataVencimento({id}) {
                 <div className="modal-box w-11/12 max-w-5xl">
                     <br></br>
                     <h3 className="font-bold text-lg">Editar Data de Vencimento</h3>
-                    <input type="date" className="input input-bordered" placeholder="Data de Vencimento" value={dataVencimento} onChange={handleDataVencimentoChange} />
+                    <input type="date" class="input input-bordered input-success w-full max-w-xs mb-4 mr-7" placeholder="Data de Vencimento" value={dataVencimento} onChange={handleDataVencimentoChange} />
                     <div className="modal-action">
                         <button className="btn btn-success" onClick={salvar}>Salvar</button>
                         <form method="dialog">

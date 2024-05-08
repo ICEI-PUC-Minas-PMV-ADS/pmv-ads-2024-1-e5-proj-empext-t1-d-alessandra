@@ -5,7 +5,7 @@ import AlertaErro from '../../Alertas/AlertaErro';
 import Alertasucesso from '../../Alertas/AlertaSucesso';
 
 function ModalEditarTipoDespesa({id}) {
-    const [tipoDespesa, setTipoDespesa] = useState(0);
+    const [tipoDespesa, setTipoDespesa] = useState();
     const [alertVisible, setAlertVisible] = useState(false);
     const [alertaErro, setAlertaErro] = useState(false);
     const [mensagemError, setMensagemError] = useState();
@@ -45,7 +45,7 @@ function ModalEditarTipoDespesa({id}) {
                 <div className="modal-box w-11/12 max-w-5xl">
                     <br></br>
                     <h3 className="font-bold text-lg">Editar Tipo de Despesa</h3>
-                    <select id="tipoDespesa" placeholder="Tipo de Despesa" value={tipoDespesa} onChange={handleTipoDespesaChange}>
+                    <select id="tipoDespesa" className="select select-bordered w-full max-w-xs mb-4 mr-7" placeholder="Tipo de Despesa" value={tipoDespesa} onChange={handleTipoDespesaChange}>
                     <option disabled selected>Tipo Despesa</option>
                         <option value="Contas">Contas</option>
                         <option value="Investimento">Investimento</option>

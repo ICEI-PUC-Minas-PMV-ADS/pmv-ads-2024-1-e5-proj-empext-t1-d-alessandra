@@ -5,7 +5,7 @@ import AlertaErro from '../../Alertas/AlertaErro';
 import Alertasucesso from '../../Alertas/AlertaSucesso';
 import dayjs from 'dayjs';
 function ModalEditarDataDespesa({id}) {
-    const [dataDespesa, setDataDespesa] = useState(0);
+    const [dataDespesa, setDataDespesa] = useState();
     const [alertVisible, setAlertVisible] = useState(false);
     const [alertaErro, setAlertaErro] = useState(false);
     const [mensagemError, setMensagemError] = useState();
@@ -45,7 +45,7 @@ function ModalEditarDataDespesa({id}) {
                 <div className="modal-box w-11/12 max-w-5xl">
                     <br></br>
                     <h3 className="font-bold text-lg">Editar Data da Despesa</h3>
-                    <input type="date" className="input input-bordered" placeholder="Data da Despesa" value={dataDespesa} onChange={handleDataDespesaChange} />
+                    <input type="date" class="input input-bordered input-success w-full max-w-xs mb-4 mr-7" placeholder="Data da Despesa" value={dataDespesa} onChange={handleDataDespesaChange} />
                     <div className="modal-action">
                         <button className="btn btn-success" onClick={salvar}>Salvar</button>
                         <form method="dialog">

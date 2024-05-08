@@ -8,32 +8,34 @@ import Menu from "../../Componentes/Menu/Menu";
 import Cash from "../../img/cash.png";
 import ModalIncluir from "../../Componentes/Modal/ModaisFinanças/modalncluirDespesa";
 import FiltrarData from "../../Componentes/Tabela/TabelaFinanceiro/FiltrarData";
-import FiltroInput from "../../Componentes/Tabela/TabelaFinanceiro/FiltroInput";
+import Filtro from "../../Componentes/Tabela/TabelaEstoque/Filtro";
 
 function Financeiro() {
     const [financeiro, setFinanceiro] = useState([]);
     const [venda, setVenda] = useState([]);
     const [valorVendas, setValorVendas] = useState(0);
     const [valorFinanceiro, setValorFinanceiro] = useState(0);
-    const [valorTotalVendasFiltradas, setValorTotalVendasFiltradas] = useState(0); // Adicionando estado para armazenar o valor total das vendas filtradas
-    const [filtro, setFiltro] = useState(0);
+    const [valorTotalVendasFiltradas, setValorTotalVendasFiltradas] = useState(0);
+    /*const [filtro, setFiltro] = useState(0);*/
     const [filtroData, setFiltroData] = useState({ dia: null, mes: null, ano: null });
 
     const handleFiltroDataChange = (filtroData) => {
         setFiltroData(filtroData);
     };
 
-    const handleFiltroChange = (filtro) => {
+
+    /*const handleFiltroChange = (filtro) => {
         setFiltro(filtro);
-        obterFinanceiro(filtro);
-    };
+        obterFinanceiro(filtro)
+    };*/
+
 
     useEffect(() => {
         obterFinanceiro();
         obterVenda();
         obterValorTotal();
         obterValorVendas();
-    }, [filtroData, filtro]);
+    }, [filtroData]);
 
     const obterFinanceiro = () => {
         const headers = { "Content-Type": "application/json" };
@@ -67,8 +69,6 @@ function Financeiro() {
                 });
                 console.log("Vendas filtradas:", vendasFiltradas);
                 setVenda(vendasFiltradas);
-
-                // Calcular e atualizar o valor total das vendas filtradas
                 const totalVendas = vendasFiltradas.reduce((acc, curr) => acc + parseFloat(curr.vlTotal), 0);
                 setValorTotalVendasFiltradas(totalVendas);
             })
@@ -99,7 +99,7 @@ function Financeiro() {
             })
     }
 
-    
+
     const valorTotalDespesasFiltradas = financeiro.filter(item => {
         if (!filtroData) return true;
         const dataDespesa = item.dataDespesa.split('/');
@@ -128,9 +128,9 @@ function Financeiro() {
                 <br />
                 <section className="container mx-auto p-4 shadow-xl alinhamentoMenu2">
                     <ModalIncluir />
-                    <div className="flex space-x-4">
-                        <FiltroInput onFiltroChange={handleFiltroChange}/>
-                    </div>
+                    {/*<div class="flex space-x-4">
+                        <Filtro onFiltroChange={handleFiltroChange} />
+                    </div>*/}
                     <div className="flex space-x-4">
                         <FiltrarData onFiltrarDataChange={handleFiltroDataChange} />
                     </div>
