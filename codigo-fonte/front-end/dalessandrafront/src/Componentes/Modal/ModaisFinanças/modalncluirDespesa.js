@@ -23,6 +23,9 @@ function ModalIncluir() {
     const [alertaErro, setAlertaErro] = useState(false);
     const [mensagemError, setMensagemError] = useState()
     function salvar() {
+
+        const valorDespesaFormatado = valorDespesa.includes(',') ? valorDespesa.replace(',', '.') : valorDespesa;
+
         const headers = {
             'accept ': "*/*",
             'Content-Type':'application/json'
@@ -31,7 +34,7 @@ function ModalIncluir() {
         const data = {
             "tipoDespesa": tipoDespesa,
             "nomeDespesa": nomeDespesa,
-            "valorDespesa": valorDespesa,
+            "valorDespesa": valorDespesaFormatado,
             "dataDespesa": dayjs(dataDespesa).format("DD/MM/YYYY"),
             "dataVencimento":dayjs(dataVencimento).format("DD/MM/YYYY")
         }
