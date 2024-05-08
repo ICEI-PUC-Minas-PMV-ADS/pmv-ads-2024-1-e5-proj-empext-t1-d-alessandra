@@ -1,4 +1,3 @@
-// Graphic.js
 import React, { useState, useEffect } from 'react';
 import {
   Card,
@@ -50,17 +49,7 @@ const Graphic = (props) => {
             fontWeight: 400,
           },
         },
-        categories: [
-          "Apr",
-          "May",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep",
-          "Oct",
-          "Nov",
-          "Dec",
-        ],
+        // Inicialmente vazio
       },
       yaxis: {
         labels: {
@@ -97,9 +86,17 @@ const Graphic = (props) => {
 
   useEffect(() => {
     const vlTotalData = props.dadosVenda.map(item => item.vlTotal);
+    const codVendaData = props.dadosVenda.map(item => item.codVenda); // Extrair os códigos de venda
     setChartData(prevState => ({
       ...prevState,
       series: [{ name: "Valor", data: vlTotalData }],
+      options: {
+        ...prevState.options,
+        xaxis: {
+          ...prevState.options.xaxis,
+          categories: codVendaData, // Definir os códigos de venda como categorias
+        }
+      }
     }));
   }, [props.dadosVenda]);
 

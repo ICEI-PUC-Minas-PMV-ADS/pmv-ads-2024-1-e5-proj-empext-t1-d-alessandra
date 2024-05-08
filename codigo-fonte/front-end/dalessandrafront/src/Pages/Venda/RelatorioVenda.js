@@ -5,14 +5,16 @@ import LogoVenda from "../../img/caixa-eletronico.png";
 import Graphic from "./components/grafico";
 import config from "../../config/config";
 import Tabela from "./components/tabela";
+import { Paginator } from 'primereact/paginator';
 
 function RelatorioVenda() {
     const [loading, setLoading] = React.useState(false);
     const [venda, setVenda] = useState([]);
-    const [numerosPaginas, setNumerosPaginas] = useState(0);
     const [paginaAtual, setPaginaAtual] = useState(0);
     const [filtroDataVenda, setFiltroDataVenda] = useState(obterDataAtual());
     const [dadosVenda, setDadosVenda] = useState([]);
+    const [first, setFirst] = useState(0);
+    const [totalItens, setTotalItens] = useState(0);
 
     function obterDataAtual() {
         const today = new Date();
@@ -35,26 +37,23 @@ function RelatorioVenda() {
         const headers = { "Content-Type": "application/json" };
         setLoading(true);
         try {
-            const response = await axios.get(`${config.URL}venda/relatorio-dia?dtVenda=${filtroDataVenda}&page=${paginaAtual}&size=${10}`, { headers });
+            const response = await axios.get(`${config.URL}venda/relatorio-dia?dtVenda=${filtroDataVenda}&page=${paginaAtual}&size=${5}`, { headers });
             setVenda(response.data.content);
-            setNumerosPaginas(response.data.totalPages);
+            setTotalItens(response.data?.totalElements);
             setDadosVenda(response.data.content);
         } catch (error) {
             console.error(error);
         }
     }
 
-    const nextPage = () => {
-        const page = paginaAtual + 1;
-        setPaginaAtual(page);
-        loadData();
-    }
-
-    function backPage() {
-        if (paginaAtual > 0) {
-            const page = paginaAtual - 1;
-            setPaginaAtual(page);
-            loadData();
+    const onPageChange = async (event) => {
+        setFirst(event.first);
+        const headers ={"Content-Type":"application/json"}
+        try{
+            const response = await axios.get(`${config.URL}venda/relatorio-dia?dtVenda=${filtroDataVenda}&page=${event.page}&size=${5}`, { headers });
+            setVenda(response.data?.content);
+        } catch(error){
+            console.log(error)
         }
     }
 
@@ -87,11 +86,13 @@ function RelatorioVenda() {
                         </div>
                     </div>
                     <br />
-                    <div className="join">
-                        <button className="join-item btn" onClick={backPage}>«</button>
-                        <button className="join-item btn">Página {paginaAtual + 1}</button>
-                        <button className="join-item btn" onClick={nextPage}>»</button>
-                    </div>
+                    <Paginator 
+                        first={first} 
+                        rows={5} 
+                        totalRecords={totalItens} 
+                        onPageChange={onPageChange} 
+                        template={{ layout: 'PrevPageLink CurrentPageReport NextPageLink' }} 
+                    />
                     <br />
                     <Tabela dados={venda} />
                 </section>

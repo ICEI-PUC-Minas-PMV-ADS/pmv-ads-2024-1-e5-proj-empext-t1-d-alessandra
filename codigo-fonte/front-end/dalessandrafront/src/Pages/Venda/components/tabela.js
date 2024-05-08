@@ -17,6 +17,21 @@ function Tabela({ dados, filtro }) {
         setCodVendaSelecionado(null);
     };
 
+    function formatarDataHora(dataHoraString) {
+        var dataHora = new Date(dataHoraString);
+    
+        var ano = dataHora.getFullYear();
+        var mes = ("0" + (dataHora.getMonth() + 1)).slice(-2);
+        var dia = ("0" + dataHora.getDate()).slice(-2);
+        var horas = ("0" + dataHora.getHours()).slice(-2); 
+        var minutos = ("0" + dataHora.getMinutes()).slice(-2);
+        var segundos = ("0" + dataHora.getSeconds()).slice(-2);
+    
+        var dataHoraFormatada = dia + "/" + mes + "/" + ano + " " + horas + ":" + minutos + ":" + segundos;
+    
+        return dataHoraFormatada;
+    }
+
     return (
         <div>
             <table className="table table-xs">
@@ -38,7 +53,7 @@ function Tabela({ dados, filtro }) {
                                     <td>{item.codVenda}</td>
                                     <td>{item.codCliente}</td>
                                     <td>{item.formaPagto}</td>
-                                    <td>{item.dtVenda}</td>
+                                    <td>{ formatarDataHora(item.dtVenda)}</td>
                                     <td>{'R$ ' + item.vlTotal}</td>
                                     <td className='w-10 h-10'>
                                         <MagnifyingGlassIcon onClick={() => handleClick(item.codVenda)} style={{ cursor: 'pointer' }} />
