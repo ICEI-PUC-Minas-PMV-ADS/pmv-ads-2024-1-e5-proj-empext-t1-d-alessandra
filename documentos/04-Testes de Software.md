@@ -143,6 +143,15 @@ Na tela de Vendas, foi desenvolvido dois testes para garantir que tudo esteja fu
   - Passos: Selecionar o menu "Venda", selecionar o sub-menu "Venda" e no campo "Forma de Pagamento" ao clicar, ser apresentado as formas de pagamentos.
   - Criterio: Caso de sucesso, a forma de pagamento selecionada será apresentada no campo "Forma de Pagamento".
 
+### 6 - Funcionalidades Clientes
+
+Na tela de Clientes, foi desenvolvido um teste para garantir que tudo esteja funcionando confome o previsto.
+
+**6.1 - Registro de Cliente**
+
+  - Objetivo: Verificar se o cadastro de um novo cliente está sendo salvo corretamente.
+  - Passos: Selecionar o menu "Clientes", selecionar o sub-menu "Cliente", incluir os dados do cliente correspondente  e clicar em "Cadastrar".
+  - Criterio: Caso de sucesso, iria aparecer uma mensagem confirmando que o cliente foi cadastrado com sucesso.
 
 # Evidências de Testes de Software
 
@@ -233,10 +242,16 @@ https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-ale
 
 ### Funcionalidade de Vendas
 
-#### Plano de teste 06.0 - Registro de Venda
+#### Plano de teste 6.1 - Registro de Venda
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/85502110/294eab05-9dbc-4a45-b97f-ede0500ab625
 
-#### Plano de teste 06.1 - Seleção de Forma de Pagamento
+#### Plano de teste 6.2 - Seleção de Forma de Pagamento
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/85502110/4e364a99-72ba-424a-8273-442d47809c24
+
+### Funcionalidade de Cliente
+
+#### Plano de teste 7.1 - Registro de Cliente
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/85502110/b759bca9-76ce-48bb-ae37-015a04f78b1e

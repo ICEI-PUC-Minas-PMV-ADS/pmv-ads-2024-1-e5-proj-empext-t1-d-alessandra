@@ -111,7 +111,7 @@ function Venda() {
                 setAlertaErro(false);
                 setTimeout(() => {
                     setAlertVisible(false); 
-                  }, 1000);
+                  }, 1500);
                   resetFields();
             
             }).catch((error) => {
