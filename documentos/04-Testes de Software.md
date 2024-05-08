@@ -39,7 +39,7 @@ Para a tela de Login e Cadastro, desenvolvemos quatro tipos de testes para garan
 - Critério de Sucesso: Se o usuário não estiver cadastrado, o acesso será negado pelo sistema.
 
 
-**1.6 - Testes de interações com o usuário:**
+#### Plano de teste 1.6 - Testes de interações com o usuário:
 
 - Objetivo: Garantir que o usuário tenha a experiencia de intração com o software ao utiliza-lo:
 - Passos: Tentar acessar a plataforma e navegar entre as telas.
