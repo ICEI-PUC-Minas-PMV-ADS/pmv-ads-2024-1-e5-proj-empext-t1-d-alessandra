@@ -4,29 +4,48 @@
   
 Para a tela de Login e Cadastro, desenvolvemos quatro tipos de testes para garantir que tudo esteja funcionando conforme o previsto.
 
-**1.1 - Autenticação de Cadastro de E-mail na Plataforma:**
+**1.1 - Cadastro de infomações para acesso a Plataforma:**
 
 - Objetivo: Cadastrar o usuário no banco de dados do software e prevenir a duplicidade de cadastros com o mesmo e-mail.
 - Passos: Acessar a página de cadastro e preencher o formulário.
-- Critério de Sucesso: Se o e-mail já estiver cadastrado, um alerta será emitido, caso for cadastrado pela primeira vez poderá ser redirecionado para a pagina de Login.
+- Critério de Sucesso: Caso for cadastrado pela primeira vez poderá ser redirecionado para a pagina de Login e acessar a plataforma.
 
-**1.2 - Verificação de Cadastro sem Problemas:**
+
+**1.2 - Verificação de Cadastro sem Problemas e preenchimento obrigatorio de todos os campos::**
 
 - Objetivo: Assegurar que todos os dados sejam enviados corretamente.
 - Passos: Acessar a página de cadastro e preencher o formulário.
 - Critério de Sucesso: Após o preenchimento correto, um alerta de confirmação de cadastro será exibido.
 
-**1.3 - Restrição de Acesso a Usuários Cadastrados:**
 
-- Objetivo: Garantir que apenas usuários cadastrados tenham acesso à plataforma.
+**1.3 - Prevenir duplicidade de informações Cadastrais:**
+
+- Objetivo: Prevenir a duplicidade de cadastros com o mesmo e-mail.
+- Passos: Acessar a página de cadastro e preencher o formulário com informações já cadastradas.
+- Critério de Sucesso: Se o e-mail já estiver cadastrado, um alerta será emitido ao usuário, caso for cadastrado pela primeira vez será redirecionado para a pagina de Login.
+
+
+**1.4 - Restrição de Acesso a Usuários Cadastrados ao realizar Login:**
+
+- Objetivo: Garantir que apenas usuários cadastrados tenham acesso à plataforma ao realizar o Login.
 - Passos: Tentar acessar a plataforma com um usuário não cadastrado.
 - Critério de Sucesso: Se o usuário não estiver cadastrado, o acesso será negado pelo sistema.
 
-**1.3 - Testes de interações com o usuário:**
+
+#### Plano de teste 1.5 - Alteração de senha de acesso ao sistema:
+
+- Objetivo: Permitir aos usuários cadastrados atualizar a senha caso esquecam a senha de Login.
+- Passos: Tentar realizar o cadastro de uma nova senha para acessar a pagina de Login.
+- Critério de Sucesso: Se o usuário não estiver cadastrado, o acesso será negado pelo sistema.
+
+
+**1.6 - Testes de interações com o usuário:**
 
 - Objetivo: Garantir que o usuário tenha a experiencia de intração com o software ao utiliza-lo:
 - Passos: Tentar acessar a plataforma e navegar entre as telas.
 - Critério de Sucesso: O software deverá realizar interações atraves de animações e alertas.
+
+
 
 ### 2 - Funcionalidades Estoque
 
@@ -188,24 +207,26 @@ Na tela de Clientes, foi desenvolvido um teste para garantir que tudo esteja fun
 
 ### Funcionalidade de Cadastro/Login
 
-#### Plano de teste 1.1 - Autenticação de Cadastro de E-mail na Plataforma: 
+#### Plano de teste 1.1 - Cadastro de infomações para acesso a Plataforma: 
 
-https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101743181/4e69efb7-568e-40d6-900b-852adadcac92
 
 
 #### Plano de teste 1.2 - Verificação de Cadastro sem Problemas e preenchimento obrigatorio de todos os campos:
 
-https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101743181/89f9dd74-30b8-49c7-bd6c-48a06b8cea6e
 
 
-#### Plano de teste 1.3 - Restrição de Acesso a Usuários Cadastrados:
-
+#### Plano de teste 1.3 - Prevenir duplicidade de informações Cadastrais:
 
 
 
-#### Plano de teste 1.4 - Testes de interações com o usuário:
+#### Plano de teste 1.4 - Restrição de Acesso a Usuários já cadastrados ao realizar Login:
 
-https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101743181/69623a11-7853-4b4a-97a7-536ebe7763df
+
+#### Plano de teste 1.5 - Alteração de senha de acesso ao sistema:
+
+
+
+#### Plano de teste 1.6 - Testes de interações com o usuário:
 
 
 
