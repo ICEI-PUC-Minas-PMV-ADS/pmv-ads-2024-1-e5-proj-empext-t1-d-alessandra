@@ -83,11 +83,42 @@ Na tela de Financeiro, foi desenvolvido três testes para garantir que tudo este
   - Passos: Clicar na lixeira do item que deseja deletar e depois confimar.
   - Criterio: Caso de sucesso, irá aparecer uma mensagem dizendo que a operação foi executada com sucesso e o item não irá mais aparecer na lista.
      
-**3.3 - Atualização de dados da despesa** 
+**3.3 - Atualização de nome da despesa** 
 
-  - Objetivo: Verificar se o usuário consegue editar os dados da despesa.
-  - Passos: Acessar os tres pontos na frente do item que deseja, acessar a opção para editar o campo que deseja, preencher e salvar.
+  - Objetivo: Verificar se o usuário consegue editar o nome/descrição da despesa.
+  - Passos: Acessar os tres pontos na frente do item que deseja, acessar a opção para editar o nome da despesa, preencher e salvar.
   - Criterio: Caso de sucesso,irá aparecer uma mensagem de confirmação e o campo na lista será atualizado.
+
+**3.4 - Atualização de tipo de despesa** 
+
+  - Objetivo: Verificar se o usuário consegue editar o tipo da despesa.
+  - Passos: Acessar os tres pontos na frente do item que deseja, acessar a opção para editar o tipo da despesa, selecionar e salvar.
+  - Criterio: Caso de sucesso,irá aparecer uma mensagem de confirmação e o campo na lista será atualizado.    
+
+**3.5 - Atualização de valor da despesa** 
+
+  - Objetivo: Verificar se o usuário consegue editar o valor da despesa.
+  - Passos: Acessar os tres pontos na frente do item que deseja, acessar a opção para editar o valor da despesa, preencher e salvar.
+  - Criterio: Caso de sucesso,irá aparecer uma mensagem de confirmação e o campo na lista será atualizado.
+
+**3.6 - Atualização da data de pagamento da despesa** 
+
+  - Objetivo: Verificar se o usuário consegue editar a data de pagamento da despesa.
+  - Passos: Acessar os tres pontos na frente do item que deseja, acessar a opção para editar a data de pagamento da despesa, preencher e salvar.
+  - Criterio: Caso de sucesso,irá aparecer uma mensagem de confirmação e o campo na lista será atualizado.
+
+**3.7 - Atualização de data de vencimento da despesa** 
+
+  - Objetivo: Verificar se o usuário consegue editar a data de vencimento da despesa.
+  - Passos: Acessar os tres pontos na frente do item que deseja, acessar a opção para editar a data de vencimento da despesa, preencher e salvar.
+  - Criterio: Caso de sucesso,irá aparecer uma mensagem de confirmação e o campo na lista será atualizado.
+
+**3.8 - Filtragem por data da tela Financeiro** 
+
+  - Objetivo: Verificar se a lista e os cards de valores atualizam corretamente conforme o filtro selecionado pelo cliente.
+  - Passos: Selecionar o dia, mês e ano ou algum deles, e clicar em filtrar.
+  - Criterio: Caso de sucesso, os cards superiores e a lista de valores irão atualizar corretamente.
+
 
 ### 4 - Clientes inadiplentes
 
@@ -214,6 +245,30 @@ https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-ale
 #### Plano de teste 03.1 - Exclusão de despesas
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/797f2f6c-be4c-47f6-af80-5f4a173bdddc
+
+#### Plano de teste 03.2 - Edição de nome da despesa
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/c136aeb5-29f4-4da1-a9f2-a8a340aa12ee
+
+#### Plano de teste 03.3 - Edição de tipo da despesa
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/2ad0fc90-2ab3-4668-8b94-9da8efe66f92
+
+#### Plano de teste 03.4 - Edição de valor da despesa
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/df0ba789-0c88-4365-bcbe-97dec2687bb9
+
+#### Plano de teste 03.5 - Edição de data de pagamento da despesa
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/a03f3172-68ab-443d-b9ce-9bbd92a927d1
+
+#### Plano de teste 03.6 - Edição de data de vencimento da despesa
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/95931ea0-a9ea-4763-8c4a-f5e7f6afde44
+
+#### Plano de teste 03.7 - Filtragem por data
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/e694847b-3e59-49d1-9ede-16125849b4ce
 
 ### 4 - Clientes inadiplentes
 
