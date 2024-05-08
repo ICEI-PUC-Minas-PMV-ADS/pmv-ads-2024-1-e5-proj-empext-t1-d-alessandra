@@ -32,14 +32,14 @@ Para a tela de Login e Cadastro, desenvolvemos quatro tipos de testes para garan
 - Critério de Sucesso: Se o usuário não estiver cadastrado, o acesso será negado pelo sistema.
 
 
-#### Plano de teste 1.5 - Alteração de senha de acesso ao sistema:
+**1.5 - Alteração de senha de acesso ao sistema:**
 
 - Objetivo: Permitir aos usuários cadastrados atualizar a senha caso esquecam a senha de Login.
 - Passos: Tentar realizar o cadastro de uma nova senha para acessar a pagina de Login.
 - Critério de Sucesso: Se o usuário não estiver cadastrado, o acesso será negado pelo sistema.
 
 
-#### Plano de teste 1.6 - Testes de interações com o usuário:
+**1.6 - Testes de interações com o usuário:**
 
 - Objetivo: Garantir que o usuário tenha a experiencia de intração com o software ao utiliza-lo:
 - Passos: Tentar acessar a plataforma e navegar entre as telas.
