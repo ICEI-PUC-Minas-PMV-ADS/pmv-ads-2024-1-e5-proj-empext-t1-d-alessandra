@@ -62,6 +62,21 @@ function Cliente(){
         }));
     };
 
+    const formatarTelefone = (telefone) => {
+        // Remove caracteres não numéricos
+        const numerosApenas = telefone.replace(/[^\d]/g, '');
+      
+        // Verifica se o número tem 11 dígitos, incluindo o DDD
+        if (numerosApenas.length === 11) {
+          return `(${numerosApenas.slice(0, 2)}) ${numerosApenas.slice(2, 7)}-${numerosApenas.slice(7)}`;
+        } else if (numerosApenas.length === 10) { // Verifica se o número tem 10 dígitos
+          return `(${numerosApenas.slice(0, 2)}) ${numerosApenas.slice(2, 6)}-${numerosApenas.slice(6)}`;
+        } else {
+          // Se não for possível formatar, retorna o número original
+          return telefone;
+        }
+      };
+
     const cadastrarCliente = () => {
         const headers ={"Content-Type":"application/json"}
 
@@ -205,7 +220,7 @@ function Cliente(){
                                     autoComplete="phone"
                                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     onChange={handleChange}
-                                    value={clienteData.telefone}
+                                    value={formatarTelefone(clienteData.telefone)}
                                 />
                             </div>
                         </div>
