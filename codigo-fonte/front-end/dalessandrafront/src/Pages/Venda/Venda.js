@@ -11,6 +11,7 @@ import { cpf, cnpj } from 'cpf-cnpj-validator';
 import AlertaSucesso from "../../Componentes/Alertas/AlertaSucesso";
 import AlertaErro from "../../Componentes/Alertas/AlertaErro";
 import { Dropdown } from 'primereact/dropdown';
+import { formatarParaReal } from "../../Componentes/Utils/utils";
 
 function Venda() {
     const [codCliente, setCodCliente] = useState(null);
@@ -321,7 +322,7 @@ function Venda() {
                                         </td>
                                         <td className="p-4">
                                             <Typography variant="small" color="blue-gray" className="font-normal">
-                                                {"R$" + vlTotal ?? valorUnit}
+                                                {formatarParaReal(vlTotal) ?? formatarParaReal(valorUnit)}
                                             </Typography>
                                         </td>
                                         <td className="p-4 cursor-pointer" onClick={() => removerItem(index)}>
@@ -348,7 +349,7 @@ function Venda() {
                                     />
                             </div>
                         </div>
-                        <p className="sm:col-span-2 text-right text-2xl">Total Pedido: R$ {totalVenda} </p>
+                        <p className="sm:col-span-2 text-right text-2xl">Total Pedido: {formatarParaReal(totalVenda)} </p>
                     </div>
                     <br />
                     <button className="btn btn-success" onClick={cadastrarVenda}>Gravar</button>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ModalDetalhe from './modalDetalhe';
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { formatarParaReal } from '../../../Componentes/Utils/utils';
 
 
 function Tabela({ dados, filtro }) {
@@ -54,7 +55,7 @@ function Tabela({ dados, filtro }) {
                                     <td>{item.codCliente}</td>
                                     <td>{item.formaPagto}</td>
                                     <td>{ formatarDataHora(item.dtVenda)}</td>
-                                    <td>{'R$ ' + item.vlTotal}</td>
+                                    <td>{ formatarParaReal(item.vlTotal)}</td>
                                     <td className='w-10 h-10'>
                                         <MagnifyingGlassIcon onClick={() => handleClick(item.codVenda)} style={{ cursor: 'pointer' }} />
                                     </td>

@@ -7,8 +7,7 @@ import {
 } from "@material-tailwind/react";
 import Chart from "react-apexcharts";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
-import axios from "axios";
-import config from '../../../config/config';
+import { formatarParaReal } from '../../../Componentes/Utils/utils';
 
 const Graphic = (props) => {
   const [chartData, setChartData] = useState({
@@ -49,7 +48,6 @@ const Graphic = (props) => {
             fontWeight: 400,
           },
         },
-        // Inicialmente vazio
       },
       yaxis: {
         labels: {
@@ -86,7 +84,7 @@ const Graphic = (props) => {
 
   useEffect(() => {
     const vlTotalData = props.dadosVenda.map(item => item.vlTotal);
-    const codVendaData = props.dadosVenda.map(item => item.codVenda); // Extrair os códigos de venda
+    const codVendaData = props.dadosVenda.map(item => item.codVenda); 
     setChartData(prevState => ({
       ...prevState,
       series: [{ name: "Valor", data: vlTotalData }],
@@ -94,7 +92,7 @@ const Graphic = (props) => {
         ...prevState.options,
         xaxis: {
           ...prevState.options.xaxis,
-          categories: codVendaData, // Definir os códigos de venda como categorias
+          categories: codVendaData, 
         }
       }
     }));
