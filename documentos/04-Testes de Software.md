@@ -88,7 +88,7 @@ Para a tela de Estoque, desenvolvemos quatro tipos de testes para garantir que t
 
 ### 3 - Funcionalidades Financeiro
 
-Na tela de Financeiro, foi desenvolvido três testes para garantir que tudo esteja funcionando conforme o previsto.
+Na tela de Financeiro, foi desenvolvido oito testes para garantir que tudo esteja funcionando conforme o previsto.
 
 **3.1 - Registro de despesas** 
 
