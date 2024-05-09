@@ -16,7 +16,7 @@ import { formatarParaReal } from "../../Componentes/Utils/utils";
 function Venda() {
     const [codCliente, setCodCliente] = useState(null);
     const [produto, setProduto] = useState("");
-    const [cpfCnpj, setCpfCnpj] = useState("");
+    const [nomeCliente, setNomeCliente] = useState("");
     const [formaPagamento, setFormaPagamento] = useState("");
     const [itensVenda, setItensVenda] = useState([]);
     const [totalVenda, setTotalVenda] = useState(0);
@@ -62,7 +62,7 @@ function Venda() {
         try {
             const response = await axios.get(config.URL + 'cliente/' + codCliente);
             const clienteEncontrado = response.data;
-            setCpfCnpj(clienteEncontrado.cpfCnpj);
+            setNomeCliente(clienteEncontrado.nomeCliente);
         } catch (error) {
             console.log(error);
         }
@@ -124,7 +124,7 @@ function Venda() {
 
     const resetFields = () => {
         setCodCliente("");
-        setCpfCnpj("");
+        setNomeCliente("");
         setProduto("");
         setFormaPagamento("");
         setItensVenda([]);
@@ -198,8 +198,8 @@ function Venda() {
                             <div className="relative flex w-full max-w-[24rem] mt-2">
                                 <Input
                                     type="text"
-                                    label="CPF/CNPJ"
-                                    value={cpfCnpj ? (cpfCnpj.length <= 12 ? cpf.format(cpfCnpj) : cnpj.format(cpfCnpj)) : ''}
+                                    label="Nome Cliente"
+                                    value={nomeCliente ?? ''}
                                     className="pr-20"
                                     containerProps={{
                                         className: "min-w-0",

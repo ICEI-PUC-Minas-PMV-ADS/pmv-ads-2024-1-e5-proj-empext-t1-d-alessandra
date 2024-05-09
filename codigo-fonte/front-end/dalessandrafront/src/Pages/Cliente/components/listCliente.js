@@ -43,9 +43,6 @@ const ModalCliente = () => {
                                     <Typography variant="h6" color="blue-gray">
                                         {cliente.nomeCliente}
                                     </Typography>
-                                    <Typography variant="small" color="gray" className="font-normal">
-                                       {cpf.format(cliente.cpfCnpj)}
-                                    </Typography>
                                 </div>
                             </ListItem>
                         ))}
