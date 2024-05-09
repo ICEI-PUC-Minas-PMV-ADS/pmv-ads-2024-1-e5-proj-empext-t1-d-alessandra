@@ -5,6 +5,7 @@ import dayjs from 'dayjs';
 import { useState,useEffect } from 'react';
 import config from '../../../config/config';
 import "../../../Pages/estilo/estoque.css"
+import{formatarParaReal} from "../../Utils/utils"
 function ExibirCompras({id}){
   
    const [Todascompras,setTodasCompras]=useState([])
@@ -53,7 +54,7 @@ function ExibirCompras({id}){
                                             <td>{item.codVenda}</td>
                                             <td>{item.nomeProduto}</td>
                                             <td>{item.quantidade}</td>
-                                            <td>{"R$ "+item.vlTotal.toFixed(2)}</td>
+                                            <td>{formatarParaReal(item.vlTotal)}</td>
                                             <td>{ dayjs(item.dtVenda).format("DD/MM/YYYY")}</td>
                                         </tr>
                                          )

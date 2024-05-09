@@ -4,7 +4,7 @@ import { Column } from 'primereact/column';
 import { DataTable } from 'primereact/datatable';
 import SubMenuEstoque from '../../SubMenu/subMenuEstoque';
 import ModalExcluir from "../../Modal/ModiasEstoque/modalExcluir";
-
+import{formatarParaReal} from "../../Utils/utils"
 
 function Tabela({dados,filtro}){
 
@@ -17,9 +17,9 @@ function Tabela({dados,filtro}){
             <Column field='tamanho' header='Tamanho'/>
             <Column field='tipo' header='Tipo'/>
             <Column field='qtdAtual' header='Qtd'/>
-            <Column field='valorComprado' header='Valor de compra'body={(rowData)=>(<span>R$ {rowData.valorComprado}</span>)}/>
-            <Column field='valorVenda' header='Valor de venda'body={(rowData)=>(<span>R$ {rowData.valorVenda}</span>)}/>
-            <Column field='valorTotalEmEstoque' header='Valor de estoque'body={(rowData)=>(<span>R$ {rowData.valorTotalEmEstoque}</span>)}/>        
+            <Column field='valorComprado' header='Valor de compra'body={(rowData)=>(<span>{formatarParaReal(rowData.valorComprado) }</span>)}/>
+            <Column field='valorVenda' header='Valor de venda'body={(rowData)=>(<span>{formatarParaReal(rowData.valorVenda)}</span>)}/>
+            <Column field='valorTotalEmEstoque' header='Valor de estoque'body={(rowData)=>(<span>{formatarParaReal(rowData.valorTotalEmEstoque)}</span>)}/>        
             <Column field="status" header="Status"
                 body={(rowData) => {
                     if (rowData.status === 'bom' ||rowData.status === 'Bom' ) {

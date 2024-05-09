@@ -11,6 +11,7 @@ import LogoInvetario from "../../img/warehouse.png";
 import Tabela from "../../Componentes/Tabela/TabelaEstoque/Tabela";
 import Filtro from "../../Componentes/Tabela/TabelaEstoque/Filtro";
 import ModalAdicionar from "../../Componentes/Modal/ModiasEstoque/modalAdcionar";
+import{formatarParaReal} from"../../Componentes/Utils/utils"; 
 
 function Estoque(){
 
@@ -119,7 +120,7 @@ function Estoque(){
             </section>
             <section className="container mx-auto p-4 alinhamentoCards">
                 <Card title="Total de Itens: " textoExibir={quantidadeEstoque}/>
-                <Card title="Valor total do estoque:" textoExibir={"R$ "+valorEstoque.toFixed(2)}/>
+                <Card title="Valor total do estoque:" textoExibir={formatarParaReal(valorEstoque)}/>
             </section>
             <br></br>
             <br></br>

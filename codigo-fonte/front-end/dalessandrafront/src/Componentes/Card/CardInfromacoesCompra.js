@@ -1,6 +1,7 @@
 
-import ModalTodasCompras from "../Modal/ModaisHistorico/ModalTodasCompras"
 import dayjs from 'dayjs';
+import ModalTodasCompras from "../Modal/ModaisHistorico/ModalTodasCompras"
+import {formatarParaReal} from "../Utils/utils"
 function CardInfromacoesCompra(props) {
     return (
       <div className="card w-46 bg-base-100 shadow-xl">
@@ -38,7 +39,7 @@ function CardInfromacoesCompra(props) {
                                             <td>{item.codVenda}</td>
                                             <td>{item.nomeProduto}</td>
                                             <td>{item.quantidade}</td>
-                                            <td>{"R$ "+item.vlTotal.toFixed(2)}</td>
+                                            <td>{formatarParaReal(item.vlTotal)}</td>
                                             <td>{ dayjs(item.dtVenda).format("DD/MM/YYYY")}</td>
                                             </tr>
                                         )
@@ -80,7 +81,7 @@ function CardInfromacoesCompra(props) {
                                         <td>{item.codVenda}</td>
                                         <td>{item.nomeProduto}</td>
                                         <td>{item.quantidade}</td>
-                                        <td>{"R$ "+item.vlTotal.toFixed(2)}</td>
+                                        <td>{formatarParaReal(item.vlTotal)}</td>
                                         <td>{ dayjs(item.dtVenda).format("DD/MM/YYYY")}</td>
                                         </tr>
                                     )))

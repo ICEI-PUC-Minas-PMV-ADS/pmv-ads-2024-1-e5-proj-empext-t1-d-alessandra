@@ -6,6 +6,7 @@ import "../../../Pages/estilo/estoque.css"
 import config from "../../../config/config";
 import SubMenuDevedor from '../../SubMenu/subMenuDevedor';
 import CardAlertaItemNaoEncontrado from '../../Card/CardAlertaItemNaoEncontrado'
+import{formatarParaReal} from "../../Utils/utils"
 function TabelaDevedores({ dados,filtroCodVenda, filtroNome, filtroDataVenda }){
     
     const filtrarDados = (item) => {
@@ -48,7 +49,7 @@ function TabelaDevedores({ dados,filtroCodVenda, filtroNome, filtroDataVenda }){
                                 <td>{dayjs(dayjs(item.dtVenda).add(config.PERIODOCOBRANCA,"day")).diff(dayjs(new Date()),'day')}</td>
                                 <td>{item.formaPagto}</td>
                                 <td>{item.codVenda}</td>
-                                <td>{'R$ '+item.vlTotal.toFixed(2)}</td>
+                                <td>{formatarParaReal(item.vlTotal)}</td>
                                 <td>
                                     {diasRestantes >= 20 && (<Tag severity="success" value={"Dentro do prazo"}></Tag>)}
                                     {diasRestantes >= 5 && diasRestantes <= 19 && (<Tag severity="warning" value={"Prazo quase acabando"}></Tag>)}
