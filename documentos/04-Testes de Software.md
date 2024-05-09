@@ -2,7 +2,7 @@
 
  ### 1 - Funcionalidades Login/Cadastro
   
-Para a tela de Login e Cadastro, desenvolvemos quatro tipos de testes para garantir que tudo esteja funcionando conforme o previsto.
+Para a tela de Login e Cadastro, desenvolvemos alguns dos diversos tipos de testes para garantir que tudo esteja funcionando conforme o previsto.
 
 **1.1 - Cadastro de infomações para acesso a Plataforma:**
 
