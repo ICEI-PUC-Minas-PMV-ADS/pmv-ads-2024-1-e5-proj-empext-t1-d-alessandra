@@ -9,6 +9,7 @@ import Cash from "../../img/cash.png";
 import ModalIncluir from "../../Componentes/Modal/ModaisFinanças/modalncluirDespesa";
 import FiltrarData from "../../Componentes/Tabela/TabelaFinanceiro/FiltrarData";
 import Filtro from "../../Componentes/Tabela/TabelaEstoque/Filtro";
+import { formatarParaReal } from "../../Componentes/Utils/utils";
 
 function Financeiro() {
     const [financeiro, setFinanceiro] = useState([]);
@@ -120,9 +121,9 @@ function Financeiro() {
                     <h1 className="text-3xl font-bold">Financeiro</h1>
                 </section>
                 <section className="container mx-auto p-4 alinhamentoCards">
-                    <Card title="Valor Vendido: " textoExibir={"R$ " + (valorTotalVendasFiltradas).toFixed(2)} />
-                    <Card title="Valor Despesas:" textoExibir={"R$ " + (valorTotalDespesasFiltradas).toFixed(2)} />
-                    <Card title="Balanço Total:" textoExibir={"R$ " + (valorTotalVendasFiltradas - valorTotalDespesasFiltradas).toFixed(2)} />
+                    <Card title="Valor Vendido: " textoExibir={formatarParaReal(valorTotalVendasFiltradas)} />
+                    <Card title="Valor Despesas:" textoExibir={formatarParaReal(valorTotalDespesasFiltradas)} />
+                    <Card title="Balanço Total:" textoExibir={formatarParaReal(valorTotalVendasFiltradas - valorTotalDespesasFiltradas)} />
                 </section>
                 <br />
                 <br />

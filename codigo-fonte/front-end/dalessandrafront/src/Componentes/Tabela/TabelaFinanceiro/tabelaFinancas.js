@@ -1,6 +1,7 @@
 import React from 'react';
 import ModalExcluirFin from "../../Modal/ModaisFinanças/modalExcluirFin";
 import SubMenuFinanceiro from '../../SubMenu/subMenuFinanceiro';
+import { formatarParaReal } from '../../Utils/utils';
 
 function TabelaFinancas({ dados, filtroData }) {
     const filtrarDados = (item) => {
@@ -34,7 +35,7 @@ function TabelaFinancas({ dados, filtroData }) {
                         <td>{item.idDespesa}</td>
                         <td>{item.tipoDespesa}</td>
                         <td>{item.nomeDespesa}</td>
-                        <td>{'R$ ' + item.valorDespesa}</td>
+                        <td>{formatarParaReal(item.valorDespesa)}</td>
                         <td>{item.dataDespesa}</td>
                         <td>{item.dataVencimento}</td>
                         <td><ModalExcluirFin id={item.idDespesa} /></td>
