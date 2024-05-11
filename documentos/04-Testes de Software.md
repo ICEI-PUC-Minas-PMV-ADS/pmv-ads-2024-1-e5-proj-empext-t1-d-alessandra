@@ -347,3 +347,25 @@ https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-ale
 #### Plano de teste 8.1 - Apresentação de Relatório Venda
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/85502110/7dec3064-52a0-4339-8b05-473d1cab79b9
+
+
+# Teste por Pares
+
+## Evidencias de teste da tela financeiro - Executor do teste: Vitor Hugo
+
+### 3.1 - Registro de despesas
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/40009988/dd4793e5-b1b5-4c69-8410-937458fcac3c
+
+### 3.2 - Exclusão de despesas
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/40009988/7b1bf4fa-9da6-4b70-848b-7fb8182b9153
+
+
+### 3.3 - Atualização do nome da despesa, tipo de despesa, valor da despesa, data de pagamento da despesa, data de vencimento da despesa
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/40009988/f800fb0e-4aee-4a3f-8cc2-145ec895b543
+
+### 3.4 - Filtragem por data da tela Financeiro
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/40009988/05e0168e-6aec-458c-8355-b9a28ec2681f
