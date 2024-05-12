@@ -351,6 +351,25 @@ https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-ale
 
 # Teste por Pares
 
+## Evidencias de teste da tela estoque - Executor do teste: Matheus Ferreira
+
+### 2.1 - Registro de itens no estoque
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/058197d9-712e-41c9-bfb4-a350e645d225
+
+### 2.2 - Exclusão de itens no estoque
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/0c15c623-1cab-450f-bced-fc93510c5d68
+
+### 2.3 - Atualização do valor de venda, valor de compra e quantidade em estoque
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/ac52fe39-94f6-4d2c-b465-cc4de9d3a32b
+
+### 2.4 - Verificar se quando e realizada a venda de um produto a quantidade no estoque e atualizada 
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/7a5f62ff-7a9e-4e87-9e4c-b8796018dc65
+
+
 ## Evidencias de teste da tela financeiro - Executor do teste: Vitor Hugo
 
 ### 3.1 - Registro de despesas
@@ -369,3 +388,30 @@ https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-ale
 ### 3.4 - Filtragem por data da tela Financeiro
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/40009988/05e0168e-6aec-458c-8355-b9a28ec2681f
+
+
+## Evidencias de teste da tela cliente devedor - Executor do teste: Matheus Ferreira
+
+### 4.1 - Filtro por cliente
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/73fe52a1-7099-4440-976c-c8bdefc15817
+
+### 4.2 - Baixa do cliente devedor
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/e09cde07-c73f-4373-b090-8163e64c64ed
+
+### 4.3 - Extrato dos clientes devedores
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/eb231e18-11f0-4fe0-9179-f68f643d4bd4
+
+
+## Evidencias de teste da tela histórico do cliente - Executor do teste: Matheus Ferreira
+
+### 5.1 - Listagem de todos os cliente e sinalização dos devedores
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/5e696017-c67a-46f4-b769-b6045addb262
+
+**5.2 - Exibir Historico
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/17664a12-0ea4-4c23-96c8-75fffc8773db
+
