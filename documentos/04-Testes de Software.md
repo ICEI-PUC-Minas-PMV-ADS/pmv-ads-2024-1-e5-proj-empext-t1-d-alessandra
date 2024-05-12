@@ -351,6 +351,28 @@ https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-ale
 
 # Teste por Pares
 
+## Evidencias de teste da tela Cadastro - Executor do teste: Matheus Sampaio
+
+#### Plano de teste 1.1 - Cadastro de infomações para acesso a Plataforma: 
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/85502110/2c487376-dccd-4a21-ba3a-e48ab3e99b20
+
+#### Plano de teste 1.2 - Verificação de Cadastro sem Problemas e preenchimento obrigatorio de todos os campos:
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/85502110/c2cae17c-a5d7-48bf-b9e2-df49bf687c97
+
+#### Plano de teste 1.3 - Prevenir duplicidade de informações Cadastrais:
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/85502110/66f09550-b23e-4a0b-a9e2-6f88cdad32fb
+
+Obs: Será alterado o erro apresentado em tela para algo parecido com "Já existe um cadastro realizado para este usuário"
+
+#### Plano de teste 1.4 - Alteração de senha de acesso ao sistema:
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/85502110/1f94f05a-9548-4116-9891-2b192efa9d51
+
+Obs: Será ajustado para apresentar mensagem ao alterar senha.
+
 ## Evidencias de teste da tela estoque - Executor do teste: Matheus Ferreira
 
 ### 2.1 - Registro de itens no estoque
