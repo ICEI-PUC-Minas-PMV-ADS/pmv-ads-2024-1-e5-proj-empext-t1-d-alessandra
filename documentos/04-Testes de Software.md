@@ -219,24 +219,34 @@ Na tela de Relatório Venda, foi desenvolvido um teste para garantir que tudo es
 
 #### Plano de teste 1.1 - Cadastro de infomações para acesso a Plataforma: 
 
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101743181/d191e4b1-efe8-4baa-ab2f-8d047347a90c
 
 
 #### Plano de teste 1.2 - Verificação de Cadastro sem Problemas e preenchimento obrigatorio de todos os campos:
 
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101743181/8c0f3a4d-b1bf-4725-83f5-e89c9f057b03
 
 
 #### Plano de teste 1.3 - Prevenir duplicidade de informações Cadastrais:
 
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101743181/93fc0e57-7ed1-4336-ac5c-376bebab00ee
 
 
-#### Plano de teste 1.4 - Restrição de Acesso a Usuários já cadastrados ao realizar Login:
+#### Plano de teste 1.4 - Restrição de Acesso a Usuários não cadastrados:
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101743181/ea22ce2a-5c08-4073-8ed4-b23b9009ddff
 
 
 #### Plano de teste 1.5 - Alteração de senha de acesso ao sistema:
 
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101743181/84c42eca-7215-4358-a841-08d05294246f
 
 
 #### Plano de teste 1.6 - Testes de interações com o usuário:
+
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101743181/20d61a47-90f0-4890-8c1b-79074d1bd4dd
+
 
 
 
