@@ -449,4 +449,8 @@ https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-ale
 
 ## Evidencias de teste da tela vendas - Executor do teste: Pedro Assis
 
-### 6.1 - Listagem de todos os cliente e sinalização dos devedores
+### 6.1 - Teste de funcionalidades e inclusão de vendas
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101743181/156ffe34-bbde-416c-9dd8-429f3551b50f
+
+obs.: Campo de nome cliente será ajustado 
