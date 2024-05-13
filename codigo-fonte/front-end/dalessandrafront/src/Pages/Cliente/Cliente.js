@@ -17,7 +17,7 @@ function Cliente(){
     const [alertaErro, setAlertaErro] = useState(false);
 
     const [clienteData, setClienteData] = useState({
-        codigo: "",
+        codigo: 0,
         nomeCliente: "",
         email: "",
         telefone: "",
@@ -29,7 +29,7 @@ function Cliente(){
     });
 
     const handleCodigoBlur = async (e) => {
-        const codigo = e.target.value;
+        const codigo = e;
         await buscarCliente(codigo);
     };
 
@@ -38,6 +38,7 @@ function Cliente(){
             const response = await axios.get(config.URL + 'cliente/' + codigo);
             const clienteEncontrado = response.data;
             setClienteData({
+                codigo: clienteEncontrado.codCliente,
                 nomeCliente: clienteEncontrado.nomeCliente,
                 email: clienteEncontrado.email,
                 telefone: clienteEncontrado.telefone,
@@ -126,6 +127,7 @@ function Cliente(){
 
     const resetFields = () => {
         setClienteData({
+            codCliente: "",
             nomeCliente: "",
             email: "",
             telefone: "",
@@ -157,7 +159,7 @@ function Cliente(){
                                 onClick={() => document.getElementById('modalListCliente').showModal()}>
                             Lista de Cliente
                         </button>
-                        <ModalCliente/>
+                        <ModalCliente onItemSelected={handleCodigoBlur}/>
                     </div>
                     <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                         <div className="sm:col-span-1">
@@ -170,8 +172,8 @@ function Cliente(){
                                     name="codigo"
                                     id="codigo"
                                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                    onBlur={handleCodigoBlur}
-                                    disabled={codigoDisabled}
+                                    disabled
+                                    value={clienteData.codCliente}
                                 />
                             </div>
                         </div>

@@ -10,9 +10,8 @@ import {
     Card,
     Typography,
 } from "@material-tailwind/react";
-import { cpf } from 'cpf-cnpj-validator'; 
 
-const ModalCliente = () => {
+const ModalCliente = ({ onItemSelected }) => {
     const [listaClientes, setListaClientes] = useState([]);
     useEffect(() => {
         const carregarClientes = async () => {
@@ -28,6 +27,10 @@ const ModalCliente = () => {
         carregarClientes();
     }, []);
 
+    const handleItemClick = (codCliente) => {
+        onItemSelected(codCliente);
+    }
+
     return (
         <dialog id="modalListCliente" className="modal modal-bottom sm:modal-middle">
             <div className="modal-box">
@@ -35,7 +38,7 @@ const ModalCliente = () => {
                 <Card className="w-full flex-col">
                     <List>
                         {listaClientes.map(cliente => (
-                            <ListItem key={cliente.id}>
+                            <ListItem key={cliente.id} onClick={() => handleItemClick(cliente.codCliente)}>
                                 <ListItemPrefix>
                                     {cliente.codCliente}
                                 </ListItemPrefix>
@@ -50,7 +53,7 @@ const ModalCliente = () => {
                 </Card>
                 <div className="modal-action">
                     <form method="dialog">
-                        <button className="btn">Close</button>
+                        <button className="btn">Fechar</button>
                     </form>
                 </div>
             </div>

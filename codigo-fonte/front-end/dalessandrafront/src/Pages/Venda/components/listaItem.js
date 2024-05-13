@@ -77,12 +77,12 @@ const ListaItem = ({ onItemSelected }) => {
                 />
                 <div className="modal-action">
                     <form method="dialog">
-                        <button className="btn">Close</button>
+                        <button className="btn">Fechar</button>
                     </form>
                 </div>
             </div>
         </dialog>
-    );
+    ); 
 }
 
 export default ListaItem;

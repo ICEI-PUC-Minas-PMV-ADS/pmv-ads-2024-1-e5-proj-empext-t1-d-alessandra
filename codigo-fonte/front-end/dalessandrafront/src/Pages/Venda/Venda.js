@@ -55,12 +55,17 @@ function Venda() {
         }
     };
 
-    const procuraCliente = async () => {
+    const selectCliente = async (codigo) => {
+        setCodCliente(codigo);
+        await procuraCliente(codigo);
+    };
+
+    const procuraCliente = async (codigo) => {
         if (codCliente === "") {
             return;
         }
         try {
-            const response = await axios.get(config.URL + 'cliente/' + codCliente);
+            const response = await axios.get(config.URL + 'cliente/' + codigo);
             const clienteEncontrado = response.data;
             setNomeCliente(clienteEncontrado.nomeCliente);
         } catch (error) {
@@ -175,7 +180,6 @@ function Venda() {
                                     type="number"
                                     label="Cliente"
                                     value={codCliente}
-                                    onBlur={procuraCliente}
                                     onChange={(e) => setCodCliente(e.target.value)}
                                     className="pr-20"
                                     containerProps={{
@@ -190,7 +194,7 @@ function Venda() {
                                 >
                                     Procurar
                                 </Button>
-                                <ModalCliente />
+                                <ModalCliente onItemSelected={selectCliente}/>
                             </div>
 
                         </div>
@@ -204,6 +208,7 @@ function Venda() {
                                     containerProps={{
                                         className: "min-w-0",
                                     }}
+                                    onChange={(e) => setNomeCliente(e.target.value)}
                                 />
                             </div>
                         </div>
