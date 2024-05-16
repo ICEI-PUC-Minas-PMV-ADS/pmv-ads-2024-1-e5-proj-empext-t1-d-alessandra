@@ -8,7 +8,6 @@ import Menu from "../../Componentes/Menu/Menu";
 import Cash from "../../img/cash.png";
 import ModalIncluir from "../../Componentes/Modal/ModaisFinanças/modalncluirDespesa";
 import FiltrarData from "../../Componentes/Tabela/TabelaFinanceiro/FiltrarData";
-import Filtro from "../../Componentes/Tabela/TabelaEstoque/Filtro";
 import { formatarParaReal } from "../../Componentes/Utils/utils";
 
 function Financeiro() {
@@ -17,19 +16,11 @@ function Financeiro() {
     const [valorVendas, setValorVendas] = useState(0);
     const [valorFinanceiro, setValorFinanceiro] = useState(0);
     const [valorTotalVendasFiltradas, setValorTotalVendasFiltradas] = useState(0);
-    /*const [filtro, setFiltro] = useState(0);*/
-    const [filtroData, setFiltroData] = useState({ dia: null, mes: null, ano: null });
+    const [filtroData, setFiltroData] = useState({ dataInicio: '', dataFim: '' });
 
     const handleFiltroDataChange = (filtroData) => {
         setFiltroData(filtroData);
     };
-
-
-    /*const handleFiltroChange = (filtro) => {
-        setFiltro(filtro);
-        obterFinanceiro(filtro)
-    };*/
-
 
     useEffect(() => {
         obterFinanceiro();
@@ -53,29 +44,34 @@ function Financeiro() {
         const headers = { "Content-Type": "application/json" };
         axios.get(config.URL + 'venda', { headers })
             .then((response) => {
-                console.log("Dados brutos de vendas:", response.data);
                 const vendasComDataFormatada = response.data.map(item => ({
                     ...item,
                     dtVenda: new Date(item.dtVenda).toLocaleDateString('pt-BR', { timeZone: 'UTC' })
                 }));
-                console.log("Dados de vendas com data formatada:", vendasComDataFormatada);
-                const vendasFiltradas = vendasComDataFormatada.filter(item => {
-                    if (!filtroData) return true;
-                    const dtVenda = item.dtVenda.split('/');
-                    return (
-                        (!filtroData.dia || filtroData.dia === dtVenda[0]) &&
-                        (!filtroData.mes || filtroData.mes === dtVenda[1]) &&
-                        (!filtroData.ano || filtroData.ano === dtVenda[2])
-                    );
-                });
-                console.log("Vendas filtradas:", vendasFiltradas);
-                setVenda(vendasFiltradas);
-                const totalVendas = vendasFiltradas.reduce((acc, curr) => acc + parseFloat(curr.vlTotal), 0);
-                setValorTotalVendasFiltradas(totalVendas);
+                const vendasSemAN = vendasComDataFormatada.filter(item => item.formaPagto !== "AN");
+                setVenda(vendasSemAN);
+                aplicarFiltroData(vendasSemAN);
             })
             .catch((error) => {
                 console.log(error);
             });
+    };
+
+    const aplicarFiltroData = (vendas) => {
+        const vendasFiltradas = vendas.filter(item => {
+            if (!filtroData.dataInicio && !filtroData.dataFim) return true;
+            const [dia, mes, ano] = item.dtVenda.split('/');
+            const dataVenda = new Date(`${ano}-${mes}-${dia}`);
+            const dataInicio = filtroData.dataInicio ? new Date(filtroData.dataInicio) : null;
+            const dataFim = filtroData.dataFim ? new Date(filtroData.dataFim) : null;
+            return (
+                (!dataInicio || dataVenda >= dataInicio) &&
+                (!dataFim || dataVenda <= dataFim)
+            );
+        });
+
+        const totalVendasFiltradas = vendasFiltradas.reduce((acc, curr) => acc + parseFloat(curr.vlTotal), 0);
+        setValorTotalVendasFiltradas(totalVendasFiltradas);
     };
 
     function obterValorTotal() {
@@ -93,23 +89,31 @@ function Financeiro() {
         const headers = { "Content-Type": "application/json" };
         axios.get(config.URL + 'venda/totalVendas', { headers })
             .then((response) => {
-                setValorVendas(response.data);
+                const totalVendas = response.data
+                    .filter(venda => venda.formaPagto !== "AN")
+                    .reduce((acc, curr) => acc + parseFloat(curr.vlTotal), 0);
+                setValorVendas(totalVendas);
             })
             .catch((error) => {
                 console.log(error)
             })
     }
 
-
     const valorTotalDespesasFiltradas = financeiro.filter(item => {
-        if (!filtroData) return true;
-        const dataDespesa = item.dataDespesa.split('/');
+        if (!filtroData.dataInicio && !filtroData.dataFim) return true;
+        const [dia, mes, ano] = item.dataDespesa.split('/');
+        const dataDespesa = new Date(`${ano}-${mes}-${dia}`);
+        const dataInicio = filtroData.dataInicio ? new Date(filtroData.dataInicio) : null;
+        const dataFim = filtroData.dataFim ? new Date(filtroData.dataFim) : null;
         return (
-            (!filtroData.dia || filtroData.dia === dataDespesa[0]) &&
-            (!filtroData.mes || filtroData.mes === dataDespesa[1]) &&
-            (!filtroData.ano || filtroData.ano === dataDespesa[2])
+            (!dataInicio || dataDespesa >= dataInicio) &&
+            (!dataFim || dataDespesa <= dataFim)
         );
     }).reduce((acc, curr) => acc + parseFloat(curr.valorDespesa), 0);
+
+    useEffect(() => {
+        aplicarFiltroData(venda);
+    }, [filtroData, venda]);
 
     return (
         <main className="bg-base-100 drawer lg:drawer-open">
@@ -129,9 +133,6 @@ function Financeiro() {
                 <br />
                 <section className="container mx-auto p-4 shadow-xl alinhamentoMenu2">
                     <ModalIncluir />
-                    {/*<div class="flex space-x-4">
-                        <Filtro onFiltroChange={handleFiltroChange} />
-                    </div>*/}
                     <div className="flex space-x-4">
                         <FiltrarData onFiltrarDataChange={handleFiltroDataChange} />
                     </div>

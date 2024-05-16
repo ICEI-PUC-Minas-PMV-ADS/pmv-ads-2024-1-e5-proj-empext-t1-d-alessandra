@@ -1,24 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 function FiltrarData({ onFiltrarDataChange }) {
     const [filtroData, setFiltroData] = useState({
-        dia: '',
-        mes: '',
-        ano: ''
+        dataInicio: '',
+        dataFim: ''
     });
-
-    useEffect(() => {
-        const dataAtual = new Date();
-        const dia = dataAtual.getDate().toString().padStart(2, '0');
-        const mes = (dataAtual.getMonth() + 1).toString().padStart(2, '0');
-        const ano = dataAtual.getFullYear().toString();
-
-        setFiltroData({
-            dia,
-            mes,
-            ano
-        });
-    }, []);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -27,48 +13,39 @@ function FiltrarData({ onFiltrarDataChange }) {
             [name]: value
         }));
     };
+
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log("Valores do filtro ao submeter:", filtroData);
         onFiltrarDataChange(filtroData);
     };
 
-    const meses = [
-        { numero: '01', nome: 'Janeiro' },
-        { numero: '02', nome: 'Fevereiro' },
-        { numero: '03', nome: 'Março' },
-        { numero: '04', nome: 'Abril' },
-        { numero: '05', nome: 'Maio' },
-        { numero: '06', nome: 'Junho' },
-        { numero: '07', nome: 'Julho' },
-        { numero: '08', nome: 'Agosto' },
-        { numero: '09', nome: 'Setembro' },
-        { numero: '10', nome: 'Outubro' },
-        { numero: '11', nome: 'Novembro' },
-        { numero: '12', nome: 'Dezembro' }
-    ];
-
     return (
-        <form onSubmit={handleSubmit} className="flex space-x-4 items-center">
-            <select name="dia" value={filtroData.dia} onChange={handleInputChange} className="input input-bordered input-success w-full max-w-60">
-                <option value="">Dia</option>
-                {Array.from({ length: 31 }, (_, i) => i + 1).map(day => (
-                    <option key={day} value={day.toString().padStart(2, '0')}>{day.toString().padStart(2, '0')}</option>
-                ))}
-            </select>
-            <select name="mes" value={filtroData.mes} onChange={handleInputChange} className="input input-bordered input-success w-full max-w-60">
-                <option value="">Mês</option>
-                {meses.map(month => (
-                    <option key={month.numero} value={month.numero}>{month.nome}</option>
-                ))}
-            </select>
-            <select name="ano" value={filtroData.ano} onChange={handleInputChange} className="input input-bordered input-success w-full max-w-60">
-                <option value="">Ano</option>
-                {Array.from({ length: 10 }, (_, i) => new Date().getFullYear() - i).map(year => (
-                    <option key={year} value={year}>{year}</option>
-                ))}
-            </select>
-            <button type="submit" className="btn btn-success">Filtrar</button>
+        <form onSubmit={handleSubmit} className="flex space-x-5 items-center">
+            <div className="flex flex-col">
+                <label htmlFor="dataInicio" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Data Início</label>
+                <input
+                    type="date"
+                    name="dataInicio"
+                    value={filtroData.dataInicio}
+                    onChange={handleInputChange}
+                    className="input input-bordered input-success w-full max-w-60"
+                />
+            </div>
+            <span className="self-end mb-4">a</span>
+            <div className="flex flex-col">
+                <label htmlFor="dataFim" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Data Final</label>
+                <input
+                    type="date"
+                    name="dataFim"
+                    value={filtroData.dataFim}
+                    onChange={handleInputChange}
+                    className="input input-bordered input-success w-full max-w-60"
+                />
+            </div>
+            <div className="flex items-end">
+                <button type="submit" className="btn btn-success mt-6">Filtrar</button>
+            </div>
         </form>
     );
 }
