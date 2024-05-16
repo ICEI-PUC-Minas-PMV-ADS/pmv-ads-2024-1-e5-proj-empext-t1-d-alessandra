@@ -24,6 +24,10 @@ public class FinanceiroService {
         float totalDespesas = calcularTotalDespesas();
         financeiro.setValorTotalDespesas(totalDespesas);
 
+        if (financeiro.getDataDespesa() == null) {
+            financeiro.setDataDespesa(null);
+        }
+
         if (financeiro.getDataVencimento() == null) {
             financeiro.setDataVencimento(null);
         }
