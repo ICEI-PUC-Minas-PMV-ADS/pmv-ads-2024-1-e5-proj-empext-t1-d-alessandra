@@ -2,15 +2,17 @@ package back.dalessandra.service.cadastro;
 
 import back.dalessandra.Model.Cadastro;
 import back.dalessandra.repository.cadastro.CadastroRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class CadastroService {
-    @Autowired
-    private CadastroRepository cadastroRepository;
+
+    private final CadastroRepository cadastroRepository;
 
     public Cadastro cadastrarCadastro(Cadastro cadastro) {
         return cadastroRepository.save(cadastro);
