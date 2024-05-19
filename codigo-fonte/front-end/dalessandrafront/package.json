@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^13.5.0",
     "apexcharts": "^3.48.0",
     "axios": "^1.6.8",
+    "chart.js": "^4.4.3",
     "cpf-cnpj-validator": "^1.0.3",
     "dayjs": "^1.11.10",
     "primeicons": "^7.0.0",

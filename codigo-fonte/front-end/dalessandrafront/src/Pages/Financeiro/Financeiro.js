@@ -8,6 +8,7 @@ import Menu from "../../Componentes/Menu/Menu";
 import Cash from "../../img/cash.png";
 import ModalIncluir from "../../Componentes/Modal/ModaisFinanças/modalncluirDespesa";
 import FiltrarData from "../../Componentes/Tabela/TabelaFinanceiro/FiltrarData";
+import GraficoBarraEmpilhada from "../../Componentes/Grafico/graficoBarraEmpilhada";
 import { formatarParaReal } from "../../Componentes/Utils/utils";
 
 function Financeiro() {
@@ -17,7 +18,8 @@ function Financeiro() {
     const [valorFinanceiro, setValorFinanceiro] = useState(0);
     const [valorTotalVendasFiltradas, setValorTotalVendasFiltradas] = useState(0);
     const [filtroData, setFiltroData] = useState({ dataInicio: '', dataFim: '' });
-
+    const [analiseVendaSaida,setAnaliseVendaSaida]=useState([])
+    const [anoRelatorio,setAnoRelatorio]= useState(2024)
     const handleFiltroDataChange = (filtroData) => {
         setFiltroData(filtroData);
     };
@@ -27,7 +29,18 @@ function Financeiro() {
         obterVenda();
         obterValorTotal();
         obterValorVendas();
+        obterAnaliseSaidaeEntradas();
     }, [filtroData]);
+    const obterAnaliseSaidaeEntradas = () => {
+        const headers = { "Content-Type": "application/json" };
+        axios.get(config.URL + 'analiseFinanceiro/relatorioDeEntradasVsSaidas/'+anoRelatorio, { headers })
+            .then((response) => {
+                setAnaliseVendaSaida(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
 
     const obterFinanceiro = () => {
         const headers = { "Content-Type": "application/json" };
@@ -143,7 +156,13 @@ function Financeiro() {
                     <br />
                     <TabelaFinancas dados={financeiro} filtroData={filtroData} />
                 </section>
+            <section className="container mx-auto p-4 shadow-xl overflow-x-auto" >
+                    <h3 className="text-2xl font-bold corTexto">Relatorio Vendas X Despesas</h3>
+                    <br />
+                    <GraficoBarraEmpilhada dados={analiseVendaSaida} />
+            </section>
             </div>
+            
         </main>
     );
 }
