@@ -2,7 +2,7 @@ package back.dalessandra.service.estoque;
 
 import back.dalessandra.Model.Estoque;
 import back.dalessandra.repository.estoque.EstoqueRepository;
-import back.dalessandra.service.configuracao.configuracaoService;
+import back.dalessandra.service.configuracao.ConfiguracaoService;
 import back.dalessandra.service.envioEmail.EmailEnvio;
 import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
@@ -24,7 +24,7 @@ import java.util.TimerTask;
 public class EstoqueServiceEmail{
     EmailEnvio emaiEnvio =new EmailEnvio();
     @Autowired
-    configuracaoService confg;
+    ConfiguracaoService confg;
     @Autowired
     EstoqueRepository estoqueRepository;
 

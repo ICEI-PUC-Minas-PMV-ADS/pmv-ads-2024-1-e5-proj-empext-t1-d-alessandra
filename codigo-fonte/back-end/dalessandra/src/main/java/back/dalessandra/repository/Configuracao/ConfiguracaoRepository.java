@@ -3,12 +3,14 @@ package back.dalessandra.repository.Configuracao;
 import back.dalessandra.Model.Configuracoes;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.xml.crypto.Data;
 import java.util.Date;
 import java.util.List;
 
+@Repository
 public interface ConfiguracaoRepository extends JpaRepository<Configuracoes,Integer> {
     @Query("Select c.valorParametro from Configuracoes c where parametro ='emailsParaNotificao'")
     String recuperandoParametroEmail();
