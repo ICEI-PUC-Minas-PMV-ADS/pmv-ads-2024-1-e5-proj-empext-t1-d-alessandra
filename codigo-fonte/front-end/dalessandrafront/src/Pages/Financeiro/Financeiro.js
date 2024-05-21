@@ -1,5 +1,5 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "../../Pages/estilo/financeiro.css";
 import TabelaFinancas from "../../Componentes/Tabela/TabelaFinanceiro/tabelaFinancas";
 import config from "../../config/config";
@@ -10,7 +10,9 @@ import ModalIncluir from "../../Componentes/Modal/ModaisFinanças/modalncluirDes
 import FiltrarData from "../../Componentes/Tabela/TabelaFinanceiro/FiltrarData";
 import GraficoBarraEmpilhada from "../../Componentes/Grafico/graficoBarraEmpilhada";
 import { formatarParaReal } from "../../Componentes/Utils/utils";
-
+import TabelaAnaliseVendasVsSaidas from "../../Componentes/Tabela/TabelaFinanceiro/TabelaAnaliseVendasVsSaidas";
+import GraficoBarraHorizontal from "../../Componentes/Grafico/graficoBarraHosrizonta";
+import { MeterGroup } from 'primereact/metergroup';
 function Financeiro() {
     const [financeiro, setFinanceiro] = useState([]);
     const [venda, setVenda] = useState([]);
@@ -20,6 +22,7 @@ function Financeiro() {
     const [filtroData, setFiltroData] = useState({ dataInicio: '', dataFim: '' });
     const [analiseVendaSaida,setAnaliseVendaSaida]=useState([])
     const [anoRelatorio,setAnoRelatorio]= useState(2024)
+    const [relatorioMetodoVendidos,setMetodosVendidos]= useState([])
     const handleFiltroDataChange = (filtroData) => {
         setFiltroData(filtroData);
     };
@@ -30,11 +33,26 @@ function Financeiro() {
         obterValorTotal();
         obterValorVendas();
         obterAnaliseSaidaeEntradas();
+        obterRelatorioMetodosMaisVendindos()
     }, [filtroData]);
+
+    const obterRelatorioMetodosMaisVendindos = () => {
+        const headers = { "Content-Type": "application/json" };
+        axios.get(config.URL + 'analiseFinanceiro/relatorioMetodosPagamento/'+anoRelatorio, { headers })
+            .then((response) => {
+                setMetodosVendidos(response.data);
+                console.log("test"+response.data)
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
     const obterAnaliseSaidaeEntradas = () => {
         const headers = { "Content-Type": "application/json" };
         axios.get(config.URL + 'analiseFinanceiro/relatorioDeEntradasVsSaidas/'+anoRelatorio, { headers })
             .then((response) => {
+                console.log(response.data)
                 setAnaliseVendaSaida(response.data);
             })
             .catch((error) => {
@@ -160,6 +178,14 @@ function Financeiro() {
                     <h3 className="text-2xl font-bold corTexto">Relatorio Vendas X Despesas</h3>
                     <br />
                     <GraficoBarraEmpilhada dados={analiseVendaSaida} />
+                    <TabelaAnaliseVendasVsSaidas dados={analiseVendaSaida}/>
+                   
+            </section>
+            <section className="container mx-auto p-4 shadow-xl overflow-x-auto" >
+                    <h3 className="text-2xl font-bold corTexto">Analise de metodos de pagamentos mais utilizados</h3>
+                    <br />
+                    <GraficoBarraHorizontal dados={relatorioMetodoVendidos} />
+                                     
             </section>
             </div>
             

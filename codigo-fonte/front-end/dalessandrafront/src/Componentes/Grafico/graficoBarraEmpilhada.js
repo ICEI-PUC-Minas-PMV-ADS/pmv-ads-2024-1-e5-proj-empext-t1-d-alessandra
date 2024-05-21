@@ -1,27 +1,29 @@
 
 import { Chart } from 'primereact/chart';
+import dayjs from 'dayjs';
 function graficoBarraEmpilhada({dados}){
   const labels = dados.map(item => item.mesAno);
   const entradaData = dados.map(item => item.entrada);
   const saidaData = dados.map(item => item.saida);
-
+    console.log(dados)
   const chartData = {
     labels: labels,
     datasets: [
       {
         label: 'Entrada',
         data: entradaData,
-        borderColor: 'rgba(75, 192, 192, 1)',
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        borderColor: '#1e970bcf',
+        backgroundColor: '#1e970bcf',
         fill: false,
       },
       {
         label: 'Saída',
         data: saidaData,
-        borderColor: 'rgba(255, 99, 132, 1)',
-        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: '#c31414ad',
+        backgroundColor: '#c31414ad',
         fill: false,
       },
+      
     ],
   };
 

@@ -13,4 +13,5 @@ public class entradasVsSaidasDTO {
     private String mesAno;
     private Double entrada;
     private Double saida;
+    private Double balanco;
 }
