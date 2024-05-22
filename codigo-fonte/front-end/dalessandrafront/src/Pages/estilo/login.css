@@ -36,17 +36,16 @@
   max-width: 400px;
   margin: 10vh auto;
   padding: 20px;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.9);
   text-align: center;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   transform: scale(1);
-  transition: transform 0.5s ease;
+  transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
 .login-container.transitioning {
-  transition: transform 0.5s ease, opacity 0.5s ease;
   transform: scale(0.9);
   opacity: 0;
 }
@@ -70,7 +69,7 @@
   padding: 12px;
   border: 1px solid #ddd;
   border-radius: 5px;
-  width: 100%;
+  width: calc(100% - 24px);
   box-sizing: border-box;
 }
 
@@ -78,11 +77,17 @@
   background-color: #28a745;
   color: #fff;
   cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
 .login-container form button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
+}
+
+.login-container form button:hover {
+  background-color: #218838;
+  transform: scale(1.05);
 }
 
 .login-container form .error {
@@ -121,13 +126,14 @@
   padding: 12px;
   border: 1px solid #ddd;
   border-radius: 5px;
-  transition: border-color 0.3s;
+  transition: border-color 0.3s, box-shadow 0.3s;
   width: calc(100% - 24px);
   box-sizing: border-box;
 }
 
 .login-container input:focus {
   border-color: #28a745;
+  box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
   outline: none;
 }
 
@@ -139,7 +145,7 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.3s;
   width: 92%;
   box-sizing: border-box;
   font-size: 16px;
@@ -147,6 +153,7 @@
 
 .login-container button:hover {
   background-color: #218838;
+  transform: scale(1.05);
 }
 
 .login-container p {

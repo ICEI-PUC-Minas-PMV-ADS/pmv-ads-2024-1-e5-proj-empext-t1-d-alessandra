@@ -5,19 +5,19 @@ import "../estilo/login.css";
 import config from "../../config/config";
 import logo from "../../img/logo.png";
 import dayjs from "dayjs";
-import InputMask from "react-input-mask";
 import { Alert } from "@material-tailwind/react";
 
 function Login() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [resetType, setResetType] = useState(""); 
+  const [successMessage, setSuccessMessage] = useState("");
+  const [resetType, setResetType] = useState("");
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
     dateOfBirth: "",
-    cpfOrCnpj: "", 
+    cpfOrCnpj: "",
     newEmail: "",
     newPassword: ""
   });
@@ -32,29 +32,52 @@ function Login() {
 
   const handleResetPassword = (type) => {
     setResetType(type);
-    setError(""); 
+    setError("");
+    setSuccessMessage("");
   };
 
   const handleSubmit = () => {
-    console.log(credentials.cpfOrCnpj)
-    const cpfCnpjMascarado = maskCpfCnpj(credentials.cpfOrCnpj)
-    console.log(cpfCnpjMascarado)
+    setError("");
+    setSuccessMessage("");
+    if (!credentials.dateOfBirth || !credentials.cpfOrCnpj || !credentials.newPassword) {
+      setError("Todos os campos são obrigatórios.");
+      return;
+    }
+
+    const cpfCnpjMascarado = maskCpfCnpj(credentials.cpfOrCnpj);
+
     axios
       .put(
-        `${config.URL}login/updateSenha/${cpfCnpjMascarado}/${credentials.newPassword}?dataNascimento=${dayjs(credentials.dateOfBirth).format("DD/MM/YYYY")}`)
+        `${config.URL}login/updateSenha/${cpfCnpjMascarado}/${credentials.newPassword}?dataNascimento=${dayjs(credentials.dateOfBirth).format("DD/MM/YYYY")}`
+      )
       .then((response) => {
         setLoading(true);
         setTimeout(() => {
           setLoading(false);
+          setSuccessMessage("Senha redefinida com sucesso.");
+          setResetType("");
+          setCredentials({
+            email: "",
+            password: "",
+            dateOfBirth: "",
+            cpfOrCnpj: "",
+            newEmail: "",
+            newPassword: ""
+          });
         }, 1000);
-        navigate("/");
       })
       .catch((error) => {
         console.log(error);
+        setError("Erro ao redefinir senha. Por favor, tente novamente.");
       });
   };
 
   const validarLoging = () => {
+    if (!credentials.email || !credentials.password) {
+      setError("Todos os campos são obrigatórios.");
+      return;
+    }
+
     axios
       .get(
         `${config.URL}login/validar?email=${credentials.email}&senha=${credentials.password}`
@@ -66,32 +89,49 @@ function Login() {
             setLoading(false);
             navigate("/vendas");
           }, 1000);
+        } else {
+          setError("Credenciais inválidas. Por favor, tente novamente.");
         }
       })
       .catch((error) => {
         console.log(error);
+        setError("Erro ao validar login. Por favor, tente novamente.");
       });
   };
 
-  const maskCpfCnpj = (e) => {
-    const cleanedValue = e.replace(/\D/g, '');
-  
+  const maskCpfCnpj = (value) => {
+    const cleanedValue = value.replace(/\D/g, '');
+
     if (cleanedValue.length === 11) {
       return cleanedValue.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
     } else if (cleanedValue.length === 14) {
       return cleanedValue.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1.$2.$3/$4-$5');
-    } else if(cleanedValue.length===10 || cleanedValue.length>14) {
-      return alert("Cpf ou CNPJ Invalido");
+    } else {
+      return value; 
     }
+  };
 
+  const handleLinkClick = (path) => {
+    setLoading(true);
+    setTimeout(() => navigate(path), 500); 
   };
 
   return (
     <div>
       <div className={`background ${loading ? "dark" : ""}`}></div>
-      <div className="login-container">
+      <div className={`login-container ${loading ? "transitioning" : ""}`}>
         <img src={logo} alt="Logo da empresa" />
         <h2>Login</h2>
+        {error && (
+          <Alert color="red" className="mb-4">
+            {error}
+          </Alert>
+        )}
+        {successMessage && (
+          <Alert color="green" className="mb-4">
+            {successMessage}
+          </Alert>
+        )}
         {resetType ? (
           <div>
             <input
@@ -106,7 +146,7 @@ function Login() {
             <input
               type="text"
               name="cpfOrCnpj"
-              value={maskCpfCnpj(credentials.cpfOrCnpj)}
+              value={credentials.cpfOrCnpj}
               onChange={handleChange}
               placeholder="CPF ou CNPJ"
               required
@@ -119,7 +159,6 @@ function Login() {
               placeholder="Nova Senha"
               required
             />
-            {error && <div className="error">{error}</div>}
             <button type="submit" disabled={loading} onClick={handleSubmit}>
               {loading ? "Aguarde..." : `Redefinir ${resetType === "email" ? "E-mail" : "Senha"}`}
             </button>
@@ -147,7 +186,6 @@ function Login() {
               placeholder="Senha"
               required
             />
-            {error && <div className="error">{error}</div>}
             <button type="submit" disabled={loading} onClick={validarLoging}>
               {loading ? "Carregando..." : "Entrar"}
             </button>
@@ -161,7 +199,7 @@ function Login() {
               </Link>
             </p>
             <p>
-              Não tem cadastro? <Link to="/Cadastro" className="link-transition">Cadastre-se</Link>
+              Não tem cadastro? <Link to="#" onClick={() => handleLinkClick("/Cadastro")} className="link-transition">Cadastre-se</Link>
             </p>
           </div>
         )}
