@@ -4,8 +4,8 @@ import back.dalessandra.Model.Configuracoes;
 import back.dalessandra.repository.Configuracao.ConfiguracaoRepository;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -29,6 +29,7 @@ public class ConfiguracaoService {
 
     }
 
+    @Transactional
     public void setandoParametro(String parametro, String valor){
         Configuracoes config = new Configuracoes();
         config.setParametro(parametro);
@@ -48,7 +49,7 @@ public class ConfiguracaoService {
        return  configuracaoRepository.recuperandoUltimaModificacao();
     }
     public void setarParametro(int id,String valor){
-        Configuracoes config = configuracaoRepository.updateParametro(id);
+        Configuracoes config = configuracaoRepository.findById(id).orElse(null);
         config.setValorParametro(valor);
         configuracaoRepository.save(config);
 
