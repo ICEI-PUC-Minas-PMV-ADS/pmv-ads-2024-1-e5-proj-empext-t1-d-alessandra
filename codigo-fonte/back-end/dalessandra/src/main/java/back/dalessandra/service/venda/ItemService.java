@@ -6,6 +6,8 @@ import back.dalessandra.Model.filter.ItemFilter;
 import back.dalessandra.repository.venda.ItemRepository;
 import back.dalessandra.service.estoque.EstoqueServiceBd;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,8 +23,8 @@ public class ItemService {
         return itemRepository.findByCodVenda(codVenda);
     }
 
-    public List<ItemDto> findMaisVendidos(ItemFilter filter) {
-        return itemRepository.findMaisVendidos(filter);
+    public Page<ItemDto> findMaisVendidos(ItemFilter filter, Pageable pageable) {
+        return itemRepository.findMaisVendidos(filter, pageable);
     }
 
     public List<Item> create(List<Item> items, Integer codigo) {

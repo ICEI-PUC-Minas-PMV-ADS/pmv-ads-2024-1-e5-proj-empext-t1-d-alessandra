@@ -4,6 +4,8 @@ import back.dalessandra.Model.Item;
 import back.dalessandra.Model.dto.ItemDto;
 import back.dalessandra.Model.filter.ItemFilter;
 import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -34,5 +36,5 @@ public interface ItemRepository extends JpaRepository<Item,Integer>{
             "INNER JOIN Estoque e ON i.codProduto = e.codProduto " +
             "GROUP BY i.codProduto, i.descProduto, e.tipo, e.qtdAtual " +
             "ORDER BY SUM(i.quantidade) DESC")
-    List<ItemDto> findMaisVendidos(ItemFilter filter);
+    Page<ItemDto> findMaisVendidos(ItemFilter filter, Pageable pageable);
 }
