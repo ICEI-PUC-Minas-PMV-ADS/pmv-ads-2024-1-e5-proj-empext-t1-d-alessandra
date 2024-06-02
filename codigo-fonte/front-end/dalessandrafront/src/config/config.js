@@ -35,9 +35,9 @@ const config = {
         'accept': '*/*', 
         'Content-Type': 'application/json'
     },
-    PERIODOCOBRANCA: await recuperarPeriodoDeCobranca(),
-    PERIODOENVIOEMAIL: await recuperarPeriodoDeEnvioEmail(),
-    EMAIL: await recuperandoEmail()
+//    PERIODOCOBRANCA: await recuperarPeriodoDeCobranca(),
+  //  PERIODOENVIOEMAIL: await recuperarPeriodoDeEnvioEmail(),
+   // EMAIL: await recuperandoEmail()
 }
 
 export default config;

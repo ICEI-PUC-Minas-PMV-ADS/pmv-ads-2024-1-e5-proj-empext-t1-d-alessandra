@@ -2,6 +2,25 @@
   "name": "dalessandrafront",
   "version": "0.1.0",
   "private": true,
+  "main": "src/electron.js",
+  "homepage": "./",
+  "author": {
+    "name": "vitor",
+    "email": "dalessandra@gmail.com"
+  },
+  "description": "app final",
+  "build": {
+    "extends":null,
+    "appId": "com.dalessandrafront.app",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*",
+      "src/electron.js"
+    ],
+    "directories": {
+      "buildResources": "public"
+    }
+  },
   "dependencies": {
     "@heroicons/react": "^2.1.3",
     "@material-tailwind/react": "^2.1.9",
@@ -24,10 +43,13 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "NODE_ENV=development react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "electron-start": "concurrently \"npm:start\" \"wait-on http://localhost:3000 && electron .\"",
+    "electron-pack": "npm run build && npx electron .",
+    "dist": "react-scripts build && electron-builder"
   },
   "eslintConfig": {
     "extends": [
@@ -48,7 +70,12 @@
     ]
   },
   "devDependencies": {
+    "concurrently": "^8.2.2",
     "daisyui": "^4.7.3",
-    "tailwindcss": "^3.4.1"
+    "electron-builder": "^24.13.3",
+    "electron-is-dev": "^3.0.1",
+    "tailwindcss": "^3.4.1",
+    "wait-on": "^7.2.0",
+    "electron": "^30.0.9"
   }
 }
