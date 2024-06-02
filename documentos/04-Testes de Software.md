@@ -1,67 +1,102 @@
 # Planos de Testes de Software
 
- ### 1 - Funcionalidades Login/Cadastro
+## Casos de Testes
+
+ ### 1 -  Login e Cadastro
   
-Para a tela de Login e Cadastro, desenvolvemos alguns dos diversos tipos de testes para garantir que tudo esteja funcionando conforme o previsto.
+Para a tela de Login e Cadastro, desenvolvemos casos de testes de sucesso e insucesso para garantir que tudo esteja funcionando conforme o previsto.
 
 **1.1 - Cadastro de infomações para acesso a Plataforma:**
 
 - Objetivo: Cadastrar o usuário no banco de dados do software e prevenir a duplicidade de cadastros com o mesmo e-mail.
+  
 - Passos: Acessar a página de cadastro e preencher o formulário.
-- Critério de Sucesso: Caso for cadastrado pela primeira vez poderá ser redirecionado para a pagina de Login e acessar a plataforma.
+  
+- Critério de Sucesso: Caso seja realizado o cadastro pela primeira vez poderá ser redirecionado para a pagina de Login e acessar a plataforma.
+  
+- Critério de Insucesso: Caso houver falhas na validação, o cadastro não será efetuado e o usuário deverá ser informado sobre os erros específicos (por exemplo, e-mail inválido, campos vazios e as senha não se coincidem).
 
 
 **1.2 - Verificação de Cadastro sem Problemas e preenchimento obrigatorio de todos os campos::**
 
 - Objetivo: Assegurar que todos os dados sejam enviados corretamente.
+  
 - Passos: Acessar a página de cadastro e preencher o formulário.
+  
 - Critério de Sucesso: Após o preenchimento correto, um alerta de confirmação de cadastro será exibido.
+  
+- Critério de Insucesso: O sistema deve impedir o cadastro, exibindo mensagens de erro detalhadas para cada campo obrigatório não preenchido ou preenchido incorretamente.
 
 
 **1.3 - Prevenir duplicidade de informações Cadastrais:**
 
 - Objetivo: Prevenir a duplicidade de cadastros com o mesmo e-mail.
+
 - Passos: Acessar a página de cadastro e preencher o formulário com informações já cadastradas.
+
 - Critério de Sucesso: Se o e-mail já estiver cadastrado, um alerta será emitido ao usuário, caso for cadastrado pela primeira vez será redirecionado para a pagina de Login.
+
+- Critério de Insucesso: O sistema deve impedir o cadastro e exibir uma mensagem clara informando que o e-mail já está em uso.
 
 
 **1.4 - Restrição de Acesso a Usuários Cadastrados ao realizar Login:**
 
 - Objetivo: Garantir que apenas usuários cadastrados tenham acesso à plataforma ao realizar o Login.
-- Passos: Tentar acessar a plataforma com um usuário não cadastrado.
-- Critério de Sucesso: Se o usuário não estiver cadastrado, o acesso será negado pelo sistema.
+
+- Passos: Acessar a plataforma com um usuário cadastrado e não cadastrado.
+
+- Critério de Sucesso: Se o usuário estiver cadastrado, o acesso será permitido pelo sistema.
+
+- Critério de Insucesso: O sistema deve negar o acesso e exibir uma mensagem de erro informando que o usuário não está cadastrado.
 
 
 **1.5 - Alteração de senha de acesso ao sistema:**
 
-- Objetivo: Permitir aos usuários cadastrados atualizar a senha caso esquecam a senha de Login.
+- Objetivo: Permitir atualizar senha caso usuário esqueça e verificar falhas no processo de atualização de senha para usuários.
+
 - Passos: Tentar realizar o cadastro de uma nova senha para acessar a pagina de Login.
-- Critério de Sucesso: Se o usuário não estiver cadastrado, o acesso será negado pelo sistema.
+
+- Critério de Sucesso: Se o usuário estiver cadastrado, a senha será alterada pelo sistema.
+
+- Critério de Insucesso: O sistema deve negar a alteração de senha e exibir uma mensagem informando que o e-mail não está cadastrado.
 
 
 **1.6 - Testes de interações com o usuário:**
 
-- Objetivo: Garantir que o usuário tenha a experiencia de intração com o software ao utiliza-lo:
-- Passos: Tentar acessar a plataforma e navegar entre as telas.
-- Critério de Sucesso: O software deverá realizar interações atraves de animações e alertas.
+- Objetivo: Garantir que o usuário tenha a experiência de intração com o software:
+
+- Passos: Acessar a plataforma e navegar entre as telas.
+
+- Critério de Sucesso: O software deverá realizar interações através de animações e alertas.
+
+- Critério de Insucesso: Se o software não realizar as interações esperadas (como animações e alertas), nada será apresentado ao usuário. 
 
 
+### 2 - Estoque
 
-### 2 - Funcionalidades Estoque
-
-Para a tela de Estoque, desenvolvemos quatro tipos de testes para garantir que tudo esteja funcionando conforme o previsto.
+Para a tela de Estoque, desenvolvemos casos de testes de sucesso e insucesso para garantir que tudo esteja funcionando conforme o previsto.
 
 **2.1 - Registro de itens no estoque**
 
-  - Objetivo: Verificar se os itens que o usuário tenta cadastra estao sendo salvos de maneira correta.
-  - Passos: Aperta o botão novo registro preencher todos os dados e clicar em adicionar.
-  - Criterio: Caso de sucesso, iria aparecer uma mensagem confirmando o cadastro e ele ira aparecer na lista.
+- Objetivo: Verificar os itens que o usuário cadastrou estão sendo salvos de maneira correta.
+
+- Passos: Aperta o botão "novo registro", preencher o formulário com todos os dados e clicar em "adicionar".
+  
+- Critério de Sucesso: Aparecerá uma mensagem confirmando o cadastro e será apresentado os dados na lista.
+
+- Critério de Insucesso: O sistema deve exibir mensagens de erro para cada campo obrigatório não preenchido ou preenchido incorretamente e impedir o registro.
+
      
 **2.2 - Exclusão de registro** 
-  - Objetivo: Verificar se o item que o usuário deseja apagar esta sendo deletado de maneira correta.
-  - Passos: Clicar na lixeira do item que deseja deletar e depois confimar.
-  - Criterio: Caso de sucesso, iria aparecer uma mensagem dizendo que a operção foi executada com sucesso e o intem não vai mais aparecer na lista.
-     
+- Objetivo: Verificar se os itens que o usuário deseja apagar está sendo deletados.
+  
+- Passos: Clicar na lixeira do item que deseja deletar e depois confimar.
+  
+- Critério de Sucesso: Aparecerá uma mensagem dizendo que a operção foi executada com sucesso e o intem selecionado não aparecerá na lista.
+
+- Critério de Insucesso: O sistema deve exibir uma mensagem de erro se a exclusão não for possível e o item deve permanecer na lista.
+
+
 **2.3 - Atualização de quantidade de produto em estoque** 
   - Objetivo: Verificar se o usuário consegue adicionar mais quantidade de proddutos a um item.
   - Passos: Acessar os tres pontinho na frente do item que deseja, acessar a opção atualizar quantidade, preencher e salvar.
