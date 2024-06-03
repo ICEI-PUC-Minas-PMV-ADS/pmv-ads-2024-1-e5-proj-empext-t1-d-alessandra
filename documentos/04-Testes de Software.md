@@ -338,7 +338,7 @@ Na tela de Clientes, desenvolvemos casos de testes de sucesso e insucesso para g
   
 ### 8 - Funcionalidades Relatório Venda
 
-Na tela de Relatório Venda,desenvolvemos casos de testes de sucesso e insucesso para garantir que tudo esteja funcionando conforme o previsto.
+Na tela de Relatório Venda, desenvolvemos casos de testes de sucesso e insucesso para garantir que tudo esteja funcionando conforme o previsto.
 
 **8.1 - Apresentação de Relatório Venda**
 
