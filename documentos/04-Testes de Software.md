@@ -17,7 +17,7 @@ Para a tela de Login e Cadastro, desenvolvemos casos de testes de sucesso e insu
 - Critério de Insucesso: Caso houver falhas na validação, o cadastro não será efetuado e o usuário deverá ser informado sobre os erros específicos (por exemplo, e-mail inválido, campos vazios e as senha não se coincidem).
 
 
-**1.2 - Verificação de Cadastro sem Problemas e preenchimento obrigatorio de todos os campos::**
+**1.2 - Verificação de Cadastro sem Problemas e preenchimento obrigatorio de todos os campos:**
 
 - Objetivo: Assegurar que todos os dados sejam enviados corretamente.
   
@@ -90,163 +90,266 @@ Para a tela de Estoque, desenvolvemos casos de testes de sucesso e insucesso par
 **2.2 - Exclusão de registro** 
 - Objetivo: Verificar se os itens que o usuário deseja apagar está sendo deletados.
   
-- Passos: Clicar na lixeira do item que deseja deletar e depois confimar.
+- Passos: Clicar na "lixeira" do item que deseja deletar e depois "confimar".
   
-- Critério de Sucesso: Aparecerá uma mensagem dizendo que a operção foi executada com sucesso e o intem selecionado não aparecerá na lista.
+- Critério de Sucesso: Aparecerá uma mensagem dizendo que a operação foi executada com sucesso, e que o item selecionado não aparecerá na lista.
 
 - Critério de Insucesso: O sistema deve exibir uma mensagem de erro se a exclusão não for possível e o item deve permanecer na lista.
 
 
 **2.3 - Atualização de quantidade de produto em estoque** 
-  - Objetivo: Verificar se o usuário consegue adicionar mais quantidade de proddutos a um item.
-  - Passos: Acessar os tres pontinho na frente do item que deseja, acessar a opção atualizar quantidade, preencher e salvar.
-  - Criterio: Caso de sucesso,ira aparecer uma mensagem de confirmação e a quantidade na lista será atualizada.
+- Objetivo: Verificar se o usuário consegue adicionar mais quantidade de proddutos a um item.
+
+- Passos: Acessar os tres pontinho na frente do item que deseja, selecione "atualizar quantidade", preencher e salvar.
+
+- Critério de Sucesso: Deverá aparecer uma mensagem de confirmação, e a quantidade na lista será atualizada.
+
+- Critério de Insucesso: O sistema exibirá mensagens de erro e a quantidade não deve ser atualizada.
+
 
 **2.4 - Atualização de valor de venda**
 
-   - Objetivo: Verificar se o usuário consegue atlerar o preco de venda do produto em especifico.
-   - Passos: Acessar os três pontinhos do lado do intem que deseja e clicar na opção alterar o valor de venda.
-   - Criterio: Caso de sucesso, ira aparecer uma mensagem indicando que a opecao foi realizada com sucesso e na lista de estoque seu valor será atualizado.
-       
+- Objetivo: Verificar se o usuário consegue atlerar o preco de venda do produto em específico.
+
+- Passos: Acessar os três pontinhos do lado do intem que deseja e clicar na opção alterar o valor de venda.
+
+- Critério de Sucesso: Caso de sucesso, ira aparecer uma mensagem indicando que a opecao foi realizada com sucesso e na lista de estoque seu valor será atualizado.
+
+- Critério de Insucesso: O sistema deve exibir mensagens de erro e o valor de venda não deve ser atualizado.
+
+
 **2.5 - Atualização de valor comprado** 
 
-   - Objetivo: Verificar se o usuário consegue editar o valor que ele comprou o item
-   - Passos: Acessar os três pontinhos, ir na opção atualizar valor de compra, digitar o novo valor e mandar salvar 
-   - Criterio: Caso de sucesso se da quando aparece um alerta confirmando a alteração e o valor na lista estiver mudado
+- Objetivo: Verificar edição do valor de compra de um item.
+
+- Passos: Acessar os três pontos, selecione "atualizar valor de compra", preencha com um valor  e salvar.
+
+- Critério de Sucesso: Aparecerá um alerta confirmando a alteração do valor e o mesmo será atualizado.
+
+- Critério de Insucesso: O sistema deve exibir um alerta de erro e o valor de compra não deve ser atualizado.
+
 
 **2.6 - Verificar se quando e realizada a venda de um produto a quantidade no estoque e atualizada** 
 
-   - Objetivo: Verificar se ocorre a baixa do item no estoque quando e realozada uma cenda do mesmo
-   - Passos: Acessar a tela de vendas, registra uma venda com qualquer produto do estoque, voltar na tela de estoque e verificar se a quantidade modificou
-   - Criterio: Caso de sucesso se da quando a quantidade de poduto for menor que a inicial
+- Objetivo: Verificar se ocorre a baixa do item no estoque quando e realizado uma cenda do mesmo
+
+- Passos: Acesse a tela de vendas, registrar uma venda com um produto do estoque, voltar na tela de estoque e verificar se a quantidade foi atualizada.
+
+- Critério de Sucesso: A quantidade de poduto selecionado será atualizado e uma alerta de sucesso deve ser exibida.
+
+- Critério de Insucesso: A quantidade do produto no estoque não deve ser alterada e uma mensagem de erro deve ser exibida.
 
 
 ### 3 - Funcionalidades Financeiro
 
-Na tela de Financeiro, foi desenvolvido oito testes para garantir que tudo esteja funcionando conforme o previsto.
+Na tela de Financeiro, desenvolvemos casos de testes de sucesso e insucesso para garantir que tudo esteja funcionando conforme o previsto.
 
 **3.1 - Registro de despesas** 
 
-  - Objetivo: Verificar se as despesas cadastradas pelo usuário estão sendo salvas de maneira correta.
-  - Passos: Seleciona o botão "novo registro" preencher todos os dados e clica em "adicionar".
-  - Criterio: Caso de sucesso, iria aparecer uma mensagem confirmando o registro e ele irá aparecer na lista.
-     
+- Objetivo: Verificar se as despesas cadastradas estão sendo salvas de maneira correta.
+
+- Passos: Seleciona o botão "novo registro" preencher todos os dados e clica em "adicionar".
+
+- Critério de Sucesso: Deverá aparecer uma mensagem confirmando o registro e ele aparecerá na lista.
+
+- Critério de Insucesso: O sistema deve exibir mensagens de erro e a despesa não deve ser registrada.
+
+
 **3.2 - Exclusão de despesas** 
  
-  - Objetivo: Verificar se o item que o usuário deseja apagar esta sendo deletado de maneira correta.
-  - Passos: Clicar na lixeira do item que deseja deletar e depois confimar.
-  - Criterio: Caso de sucesso, irá aparecer uma mensagem dizendo que a operação foi executada com sucesso e o item não irá mais aparecer na lista.
-     
+- Objetivo: Verificar se o item que o usuário deseja apagar será excluido.
+
+- Passos: Clicar na lixeira do item que deseja deletar e depois confirmar a exclusão.
+
+- Critério de Sucesso: Deverá aparecer um alerta apresentado que a operação foi executada com sucesso e o item não irá mais aparecer na lista.
+
+- Critério de Insucesso: O sistema deve exibir uma mensagem de erro e a despesa deverá permanecer na lista.
+
+
 **3.3 - Atualização de nome da despesa** 
 
-  - Objetivo: Verificar se o usuário consegue editar o nome/descrição da despesa.
-  - Passos: Acessar os tres pontos na frente do item que deseja, acessar a opção para editar o nome da despesa, preencher e salvar.
-  - Criterio: Caso de sucesso,irá aparecer uma mensagem de confirmação e o campo na lista será atualizado.
+- Objetivo: Verificar se o usuário consegue editar o nome/descrição da despesa.
+
+- Passos: Acessar os tres pontos na frente do item que deseja, acessar a opção para editar o nome da despesa, preencher e salvar.
+
+- Critério de Sucesso: Caso de sucesso,irá aparecer uma mensagem de confirmação e o campo na lista será atualizado.
+
+- Critério de Insucesso: O sistema deve exibir mensagens de erro e o nome da despesa não deve ser atualizado.
+
 
 **3.4 - Atualização de tipo de despesa** 
 
-  - Objetivo: Verificar se o usuário consegue editar o tipo da despesa.
-  - Passos: Acessar os tres pontos na frente do item que deseja, acessar a opção para editar o tipo da despesa, selecionar e salvar.
-  - Criterio: Caso de sucesso,irá aparecer uma mensagem de confirmação e o campo na lista será atualizado.    
+- Objetivo: Verificar se o usuário consegue editar o tipo da despesa.
+
+- Passos: Acessar os tres pontos na frente do item, selecionar "editar o tipo de despesa", selecionar e salvar.
+
+- Critério de Sucesso: Caso de sucesso,irá aparecer uma mensagem de confirmação e o campo na lista será atualizado.    
+
+- Critério de Insucesso: O sistema deve exibir mensagens de erro e o tipo de despesa não deve ser atualizado.
+
 
 **3.5 - Atualização de valor da despesa** 
 
-  - Objetivo: Verificar se o usuário consegue editar o valor da despesa.
-  - Passos: Acessar os tres pontos na frente do item que deseja, acessar a opção para editar o valor da despesa, preencher e salvar.
-  - Criterio: Caso de sucesso,irá aparecer uma mensagem de confirmação e o campo na lista será atualizado.
+- Objetivo: Verificar se o usuário consegue editar o valor da despesa.
+
+- Passos: Acessar os três pontos na frente do item, selecionar "editar o valor da despesa", preencher e salvar.
+
+- Critério de Sucesso: Caso de sucesso,irá aparecer uma mensagem de confirmação e o campo na lista será atualizado.
+
+- Critério de Insucesso: O sistema deve exibir mensagens de erro e o valor da despesa não deve ser atualizado.
+
 
 **3.6 - Atualização da data de pagamento da despesa** 
 
-  - Objetivo: Verificar se o usuário consegue editar a data de pagamento da despesa.
-  - Passos: Acessar os tres pontos na frente do item que deseja, acessar a opção para editar a data de pagamento da despesa, preencher e salvar.
-  - Criterio: Caso de sucesso,irá aparecer uma mensagem de confirmação e o campo na lista será atualizado.
+- Objetivo: Verificar se o usuário consegue editar a data de pagamento da despesa.
+
+- Passos: Acessar os três pontos na frente do item, selecionar a opção para editar a data de pagamento da despesa, preencher e salvar.
+
+- Critério de Sucesso: Caso de sucesso, irá aparecer uma mensagem de confirmação e o campo na lista será atualizado.
+
+- Critério de Insucesso: O sistema deve exibir mensagens de erro e a data de pagamento não deve ser atualizada.
+
 
 **3.7 - Atualização de data de vencimento da despesa** 
 
-  - Objetivo: Verificar se o usuário consegue editar a data de vencimento da despesa.
-  - Passos: Acessar os tres pontos na frente do item que deseja, acessar a opção para editar a data de vencimento da despesa, preencher e salvar.
-  - Criterio: Caso de sucesso,irá aparecer uma mensagem de confirmação e o campo na lista será atualizado.
+- Objetivo: Verificar se o usuário consegue editar a data de vencimento da despesa.
+
+- Passos: Acessar os três pontos na frente do item, selecionar a opção para editar a data de vencimento da despesa, preencher e salvar.
+
+- Critério de Sucesso:  Deverá aparecer uma mensagem de confirmação e o campo na lista será atualizado.
+
+- Critério de Insucesso: O sistema deve exibir mensagens de erro e a data de vencimento não deve ser atualizada.
+
 
 **3.8 - Filtragem por data da tela Financeiro** 
 
-  - Objetivo: Verificar se a lista e os cards de valores atualizam corretamente conforme o filtro selecionado pelo cliente.
-  - Passos: Selecionar o dia, mês e ano ou algum deles, e clicar em filtrar.
-  - Criterio: Caso de sucesso, os cards superiores e a lista de valores irão atualizar corretamente.
+- Objetivo: Verificar se a lista e os cards de valores atualizam corretamente conforme o filtro selecionado pelo cliente.
+
+- Passos: Selecionar dia, mês e ano ou algum deles, e clicar em "filtrar".
+
+- Critério de Sucesso: Os cards superiores e a lista de valores irão atualizar corretamente.
+
+- Critério de Insucesso: O sistema deve exibir mensagens de erro e não deve atualizar a lista ou os cards de valores.
 
 
 ### 4 - Clientes inadiplentes
 
-Na tela de Financeiro, foi desenvolvido três testes para garantir que tudo esteja funcionando conforme o previsto.
+Na tela de Financeiro, desenvolvemos casos de testes de sucesso e insucesso para garantir que tudo esteja funcionando conforme o previsto.
 
 **4.1 - Filtro por cliente** 
 
-  - Objetivo: Verificar se o filtro de cliente esta funcionando.
-  - Passos: Na parte superior da pagina devera digitar o nome de um cliente.
-  - Criterio: Caso de sucesso, ira listar todas as compras pendentes dos cliente.
-     
+- Objetivo: Verificar se o filtro de cliente esta funcionando ou se há falhas.
+
+- Passos: Digitar o nome de um cliente da parte superior da página.
+  
+- Critério de Sucesso: Deverá listar todas as compras pendentes dos cliente.
+
+- Critério de Insucesso: O sistema deve exibir uma mensagem de erro e não deve listar compras pendentes.
+
+
 **4.2 - Dar baixa no clinete devedor** 
  
-  - Objetivo: Verificar se consegue atualizar o stauts de pendencia do cliente.
-  - Passos: Entrar na tela de clientes inadiplentes, escolher um cliente, acessar o menu lateral da tabela e ir na sessão dar baixa.
-  - Criterio: Caso de sucesso, após dar a baixa quando voltar a tela principal o cliente não estará mais na lista.
-     
+- Objetivo: Verificar atualização do status de pendencia do cliente.
+
+- Passos: Entrar na tela de clientes inadiplentes, escolher um cliente, acessar o menu lateral da tabela e ir na sessão dar baixa.
+
+- Critério de Sucesso: Caso de sucesso, após dar a baixa quando voltar a tela principal o cliente não estará mais na lista.
+
+- Critério de Insucesso: O sistema deve exibir uma mensagem de erro e não deve listar compras pendentes.
+  
+
 **4.3 - Extrato das compras pendetes** 
 
-  - Objetivo: Verificar se está buscandoas compras devidas do clinete.
-  - Passos: Entrar na tela de clientes inadiplentes, escolher um cliente, acessar o menu lateral da tabela e ir na sessão extrato.
-  - Criterio: Caso de sucesso, ira abri um modal listando todos os produtos devidos do cliente.
+- Objetivo: Verificar busca de compras devidas do clinete.
+
+- Passos: Entrar na tela de clientes inadiplentes, escolher um cliente, acessar o menu lateral da tabela e ir na sessão extrato.
+
+- Critério de Sucesso: Abrirá um modal listando todos os produtos devidos do cliente.
+
+- Critério de Insucesso: O sistema deve exibir uma mensagem de erro e não deve abrir o modal com a lista de produtos devidos.
+
 
 ### 5 - Historico dos clientes
 
-Na tela de Financeiro, foi desenvolvido três testes para garantir que tudo esteja funcionando conforme o previsto.
+Na tela de Financeiro, desenvolvemos casos de testes de sucesso e insucesso para garantir que tudo esteja funcionando conforme o previsto.
 
 **5.1 - Listagem de todos os cliente e sinalização dos devedores** 
 
-  - Objetivo: Verificar a pagina consegue listar todos os clientes e sinalizar quem tem compra pendente.
-  - Passos: No menu esquerdo acesse a aba cliente, historico cliente, e clique nela.
-  - Criterio: Caso de sucesso, ira listar todos os cliente e caso ele tenha pendencia havera um notificação.
-     
+- Objetivo: Verificar a página consegue listar todos os clientes e sinalizar quem tem compra pendente.
+    
+- Passos: Acessar a aba "clientes", "histórico clientes" no menu esquerdo.
+    
+- Critério de Sucesso: Deverá listar todos os cliente com um alerta.
+
+- Critério de Insucesso: O sistema deve exibir mensagens de erro, não listar todos os clientes ou não sinalizar corretamente os devedores.
+
+
 **5.2 - Exibir Historico** 
 
-  - Objetivo: Verificar se as informações dos clientes estão aparecendo.
-  - Passos: Na tela historico clinte, clique em exibir historico.
-  - Criterio: Caso de sucesso, ira aparecer as informações pessoais dos clintes, tempo de cadastro e outras informações.
+- Objetivo: Verificar se as informações dos clientes estão aparecendo.
+
+- Passos: Na tela "histórico cliente", clique em "exibir histórico".
+
+- Critério de Sucesso: Caso de sucesso, ira aparecer as informações pessoais dos clintes, tempo de cadastro e outras informações.
+
+- Critério de Insucesso: O sistema deve exibir mensagens de erro e não deve exibir as informações pessoais dos clientes, tempo de cadastro, entre outras.
+
 
 ### 6 - Funcionalidades Vendas
 
-Na tela de Vendas, foi desenvolvido dois testes para garantir que tudo esteja funcionando confome o previsto.
+Na tela de Vendas, desenvolvemos casos de testes de sucesso e insucesso para garantir que tudo esteja funcionando conforme o previsto.
 
 **6.1 - Registro de vendas**
 
-  - Objetivo: Verificar se as vendas que o usuário cadastra está sendo salva corretamente.
-  - Passos: Selecionar o menu "Venda", selecionar o sub-menu "Venda", incluir o cliente correspondente, incluir os itens desejados, selecionar a forma de pagamento e clicar em "Gravar".
-  - Criterio: Caso de sucesso, iria aparecer uma mensagem confirmando que a venda foi feita com sucesso.
+- Objetivo: Verificar se as vendas que o usuário cadastrou está sendo salvas.
+
+- Passos: Selecionar o menu "Venda", selecionar o sub-menu "Venda", incluir o cliente correspondente, incluir os itens desejados, selecionar a forma de pagamento e clicar em "Gravar".
+
+- Critério de Sucesso: Caso de sucesso, iria aparecer uma mensagem confirmando que a venda foi feita com sucesso.
+
+- Critério de Insucesso: O sistema deve exibir mensagens de erro e não deve registrar a venda.
+
 
 **6.2 - Seleção de Forma de Pagamento**
 
-  - Objetivo: Possibilidade de escolher alguma forma de pagamento.
-  - Passos: Selecionar o menu "Venda", selecionar o sub-menu "Venda" e no campo "Forma de Pagamento" ao clicar, ser apresentado as formas de pagamentos.
-  - Criterio: Caso de sucesso, a forma de pagamento selecionada será apresentada no campo "Forma de Pagamento".
+- Objetivo: Possibilidade de escolher alguma forma de pagamento.
+
+- Passos: Selecionar o menu "Venda", selecionar o sub-menu "Venda" e no campo "Forma de Pagamento" ao clicar, ser apresentado as formas de pagamentos.
+
+- Critério de Sucesso: A forma de pagamento selecionada será apresentada no campo "Forma de Pagamento".
+
+- Critério de Insucesso: O sistema deve exibir mensagens de erro e não deve permitir a seleção da forma de pagamento.
+
 
 ### 7 - Funcionalidades Clientes
 
-Na tela de Clientes, foi desenvolvido um teste para garantir que tudo esteja funcionando confome o previsto.
+Na tela de Clientes, desenvolvemos casos de testes de sucesso e insucesso para garantir que tudo esteja funcionando conforme o previsto.
 
 **7.1 - Registro de Cliente**
 
-  - Objetivo: Verificar se o cadastro de um novo cliente está sendo salvo corretamente.
-  - Passos: Selecionar o menu "Clientes", selecionar o sub-menu "Cliente", incluir os dados do cliente correspondente  e clicar em "Cadastrar".
-  - Criterio: Caso de sucesso, iria aparecer uma mensagem confirmando que o cliente foi cadastrado com sucesso.
+- Objetivo: Verificar se o cadastro de um novo cliente está sendo salvo corretamente.
 
+- Passos: Selecionar o menu "Clientes", selecionar o sub-menu "Cliente", incluir os dados do cliente correspondente  e clicar em "Cadastrar".
+
+- Critério de Sucesso: Aparecerá uma mensagem confirmando que o cliente foi cadastrado com sucesso.
+
+- Critério de Insucesso: O sistema deve exibir mensagens de erro e não deve registrar o cliente.
+
+  
 ### 8 - Funcionalidades Relatório Venda
 
-Na tela de Relatório Venda, foi desenvolvido um teste para garantir que tudo esteja funcionando confome o previsto.
+Na tela de Relatório Venda,desenvolvemos casos de testes de sucesso e insucesso para garantir que tudo esteja funcionando conforme o previsto.
 
 **8.1 - Apresentação de Relatório Venda**
 
-  - Objetivo: Verificar se as vendas diárias estão sendo apresentadas corretamente.
-  - Passos: Selecionar o menu "Venda", selecionar o sub-menu "Relatório Venda" e selecionar a data desejada.
-  - Criterio: Caso de sucesso, irá apresentar na lista as vendas realizadas e o gráfico com os valores.
+- Objetivo: Verificar se as vendas diárias estão sendo apresentadas.
+
+- Passos: Selecionar o menu "Venda", selecionar o sub-menu "Relatório Venda" e selecionar a data desejada.
+
+- Critério de Sucesso: Deverá aparecer uma mensagem confirmando que o cliente foi cadastrado com sucesso.
+
+- Critério de Insucesso: O sistema deve exibir mensagens de erro e não deve apresentar a lista de vendas realizadas nem o gráfico com os valores.
+
 
 # Evidências de Testes de Software
 
