@@ -140,7 +140,7 @@ Para a tela de Estoque, desenvolvemos casos de testes de sucesso e insucesso par
 - Critério de Insucesso: A quantidade do produto no estoque não deve ser alterada e uma mensagem de erro deve ser exibida.
 
 
-### 3 - Funcionalidades Financeiro
+### 3 - Financeiro
 
 Na tela de Financeiro, desenvolvemos casos de testes de sucesso e insucesso para garantir que tudo esteja funcionando conforme o previsto.
 
@@ -497,9 +497,31 @@ https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-ale
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/85502110/7dec3064-52a0-4339-8b05-473d1cab79b9
 
 
-# Teste por Pares
+# Plano de Testes de Software (Em pares)
 
-## Evidencias de teste da tela Cadastro - Executor do teste: Matheus Sampaio
+## Objetivo
+Garantir a funcionalidade, confiabilidade e segurança das telas de:
+
+- CRUD do Cadastro;
+- CRUD do Login;
+- CRUD de Reset de senha;
+- CRUD do estoque;
+- CRUD do Financeiro;
+- CRUD de Vendas;
+- CRUD de Clientes Inadiplentes.
+
+## Ferramentas utilizadas para os testes
+- Visual Studio Code (version 1.89)
+- Google Chrome (version 125.0.6422.141)
+
+## Responsáveis pelos testes:
+- Matheus Ferreira Pires;
+- Matheus Lemos Sampaio;
+- Pedro Assis Silva de Almeida;
+- Vitor Hugo Silva Ribeiro.
+
+
+## Evidências de teste da tela Cadastro - Executor do teste: Matheus Sampaio
 
 #### Plano de teste 1.1 - Cadastro de infomações para acesso a Plataforma: 
 
@@ -540,7 +562,7 @@ https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-ale
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/7a5f62ff-7a9e-4e87-9e4c-b8796018dc65
 
 
-## Evidencias de teste da tela financeiro - Executor do teste: Vitor Hugo
+## Evidências de teste da tela financeiro - Executor do teste: Vitor Hugo
 
 ### 3.1 - Registro de despesas
 
@@ -560,7 +582,7 @@ https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-ale
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/40009988/05e0168e-6aec-458c-8355-b9a28ec2681f
 
 
-## Evidencias de teste da tela cliente devedor - Executor do teste: Matheus Ferreira
+## Evidências de teste da tela cliente devedor - Executor do teste: Matheus Ferreira
 
 ### 4.1 - Filtro por cliente
 
@@ -575,7 +597,7 @@ https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-ale
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/eb231e18-11f0-4fe0-9179-f68f643d4bd4
 
 
-## Evidencias de teste da tela histórico do cliente - Executor do teste: Matheus Ferreira
+## Evidências de teste da tela histórico do cliente - Executor do teste: Matheus Ferreira
 
 ### 5.1 - Listagem de todos os cliente e sinalização dos devedores
 
@@ -585,7 +607,7 @@ https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-ale
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/17664a12-0ea4-4c23-96c8-75fffc8773db
 
-## Evidencias de teste da tela vendas - Executor do teste: Pedro Assis
+## Evidências de teste da tela vendas - Executor do teste: Pedro Assis
 
 ### 6.1 - Teste de funcionalidades e inclusão de vendas
 
