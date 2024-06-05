@@ -10,12 +10,15 @@
   },
   "description": "app final",
   "build": {
-    "extends":null,
+    "extends": null,
     "appId": "com.dalessandrafront.app",
     "files": [
       "build/**/*",
       "node_modules/**/*",
       "src/electron.js"
+    ],
+    "extraFiles": [
+      "node_modules/d3dcompiler_47.dll"
     ],
     "directories": {
       "buildResources": "public"
@@ -31,7 +34,9 @@
     "axios": "^1.6.8",
     "chart.js": "^4.4.3",
     "cpf-cnpj-validator": "^1.0.3",
+    "daisyui": "^4.12.2",
     "dayjs": "^1.11.10",
+    "pkg": "^5.8.1",
     "primeicons": "^7.0.0",
     "primereact": "^10.6.3",
     "react": "^18.2.0",
@@ -43,12 +48,12 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "NODE_ENV=development react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "electron-start": "concurrently \"npm:start\" \"wait-on http://localhost:3000 && electron .\"",
-    "electron-pack": "npm run build && npx electron .",
+    "electron": "concurrently \"wait-on http://localhost:3000 && electron .\" \"npm start\"",
+    "electron-dev": "concurrently \"wait-on http://localhost:3000 && electron .\" \"npm start\"",
     "dist": "react-scripts build && electron-builder"
   },
   "eslintConfig": {
@@ -71,11 +76,11 @@
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
-    "daisyui": "^4.7.3",
+    "electron": "^30.0.9",
     "electron-builder": "^24.13.3",
     "electron-is-dev": "^3.0.1",
+    "foreman": "^3.0.1",
     "tailwindcss": "^3.4.1",
-    "wait-on": "^7.2.0",
-    "electron": "^30.0.9"
+    "wait-on": "^7.2.0"
   }
 }
