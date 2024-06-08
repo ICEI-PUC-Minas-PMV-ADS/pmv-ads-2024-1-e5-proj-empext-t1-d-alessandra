@@ -63,19 +63,19 @@ function ModalAdicionar(){
               })
             .catch((error)=>{ 
                 setAlertVisible(true)
-                console.log(error)
-                //if(error.response.status === 400){
-                  // setCode(error.response.status)
-                   //setMensagemError("Erro: "+error.response.status+". Verifique se todos os campos estão digitados de maneira correta")
-                   //setAlertaErro(true)
+                //console.log(error)
+                if(error.response.status === 400){
+                   setCode(error.response.status)
+                   setMensagemError("Erro: "+error.response.status+". Verifique se todos os campos estão digitados de maneira correta")
+                  setAlertaErro(true)
                    //setAlertaErro(false)
-                //}
-                //else{
+                }
+                else{
                   //  console.log(error)
-                    //setCode(error.response.status)
-                    //setAlertaErro(true)
-                    //setMensagemError("Ops ! Aconteceu algum erro interno")
-                // }
+                    setCode(error.response.status)
+                    setAlertaErro(true)
+                    setMensagemError("Ops ! Aconteceu algum erro interno")
+                 }
            })    
         }
     return (
