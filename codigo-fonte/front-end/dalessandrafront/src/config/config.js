@@ -3,7 +3,7 @@ import axios from "axios";
 import { Await } from "react-router-dom";
 async function recuperarPeriodoDeCobranca() {
     try {
-        const response = await axios.get('http://backdalessandra-production.up.railway.app/recuperandoParametroDiasCobranca');
+        const response = await axios.get('https://backdalessandra-production.up.railway.app/recuperandoParametroDiasCobranca');
         return response.data;
     } catch (error) {
         console.error('Erro ao recuperar o período de cobrança:', error);
@@ -13,7 +13,7 @@ async function recuperarPeriodoDeCobranca() {
 
 async function recuperarPeriodoDeEnvioEmail() {
     try {
-        const response = await axios.get('http://backdalessandra-production.up.railway.app/recuperandoParametroFrequenciaAvisoEstoque');
+        const response = await axios.get('https://backdalessandra-production.up.railway.app/recuperandoParametroFrequenciaAvisoEstoque');
         return response.data;
     } catch (error) {
         console.error('Erro ao recuperar o período de cobrança:', error);
@@ -22,7 +22,7 @@ async function recuperarPeriodoDeEnvioEmail() {
 }
 async function recuperandoEmail() {
     try {
-        const response = await axios.get('http://backdalessandra-production.up.railway.app/configuracao/recuperarParametroEmail');
+        const response = await axios.get('https://backdalessandra-production.up.railway.app/configuracao/recuperarParametroEmail');
         return response.data;
     } catch (error) {
         console.error('Erro ao recuperar o período de cobrança:', error);
@@ -30,7 +30,7 @@ async function recuperandoEmail() {
     }
 }
 const config = {
-    URL: 'http://backdalessandra-production.up.railway.app/',
+    URL: 'https://backdalessandra-production.up.railway.app/',
     HEADERS : { 
         'accept': '*/*', 
         'Content-Type': 'application/json'
