@@ -46,10 +46,10 @@ public class EstoqueServiceEmail{
             }, dataInicio, intervalo);
         }
     }
-    @PostConstruct
-    public void init(){
-        iniciarEnvioPeriodico();
-}
+ //   @PostConstruct
+   // public void init(){
+     //   iniciarEnvioPeriodico();
+//}
 
     public String eviarEmailNivelCriticoEstoque(List<Estoque> estoque) {
             String email = confg.recuperandoParametroEmail();
