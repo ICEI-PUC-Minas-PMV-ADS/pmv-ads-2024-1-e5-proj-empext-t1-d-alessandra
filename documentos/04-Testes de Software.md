@@ -390,72 +390,72 @@ https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-ale
 
 ### Funcionalidade de estoque
 
-#### Plano de teste 02.0 - Registro de itens no estoque 
+#### Plano de teste 2.0 - Registro de itens no estoque 
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/40009988/3336eb2b-9409-4766-a028-d1958821aa48
 
-#### Plano de teste 02.1 - Exclusão de registro 
+#### Plano de teste 2.1 - Exclusão de registro 
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/40009988/1e039393-229d-4700-9c86-cab33b459cd4
 
-#### Plano de teste 02.2 - Atualização de quantidade de produto em estoque 
+#### Plano de teste 2.2 - Atualização de quantidade de produto em estoque 
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/40009988/554fb268-82c1-47cb-a319-16b19c0c8b22
 
-#### Plano de teste 02.3 - Atualização de valor de venda
+#### Plano de teste 2.3 - Atualização de valor de venda
 
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/40009988/1ddb7c5d-bb83-451c-ab3d-10c79b3c5889
 
-#### Plano de teste 02.4 - Atualização de valor comprado 
+#### Plano de teste 2.4 - Atualização de valor comprado 
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/40009988/238a5ba7-37b8-4fd8-b898-4c080793f375
 
-#### Plano de teste 02.5 - Verificar se quando e realizada a venda de um produto a quantidade no estoque e atualizada
+#### Plano de teste 2.5 - Verificar se quando e realizada a venda de um produto a quantidade no estoque e atualizada
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/40009988/43e343ab-797a-4f85-9acf-cb357b7e544f
 
 ### Funcionalidade de Despesas
 
-#### Plano de teste 03.0 - Registro de despesas
+#### Plano de teste 3.0 - Registro de despesas
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/27317d02-96fc-4f95-870a-3218399aeb02
 
-#### Plano de teste 03.1 - Exclusão de despesas
+#### Plano de teste 3.1 - Exclusão de despesas
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/797f2f6c-be4c-47f6-af80-5f4a173bdddc
 
-#### Plano de teste 03.2 - Edição de nome da despesa
+#### Plano de teste 3.2 - Alterar de nome da despesa
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/c136aeb5-29f4-4da1-a9f2-a8a340aa12ee
 
-#### Plano de teste 03.3 - Edição de tipo da despesa
+#### Plano de teste 3.3 - Alterar de tipo da despesa
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/2ad0fc90-2ab3-4668-8b94-9da8efe66f92
 
-#### Plano de teste 03.4 - Edição de valor da despesa
+#### Plano de teste 3.4 - Alterar de valor da despesa
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/df0ba789-0c88-4365-bcbe-97dec2687bb9
 
-#### Plano de teste 03.5 - Edição de data de pagamento da despesa
+#### Plano de teste 3.5 - Alterar de data de pagamento da despesa
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/a03f3172-68ab-443d-b9ce-9bbd92a927d1
 
-#### Plano de teste 03.6 - Edição de data de vencimento da despesa
+#### Plano de teste 3.6 - Alterar de data de vencimento da despesa
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/95931ea0-a9ea-4763-8c4a-f5e7f6afde44
 
-#### Plano de teste 03.7 - Filtragem por data
+#### Plano de teste 3.7 - Filtros por data
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/e694847b-3e59-49d1-9ede-16125849b4ce
 
-### 4 - Clientes inadiplentes
+### 4 - Clientes inadimplentes
 
-#### Plano de teste 4.1 - Filtro por cliente tela ( tela clientes inadiplentes)
+#### Plano de teste 4.1 - Filtro por cliente tela (tela clientes inadimplentes)
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/40009988/880ec401-4198-4ab1-b91a-684efa793207
      
-#### Plano de teste 4.2 - Dar baixa no clinete devedor 
+#### Plano de teste 4.2 - Baixa no clientes devedores 
  
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/40009988/030410ab-0075-40c4-9b93-c49e372c5881
 
