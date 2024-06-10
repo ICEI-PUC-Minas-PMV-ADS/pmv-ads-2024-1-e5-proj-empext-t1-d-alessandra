@@ -521,7 +521,7 @@ Garantir a funcionalidade, confiabilidade e segurança das telas de:
 - Vitor Hugo Silva Ribeiro.
 
 
-## Evidências de teste da tela Cadastro - Executor do teste: Matheus Sampaio
+## Análise de teste da tela Cadastro - Executor do teste - Matheus Sampaio
 
 #### Plano de teste 1.1 - Cadastro de infomações para acesso a Plataforma: 
 
@@ -535,15 +535,13 @@ https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-ale
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/85502110/66f09550-b23e-4a0b-a9e2-6f88cdad32fb
 
-Obs: Será alterado o erro apresentado em tela para algo parecido com "Já existe um cadastro realizado para este usuário"
 
 #### Plano de teste 1.4 - Alteração de senha de acesso ao sistema:
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/85502110/1f94f05a-9548-4116-9891-2b192efa9d51
 
-Obs: Será ajustado para apresentar mensagem ao alterar senha.
 
-## Evidencias de teste da tela estoque - Executor do teste: Matheus Ferreira
+## Análise de teste da tela estoque - Executor do teste - Matheus Ferreira
 
 ### 2.1 - Registro de itens no estoque
 
@@ -562,7 +560,7 @@ https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-ale
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/7a5f62ff-7a9e-4e87-9e4c-b8796018dc65
 
 
-## Evidências de teste da tela financeiro - Executor do teste: Vitor Hugo
+## Análise de teste da tela financeiro - Executor do teste - Vitor Hugo
 
 ### 3.1 - Registro de despesas
 
@@ -582,7 +580,7 @@ https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-ale
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/40009988/05e0168e-6aec-458c-8355-b9a28ec2681f
 
 
-## Evidências de teste da tela cliente devedor - Executor do teste: Matheus Ferreira
+## Análise de teste da tela clientes devedores - Executor do teste - Matheus Ferreira
 
 ### 4.1 - Filtro por cliente
 
@@ -607,10 +605,9 @@ https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-ale
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/17664a12-0ea4-4c23-96c8-75fffc8773db
 
-## Evidências de teste da tela vendas - Executor do teste: Pedro Assis
+## Análise de teste da tela vendas - Executor do teste - Pedro Assis
 
 ### 6.1 - Teste de funcionalidades e inclusão de vendas
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101743181/156ffe34-bbde-416c-9dd8-429f3551b50f
 
-obs.: Campo de nome cliente será ajustado 
