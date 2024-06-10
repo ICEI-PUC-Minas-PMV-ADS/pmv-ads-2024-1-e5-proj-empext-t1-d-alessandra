@@ -76,7 +76,7 @@ Para a tela de Login e Cadastro, desenvolvemos casos de testes de sucesso e insu
 
 Para a tela de Estoque, desenvolvemos casos de testes de sucesso e insucesso para garantir que tudo esteja funcionando conforme o previsto.
 
-**2.1 - Registro de itens no estoque**
+**2.1 - Registro de itens no Estoque**
 
 - Objetivo: Verificar os itens que o usuário cadastrou estão sendo salvos de maneira correta.
 
@@ -87,7 +87,7 @@ Para a tela de Estoque, desenvolvemos casos de testes de sucesso e insucesso par
 - Critério de Insucesso: O sistema deve exibir mensagens de erro para cada campo obrigatório não preenchido ou preenchido incorretamente e impedir o registro.
 
      
-**2.2 - Exclusão de registro** 
+**2.2 - Exclusão de registros** 
 - Objetivo: Verificar se os itens que o usuário deseja apagar está sendo deletados.
   
 - Passos: Clicar na "lixeira" do item que deseja deletar e depois "confimar".
@@ -236,7 +236,7 @@ Na tela de Financeiro, desenvolvemos casos de testes de sucesso e insucesso para
 
 Na tela de Financeiro, desenvolvemos casos de testes de sucesso e insucesso para garantir que tudo esteja funcionando conforme o previsto.
 
-**4.1 - Filtro por cliente** 
+**4.1 - Filtro por clientes** 
 
 - Objetivo: Verificar se o filtro de cliente esta funcionando ou se há falhas.
 
@@ -247,7 +247,7 @@ Na tela de Financeiro, desenvolvemos casos de testes de sucesso e insucesso para
 - Critério de Insucesso: O sistema deve exibir uma mensagem de erro e não deve listar compras pendentes.
 
 
-**4.2 - Dar baixa no clinete devedor** 
+**4.2 - Baixa no clientes devedores** 
  
 - Objetivo: Verificar atualização do status de pendencia do cliente.
 
@@ -284,7 +284,7 @@ Na tela de Financeiro, desenvolvemos casos de testes de sucesso e insucesso para
 - Critério de Insucesso: O sistema deve exibir mensagens de erro, não listar todos os clientes ou não sinalizar corretamente os devedores.
 
 
-**5.2 - Exibir Historico** 
+**5.2 - Exibir Histórico** 
 
 - Objetivo: Verificar se as informações dos clientes estão aparecendo.
 
@@ -299,7 +299,7 @@ Na tela de Financeiro, desenvolvemos casos de testes de sucesso e insucesso para
 
 Na tela de Vendas, desenvolvemos casos de testes de sucesso e insucesso para garantir que tudo esteja funcionando conforme o previsto.
 
-**6.1 - Registro de vendas**
+**6.1 - Registro de Vendas**
 
 - Objetivo: Verificar se as vendas que o usuário cadastrou está sendo salvas.
 
@@ -388,7 +388,7 @@ https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-ale
 
 
 
-### Funcionalidade de estoque
+### Funcionalidade de Estoque
 
 #### Plano de teste 2.0 - Registro de itens no estoque 
 
@@ -449,7 +449,7 @@ https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-ale
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/e694847b-3e59-49d1-9ede-16125849b4ce
 
-### 4 - Clientes inadimplentes
+### 4 - Clientes Inadimplentes
 
 #### Plano de teste 4.1 - Filtro por cliente tela (tela clientes inadimplentes)
 
@@ -464,7 +464,7 @@ https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-ale
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/40009988/8ef874ed-aae5-4396-bde4-2f40328a2401
 
 
-### 5 - Historico dos clientes
+### 5 - Historico dos Clientes
 
 #### Plano de teste 5.1 - Listagem de todos os cliente e sinalização dos devedores*
 
@@ -505,7 +505,7 @@ Garantir a funcionalidade, confiabilidade e segurança das telas de:
 - CRUD do Cadastro;
 - CRUD do Login;
 - CRUD de Reset de senha;
-- CRUD do estoque;
+- CRUD do Estoque;
 - CRUD do Financeiro;
 - CRUD de Vendas;
 - CRUD de Clientes Inadiplentes.
@@ -601,7 +601,7 @@ https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-ale
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/5e696017-c67a-46f4-b769-b6045addb262
 
-**5.2 - Exibir Historico
+### 5.2 - Exibir Histórico
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/17664a12-0ea4-4c23-96c8-75fffc8773db
 
