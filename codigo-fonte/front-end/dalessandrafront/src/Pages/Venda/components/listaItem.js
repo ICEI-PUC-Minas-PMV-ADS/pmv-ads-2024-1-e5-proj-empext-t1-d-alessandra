@@ -13,13 +13,14 @@ import { Paginator } from 'primereact/paginator';
 const ListaItem = ({ onItemSelected }) => {
     const [listaItem, setListaItem] = useState([]);
     const [totalItens, setTotalItens] = useState(0);
+    const [filtroNome, setFiltroNome] = useState("");
     const [first, setFirst] = useState(0);
 
     useEffect(() => {
         const carregarClientes = async () => {
             const headers ={"Content-Type":"application/json"}
             try{
-                const response = await axios.get(config.URL+`estoque?tamanhoPagina=${5}`, {headers});
+                const response = await axios.get(config.URL+`estoque?nomeProduto=${filtroNome}&tamanhoPagina=${5}`, {headers});
                 setListaItem(response.data?.content);
                 setTotalItens(response.data?.totalElements);
             } catch(error){
@@ -28,13 +29,13 @@ const ListaItem = ({ onItemSelected }) => {
         };
 
         carregarClientes();
-    }, []);
+    }, [filtroNome]);
 
     const onPageChange = async (event) => {
         setFirst(event.first);
         const headers ={"Content-Type":"application/json"}
         try{
-            const response = await axios.get(config.URL+`estoque?tamanhoPagina=${5}&pagina=${event.page}`, {headers});
+            const response = await axios.get(config.URL+`estoque?nomeProduto=${filtroNome}&tamanhoPagina=${5}&pagina=${event.page}`, {headers});
             setListaItem(response.data?.content);
         } catch(error){
             console.log(error)
@@ -45,10 +46,21 @@ const ListaItem = ({ onItemSelected }) => {
         onItemSelected(nomeProduto);
     }
 
+    const handleFiltroChange = (event) => {
+        setFiltroNome(event.target.value);
+    };
+
     return (
         <dialog id="modalListaItem" className="modal modal-bottom sm:modal-middle">
             <div className="modal-box">
                 <h3 className="font-bold text-lg">Lista de Itens</h3>
+                <input
+                    type="text"
+                    value={filtroNome}
+                    onChange={handleFiltroChange}
+                    placeholder="Filtrar por nome produto"
+                    className="mb-4 p-2 border rounded w-full"
+                />
                 <Card className="w-full flex-col">
                     <List>
                         {listaItem.map(item => (

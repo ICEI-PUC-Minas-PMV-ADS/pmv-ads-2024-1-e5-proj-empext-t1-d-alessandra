@@ -31,6 +31,11 @@ function Venda() {
         {label: 'Dinheiro', value: 'Dinheiro'}
     ];
 
+    useEffect(() => {
+        if (codCliente !== null) {
+            procuraCliente(codCliente);
+        }
+    }, [codCliente]);
 
     const atualizarTotalVenda = () => {
         const total = itensVenda.reduce((acc, item) => acc + item.vlTotal, 0);
@@ -57,13 +62,9 @@ function Venda() {
 
     const selectCliente = async (codigo) => {
         setCodCliente(codigo);
-        await procuraCliente(codigo);
     };
 
     const procuraCliente = async (codigo) => {
-        if (codCliente === "") {
-            return;
-        }
         try {
             const response = await axios.get(config.URL + 'cliente/' + codigo);
             const clienteEncontrado = response.data;
@@ -98,7 +99,6 @@ function Venda() {
         }
     };
 
-
     const handleProdutoSelecionado = (nomeProduto) => {
         setProduto(nomeProduto); 
     };
@@ -107,6 +107,7 @@ function Venda() {
         const headers = { "Content-Type": "application/json" };
         const data = {
             "codCliente": parseInt(codCliente),
+            "nomeCliente": nomeCliente,
             "listaItens": itensVenda,
             "formaPagto": formaPagamento,
             "vlTotal": totalVenda
@@ -121,9 +122,10 @@ function Venda() {
                   resetFields();
             
             }).catch((error) => {
+                setAlertaErro(true);
                 setTimeout(() => {
                     setAlertVisible(false); 
-                  }, 1500);
+                }, 1500);
             });
     };
 
@@ -144,7 +146,6 @@ function Venda() {
     };
 
     const atualizarQuantidade = (index, quantidade) => {
-
         const novaLista = [...itensVenda];
         novaLista[index].quantidade = quantidade;
         novaLista[index].vlTotal = quantidade * novaLista[index].valorUnit;
@@ -179,7 +180,7 @@ function Venda() {
                                 <Input
                                     type="number"
                                     label="Cliente"
-                                    value={codCliente}
+                                    value={codCliente ?? ''}
                                     onChange={(e) => setCodCliente(e.target.value)}
                                     className="pr-20"
                                     containerProps={{
@@ -317,13 +318,13 @@ function Venda() {
                                             <input type="number" min="0" style={{ border: '1px solid #ccc', borderRadius: '4px', padding: '2px', width: '100px'}} defaultValue={quantidade ?? 1} onChange={(e) => atualizarQuantidade(index, e.target.value)} />
                                         </td>
                                         <td className="p-4">
-                                        <input 
-                                        type="number" 
-                                        min="0" 
-                                        style={{ border: '1px solid #ccc', borderRadius: '4px', padding: '2px', width: '100px'}} 
-                                        defaultValue={valorUnit ?? 1} 
-                                        onChange={(e) => atualizarPreco(index, e.target.value)}
-                                    />
+                                            <input 
+                                                type="number" 
+                                                min="0" 
+                                                style={{ border: '1px solid #ccc', borderRadius: '4px', padding: '2px', width: '100px'}} 
+                                                defaultValue={valorUnit ?? 1} 
+                                                onChange={(e) => atualizarPreco(index, e.target.value)}
+                                            />
                                         </td>
                                         <td className="p-4">
                                             <Typography variant="small" color="blue-gray" className="font-normal">
@@ -351,7 +352,7 @@ function Venda() {
                                     options={formasPagto} 
                                     onChange={(e) => setFormaPagamento(e.value)} 
                                     placeholder="Forma de Pagamento"
-                                    />
+                                />
                             </div>
                         </div>
                         <p className="sm:col-span-2 text-right text-2xl">Total Pedido: {formatarParaReal(totalVenda)} </p>
