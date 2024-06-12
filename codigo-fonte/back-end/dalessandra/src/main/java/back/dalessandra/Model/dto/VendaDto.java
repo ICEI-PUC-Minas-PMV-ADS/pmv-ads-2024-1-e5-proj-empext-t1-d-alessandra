@@ -19,6 +19,7 @@ public class VendaDto {
 
     private Integer codVenda;
     private Integer codCliente;
+    private String nomeCliente;
     private String formaPagto;
     private LocalDateTime dtVenda;
     private Double vlTotal;

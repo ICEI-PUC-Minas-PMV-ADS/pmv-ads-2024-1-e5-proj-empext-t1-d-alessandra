@@ -3,10 +3,13 @@ import back.dalessandra.DTO.DadosClientesDTO;
 import back.dalessandra.DTO.HistoricoComprasClienteDTO;
 import back.dalessandra.DTO.ListaHistoricoClienteDTO;
 import back.dalessandra.Model.Cliente;
+import back.dalessandra.Model.filter.ClienteFilter;
 import back.dalessandra.service.cliente.ClienteService;
 import back.dalessandra.service.cliente.HistoricoClienteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -31,6 +34,11 @@ public class ClienteController {
     @GetMapping("/{codCliente}")
     public Cliente findByCodCliente(@PathVariable Integer codCliente){
         return clienteService.findByCodCliente(codCliente).orElse(null);
+    }
+
+    @GetMapping("/find")
+    Page<Cliente> find(ClienteFilter filter, Pageable page) {
+        return clienteService.find(filter, page);
     }
 
     @PostMapping

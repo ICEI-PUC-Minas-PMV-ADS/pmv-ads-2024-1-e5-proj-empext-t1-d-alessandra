@@ -2,9 +2,12 @@ package back.dalessandra.service.cliente;
 
 import back.dalessandra.DTO.HistoricoComprasClienteDTO;
 import back.dalessandra.Model.Cliente;
+import back.dalessandra.Model.filter.ClienteFilter;
 import back.dalessandra.repository.cliente.ClienteDevedorRepository;
 import back.dalessandra.repository.cliente.ClienteRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -25,6 +28,10 @@ public class ClienteService {
 
     public Optional<Cliente> findByCodCliente(Integer codCliente) {
         return clienteRepository.findByCodCliente(codCliente);
+    }
+
+    public Page<Cliente> find(ClienteFilter filter, Pageable page) {
+        return clienteRepository.find(filter, page);
     }
 
     public Cliente create(Cliente cliente) {

@@ -1,7 +1,10 @@
 package back.dalessandra.repository.cliente;
 
 import back.dalessandra.Model.Cliente;
+import back.dalessandra.Model.filter.ClienteFilter;
 import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -16,6 +19,9 @@ public interface ClienteRepository extends JpaRepository<Cliente,Integer> {
 
     @Query("select u from Cliente u where codCliente = :codCliente")
     Optional<Cliente> findByCodCliente(Integer codCliente);
+
+    @Query("select u from Cliente u where nomeCliente like %:#{#filter.nomeCliente}%")
+    Page<Cliente> find(ClienteFilter filter, Pageable pageable);
 
     @Modifying
     @Transactional

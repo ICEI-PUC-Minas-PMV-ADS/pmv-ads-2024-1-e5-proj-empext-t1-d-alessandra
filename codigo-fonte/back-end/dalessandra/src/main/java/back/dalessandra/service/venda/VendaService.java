@@ -1,7 +1,9 @@
 package back.dalessandra.service.venda;
 
+import back.dalessandra.Model.Cliente;
 import back.dalessandra.Model.Item;
 import back.dalessandra.Model.Venda;
+import back.dalessandra.Model.filter.ClienteFilter;
 import back.dalessandra.Model.filter.VendaFilter;
 import back.dalessandra.Model.dto.VendaDto;
 import back.dalessandra.repository.venda.VendaRepository;
@@ -68,6 +70,27 @@ public class VendaService {
     }
 
     public VendaDto create(VendaDto venda) {
+        if(venda.getCodCliente() == null) {
+            String nomeCliente = venda.getNomeCliente();
+
+            List<Cliente> clientes = clienteService.find(ClienteFilter.builder().nomeCliente(nomeCliente).build(), Pageable.unpaged()).toList();
+
+            Cliente clienteEncontrado = null;
+            for (Cliente cliente : clientes) {
+                if (cliente.getNomeCliente().equalsIgnoreCase(nomeCliente)) {
+                    clienteEncontrado = cliente;
+                    break;
+                }
+            }
+
+            if (clienteEncontrado != null) {
+                venda.setCodCliente(clienteEncontrado.getCodCliente());
+            } else {
+                Cliente cliente = clienteService.create(Cliente.builder().nomeCliente(nomeCliente).build());
+                venda.setCodCliente(cliente.getCodCliente());
+            }
+        }
+
         Integer codigo = vendaRepository.findAll().size() + 1;
         venda.setCodVenda(codigo);
         venda.setDtVenda(LocalDateTime.now());
