@@ -28,7 +28,7 @@ function Tabela({ dados, filtro }) {
         var minutos = ("0" + dataHora.getMinutes()).slice(-2);
         var segundos = ("0" + dataHora.getSeconds()).slice(-2);
     
-        var dataHoraFormatada = dia + "/" + mes + "/" + ano + " " + horas + ":" + minutos + ":" + segundos;
+        var dataHoraFormatada = dia + "/" + mes + "/" + ano;
     
         return dataHoraFormatada;
     }
