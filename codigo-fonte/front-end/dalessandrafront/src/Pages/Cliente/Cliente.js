@@ -64,21 +64,39 @@ function Cliente(){
     };
 
     const formatarTelefone = (telefone) => {
-        // Remove caracteres não numéricos
+
         const numerosApenas = telefone.replace(/[^\d]/g, '');
       
-        // Verifica se o número tem 11 dígitos, incluindo o DDD
         if (numerosApenas.length === 11) {
           return `(${numerosApenas.slice(0, 2)}) ${numerosApenas.slice(2, 7)}-${numerosApenas.slice(7)}`;
-        } else if (numerosApenas.length === 10) { // Verifica se o número tem 10 dígitos
+        } else if (numerosApenas.length === 10) {
           return `(${numerosApenas.slice(0, 2)}) ${numerosApenas.slice(2, 6)}-${numerosApenas.slice(6)}`;
         } else {
-          // Se não for possível formatar, retorna o número original
           return telefone;
         }
-      };
+    };
+
+    const validarEmail = (email) => {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
+    };
+
+    const validarTelefone = (telefone) => {
+        const regex = /^\(?\d{2}\)?\s?\d{4,5}-?\d{4}$/;
+        return regex.test(telefone.replace(/[^\d]/g, ''));
+    };
 
     const cadastrarCliente = () => {
+        if (!validarEmail(clienteData.email)) {
+            setAlertaErro(true);
+            return;
+        }
+
+        if (clienteData.telefone && !validarTelefone(clienteData.telefone)) {
+            setAlertaErro(true);
+            return;
+        }
+
         const headers ={"Content-Type":"application/json"}
 
         const data = {
@@ -108,6 +126,16 @@ function Cliente(){
     }
 
     const atualizarCliente = async () => {
+        if (!validarEmail(clienteData.email)) {
+            setAlertaErro(true);
+            return;
+        }
+
+        if (clienteData.telefone && !validarTelefone(clienteData.telefone)) {
+            setAlertaErro(true);
+            return;
+        }
+
         const headers ={"Content-Type":"application/json"}
         try{
             await axios.put(config.URL+'cliente/'+ codigoCliente, clienteData, {headers});
@@ -247,7 +275,7 @@ function Cliente(){
                         </div>
                         <div className="sm:col-span-2">
                             <label className="block text-sm font-medium leading-6 text-gray-900">
-                                Rua
+                                Rua, Número
                             </label>
                             <div className="mt-2">
                                 <input
@@ -295,7 +323,7 @@ function Cliente(){
                         </div>
                         <div className="sm:col-span-2">
                             <label className="block text-sm font-medium leading-6 text-gray-900">
-                                Complemento Endereço
+                                Complemento
                             </label>
                             <div className="mt-2">
                                 <input
@@ -324,4 +352,3 @@ function Cliente(){
 }
 
 export default Cliente;
-
