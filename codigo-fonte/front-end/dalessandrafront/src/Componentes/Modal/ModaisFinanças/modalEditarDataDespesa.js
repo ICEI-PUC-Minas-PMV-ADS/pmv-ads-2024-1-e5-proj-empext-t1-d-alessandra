@@ -38,13 +38,13 @@ function ModalEditarDataDespesa({id}) {
 
     return (
         <div>
-            <button className="" onClick={() => document.getElementById('my_modal_editar_data_despesa_' + id).showModal()}>Editar Data da Despesa</button>
+            <button className="" onClick={() => document.getElementById('my_modal_editar_data_despesa_' + id).showModal()}>Editar Data de Pagamento</button>
             <dialog id={"my_modal_editar_data_despesa_" + id} className="modal">
                     {alertVisible && <Alertasucesso message="Atualizado com sucesso" />}
                     {alertaErro && <AlertaErro message={mensagemError} />}
                 <div className="modal-box w-11/12 max-w-5xl">
                     <br></br>
-                    <h3 className="font-bold text-lg">Editar Data da Despesa</h3>
+                    <h3 className="font-bold text-lg">Editar Data de Pagamento</h3>
                     <input type="date" class="input input-bordered input-success w-full max-w-xs mb-4 mr-7" placeholder="Data da Despesa" value={dataDespesa} onChange={handleDataDespesaChange} />
                     <div className="modal-action">
                         <button className="btn btn-success" onClick={salvar}>Salvar</button>

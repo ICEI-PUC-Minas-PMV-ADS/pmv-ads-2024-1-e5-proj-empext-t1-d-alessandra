@@ -88,7 +88,7 @@ function ModalIncluir() {
                         className="input input-bordered input-success w-full max-w-xs mb-4 mr-7" />
                     <input id="valorDespesa" type="Valor" step="any" onChange={capturaValorDespesa} placeholder="Valor da Despesa"
                         className="input input-bordered input-success w-full max-w-xs mb-4 mr-7" />
-                    <label htmlFor="dataDespesa" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Data da Despesa</label>    
+                    <label htmlFor="dataDespesa" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Data de Pagamento</label>    
                     <input id="dataDespesa" type="date" onChange={capturaDataDespesa} placeholder="Data de Pagamento"
                         className="input input-bordered input-success w-full max-w-xs mb-4 mr-7" />
                     <label htmlFor="dataVencimento" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Data de Vencimento</label>        

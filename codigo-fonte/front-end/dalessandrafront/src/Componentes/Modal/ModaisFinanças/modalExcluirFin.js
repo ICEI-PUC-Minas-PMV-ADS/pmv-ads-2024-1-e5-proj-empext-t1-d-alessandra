@@ -27,7 +27,7 @@ function ModalExcluirFin({id}){
             <dialog id={'my_modal_excluir'+id} className="modal">
                 {alertVisible && <Alertasucesso message="Excluído com sucesso!" />}
             <div className="modal-box w-11/12 max-w-5xl">
-                <h3 className="font-bold text-lg">Exlcuir!</h3>
+                <h3 className="font-bold text-lg">Excluir!</h3>
                 <p className="py-4">Tem certeza que deseja excluir essa anotação de despesa ?</p>
                 <br></br>
                 <div className="modal-action">
