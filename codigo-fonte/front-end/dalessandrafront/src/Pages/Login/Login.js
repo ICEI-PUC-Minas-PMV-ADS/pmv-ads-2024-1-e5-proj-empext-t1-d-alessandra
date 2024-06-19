@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import InputMask from "react-input-mask";
 import "../estilo/login.css";
 import config from "../../config/config";
 import logo from "../../img/logo.png";
@@ -107,13 +108,13 @@ function Login() {
     } else if (cleanedValue.length === 14) {
       return cleanedValue.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1.$2.$3/$4-$5');
     } else {
-      return value; 
+      return value;
     }
   };
 
   const handleLinkClick = (path) => {
     setLoading(true);
-    setTimeout(() => navigate(path), 500); 
+    setTimeout(() => navigate(path), 500);
   };
 
   return (
@@ -144,14 +145,20 @@ function Login() {
               maxLength="10"
               required
             />
-            <input
-              type="text"
-              name="cpfOrCnpj"
+            <InputMask
+              mask="999.999.999-99"
               value={credentials.cpfOrCnpj}
               onChange={handleChange}
-              placeholder="CPF ou CNPJ"
-              required
-            />
+            >
+              {() => (
+                <input
+                  type="text"
+                  name="cpfOrCnpj"
+                  placeholder="CPF ou CNPJ"
+                  required
+                />
+              )}
+            </InputMask>
             <input
               type="password"
               name="newPassword"
