@@ -121,7 +121,7 @@ function Login() {
       <div className={`background ${loading ? "dark" : ""}`}></div>
       <div className={`login-container ${loading ? "transitioning" : ""}`}>
         <img src={logo} alt="Logo da empresa" />
-        <h2>Login</h2>
+        {resetType === "" && <h2>Login</h2>}
         {error && (
           <Alert color="red" className="mb-4">
             {error}
@@ -134,6 +134,7 @@ function Login() {
         )}
         {resetType ? (
           <div>
+            <h2>Resetar Senha</h2>
             <input
               type="date"
               name="dateOfBirth"
