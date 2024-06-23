@@ -6,18 +6,18 @@
   
 Para a tela de Login e Cadastro, desenvolvemos casos de testes de sucesso e insucesso para garantir que tudo esteja funcionando conforme o previsto.
 
-**1.1 - Cadastro de infomações para acesso a Plataforma:**
+**1.1 - Cadastro de informações para acesso a plataforma:**
 
 - Objetivo: Cadastrar o usuário no banco de dados do software e prevenir a duplicidade de cadastros com o mesmo e-mail.
   
 - Passos: Acessar a página de cadastro e preencher o formulário.
   
-- Critério de Sucesso: Caso seja realizado o cadastro pela primeira vez poderá ser redirecionado para a pagina de Login e acessar a plataforma.
+- Critério de Sucesso: Caso seja realizado o cadastro pela primeira vez, poderá ser redirecionado para a pagina de Login e acessar a plataforma.
   
-- Critério de Insucesso: Caso houver falhas na validação, o cadastro não será efetuado e o usuário deverá ser informado sobre os erros específicos (por exemplo, e-mail inválido, campos vazios e as senha não se coincidem).
+- Critério de Insucesso: Caso houver falhas na validação, o cadastro não será efetuado, e o usuário deverá ser informado sobre os erros específicos por exemplo: e-mail inválido, campos vazios e as senhas não se coincidem).
 
 
-**1.2 - Verificação de Cadastro sem Problemas e preenchimento obrigatorio de todos os campos:**
+**1.2 - Verificação de cadastro sem problemas e preenchimento obrigatorio de todos os campos:**
 
 - Objetivo: Assegurar que todos os dados sejam enviados corretamente.
   
@@ -28,7 +28,7 @@ Para a tela de Login e Cadastro, desenvolvemos casos de testes de sucesso e insu
 - Critério de Insucesso: O sistema deve impedir o cadastro, exibindo mensagens de erro detalhadas para cada campo obrigatório não preenchido ou preenchido incorretamente.
 
 
-**1.3 - Prevenir duplicidade de informações Cadastrais:**
+**1.3 - Prevenir duplicidade de informações cadastrais:**
 
 - Objetivo: Prevenir a duplicidade de cadastros com o mesmo e-mail.
 
@@ -39,9 +39,9 @@ Para a tela de Login e Cadastro, desenvolvemos casos de testes de sucesso e insu
 - Critério de Insucesso: O sistema deve impedir o cadastro e exibir uma mensagem clara informando que o e-mail já está em uso.
 
 
-**1.4 - Restrição de Acesso a Usuários Cadastrados ao realizar Login:**
+**1.4 - Restrição de acesso a usuários cadastrados ao realizar login:**
 
-- Objetivo: Garantir que apenas usuários cadastrados tenham acesso à plataforma ao realizar o Login.
+- Objetivo: Garantir que apenas usuários cadastrados tenham acesso à plataforma ao realizar o login.
 
 - Passos: Acessar a plataforma com um usuário cadastrado e não cadastrado.
 
@@ -52,9 +52,9 @@ Para a tela de Login e Cadastro, desenvolvemos casos de testes de sucesso e insu
 
 **1.5 - Alteração de senha de acesso ao sistema:**
 
-- Objetivo: Permitir atualizar senha caso usuário esqueça e verificar falhas no processo de atualização de senha para usuários.
+- Objetivo: Permitir atualizar senha caso usuário esqueça, e verificar falhas no processo de atualização de senha para usuários.
 
-- Passos: Tentar realizar o cadastro de uma nova senha para acessar a pagina de Login.
+- Passos: Tentar realizar o cadastro de uma nova senha para acessar a pagina de login.
 
 - Critério de Sucesso: Se o usuário estiver cadastrado, a senha será alterada pelo sistema.
 
@@ -69,7 +69,7 @@ Para a tela de Login e Cadastro, desenvolvemos casos de testes de sucesso e insu
 
 - Critério de Sucesso: O software deverá realizar interações através de animações e alertas.
 
-- Critério de Insucesso: Se o software não realizar as interações esperadas (como animações e alertas), nada será apresentado ao usuário. 
+- Critério de Insucesso: Se o software não realizar as interações esperadas (como animações e alertas), nada será apresentado ao usuário.
 
 
 ### 2 - Estoque
@@ -88,17 +88,19 @@ Para a tela de Estoque, desenvolvemos casos de testes de sucesso e insucesso par
 
      
 **2.2 - Exclusão de registros** 
+
 - Objetivo: Verificar se os itens que o usuário deseja apagar está sendo deletados.
   
-- Passos: Clicar na "lixeira" do item que deseja deletar e depois "confimar".
+- Passos: Clicar na "lixeira" do item que deseja deletar e depois "confirmar".
   
 - Critério de Sucesso: Aparecerá uma mensagem dizendo que a operação foi executada com sucesso, e que o item selecionado não aparecerá na lista.
 
 - Critério de Insucesso: O sistema deve exibir uma mensagem de erro se a exclusão não for possível e o item deve permanecer na lista.
 
 
-**2.3 - Atualização de quantidade de produto em estoque** 
-- Objetivo: Verificar se o usuário consegue adicionar mais quantidade de proddutos a um item.
+**2.3 - Atualização de quantidade de produto em estoque**
+
+- Objetivo: Verificar se o usuário consegue adicionar mais quantidade de produtos a um item registrado.
 
 - Passos: Acessar os tres pontinho na frente do item que deseja, selecione "atualizar quantidade", preencher e salvar.
 
@@ -109,11 +111,11 @@ Para a tela de Estoque, desenvolvemos casos de testes de sucesso e insucesso par
 
 **2.4 - Atualização de valor de venda**
 
-- Objetivo: Verificar se o usuário consegue atlerar o preco de venda do produto em específico.
+- Objetivo: Verificar se o usuário consegue alterar o preço de venda do produto em específico.
 
-- Passos: Acessar os três pontinhos do lado do intem que deseja e clicar na opção alterar o valor de venda.
+- Passos: Acessar os três pontinhos do lado do item que deseja e clicar na opção alterar o valor de venda.
 
-- Critério de Sucesso: Caso de sucesso, ira aparecer uma mensagem indicando que a opecao foi realizada com sucesso e na lista de estoque seu valor será atualizado.
+- Critério de Sucesso: Caso de sucesso, ira aparecer uma mensagem indicando que a opção foi realizada com sucesso e na lista de estoque seu valor será atualizado.
 
 - Critério de Insucesso: O sistema deve exibir mensagens de erro e o valor de venda não deve ser atualizado.
 
@@ -122,20 +124,20 @@ Para a tela de Estoque, desenvolvemos casos de testes de sucesso e insucesso par
 
 - Objetivo: Verificar edição do valor de compra de um item.
 
-- Passos: Acessar os três pontos, selecione "atualizar valor de compra", preencha com um valor  e salvar.
+- Passos: Acessar os três pontos, selecione "atualizar valor de compra", preencha com um valor e cliquem em "salvar".
 
 - Critério de Sucesso: Aparecerá um alerta confirmando a alteração do valor e o mesmo será atualizado.
 
 - Critério de Insucesso: O sistema deve exibir um alerta de erro e o valor de compra não deve ser atualizado.
 
 
-**2.6 - Verificar se quando e realizada a venda de um produto a quantidade no estoque e atualizada** 
+**2.6 - Verificar se quando é realizada a venda de um produto a quantidade no estoque é atualizada** 
 
-- Objetivo: Verificar se ocorre a baixa do item no estoque quando e realizado uma cenda do mesmo
+- Objetivo: Verificar se ocorre a baixa do item no estoque quando é realizado uma venda do mesmo.
 
 - Passos: Acesse a tela de vendas, registrar uma venda com um produto do estoque, voltar na tela de estoque e verificar se a quantidade foi atualizada.
 
-- Critério de Sucesso: A quantidade de poduto selecionado será atualizado e uma alerta de sucesso deve ser exibida.
+- Critério de Sucesso: A quantidade de produto selecionado será atualizado e um alerta de sucesso deve ser exibido.
 
 - Critério de Insucesso: A quantidade do produto no estoque não deve ser alterada e uma mensagem de erro deve ser exibida.
 
@@ -225,7 +227,7 @@ Na tela de Financeiro, desenvolvemos casos de testes de sucesso e insucesso para
 
 - Objetivo: Verificar se a lista e os cards de valores atualizam corretamente conforme o filtro selecionado pelo cliente.
 
-- Passos: Selecionar dia, mês e ano ou algum deles, e clicar em "filtrar".
+- Passos: Selecionar "data de início" e "data final", e clicar em "filtrar".
 
 - Critério de Sucesso: Os cards superiores e a lista de valores irão atualizar corretamente.
 
@@ -238,31 +240,31 @@ Na tela de Financeiro, desenvolvemos casos de testes de sucesso e insucesso para
 
 **4.1 - Filtro por clientes** 
 
-- Objetivo: Verificar se o filtro de cliente esta funcionando ou se há falhas.
+- Objetivo: Verificar se o filtro de cliente está funcionando ou se há falhas.
 
 - Passos: Digitar o nome de um cliente da parte superior da página.
   
-- Critério de Sucesso: Deverá listar todas as compras pendentes dos cliente.
+- Critério de Sucesso: Deverá listar todas as compras pendentes dos clientes.
 
 - Critério de Insucesso: O sistema deve exibir uma mensagem de erro e não deve listar compras pendentes.
 
 
-**4.2 - Baixa no clientes devedores** 
+**4.2 - Baixa nos clientes devedores** 
  
-- Objetivo: Verificar atualização do status de pendencia do cliente.
+- Objetivo: Verificar atualização do status de pendência do cliente.
 
-- Passos: Entrar na tela de clientes inadiplentes, escolher um cliente, acessar o menu lateral da tabela e ir na sessão dar baixa.
+- Passos: Entrar na tela de clientes inadimplentes, escolher um cliente, acessar o menu lateral da tabela e ir na sessão dar baixa.
 
 - Critério de Sucesso: Caso de sucesso, após dar a baixa quando voltar a tela principal o cliente não estará mais na lista.
 
 - Critério de Insucesso: O sistema deve exibir uma mensagem de erro e não deve listar compras pendentes.
   
 
-**4.3 - Extrato das compras pendetes** 
+**4.3 - Extrato das compras pendentes** 
 
-- Objetivo: Verificar busca de compras devidas do clinete.
+- Objetivo: Verificar busca de compras devidas do cliente.
 
-- Passos: Entrar na tela de clientes inadiplentes, escolher um cliente, acessar o menu lateral da tabela e ir na sessão extrato.
+- Passos: Entrar na tela de clientes inadimplentes, escolher um cliente, acessar o menu lateral da tabela e ir na sessão extrato.
 
 - Critério de Sucesso: Abrirá um modal listando todos os produtos devidos do cliente.
 
@@ -273,13 +275,13 @@ Na tela de Financeiro, desenvolvemos casos de testes de sucesso e insucesso para
 
 Na tela de Financeiro, desenvolvemos casos de testes de sucesso e insucesso para garantir que tudo esteja funcionando conforme o previsto.
 
-**5.1 - Listagem de todos os cliente e sinalização dos devedores** 
+**5.1 - Listagem de todos os clientes e sinalização dos devedores** 
 
-- Objetivo: Verificar a página consegue listar todos os clientes e sinalizar quem tem compra pendente.
+- Objetivo: Verificar se a página consegue listar todos os clientes e sinalizar quais tem compra pendente.
     
 - Passos: Acessar a aba "clientes", "histórico clientes" no menu esquerdo.
     
-- Critério de Sucesso: Deverá listar todos os cliente com um alerta.
+- Critério de Sucesso: Deverá listar todos os clientes com um alerta.
 
 - Critério de Insucesso: O sistema deve exibir mensagens de erro, não listar todos os clientes ou não sinalizar corretamente os devedores.
 
@@ -290,7 +292,7 @@ Na tela de Financeiro, desenvolvemos casos de testes de sucesso e insucesso para
 
 - Passos: Na tela "histórico cliente", clique em "exibir histórico".
 
-- Critério de Sucesso: Caso de sucesso, ira aparecer as informações pessoais dos clintes, tempo de cadastro e outras informações.
+- Critério de Sucesso: Caso de sucesso, irá aparecer as informações pessoais dos clintes, tempo de cadastro e outras informações.
 
 - Critério de Insucesso: O sistema deve exibir mensagens de erro e não deve exibir as informações pessoais dos clientes, tempo de cadastro, entre outras.
 
@@ -301,11 +303,11 @@ Na tela de Vendas, desenvolvemos casos de testes de sucesso e insucesso para gar
 
 **6.1 - Registro de Vendas**
 
-- Objetivo: Verificar se as vendas que o usuário cadastrou está sendo salvas.
+- Objetivo: Verificar se as vendas que o usuário cadastrou estão sendo salvas.
 
 - Passos: Selecionar o menu "Venda", selecionar o sub-menu "Venda", incluir o cliente correspondente, incluir os itens desejados, selecionar a forma de pagamento e clicar em "Gravar".
 
-- Critério de Sucesso: Caso de sucesso, iria aparecer uma mensagem confirmando que a venda foi feita com sucesso.
+- Critério de Sucesso: Caso de sucesso, irá aparecer uma mensagem confirmando que a venda foi feita com sucesso.
 
 - Critério de Insucesso: O sistema deve exibir mensagens de erro e não deve registrar a venda.
 
@@ -360,17 +362,17 @@ Na tela de Relatório Venda, desenvolvemos casos de testes de sucesso e insucess
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101743181/d191e4b1-efe8-4baa-ab2f-8d047347a90c
 
 
-#### Plano de teste 1.2 - Verificação de Cadastro sem Problemas e preenchimento obrigatorio de todos os campos:
+#### Plano de teste 1.2 - Verificação de cadastro sem problemas e preenchimento obrigatorio de todos os campos:
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101743181/8c0f3a4d-b1bf-4725-83f5-e89c9f057b03
 
 
-#### Plano de teste 1.3 - Prevenir duplicidade de informações Cadastrais:
+#### Plano de teste 1.3 - Prevenir duplicidade de informações cadastrais:
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101743181/93fc0e57-7ed1-4336-ac5c-376bebab00ee
 
 
-#### Plano de teste 1.4 - Restrição de Acesso a Usuários não cadastrados:
+#### Plano de teste 1.4 - Restrição de acesso a usuários não cadastrados:
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101743181/ea22ce2a-5c08-4073-8ed4-b23b9009ddff
 
@@ -411,7 +413,7 @@ https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-ale
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/40009988/238a5ba7-37b8-4fd8-b898-4c080793f375
 
-#### Plano de teste 2.5 - Verificar se quando e realizada a venda de um produto a quantidade no estoque e atualizada
+#### Plano de teste 2.5 - Verificar se quando é realizada a venda de um produto a quantidade no estoque é atualizada
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/40009988/43e343ab-797a-4f85-9acf-cb357b7e544f
 
@@ -425,23 +427,23 @@ https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-ale
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/797f2f6c-be4c-47f6-af80-5f4a173bdddc
 
-#### Plano de teste 3.2 - Alterar de nome da despesa
+#### Plano de teste 3.2 - Alteração de nome da despesa
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/c136aeb5-29f4-4da1-a9f2-a8a340aa12ee
 
-#### Plano de teste 3.3 - Alterar de tipo da despesa
+#### Plano de teste 3.3 - Alteração de tipo da despesa
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/2ad0fc90-2ab3-4668-8b94-9da8efe66f92
 
-#### Plano de teste 3.4 - Alterar de valor da despesa
+#### Plano de teste 3.4 - Alteração de valor da despesa
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/df0ba789-0c88-4365-bcbe-97dec2687bb9
 
-#### Plano de teste 3.5 - Alterar de data de pagamento da despesa
+#### Plano de teste 3.5 - Alteração de data de pagamento da despesa
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/a03f3172-68ab-443d-b9ce-9bbd92a927d1
 
-#### Plano de teste 3.6 - Alterar de data de vencimento da despesa
+#### Plano de teste 3.6 - Alteração de data de vencimento da despesa
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/95931ea0-a9ea-4763-8c4a-f5e7f6afde44
 
@@ -451,26 +453,26 @@ https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-ale
 
 ### 4 - Clientes Inadimplentes
 
-#### Plano de teste 4.1 - Filtro por cliente tela (tela clientes inadimplentes)
+#### Plano de teste 4.1 - Filtro por cliente (tela clientes inadimplentes)
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/40009988/880ec401-4198-4ab1-b91a-684efa793207
      
-#### Plano de teste 4.2 - Baixa no clientes devedores 
+#### Plano de teste 4.2 - Baixa dos clientes devedores 
  
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/40009988/030410ab-0075-40c4-9b93-c49e372c5881
 
-#### Plano de teste 4.3 - Extrato das compras pendetes
+#### Plano de teste 4.3 - Extrato das compras pendentes
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/40009988/8ef874ed-aae5-4396-bde4-2f40328a2401
 
 
 ### 5 - Historico dos Clientes
 
-#### Plano de teste 5.1 - Listagem de todos os cliente e sinalização dos devedores*
+#### Plano de teste 5.1 - Listagem de todos os clientes e sinalização dos devedores*
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/40009988/c32cda64-503b-4da1-ae5b-3c1af07fdf3d
 
-#### Plano de teste 5.2 - Exibir Historico 
+#### Plano de teste 5.2 - Exibir Histórico 
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/40009988/c50a0cb3-934e-4e44-8546-d81358ad966f
 
@@ -523,15 +525,15 @@ Garantir a funcionalidade, confiabilidade e segurança das telas de:
 
 ## Análise de teste da tela Cadastro - Executor do teste - Matheus Sampaio
 
-#### Plano de teste 1.1 - Cadastro de infomações para acesso a Plataforma: 
+#### Plano de teste 1.1 - Cadastro de informações para acesso a Plataforma: 
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/85502110/2c487376-dccd-4a21-ba3a-e48ab3e99b20
 
-#### Plano de teste 1.2 - Verificação de Cadastro sem Problemas e preenchimento obrigatorio de todos os campos:
+#### Plano de teste 1.2 - Verificação de cadastro sem problemas e preenchimento obrigatório de todos os campos:
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/85502110/c2cae17c-a5d7-48bf-b9e2-df49bf687c97
 
-#### Plano de teste 1.3 - Prevenir duplicidade de informações Cadastrais:
+#### Plano de teste 1.3 - Prevenir duplicidade de informações cadastrais:
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/85502110/66f09550-b23e-4a0b-a9e2-6f88cdad32fb
 
@@ -555,7 +557,7 @@ https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-ale
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/ac52fe39-94f6-4d2c-b465-cc4de9d3a32b
 
-### 2.4 - Verificar se quando e realizada a venda de um produto a quantidade no estoque e atualizada 
+### 2.4 - Verificar se quando é realizada a venda de um produto a quantidade no estoque é atualizada 
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/7a5f62ff-7a9e-4e87-9e4c-b8796018dc65
 
@@ -597,7 +599,7 @@ https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-ale
 
 ## Evidências de teste da tela histórico do cliente - Executor do teste: Matheus Ferreira
 
-### 5.1 - Listagem de todos os cliente e sinalização dos devedores
+### 5.1 - Listagem de todos os clientes e sinalização dos devedores
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-d-alessandra/assets/101369477/5e696017-c67a-46f4-b769-b6045addb262
 
