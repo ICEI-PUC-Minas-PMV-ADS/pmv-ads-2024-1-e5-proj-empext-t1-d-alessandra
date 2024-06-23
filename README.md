@@ -1,5 +1,7 @@
 # D'Alessandra
 
+![logo](/documentos/img/logo.png)
+
 `ANALISE E DESENVOLVIMENTO DE SISTEMA`
 
 `Projeto: Desenvolvimento de um Sistema Sociotécnico Inovador`
